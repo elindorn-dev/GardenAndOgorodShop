@@ -1,0 +1,11 @@
+C:\Users\Dmitry\Desktop\kursovaya\GardenAndOgorodShop\GardenAndOgorodShop\bin\Debug\GardenAndOgorodShop.exe.config
+C:\Users\Dmitry\Desktop\kursovaya\GardenAndOgorodShop\GardenAndOgorodShop\bin\Debug\GardenAndOgorodShop.exe
+C:\Users\Dmitry\Desktop\kursovaya\GardenAndOgorodShop\GardenAndOgorodShop\bin\Debug\GardenAndOgorodShop.pdb
+C:\Users\Dmitry\Desktop\kursovaya\GardenAndOgorodShop\GardenAndOgorodShop\obj\Debug\GardenAndOgorodShop.csproj.AssemblyReference.cache
+C:\Users\Dmitry\Desktop\kursovaya\GardenAndOgorodShop\GardenAndOgorodShop\obj\Debug\GardenAndOgorodShop.csproj.SuggestedBindingRedirects.cache
+C:\Users\Dmitry\Desktop\kursovaya\GardenAndOgorodShop\GardenAndOgorodShop\obj\Debug\GardenAndOgorodShop.AuthForm.resources
+C:\Users\Dmitry\Desktop\kursovaya\GardenAndOgorodShop\GardenAndOgorodShop\obj\Debug\GardenAndOgorodShop.Properties.Resources.resources
+C:\Users\Dmitry\Desktop\kursovaya\GardenAndOgorodShop\GardenAndOgorodShop\obj\Debug\GardenAndOgorodShop.csproj.GenerateResource.cache
+C:\Users\Dmitry\Desktop\kursovaya\GardenAndOgorodShop\GardenAndOgorodShop\obj\Debug\GardenAndOgorodShop.csproj.CoreCompileInputs.cache
+C:\Users\Dmitry\Desktop\kursovaya\GardenAndOgorodShop\GardenAndOgorodShop\obj\Debug\GardenAndOgorodShop.exe
+C:\Users\Dmitry\Desktop\kursovaya\GardenAndOgorodShop\GardenAndOgorodShop\obj\Debug\GardenAndOgorodShop.pdb
