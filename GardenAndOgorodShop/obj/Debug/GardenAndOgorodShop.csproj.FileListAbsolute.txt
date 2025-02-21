@@ -10,3 +10,15 @@ C:\Users\Dmitry\Desktop\kursovaya\GardenAndOgorodShop\GardenAndOgorodShop\obj\De
 C:\Users\Dmitry\Desktop\kursovaya\GardenAndOgorodShop\GardenAndOgorodShop\obj\Debug\GardenAndOgorodShop.csproj.CoreCompileInputs.cache
 C:\Users\Dmitry\Desktop\kursovaya\GardenAndOgorodShop\GardenAndOgorodShop\obj\Debug\GardenAndOgorodShop.exe
 C:\Users\Dmitry\Desktop\kursovaya\GardenAndOgorodShop\GardenAndOgorodShop\obj\Debug\GardenAndOgorodShop.pdb
+D:\Smirnov\kur\1\GardenAndOgorodShop-main\GardenAndOgorodShop\bin\Debug\GardenAndOgorodShop.exe.config
+D:\Smirnov\kur\1\GardenAndOgorodShop-main\GardenAndOgorodShop\bin\Debug\GardenAndOgorodShop.exe
+D:\Smirnov\kur\1\GardenAndOgorodShop-main\GardenAndOgorodShop\bin\Debug\GardenAndOgorodShop.pdb
+D:\Smirnov\kur\1\GardenAndOgorodShop-main\GardenAndOgorodShop\obj\Debug\GardenAndOgorodShop.csproj.AssemblyReference.cache
+D:\Smirnov\kur\1\GardenAndOgorodShop-main\GardenAndOgorodShop\obj\Debug\GardenAndOgorodShop.AuthForm.resources
+D:\Smirnov\kur\1\GardenAndOgorodShop-main\GardenAndOgorodShop\obj\Debug\GardenAndOgorodShop.Properties.Resources.resources
+D:\Smirnov\kur\1\GardenAndOgorodShop-main\GardenAndOgorodShop\obj\Debug\GardenAndOgorodShop.csproj.GenerateResource.cache
+D:\Smirnov\kur\1\GardenAndOgorodShop-main\GardenAndOgorodShop\obj\Debug\GardenAndOgorodShop.csproj.CoreCompileInputs.cache
+D:\Smirnov\kur\1\GardenAndOgorodShop-main\GardenAndOgorodShop\obj\Debug\GardenAndOgorodShop.exe
+D:\Smirnov\kur\1\GardenAndOgorodShop-main\GardenAndOgorodShop\obj\Debug\GardenAndOgorodShop.pdb
+D:\Smirnov\kur\1\GardenAndOgorodShop-main\GardenAndOgorodShop\obj\Debug\GardenAndOgorodShop.Main.resources
+D:\Smirnov\kur\1\GardenAndOgorodShop-main\GardenAndOgorodShop\obj\Debug\GardenAndOgorodShop.AddRecordForm.resources

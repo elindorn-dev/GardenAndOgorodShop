@@ -33,7 +33,7 @@ namespace GardenAndOgorodShop
             {
                 moving = true;
                 await Task.Delay(1);
-                panelSettings.Location = new Point(panelSettings.Location.X - panelSettings.Location.X / 100, panelSettings.Location.Y);
+                panelSettings.Location = new Point(panelSettings.Location.X - panelSettings.Location.X / 50, panelSettings.Location.Y);
                 moving = false;
             }
             setting_active_status = true;
@@ -48,7 +48,7 @@ namespace GardenAndOgorodShop
             {
                 moving = true;
                 await Task.Delay(1);
-                panelSettings.Location = new Point(panelSettings.Location.X + panelSettings.Location.X / 100, panelSettings.Location.Y);
+                panelSettings.Location = new Point(panelSettings.Location.X + panelSettings.Location.X / 50, panelSettings.Location.Y);
                 moving = false;
             }
             setting_active_status = false;
@@ -89,6 +89,7 @@ namespace GardenAndOgorodShop
         private void textBoxPassword_Enter(object sender, EventArgs e)
         {
             textBoxPassword.ForeColor = Color.Black;
+            textBoxPassword.PasswordChar = '●';
             if (save_password_textbox != "")
             {
                 textBoxPassword.Text = save_password_textbox;
@@ -124,6 +125,18 @@ namespace GardenAndOgorodShop
             {
                 DisactiveSetting();
             }
+        }
+
+        private void buttonAuth_Click(object sender, EventArgs e)
+        {
+            Main form = new Main();
+            form.Show();
+            this.Hide();
+        }
+
+        private void hideshowpwd_Click(object sender, EventArgs e)
+        {
+            textBoxPassword.PasswordChar = '\0';
         }
     }
 }
