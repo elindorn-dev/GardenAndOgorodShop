@@ -59,10 +59,11 @@
             this.panelAuth.Name = "panelAuth";
             this.panelAuth.Size = new System.Drawing.Size(400, 362);
             this.panelAuth.TabIndex = 0;
+            this.panelAuth.Click += new System.EventHandler(this.panelAuth_Click);
             // 
             // hideshowpwd
             // 
-            this.hideshowpwd.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.hide_password;
+            this.hideshowpwd.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.show_password;
             this.hideshowpwd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.hideshowpwd.FlatAppearance.BorderSize = 0;
             this.hideshowpwd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -91,9 +92,10 @@
             this.textBoxLogin.Location = new System.Drawing.Point(17, 15);
             this.textBoxLogin.MaxLength = 100;
             this.textBoxLogin.Name = "textBoxLogin";
-            this.textBoxLogin.Size = new System.Drawing.Size(319, 22);
+            this.textBoxLogin.Size = new System.Drawing.Size(330, 22);
             this.textBoxLogin.TabIndex = 0;
             this.textBoxLogin.Text = "Логин";
+            this.textBoxLogin.TextChanged += new System.EventHandler(this.textBoxLogin_TextChanged);
             this.textBoxLogin.Enter += new System.EventHandler(this.textBoxLogin_Enter);
             this.textBoxLogin.Leave += new System.EventHandler(this.textBoxLogin_Leave);
             // 
@@ -103,7 +105,7 @@
             this.panel2.Controls.Add(this.textBoxPassword);
             this.panel2.Location = new System.Drawing.Point(23, 192);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(310, 50);
+            this.panel2.Size = new System.Drawing.Size(316, 50);
             this.panel2.TabIndex = 3;
             // 
             // textBoxPassword
@@ -115,9 +117,10 @@
             this.textBoxPassword.Location = new System.Drawing.Point(17, 15);
             this.textBoxPassword.MaxLength = 100;
             this.textBoxPassword.Name = "textBoxPassword";
-            this.textBoxPassword.Size = new System.Drawing.Size(279, 22);
+            this.textBoxPassword.Size = new System.Drawing.Size(296, 22);
             this.textBoxPassword.TabIndex = 0;
             this.textBoxPassword.Text = "Пароль";
+            this.textBoxPassword.TextChanged += new System.EventHandler(this.textBoxPassword_TextChanged);
             this.textBoxPassword.Enter += new System.EventHandler(this.textBoxPassword_Enter);
             this.textBoxPassword.Leave += new System.EventHandler(this.textBoxPassword_Leave);
             // 
@@ -170,6 +173,7 @@
             this.buttonExitApp.TabIndex = 5;
             this.buttonExitApp.Text = "Выйти";
             this.buttonExitApp.UseVisualStyleBackColor = false;
+            this.buttonExitApp.Click += new System.EventHandler(this.buttonExitApp_Click);
             // 
             // buttonMenu
             // 

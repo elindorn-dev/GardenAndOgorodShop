@@ -4,7 +4,6 @@ C:\Users\Dmitry\Desktop\kursovaya\GardenAndOgorodShop\GardenAndOgorodShop\bin\De
 C:\Users\Dmitry\Desktop\kursovaya\GardenAndOgorodShop\GardenAndOgorodShop\obj\Debug\GardenAndOgorodShop.csproj.AssemblyReference.cache
 C:\Users\Dmitry\Desktop\kursovaya\GardenAndOgorodShop\GardenAndOgorodShop\obj\Debug\GardenAndOgorodShop.csproj.SuggestedBindingRedirects.cache
 C:\Users\Dmitry\Desktop\kursovaya\GardenAndOgorodShop\GardenAndOgorodShop\obj\Debug\GardenAndOgorodShop.AuthForm.resources
-C:\Users\Dmitry\Desktop\kursovaya\GardenAndOgorodShop\GardenAndOgorodShop\obj\Debug\GardenAndOgorodShop.FormViewProduct.resources
 C:\Users\Dmitry\Desktop\kursovaya\GardenAndOgorodShop\GardenAndOgorodShop\obj\Debug\GardenAndOgorodShop.Properties.Resources.resources
 C:\Users\Dmitry\Desktop\kursovaya\GardenAndOgorodShop\GardenAndOgorodShop\obj\Debug\GardenAndOgorodShop.csproj.GenerateResource.cache
 C:\Users\Dmitry\Desktop\kursovaya\GardenAndOgorodShop\GardenAndOgorodShop\obj\Debug\GardenAndOgorodShop.csproj.CoreCompileInputs.cache
@@ -22,3 +21,43 @@ D:\Smirnov\kur\1\GardenAndOgorodShop-main\GardenAndOgorodShop\obj\Debug\GardenAn
 D:\Smirnov\kur\1\GardenAndOgorodShop-main\GardenAndOgorodShop\obj\Debug\GardenAndOgorodShop.pdb
 D:\Smirnov\kur\1\GardenAndOgorodShop-main\GardenAndOgorodShop\obj\Debug\GardenAndOgorodShop.Main.resources
 D:\Smirnov\kur\1\GardenAndOgorodShop-main\GardenAndOgorodShop\obj\Debug\GardenAndOgorodShop.AddRecordForm.resources
+D:\Smirnov\kur\2\GardenAndOgorodShop-main\GardenAndOgorodShop\bin\Debug\GardenAndOgorodShop.exe.config
+D:\Smirnov\kur\2\GardenAndOgorodShop-main\GardenAndOgorodShop\bin\Debug\GardenAndOgorodShop.exe
+D:\Smirnov\kur\2\GardenAndOgorodShop-main\GardenAndOgorodShop\bin\Debug\GardenAndOgorodShop.pdb
+D:\Smirnov\kur\2\GardenAndOgorodShop-main\GardenAndOgorodShop\obj\Debug\GardenAndOgorodShop.csproj.AssemblyReference.cache
+D:\Smirnov\kur\2\GardenAndOgorodShop-main\GardenAndOgorodShop\obj\Debug\GardenAndOgorodShop.AddRecordForm.resources
+D:\Smirnov\kur\2\GardenAndOgorodShop-main\GardenAndOgorodShop\obj\Debug\GardenAndOgorodShop.AuthForm.resources
+D:\Smirnov\kur\2\GardenAndOgorodShop-main\GardenAndOgorodShop\obj\Debug\GardenAndOgorodShop.Main.resources
+D:\Smirnov\kur\2\GardenAndOgorodShop-main\GardenAndOgorodShop\obj\Debug\GardenAndOgorodShop.Properties.Resources.resources
+D:\Smirnov\kur\2\GardenAndOgorodShop-main\GardenAndOgorodShop\obj\Debug\GardenAndOgorodShop.csproj.GenerateResource.cache
+D:\Smirnov\kur\2\GardenAndOgorodShop-main\GardenAndOgorodShop\obj\Debug\GardenAndOgorodShop.csproj.CoreCompileInputs.cache
+D:\Smirnov\kur\2\GardenAndOgorodShop-main\GardenAndOgorodShop\obj\Debug\GardenAndOgorodShop.exe
+D:\Smirnov\kur\2\GardenAndOgorodShop-main\GardenAndOgorodShop\obj\Debug\GardenAndOgorodShop.pdb
+D:\Smirnov\kur\2\GardenAndOgorodShop-main\GardenAndOgorodShop\bin\Debug\MySql.Data.dll
+D:\Smirnov\kur\2\GardenAndOgorodShop-main\GardenAndOgorodShop\bin\Debug\MySql.Data.xml
+D:\Smirnov\kur\2\GardenAndOgorodShop-main\GardenAndOgorodShop\obj\Debug\GardenAndOgorodShop.csproj.CopyComplete
+C:\Users\Dmitry\Downloads\GardenAndOgorodShop-main (1)\GardenAndOgorodShop-main\GardenAndOgorodShop\bin\Debug\GardenAndOgorodShop.exe.config
+C:\Users\Dmitry\Downloads\GardenAndOgorodShop-main (1)\GardenAndOgorodShop-main\GardenAndOgorodShop\bin\Debug\GardenAndOgorodShop.exe
+C:\Users\Dmitry\Downloads\GardenAndOgorodShop-main (1)\GardenAndOgorodShop-main\GardenAndOgorodShop\bin\Debug\GardenAndOgorodShop.pdb
+C:\Users\Dmitry\Downloads\GardenAndOgorodShop-main (1)\GardenAndOgorodShop-main\GardenAndOgorodShop\bin\Debug\System.Memory.dll
+C:\Users\Dmitry\Downloads\GardenAndOgorodShop-main (1)\GardenAndOgorodShop-main\GardenAndOgorodShop\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\Dmitry\Downloads\GardenAndOgorodShop-main (1)\GardenAndOgorodShop-main\GardenAndOgorodShop\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\Dmitry\Downloads\GardenAndOgorodShop-main (1)\GardenAndOgorodShop-main\GardenAndOgorodShop\bin\Debug\System.Buffers.dll
+C:\Users\Dmitry\Downloads\GardenAndOgorodShop-main (1)\GardenAndOgorodShop-main\GardenAndOgorodShop\obj\Debug\GardenAndOgorodShop.csproj.AssemblyReference.cache
+C:\Users\Dmitry\Downloads\GardenAndOgorodShop-main (1)\GardenAndOgorodShop-main\GardenAndOgorodShop\obj\Debug\GardenAndOgorodShop.csproj.SuggestedBindingRedirects.cache
+C:\Users\Dmitry\Downloads\GardenAndOgorodShop-main (1)\GardenAndOgorodShop-main\GardenAndOgorodShop\obj\Debug\GardenAndOgorodShop.AddRecordForm.resources
+C:\Users\Dmitry\Downloads\GardenAndOgorodShop-main (1)\GardenAndOgorodShop-main\GardenAndOgorodShop\obj\Debug\GardenAndOgorodShop.AuthForm.resources
+C:\Users\Dmitry\Downloads\GardenAndOgorodShop-main (1)\GardenAndOgorodShop-main\GardenAndOgorodShop\obj\Debug\GardenAndOgorodShop.Main.resources
+C:\Users\Dmitry\Downloads\GardenAndOgorodShop-main (1)\GardenAndOgorodShop-main\GardenAndOgorodShop\obj\Debug\GardenAndOgorodShop.Properties.Resources.resources
+C:\Users\Dmitry\Downloads\GardenAndOgorodShop-main (1)\GardenAndOgorodShop-main\GardenAndOgorodShop\obj\Debug\GardenAndOgorodShop.csproj.GenerateResource.cache
+C:\Users\Dmitry\Downloads\GardenAndOgorodShop-main (1)\GardenAndOgorodShop-main\GardenAndOgorodShop\obj\Debug\GardenAndOgorodShop.csproj.CoreCompileInputs.cache
+C:\Users\Dmitry\Downloads\GardenAndOgorodShop-main (1)\GardenAndOgorodShop-main\GardenAndOgorodShop\obj\Debug\GardenAndOgorodShop.csproj.CopyComplete
+C:\Users\Dmitry\Downloads\GardenAndOgorodShop-main (1)\GardenAndOgorodShop-main\GardenAndOgorodShop\obj\Debug\GardenAndOgorodShop.exe
+C:\Users\Dmitry\Downloads\GardenAndOgorodShop-main (1)\GardenAndOgorodShop-main\GardenAndOgorodShop\obj\Debug\GardenAndOgorodShop.pdb
+C:\Users\Dmitry\Desktop\kursovaya\GardenAndOgorodShop\GardenAndOgorodShop\bin\Debug\System.Memory.dll
+C:\Users\Dmitry\Desktop\kursovaya\GardenAndOgorodShop\GardenAndOgorodShop\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\Dmitry\Desktop\kursovaya\GardenAndOgorodShop\GardenAndOgorodShop\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\Dmitry\Desktop\kursovaya\GardenAndOgorodShop\GardenAndOgorodShop\bin\Debug\System.Buffers.dll
+C:\Users\Dmitry\Desktop\kursovaya\GardenAndOgorodShop\GardenAndOgorodShop\obj\Debug\GardenAndOgorodShop.AddRecordForm.resources
+C:\Users\Dmitry\Desktop\kursovaya\GardenAndOgorodShop\GardenAndOgorodShop\obj\Debug\GardenAndOgorodShop.Main.resources
+C:\Users\Dmitry\Desktop\kursovaya\GardenAndOgorodShop\GardenAndOgorodShop\obj\Debug\GardenAndOgorodShop.csproj.CopyComplete
