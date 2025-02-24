@@ -10,5 +10,6 @@ namespace GardenAndOgorodShop
     {
         public static string UserRole { get; set; }
         public static int UserID { get; set; }
+        public static string UserFIO { get; set; }
     }
 }

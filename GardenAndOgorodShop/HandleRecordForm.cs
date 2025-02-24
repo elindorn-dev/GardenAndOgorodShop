@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace GardenAndOgorodShop
 {
-    public partial class AddRecordForm : Form
+    public partial class HandleRecordForm : Form
     {
-        public AddRecordForm()
+        public HandleRecordForm()
         {
             InitializeComponent();
         }

@@ -50,11 +50,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddRecordForm.cs">
+    <Compile Include="HandleRecordForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddRecordForm.Designer.cs">
-      <DependentUpon>AddRecordForm.cs</DependentUpon>
+    <Compile Include="HandleRecordForm.Designer.cs">
+      <DependentUpon>HandleRecordForm.cs</DependentUpon>
     </Compile>
     <Compile Include="AuthForm.cs">
       <SubType>Form</SubType>
@@ -72,8 +72,8 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserConfiguration.cs" />
-    <EmbeddedResource Include="AddRecordForm.resx">
-      <DependentUpon>AddRecordForm.cs</DependentUpon>
+    <EmbeddedResource Include="HandleRecordForm.resx">
+      <DependentUpon>HandleRecordForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AuthForm.resx">
       <DependentUpon>AuthForm.cs</DependentUpon>
@@ -112,6 +112,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\active_filter_icon.png" />
+    <None Include="Resources\add_icon.png" />
+    <None Include="Resources\none_image.png" />
+    <None Include="Resources\none_employee.png" />
+    <None Include="Resources\closed_menu.png" />
     <None Include="Resources\hide_password.png" />
     <None Include="Resources\show_password.png" />
     <None Include="Resources\edit_record.png" />

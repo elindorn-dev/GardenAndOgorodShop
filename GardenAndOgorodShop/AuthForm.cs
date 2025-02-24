@@ -212,5 +212,10 @@ namespace GardenAndOgorodShop
                 DisactiveSetting();
             }
         }
+
+        private void AuthForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

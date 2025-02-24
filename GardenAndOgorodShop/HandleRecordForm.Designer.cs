@@ -1,7 +1,7 @@
 ﻿
 namespace GardenAndOgorodShop
 {
-    partial class AddRecordForm
+    partial class HandleRecordForm
     {
         /// <summary>
         /// Required designer variable.
