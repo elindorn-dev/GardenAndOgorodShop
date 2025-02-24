@@ -227,9 +227,9 @@ namespace GardenAndOgorodShop
                     employeeName = $"{row[2]}" + " " + $"{row[1]}".Substring(0, 1) + "." + $"{row[3]}".Substring(0, 1) + ".";
                     employeePhone = $"{row[6]}";
                     employeePosition = $"{row[9]}";
-                    if (row[15] != DBNull.Value)
+                    if (row[14] != DBNull.Value)
                     {
-                        byte[] imageData = (byte[])row[15];
+                        byte[] imageData = (byte[])row[14];
 
                         using (MemoryStream ms = new MemoryStream(imageData))
                         {
@@ -263,9 +263,16 @@ namespace GardenAndOgorodShop
             
             comboBoxCategories.DataSource = categories_strings;
             #region EmployeeDataLoad
-            (string firstName, string lastName, string fathersName, Image photo) employeeData = DBHandler.LoadEmployeeData();
-            labelEmployeeName.Text = employeeData.lastName + " " + employeeData.firstName.Substring(0, 1) + "." + employeeData.fathersName.Substring(0, 1) + ".";
-            pictureBoxUser.BackgroundImage = employeeData.photo;
+            try
+            {
+                (string firstName, string lastName, string fathersName, Image photo) employeeData = DBHandler.LoadEmployeeData();
+                labelEmployeeName.Text = employeeData.lastName + " " + employeeData.firstName.Substring(0, 1) + "." + employeeData.fathersName.Substring(0, 1) + ".";
+                pictureBoxUser.BackgroundImage = employeeData.photo;
+            }
+            catch
+            {
+                MessageBox.Show("Ошибка загрузки пользователя");
+            }
             #endregion
             LoadProductDataGridView();
             LoadCategoriesDataGridView();
