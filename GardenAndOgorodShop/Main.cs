@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySqlX.XDevAPI.Relational;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -110,9 +111,10 @@ namespace GardenAndOgorodShop
                 dataGridViewProducts.Rows.Add(productImage, productTitle, productPrice, productCategory);
             }
         }
-        private void LoadCategoriesDataGridView()
+        private async void LoadCategoriesDataGridView()
         {
-            foreach (DataRow row in DBHandler.LoadData("categories").Rows)
+            DataTable table = await DBHandler.LoadData("categories");
+            foreach (DataRow row in table.Rows)
             {
                 string titleCategory = "none";
                 string descCategory = "none";
@@ -129,10 +131,11 @@ namespace GardenAndOgorodShop
                 dataGridViewCategories.Rows.Add(titleCategory, descCategory);
             }
         }
-        private void LoadUsersDataGridView()
+        private async void LoadUsersDataGridView()
         {
             string[] roles = { "Администратор", "Продавец" };
-            foreach (DataRow row in DBHandler.LoadData("users").Rows)
+            DataTable table = await DBHandler.LoadData("users");
+            foreach (DataRow row in table.Rows)
             {
                 string loginUser = "none";
                 string roleUser = "none";
@@ -152,9 +155,10 @@ namespace GardenAndOgorodShop
                 dataGridViewUsers.Rows.Add(loginUser, roleUser, lastLoginUser);
             }
         }
-        private void LoadOrdersDataGridView()
+        private async void LoadOrdersDataGridView()
         {
-            foreach (DataRow row in DBHandler.LoadData("orders").Rows)
+            DataTable table = await DBHandler.LoadData("orders");
+            foreach (DataRow row in table.Rows)
             {
                 string orderId = "none";
                 string orderDate = "none";
@@ -177,9 +181,10 @@ namespace GardenAndOgorodShop
                 dataGridViewOrders.Rows.Add(orderId, orderDate, orderStatus, orderCost);
             }
         }
-        private void LoadBrandsDataGridView()
+        private async void LoadBrandsDataGridView()
         {
-            foreach (DataRow row in DBHandler.LoadData("brands").Rows)
+            DataTable table = await DBHandler.LoadData("brands");
+            foreach (DataRow row in table.Rows)
             {
                 string brandName = "none";
                 string brandEmail = "none";
@@ -199,9 +204,10 @@ namespace GardenAndOgorodShop
                 dataGridViewBrands.Rows.Add(brandName, brandEmail, brandPhone);
             }
         }
-        private void LoadSuppliersDataGridView()
+        private async void LoadSuppliersDataGridView()
         {
-            foreach (DataRow row in DBHandler.LoadData("suppliers").Rows)
+            DataTable table = await DBHandler.LoadData("suppliers");
+            foreach (DataRow row in table.Rows)
             {
                 string suppliersName = "none";
                 string suppliersEmail = "none";
@@ -221,9 +227,10 @@ namespace GardenAndOgorodShop
                 dataGridViewSuppliers.Rows.Add(suppliersName, suppliersEmail, suppliersPhone);
             }
         }
-        private void LoadEmployeesDataGridView()
+        private async void LoadEmployeesDataGridView()
         {
-            foreach (DataRow row in DBHandler.LoadData("employees").Rows)
+            DataTable table = await DBHandler.LoadData("employees");
+            foreach (DataRow row in table.Rows)
             {
                 Image employeePhoto = Properties.Resources.none_image;
                 string employeeName = "none";
@@ -255,9 +262,9 @@ namespace GardenAndOgorodShop
             }
         }
         #endregion
-        private void getCategories()
+        private async void getCategories()
         {
-            DataTable categories_table = DBHandler.LoadData("categories");
+            DataTable categories_table = await DBHandler.LoadData("categories");
             categories_strings = new string[categories_table.Rows.Count];
             for(int i = 0; i < categories_table.Rows.Count; i++)
             {
@@ -265,10 +272,10 @@ namespace GardenAndOgorodShop
                 categories_strings[i] = $"{row[1]}";
             }
         }
-        private void FormViewProduct_Load(object sender, EventArgs e)
+        private async void FormViewProduct_Load(object sender, EventArgs e)
         {
             getCategories();
-            products_table = DBHandler.LoadData("products");
+            products_table = await DBHandler.LoadData("products");
             comboBoxCategories.Items.Add("без фильтрации");
             for (int i = 0; i< categories_strings.Length;i++)
             {
@@ -332,6 +339,7 @@ namespace GardenAndOgorodShop
             this.Hide();
         }
         #endregion
+        
         #region ClosedMenuPanel
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -363,6 +371,7 @@ namespace GardenAndOgorodShop
             if (setting_active_status == true) { DisactiveSetting(); }
         }
         #endregion
+        
         #region SwitchingTables
         private void buttonToProductForm_Click(object sender, EventArgs e)
         {
@@ -398,6 +407,7 @@ namespace GardenAndOgorodShop
             tabControl1.SelectedIndex = 6;
         }
         #endregion
+        
         #region Handle placeholder of search_button
         private void placeholderTextBox_Enter(TextBox textBox)
         {
@@ -411,14 +421,14 @@ namespace GardenAndOgorodShop
                 textBox.Text = "";
             }
         }
-        private void placeholderTextBox_Leave(TextBox textBox)
+        private async void placeholderTextBox_Leave(TextBox textBox)
         {
             if (textBox.Text == "")
             {
                 textBox.Text = "Введите для поиска...";
                 textBox.ForeColor = Color.Gray;
                 save_search_text = "";
-                products_table = DBHandler.LoadData("products");
+                products_table = await DBHandler.LoadData("products");
                 LoadProductDataGridView();
             }
             else
@@ -436,16 +446,18 @@ namespace GardenAndOgorodShop
             placeholderTextBox_Leave(textBoxSearchProduct);
         }
         #endregion
+        
         #region Live searching
-        private void searchHandleTextBox(TextBox textBox, string table_name, string table_property)
+        private async void searchHandleTextBox(TextBox textBox, string table_name, string table_property)
         {
             dataGridViewProducts.Rows.Clear();
             string method = $"{table_name} WHERE {table_property} LIKE '%{textBox.Text}%';";
-            products_table = DBHandler.LoadData(method);
+            products_table = await DBHandler.LoadData(method);
             LoadProductDataGridView();
         }
         
         #endregion
+        
         #region Processing of search buttons
         
         private void textBoxSearchProduct_KeyPress(object sender, KeyPressEventArgs e)
@@ -461,16 +473,26 @@ namespace GardenAndOgorodShop
             searchHandleTextBox(textBoxSearchProduct, "products", "products_name");
         }
         #endregion
+
+        #region Sorting and Filtering
+        // флаги для атрибутов сортировки по цене и наиманованию продуктов
         bool flag_sort_product_price = true;
         bool flag_sort_product_name = true;
-        bool flag_using_filter = false;
-
+        // переменные для определения методов
         private string method_sort_price_product = "ASC";
         private string method_sort_name_product = "ASC";
         private string method_filter = "";
         private string method;
-
-        private (string, bool, string) definitionSorting(bool flag_sorting, string textAttributeBySort)
+        /// <summary>
+        /// Определяет параметры сортировки.
+        /// </summary>
+        /// <returns>Кортеж, содержащий:
+        ///   - string: Направление сортировки ("ASC" или "DESC").
+        ///   - bool:  Инвертированный флаг сортировки.  
+        ///   Предназначен для переключения направления сортировки при следующем вызове.
+        ///   - string: Текст атрибута с добавленным индикатором направления сортировки (↑ для ASC, ↓ для DESC).
+        /// </returns>
+        private async Task<(string, bool, string)> definitionSorting(bool flag_sorting, string textAttributeBySort)
         {
             // проверяем что за сортировка: при true - DESC, false - ASC
             if (flag_sorting)
@@ -490,16 +512,26 @@ namespace GardenAndOgorodShop
             }
         }
 
-        private void buttonSortProductByPrice_Click(object sender, EventArgs e)
+        private void EnabledUsingHandleProducts(bool enabled)
+        {
+            textBoxSearchProduct.Enabled = enabled;
+            buttonSortProductByPrice.Enabled = enabled;
+            buttonSortProductByName.Enabled = enabled;
+            comboBoxCategories.Enabled = enabled;
+            dataGridViewProducts.Enabled = enabled;
+        }
+
+        private async void buttonSortProductByPrice_Click(object sender, EventArgs e)
         {
             try
             {
                 // принимаем метод сортировки, обратный полеченному флаг, символ метода
-                (string method_sorting, bool flag_sorting, string textAttributeBySort) = definitionSorting(flag_sort_product_price, "цене");
+                (string method_sorting, bool flag_sorting, string textAttributeBySort) = await definitionSorting(flag_sort_product_price, "цене");
                 // приравниваем к глобальным переменным
                 method_sort_price_product = method_sorting;
                 flag_sort_product_price = flag_sorting;
                 buttonSortProductByPrice.Text = textAttributeBySort;
+
                 reloadProductData();
             }
             catch (Exception err)
@@ -507,21 +539,23 @@ namespace GardenAndOgorodShop
                 MessageBox.Show($"{err.Message}");
             }
         }
-        private void reloadProductData()
+        private async void reloadProductData()
         {
+            EnabledUsingHandleProducts(false);
             // определяем метод
             method = $"products {method_filter} ORDER BY price {method_sort_price_product}, products_name {method_sort_name_product}";
             // Загружаем новые данные таблицы
-            products_table = DBHandler.LoadData(method);
+            products_table = await DBHandler.LoadData(method);
             dataGridViewProducts.Rows.Clear();
             LoadProductDataGridView();
+            EnabledUsingHandleProducts(true);
         }
-        private void buttonSortProductByName_Click(object sender, EventArgs e)
+        private async void buttonSortProductByName_Click(object sender, EventArgs e)
         {
             try
             {
                 // принимаем метод сортировки, обратный полеченному флаг, символ метода
-                (string method_sorting, bool flag_sorting, string textAttributeBySort) = definitionSorting(flag_sort_product_name, "наименованию");
+                (string method_sorting, bool flag_sorting, string textAttributeBySort) = await definitionSorting(flag_sort_product_name, "наименованию");
                 // приравниваем к глобальным переменным
                 method_sort_name_product = method_sorting;
                 flag_sort_product_name = flag_sorting;
@@ -534,23 +568,31 @@ namespace GardenAndOgorodShop
             }
         }
 
-        private void comboBoxCategories_SelectedIndexChanged(object sender, EventArgs e)
+        private async void comboBoxCategories_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // определяем выбрана ли категория
-            if (comboBoxCategories.SelectedIndex != 0)
+            try
             {
-                // меняем отображение картинки
-                buttonFilterProduct.BackgroundImage = Properties.Resources.active_filter_icon;
-                // делаем запрос с условием по id категории
-                method_filter = $"WHERE categories_id = {comboBoxCategories.SelectedIndex}";
+                // определяем выбрана ли категория
+                if (comboBoxCategories.SelectedIndex != 0)
+                {
+                    // меняем отображение картинки
+                    buttonFilterProduct.BackgroundImage = Properties.Resources.active_filter_icon;
+                    // делаем запрос с условием по id категории
+                    method_filter = $"WHERE categories_id = {comboBoxCategories.SelectedIndex}";
+                }
+                else
+                {
+                    buttonFilterProduct.BackgroundImage = Properties.Resources.disactive_filter_icon;
+                    method_filter = "";
+                }
+                reloadProductData();
             }
-            else
+            catch (Exception err)
             {
-                buttonFilterProduct.BackgroundImage = Properties.Resources.disactive_filter_icon;
-                method_filter = "";
+                MessageBox.Show($"{err.Message}");
             }
-            reloadProductData();
         }
+        #endregion
 
     }
 }

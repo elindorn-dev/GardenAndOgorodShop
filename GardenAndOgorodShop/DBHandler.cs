@@ -123,7 +123,7 @@ namespace GardenAndOgorodShop
                 return (null, null, null, null);  
             }
         }
-        public static DataTable LoadData(string table)
+        public static async Task<DataTable> LoadData(string table)
         {
             DataTable dt = new DataTable();
             try
