@@ -16,5 +16,10 @@ namespace GardenAndOgorodShop
         {
             InitializeComponent();
         }
+
+        private void buttonToMianForm_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
