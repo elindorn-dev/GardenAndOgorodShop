@@ -418,12 +418,12 @@ namespace GardenAndOgorodShop
                 e.Handled = true;
             }
         }
-        private void textBoxSearchProduct_TextChanged(object sender, EventArgs e)
+        private async void textBoxSearchProduct_TextChanged(object sender, EventArgs e)
         {
             try
             {
                 method_search = textBoxSearchProduct.Text;
-                reloadProductData();
+                await reloadProductData();
                 textBoxSearchProduct.Focus();
             }
             catch (Exception err)
@@ -498,7 +498,7 @@ namespace GardenAndOgorodShop
                 MessageBox.Show($"{err.Message}");
             }
         }
-        private async void reloadProductData()
+        private async Task reloadProductData()
         {
             EnabledUsingHandleProducts(false);
             // определяем метод
