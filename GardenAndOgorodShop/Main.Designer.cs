@@ -28,16 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewProducts = new System.Windows.Forms.DataGridView();
             this.ImageHeader = new System.Windows.Forms.DataGridViewImageColumn();
             this.TitleHeader = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -84,12 +84,12 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBoxSearchEmployee = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.button10 = new System.Windows.Forms.Button();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.buttonSortEmployeeByName = new System.Windows.Forms.Button();
+            this.comboBoxRoles = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.button12 = new System.Windows.Forms.Button();
+            this.buttonFilterEmployee = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.dataGridViewEmployees = new System.Windows.Forms.DataGridView();
@@ -189,8 +189,8 @@
             this.dataGridViewProducts.Name = "dataGridViewProducts";
             this.dataGridViewProducts.ReadOnly = true;
             this.dataGridViewProducts.RowHeadersVisible = false;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.dataGridViewProducts.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.dataGridViewProducts.RowsDefaultCellStyle = dataGridViewCellStyle14;
             this.dataGridViewProducts.RowTemplate.Height = 150;
             this.dataGridViewProducts.Size = new System.Drawing.Size(855, 485);
             this.dataGridViewProducts.TabIndex = 0;
@@ -206,18 +206,18 @@
             // TitleHeader
             // 
             this.TitleHeader.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            this.TitleHeader.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.Black;
+            this.TitleHeader.DefaultCellStyle = dataGridViewCellStyle11;
             this.TitleHeader.HeaderText = "TitleHeader";
             this.TitleHeader.Name = "TitleHeader";
             this.TitleHeader.ReadOnly = true;
             // 
             // PriceHeader
             // 
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            this.PriceHeader.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.Black;
+            this.PriceHeader.DefaultCellStyle = dataGridViewCellStyle12;
             this.PriceHeader.HeaderText = "PriceHeader";
             this.PriceHeader.Name = "PriceHeader";
             this.PriceHeader.ReadOnly = true;
@@ -225,9 +225,9 @@
             // 
             // Category
             // 
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            this.Category.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.Black;
+            this.Category.DefaultCellStyle = dataGridViewCellStyle13;
             this.Category.HeaderText = "CategoryHeader";
             this.Category.Name = "Category";
             this.Category.ReadOnly = true;
@@ -510,7 +510,7 @@
             this.buttonToOrderForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(186)))), ((int)(((byte)(93)))));
             this.buttonToOrderForm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonToOrderForm.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonToOrderForm.Location = new System.Drawing.Point(13, 324);
+            this.buttonToOrderForm.Location = new System.Drawing.Point(13, 174);
             this.buttonToOrderForm.Name = "buttonToOrderForm";
             this.buttonToOrderForm.Size = new System.Drawing.Size(175, 40);
             this.buttonToOrderForm.TabIndex = 13;
@@ -538,7 +538,7 @@
             this.buttonToEmployeeForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(186)))), ((int)(((byte)(93)))));
             this.buttonToEmployeeForm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonToEmployeeForm.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonToEmployeeForm.Location = new System.Drawing.Point(13, 224);
+            this.buttonToEmployeeForm.Location = new System.Drawing.Point(13, 324);
             this.buttonToEmployeeForm.Name = "buttonToEmployeeForm";
             this.buttonToEmployeeForm.Size = new System.Drawing.Size(175, 40);
             this.buttonToEmployeeForm.TabIndex = 11;
@@ -552,7 +552,7 @@
             this.buttonToCategoryForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(186)))), ((int)(((byte)(93)))));
             this.buttonToCategoryForm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonToCategoryForm.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonToCategoryForm.Location = new System.Drawing.Point(13, 174);
+            this.buttonToCategoryForm.Location = new System.Drawing.Point(13, 224);
             this.buttonToCategoryForm.Name = "buttonToCategoryForm";
             this.buttonToCategoryForm.Size = new System.Drawing.Size(175, 40);
             this.buttonToCategoryForm.TabIndex = 10;
@@ -695,9 +695,9 @@
             this.dataGridViewCategories.Name = "dataGridViewCategories";
             this.dataGridViewCategories.ReadOnly = true;
             this.dataGridViewCategories.RowHeadersVisible = false;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
-            this.dataGridViewCategories.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle16.ForeColor = System.Drawing.Color.Black;
+            this.dataGridViewCategories.RowsDefaultCellStyle = dataGridViewCellStyle16;
             this.dataGridViewCategories.RowTemplate.Height = 60;
             this.dataGridViewCategories.Size = new System.Drawing.Size(813, 575);
             this.dataGridViewCategories.TabIndex = 3;
@@ -732,12 +732,12 @@
             this.panel3.BackColor = System.Drawing.Color.White;
             this.panel3.Controls.Add(this.button3);
             this.panel3.Controls.Add(this.button4);
-            this.panel3.Controls.Add(this.textBox2);
+            this.panel3.Controls.Add(this.textBoxSearchEmployee);
             this.panel3.Controls.Add(this.label4);
-            this.panel3.Controls.Add(this.button10);
-            this.panel3.Controls.Add(this.comboBox2);
+            this.panel3.Controls.Add(this.buttonSortEmployeeByName);
+            this.panel3.Controls.Add(this.comboBoxRoles);
             this.panel3.Controls.Add(this.label6);
-            this.panel3.Controls.Add(this.button12);
+            this.panel3.Controls.Add(this.buttonFilterEmployee);
             this.panel3.Controls.Add(this.label7);
             this.panel3.Controls.Add(this.label9);
             this.panel3.Location = new System.Drawing.Point(10, 3);
@@ -769,13 +769,14 @@
             this.button4.TabIndex = 18;
             this.button4.UseVisualStyleBackColor = true;
             // 
-            // textBox2
+            // textBoxSearchEmployee
             // 
-            this.textBox2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBox2.Location = new System.Drawing.Point(80, 81);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(372, 29);
-            this.textBox2.TabIndex = 15;
+            this.textBoxSearchEmployee.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.textBoxSearchEmployee.Location = new System.Drawing.Point(80, 81);
+            this.textBoxSearchEmployee.Name = "textBoxSearchEmployee";
+            this.textBoxSearchEmployee.Size = new System.Drawing.Size(372, 29);
+            this.textBoxSearchEmployee.TabIndex = 15;
+            this.textBoxSearchEmployee.TextChanged += new System.EventHandler(this.textBoxSearchEmployee_TextChanged);
             // 
             // label4
             // 
@@ -787,31 +788,34 @@
             this.label4.TabIndex = 14;
             this.label4.Text = "поиск:";
             // 
-            // button10
+            // buttonSortEmployeeByName
             // 
-            this.button10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button10.FlatAppearance.BorderSize = 0;
-            this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button10.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button10.Location = new System.Drawing.Point(167, 129);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(137, 40);
-            this.button10.TabIndex = 11;
-            this.button10.Text = "фамилии ↑";
-            this.button10.UseVisualStyleBackColor = true;
+            this.buttonSortEmployeeByName.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonSortEmployeeByName.FlatAppearance.BorderSize = 0;
+            this.buttonSortEmployeeByName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSortEmployeeByName.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonSortEmployeeByName.Location = new System.Drawing.Point(167, 129);
+            this.buttonSortEmployeeByName.Name = "buttonSortEmployeeByName";
+            this.buttonSortEmployeeByName.Size = new System.Drawing.Size(137, 40);
+            this.buttonSortEmployeeByName.TabIndex = 11;
+            this.buttonSortEmployeeByName.Text = "фамилии ↑";
+            this.buttonSortEmployeeByName.UseVisualStyleBackColor = true;
+            this.buttonSortEmployeeByName.Click += new System.EventHandler(this.buttonSortEmployeeByName_Click);
             // 
-            // comboBox2
+            // comboBoxRoles
             // 
-            this.comboBox2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
-            "АГРОХИМИЯ, БИОСЕПТИКИ, ПРЕМИКСЫ",
-            "ДЛЯ КОМПОСТА, ДАЧНОГО ТУАЛЕТА, БИОТУАЛЕТОВ, ВОДОЕМОВ"});
-            this.comboBox2.Location = new System.Drawing.Point(515, 137);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(192, 29);
-            this.comboBox2.TabIndex = 9;
-            this.comboBox2.Visible = false;
+            this.comboBoxRoles.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.comboBoxRoles.FormattingEnabled = true;
+            this.comboBoxRoles.Items.AddRange(new object[] {
+            "без фильтрации",
+            "Администратор",
+            "Продавец"});
+            this.comboBoxRoles.Location = new System.Drawing.Point(515, 137);
+            this.comboBoxRoles.Name = "comboBoxRoles";
+            this.comboBoxRoles.Size = new System.Drawing.Size(192, 29);
+            this.comboBoxRoles.TabIndex = 9;
+            this.comboBoxRoles.Visible = false;
+            this.comboBoxRoles.SelectedIndexChanged += new System.EventHandler(this.comboBoxRoles_SelectedIndexChanged);
             // 
             // label6
             // 
@@ -823,17 +827,18 @@
             this.label6.TabIndex = 8;
             this.label6.Text = "Фильтрация:";
             // 
-            // button12
+            // buttonFilterEmployee
             // 
-            this.button12.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.disactive_filter_icon;
-            this.button12.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button12.FlatAppearance.BorderSize = 0;
-            this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button12.Location = new System.Drawing.Point(654, 130);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(40, 40);
-            this.button12.TabIndex = 5;
-            this.button12.UseVisualStyleBackColor = true;
+            this.buttonFilterEmployee.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.disactive_filter_icon;
+            this.buttonFilterEmployee.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonFilterEmployee.FlatAppearance.BorderSize = 0;
+            this.buttonFilterEmployee.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonFilterEmployee.Location = new System.Drawing.Point(654, 130);
+            this.buttonFilterEmployee.Name = "buttonFilterEmployee";
+            this.buttonFilterEmployee.Size = new System.Drawing.Size(40, 40);
+            this.buttonFilterEmployee.TabIndex = 5;
+            this.buttonFilterEmployee.UseVisualStyleBackColor = true;
+            this.buttonFilterEmployee.Click += new System.EventHandler(this.buttonFilterEmployee_Click);
             // 
             // label7
             // 
@@ -874,9 +879,9 @@
             this.dataGridViewEmployees.Name = "dataGridViewEmployees";
             this.dataGridViewEmployees.ReadOnly = true;
             this.dataGridViewEmployees.RowHeadersVisible = false;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
-            this.dataGridViewEmployees.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.Black;
+            this.dataGridViewEmployees.RowsDefaultCellStyle = dataGridViewCellStyle15;
             this.dataGridViewEmployees.RowTemplate.Height = 60;
             this.dataGridViewEmployees.Size = new System.Drawing.Size(813, 472);
             this.dataGridViewEmployees.TabIndex = 3;
@@ -1067,9 +1072,9 @@
             this.dataGridViewUsers.Name = "dataGridViewUsers";
             this.dataGridViewUsers.ReadOnly = true;
             this.dataGridViewUsers.RowHeadersVisible = false;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
-            this.dataGridViewUsers.RowsDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.Black;
+            this.dataGridViewUsers.RowsDefaultCellStyle = dataGridViewCellStyle17;
             this.dataGridViewUsers.RowTemplate.Height = 60;
             this.dataGridViewUsers.Size = new System.Drawing.Size(813, 472);
             this.dataGridViewUsers.TabIndex = 5;
@@ -1195,9 +1200,9 @@
             this.dataGridViewOrders.Name = "dataGridViewOrders";
             this.dataGridViewOrders.ReadOnly = true;
             this.dataGridViewOrders.RowHeadersVisible = false;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
-            this.dataGridViewOrders.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle18.ForeColor = System.Drawing.Color.Black;
+            this.dataGridViewOrders.RowsDefaultCellStyle = dataGridViewCellStyle18;
             this.dataGridViewOrders.RowTemplate.Height = 60;
             this.dataGridViewOrders.Size = new System.Drawing.Size(813, 528);
             this.dataGridViewOrders.TabIndex = 5;
@@ -1302,9 +1307,9 @@
             this.dataGridViewBrands.Name = "dataGridViewBrands";
             this.dataGridViewBrands.ReadOnly = true;
             this.dataGridViewBrands.RowHeadersVisible = false;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.Black;
-            this.dataGridViewBrands.RowsDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle19.ForeColor = System.Drawing.Color.Black;
+            this.dataGridViewBrands.RowsDefaultCellStyle = dataGridViewCellStyle19;
             this.dataGridViewBrands.RowTemplate.Height = 60;
             this.dataGridViewBrands.Size = new System.Drawing.Size(813, 557);
             this.dataGridViewBrands.TabIndex = 7;
@@ -1404,9 +1409,9 @@
             this.dataGridViewSuppliers.Name = "dataGridViewSuppliers";
             this.dataGridViewSuppliers.ReadOnly = true;
             this.dataGridViewSuppliers.RowHeadersVisible = false;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.Black;
-            this.dataGridViewSuppliers.RowsDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle20.ForeColor = System.Drawing.Color.Black;
+            this.dataGridViewSuppliers.RowsDefaultCellStyle = dataGridViewCellStyle20;
             this.dataGridViewSuppliers.RowTemplate.Height = 60;
             this.dataGridViewSuppliers.Size = new System.Drawing.Size(813, 557);
             this.dataGridViewSuppliers.TabIndex = 9;
@@ -1516,12 +1521,12 @@
         private System.Windows.Forms.DataGridView dataGridViewCategories;
         private System.Windows.Forms.TabPage ViewEmployeesPage;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBoxSearchEmployee;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.Button buttonSortEmployeeByName;
+        private System.Windows.Forms.ComboBox comboBoxRoles;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.Button buttonFilterEmployee;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.DataGridView dataGridViewEmployees;

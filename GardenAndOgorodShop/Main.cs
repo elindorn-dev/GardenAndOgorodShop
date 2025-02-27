@@ -27,6 +27,7 @@ namespace GardenAndOgorodShop
         private string save_search_text = "";
 
         private DataTable products_table;
+        private DataTable employees_table;
         public Main()
         {
             InitializeComponent();
@@ -230,8 +231,8 @@ namespace GardenAndOgorodShop
         }
         private async void LoadEmployeesDataGridView()
         {
-            DataTable table = await DBHandler.LoadData("employees");
-            foreach (DataRow row in table.Rows)
+            //employees_table = await DBHandler.LoadData("employees INNER JOIN users ON employees.users_id = users.users_id");
+            foreach (DataRow row in employees_table.Rows)
             {
                 Image employeePhoto = Properties.Resources.none_image;
                 string employeeName = "none";
@@ -277,6 +278,8 @@ namespace GardenAndOgorodShop
         {
             getCategories();
             products_table = await DBHandler.LoadData("products");
+            employees_table = await DBHandler.LoadData("employees INNER JOIN users ON employees.users_id = users.users_id");
+
             comboBoxCategories.Items.Add("без фильтрации");
             for (int i = 0; i< categories_strings.Length;i++)
             {
@@ -301,12 +304,6 @@ namespace GardenAndOgorodShop
             LoadOrdersDataGridView();
             LoadBrandsDataGridView();
             LoadSuppliersDataGridView();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-            comboBoxCategories.DroppedDown = true;
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -418,30 +415,25 @@ namespace GardenAndOgorodShop
                 e.Handled = true;
             }
         }
-        private async void textBoxSearchProduct_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                method_search = textBoxSearchProduct.Text;
-                await reloadProductData();
-                textBoxSearchProduct.Focus();
-            }
-            catch (Exception err)
-            {
-                MessageBox.Show($"{err.Message}");
-            }
-        }
+        
 
         #region Seaching, Sorting and Filtering
         // флаги для атрибутов сортировки по цене и наиманованию продуктов
         bool flag_sort_product_price = true;
         bool flag_sort_product_name = true;
+
+        bool flag_sort_employee_name = true;
         // переменные для определения методов
         private string method_sort_price_product = "ASC";
         private string method_sort_name_product = "ASC";
-        private string method_filter = "1=1";
-        private string method_search = "";
-        private string method;
+        private string method_filter_product = "1=1";
+        private string method_search_product = "";
+        private string method_product;
+
+        private string method_sort_name_employee = "ASC";
+        private string method_filter_employee = "1=1";
+        private string method_search_employee = "";
+        private string method_employee;
         /// <summary>
         /// Определяет параметры сортировки.
         /// </summary>
@@ -479,6 +471,35 @@ namespace GardenAndOgorodShop
             comboBoxCategories.Enabled = enabled;
             dataGridViewProducts.Enabled = enabled;
         }
+        private void EnabledUsingHandleEmployees(bool enabled)
+        {
+            textBoxSearchEmployee.Enabled = enabled;
+            buttonSortEmployeeByName.Enabled = enabled;
+            comboBoxRoles.Enabled = enabled;
+            dataGridViewEmployees.Enabled = enabled;
+        }
+        private async Task reloadProductData()
+        {
+            EnabledUsingHandleProducts(false);
+            // определяем метод
+            method_product = $"products WHERE {method_filter_product} AND (products_name LIKE '%{method_search_product}%') ORDER BY price {method_sort_price_product}, products_name {method_sort_name_product}";
+            // Загружаем новые данные таблицы
+            products_table = await DBHandler.LoadData(method_product);
+            dataGridViewProducts.Rows.Clear();
+            LoadProductDataGridView();
+            EnabledUsingHandleProducts(true);
+        }
+        private async Task reloadEmployeeData()
+        {
+            EnabledUsingHandleEmployees(false);
+            // определяем метод
+            method_employee = $"employees INNER JOIN users ON employees.users_id = users.users_id WHERE {method_filter_employee} AND (last_name LIKE '%{method_search_employee}%') ORDER BY last_name {method_sort_name_employee}";
+            // Загружаем новые данные таблицы
+            employees_table = await DBHandler.LoadData(method_employee);
+            dataGridViewEmployees.Rows.Clear();
+            LoadEmployeesDataGridView();
+            EnabledUsingHandleEmployees(true);
+        }
 
         private async void buttonSortProductByPrice_Click(object sender, EventArgs e)
         {
@@ -491,24 +512,14 @@ namespace GardenAndOgorodShop
                 flag_sort_product_price = flag_sorting;
                 buttonSortProductByPrice.Text = textAttributeBySort;
 
-                reloadProductData();
+                await reloadProductData();
             }
             catch (Exception err)
             {
                 MessageBox.Show($"{err.Message}");
             }
         }
-        private async Task reloadProductData()
-        {
-            EnabledUsingHandleProducts(false);
-            // определяем метод
-            method = $"products WHERE {method_filter} AND (products_name LIKE '%{method_search}%') ORDER BY price {method_sort_price_product}, products_name {method_sort_name_product}";
-            // Загружаем новые данные таблицы
-            products_table = await DBHandler.LoadData(method);
-            dataGridViewProducts.Rows.Clear();
-            LoadProductDataGridView();
-            EnabledUsingHandleProducts(true);
-        }
+        
         private async void buttonSortProductByName_Click(object sender, EventArgs e)
         {
             try
@@ -519,12 +530,16 @@ namespace GardenAndOgorodShop
                 method_sort_name_product = method_sorting;
                 flag_sort_product_name = flag_sorting;
                 buttonSortProductByName.Text = textAttributeBySort;
-                reloadProductData();
+                await reloadProductData();
             }
             catch (Exception err)
             {
                 MessageBox.Show($"{err.Message}");
             }
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            comboBoxCategories.DroppedDown = true;
         }
 
         private async void comboBoxCategories_SelectedIndexChanged(object sender, EventArgs e)
@@ -537,14 +552,90 @@ namespace GardenAndOgorodShop
                     // меняем отображение картинки
                     buttonFilterProduct.BackgroundImage = Properties.Resources.active_filter_icon;
                     // делаем запрос с условием по id категории
-                    method_filter = $"categories_id = {comboBoxCategories.SelectedIndex}";
+                    method_filter_product = $"categories_id = {comboBoxCategories.SelectedIndex}";
                 }
                 else
                 {
                     buttonFilterProduct.BackgroundImage = Properties.Resources.disactive_filter_icon;
-                    method_filter = "1=1";
+                    method_filter_product = "1=1";
                 }
-                reloadProductData();
+                await reloadProductData();
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show($"{err.Message}");
+            }
+        }
+        private async void textBoxSearchProduct_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                method_search_product = textBoxSearchProduct.Text;
+                await reloadProductData();
+                textBoxSearchProduct.Focus();
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show($"{err.Message}");
+            }
+        }
+
+        private async void buttonSortEmployeeByName_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // принимаем метод сортировки, обратный полеченному флаг, символ метода
+                (string method_sorting, bool flag_sorting, string textAttributeBySort) = await definitionSorting(flag_sort_employee_name, "фамилии");
+                // приравниваем к глобальным переменным
+                method_sort_name_employee = method_sorting;
+                flag_sort_employee_name = flag_sorting;
+                buttonSortEmployeeByName.Text = textAttributeBySort;
+
+                await reloadEmployeeData();
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show($"{err.Message}");
+            }
+        }
+
+        private void buttonFilterEmployee_Click(object sender, EventArgs e)
+        {
+            comboBoxRoles.DroppedDown = true;
+        }
+
+        private async void comboBoxRoles_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                // определяем выбрана ли категория
+                if (comboBoxRoles.SelectedIndex != 0)
+                {
+                    // меняем отображение картинки
+                    buttonFilterEmployee.BackgroundImage = Properties.Resources.active_filter_icon;
+                    // делаем запрос с условием по id категории
+                    method_filter_employee = $"role_id = {comboBoxRoles.SelectedIndex}";
+                }
+                else
+                {
+                    buttonFilterEmployee.BackgroundImage = Properties.Resources.disactive_filter_icon;
+                    method_filter_employee = "1=1";
+                }
+                await reloadEmployeeData();
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show($"{err.Message}");
+            }
+        }
+
+        private async void textBoxSearchEmployee_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                method_search_employee = textBoxSearchEmployee.Text;
+                await reloadEmployeeData();
+                textBoxSearchEmployee.Focus();
             }
             catch (Exception err)
             {
@@ -552,6 +643,5 @@ namespace GardenAndOgorodShop
             }
         }
         #endregion
-
     }
 }
