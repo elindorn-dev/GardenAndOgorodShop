@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
+//using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace GardenAndOgorodShop
 {
@@ -407,58 +408,7 @@ namespace GardenAndOgorodShop
             tabControl1.SelectedIndex = 6;
         }
         #endregion
-        
-        #region Handle placeholder of search_button
-        private void placeholderTextBox_Enter(TextBox textBox)
-        {
-            textBox.ForeColor = Color.Black;
-            if (save_search_text != "")
-            {
-                textBox.Text = save_search_text;
-            }
-            else
-            {
-                textBox.Text = "";
-            }
-        }
-        private async void placeholderTextBox_Leave(TextBox textBox)
-        {
-            if (textBox.Text == "")
-            {
-                textBox.Text = "Введите для поиска...";
-                textBox.ForeColor = Color.Gray;
-                save_search_text = "";
-                products_table = await DBHandler.LoadData("products");
-                LoadProductDataGridView();
-            }
-            else
-            {
-                save_search_text = textBox.Text;
-            }
-        }
-        private void textBoxSearchProduct_Enter(object sender, EventArgs e)
-        {
-            placeholderTextBox_Enter(textBoxSearchProduct);
-        }
-
-        private void textBoxSearchProduct_Leave(object sender, EventArgs e)
-        {
-            placeholderTextBox_Leave(textBoxSearchProduct);
-        }
-        #endregion
-        
-        #region Live searching
-        private async void searchHandleTextBox(TextBox textBox, string table_name, string table_property)
-        {
-            dataGridViewProducts.Rows.Clear();
-            string method = $"{table_name} WHERE {table_property} LIKE '%{textBox.Text}%';";
-            products_table = await DBHandler.LoadData(method);
-            LoadProductDataGridView();
-        }
-        
-        #endregion
-        
-        #region Processing of search buttons
+              
         
         private void textBoxSearchProduct_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -470,18 +420,27 @@ namespace GardenAndOgorodShop
         }
         private void textBoxSearchProduct_TextChanged(object sender, EventArgs e)
         {
-            searchHandleTextBox(textBoxSearchProduct, "products", "products_name");
+            try
+            {
+                method_search = textBoxSearchProduct.Text;
+                reloadProductData();
+                textBoxSearchProduct.Focus();
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show($"{err.Message}");
+            }
         }
-        #endregion
 
-        #region Sorting and Filtering
+        #region Seaching, Sorting and Filtering
         // флаги для атрибутов сортировки по цене и наиманованию продуктов
         bool flag_sort_product_price = true;
         bool flag_sort_product_name = true;
         // переменные для определения методов
         private string method_sort_price_product = "ASC";
         private string method_sort_name_product = "ASC";
-        private string method_filter = "";
+        private string method_filter = "1=1";
+        private string method_search = "";
         private string method;
         /// <summary>
         /// Определяет параметры сортировки.
@@ -543,7 +502,7 @@ namespace GardenAndOgorodShop
         {
             EnabledUsingHandleProducts(false);
             // определяем метод
-            method = $"products {method_filter} ORDER BY price {method_sort_price_product}, products_name {method_sort_name_product}";
+            method = $"products WHERE {method_filter} AND (products_name LIKE '%{method_search}%') ORDER BY price {method_sort_price_product}, products_name {method_sort_name_product}";
             // Загружаем новые данные таблицы
             products_table = await DBHandler.LoadData(method);
             dataGridViewProducts.Rows.Clear();
@@ -578,12 +537,12 @@ namespace GardenAndOgorodShop
                     // меняем отображение картинки
                     buttonFilterProduct.BackgroundImage = Properties.Resources.active_filter_icon;
                     // делаем запрос с условием по id категории
-                    method_filter = $"WHERE categories_id = {comboBoxCategories.SelectedIndex}";
+                    method_filter = $"categories_id = {comboBoxCategories.SelectedIndex}";
                 }
                 else
                 {
                     buttonFilterProduct.BackgroundImage = Properties.Resources.disactive_filter_icon;
-                    method_filter = "";
+                    method_filter = "1=1";
                 }
                 reloadProductData();
             }
