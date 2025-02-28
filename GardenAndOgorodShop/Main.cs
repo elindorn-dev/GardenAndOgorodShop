@@ -12,6 +12,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
 //using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using Excel = Microsoft.Office.Interop.Excel;
+using System.Runtime.InteropServices;
 
 namespace GardenAndOgorodShop
 {
@@ -60,6 +62,8 @@ namespace GardenAndOgorodShop
             panelEmployeeData.Visible = true;
             button5.Visible = true;
             button5.BackgroundImage = GardenAndOgorodShop.Properties.Resources.closed_menu;
+            if (UserConfiguration.UserRole == "seller") { HideForCommonUser(); } else buttonCurrentOrder.Visible = false;
+
         }
         // ФУНКЦИЯ СКРЫТИЯ ПАНЕЛИ НАВИГАЦИИ
         private async void DisactiveSetting()
@@ -274,8 +278,20 @@ namespace GardenAndOgorodShop
                 categories_strings[i] = $"{row[1]}";
             }
         }
+        private void HideForCommonUser()
+        {
+            buttonToCategoryForm.Visible = false;
+            buttonToUserForm.Visible = false;
+            buttonToEmployeeForm.Visible = false;
+            buttonToBrandForm.Visible = false;
+            buttonToSupplierForm.Visible = false;
+            buttonToStockForm.Visible = false;
+            buttonAddProduct.Visible = false;
+        }
         private async void FormViewProduct_Load(object sender, EventArgs e)
         {
+            //MessageBox.Show($"{UserConfiguration.UserRole}");
+            
             getCategories();
             products_table = await DBHandler.LoadData("products");
             employees_table = await DBHandler.LoadData("employees INNER JOIN users ON employees.users_id = users.users_id");
@@ -332,7 +348,7 @@ namespace GardenAndOgorodShop
 
         private void buttonAddProduct_Click(object sender, EventArgs e)
         {
-            HandleRecordForm form = new HandleRecordForm();
+            HandleRecordForm form = new HandleRecordForm(0);
             form.Show();
             this.Hide();
         }
@@ -643,5 +659,44 @@ namespace GardenAndOgorodShop
             }
         }
         #endregion
+        public void CreateExcel()
+        {
+            Microsoft.Office.Interop.Excel.Application xlApp = new Microsoft.Office.Interop.Excel.Application();
+
+            if (xlApp == null)
+            {
+                MessageBox.Show("Excel is not properly installed!!");
+                return;
+            }
+
+
+            Microsoft.Office.Interop.Excel.Workbook xlWorkBook;
+            Microsoft.Office.Interop.Excel.Worksheet xlWorkSheet;
+            object misValue = System.Reflection.Missing.Value;
+
+            xlWorkBook = xlApp.Workbooks.Add(misValue);
+            xlWorkSheet = (Microsoft.Office.Interop.Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+
+            xlWorkSheet.Cells[1, 1] = "ID";
+            xlWorkSheet.Cells[1, 2] = "Name";
+            xlWorkSheet.Cells[2, 1] = "1";
+            xlWorkSheet.Cells[2, 2] = "One";
+            xlWorkSheet.Cells[3, 1] = "2";
+            xlWorkSheet.Cells[3, 2] = "Two";
+
+            //Here saving the file in xlsx
+            xlWorkBook.SaveAs("C:\\Users\\Dmitry\\Downloads\\negr.xlsx", Microsoft.Office.Interop.Excel.XlFileFormat.xlOpenXMLWorkbook, misValue,
+            misValue, misValue, misValue, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+
+
+            xlWorkBook.Close(true, misValue, misValue);
+            xlApp.Quit();
+
+            Marshal.ReleaseComObject(xlWorkSheet);
+            Marshal.ReleaseComObject(xlWorkBook);
+            Marshal.ReleaseComObject(xlApp);
+
+            MessageBox.Show("Excel file created , you can find the file d:\\csharp-Excel.xlsx");
+        }
     }
 }

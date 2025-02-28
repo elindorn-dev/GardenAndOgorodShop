@@ -76,3 +76,4 @@ D:\Smirnov\kur\4\GardenAndOgorodShop\GardenAndOgorodShop\obj\Debug\GardenAndOgor
 D:\Smirnov\kur\4\GardenAndOgorodShop\GardenAndOgorodShop\obj\Debug\GardenAndOgorodShop.csproj.CopyComplete
 D:\Smirnov\kur\4\GardenAndOgorodShop\GardenAndOgorodShop\obj\Debug\GardenAndOgorodShop.exe
 D:\Smirnov\kur\4\GardenAndOgorodShop\GardenAndOgorodShop\obj\Debug\GardenAndOgorodShop.pdb
+C:\Users\Dmitry\Desktop\kursovaya\GardenAndOgorodShop\GardenAndOgorodShop\obj\Debug\GardenAndOgorodShop.csproj.ResolveComReference.cache
