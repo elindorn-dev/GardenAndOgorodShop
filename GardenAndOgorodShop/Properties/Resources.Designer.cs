@@ -123,6 +123,16 @@ namespace GardenAndOgorodShop.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap delete {
+            get {
+                object obj = ResourceManager.GetObject("delete", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap disactive_filter_icon {
             get {
                 object obj = ResourceManager.GetObject("disactive_filter_icon", resourceCulture);
@@ -156,6 +166,16 @@ namespace GardenAndOgorodShop.Properties {
         internal static System.Drawing.Bitmap list_style_view_table {
             get {
                 object obj = ResourceManager.GetObject("list_style_view_table", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap minus {
+            get {
+                object obj = ResourceManager.GetObject("minus", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

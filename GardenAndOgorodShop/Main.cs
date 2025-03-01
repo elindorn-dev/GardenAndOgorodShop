@@ -95,11 +95,13 @@ namespace GardenAndOgorodShop
                 string productTitle = "none";
                 string productPrice = "none";
                 string productCategory = "none";
+                string productAmount = "none";
                 try
                 {
                     productTitle = $"{row[1]}";
                     productPrice = $"{row[3]} ₽";
                     productCategory = $"{categories_strings[Convert.ToInt32(row[4])-1]}";
+                    productAmount = $"{row[6]} шт.";
                     if (row[7] != DBNull.Value) 
                     {
                         byte[] imageData = (byte[])row[7]; 
@@ -114,7 +116,7 @@ namespace GardenAndOgorodShop
                 {
                     productImage = Properties.Resources.none_image;
                 }
-                dataGridViewProducts.Rows.Add(productImage, productTitle, productPrice, productCategory);
+                dataGridViewProducts.Rows.Add(productImage, productTitle, productPrice, productAmount, productCategory);
             }
         }
         private async void LoadCategoriesDataGridView()
@@ -293,7 +295,7 @@ namespace GardenAndOgorodShop
             //MessageBox.Show($"{UserConfiguration.UserRole}");
             
             getCategories();
-            products_table = await DBHandler.LoadData("products");
+            products_table = await DBHandler.LoadData("products WHERE is_available > 0");
             employees_table = await DBHandler.LoadData("employees INNER JOIN users ON employees.users_id = users.users_id");
 
             comboBoxCategories.Items.Add("без фильтрации");
@@ -320,6 +322,7 @@ namespace GardenAndOgorodShop
             LoadOrdersDataGridView();
             LoadBrandsDataGridView();
             LoadSuppliersDataGridView();
+            if (UserConfiguration.UserRole == "seller") { HideForCommonUser(); } else buttonCurrentOrder.Visible = false;
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -336,11 +339,21 @@ namespace GardenAndOgorodShop
         #region Transitions between forms
         private void buttonExitApp_Click(object sender, EventArgs e)
         {
+            DialogResult dialogResult = MessageBox.Show("Вы действительно хотите выйти?", "Выход", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                DBHandler.returnProduct();
+            }
             Application.Exit();
         }
 
         private void buttonLogOut_Click(object sender, EventArgs e)
         {
+            DialogResult dialogResult = MessageBox.Show("Вы действительно хотите выйти?", "Выход", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                DBHandler.returnProduct();
+            }
             AuthForm form = new AuthForm();
             form.Show();
             this.Hide();
@@ -498,7 +511,7 @@ namespace GardenAndOgorodShop
         {
             EnabledUsingHandleProducts(false);
             // определяем метод
-            method_product = $"products WHERE {method_filter_product} AND (products_name LIKE '%{method_search_product}%') ORDER BY price {method_sort_price_product}, products_name {method_sort_name_product}";
+            method_product = $"products WHERE {method_filter_product} AND (products_name LIKE '%{method_search_product}%') AND is_available > 0 ORDER BY price {method_sort_price_product}, products_name {method_sort_name_product}";
             // Загружаем новые данные таблицы
             products_table = await DBHandler.LoadData(method_product);
             dataGridViewProducts.Rows.Clear();
@@ -703,20 +716,38 @@ namespace GardenAndOgorodShop
         }
         private async void resultAdd_inOrder(int product_id)
         {
-            if (AddEditProduct_inOrder(product_id))
+            try
             {
-                buttonBacket.Enabled = false;
-                labelReadyOrNot.ForeColor = Color.Green;
-                labelReadyOrNot.Text = "Товар добавлен.";
-                pictureBoxReadyOrNot.BackgroundImage = Properties.Resources.ready;
-                panelResult.Visible = true;
-                await Task.Delay(1000);
-                panelResult.Visible = false;
-                buttonBacket.Enabled = true;
+                if (AddEditProduct_inOrder(product_id))
+                {
+                    buttonBacket.Enabled = false;
+                    labelReadyOrNot.ForeColor = Color.Green;
+                    labelReadyOrNot.Text = "Товар добавлен.";
+                    pictureBoxReadyOrNot.BackgroundImage = Properties.Resources.ready;
+                    panelResult.Visible = true;
+                    await Task.Delay(1000);
+                    panelResult.Visible = false;
+                    buttonBacket.Enabled = true;
+                    int index_row = dataGridViewProducts.SelectedCells[0].RowIndex;
+                    int new_amount = Convert.ToInt32(Convert.ToString(dataGridViewProducts.Rows[index_row].Cells[3].Value).Replace(" шт.", ""));
+                    DBHandler.randomSQLCommand($"UPDATE `garden_and_ogorod_shop`.`products` SET `is_available` = '{new_amount - 1}' WHERE (`products_id` = '{product_id}');");
+                    if (new_amount-1 == 0)
+                    {
+                        await reloadProductData();
+                    }
+                    else
+                    {
+                        dataGridViewProducts.Rows[index_row].Cells[3].Value = $"{new_amount - 1} шт.";
+                    }
+                }
+                else
+                {
+                    badResultView();
+                }
             }
-            else
+            catch (Exception err)
             {
-                badResultView();
+                MessageBox.Show($"Ошибка\n{err}");
             }
         }
         private void buttonBacket_Click(object sender, EventArgs e)
@@ -747,6 +778,16 @@ namespace GardenAndOgorodShop
             {
                 MessageBox.Show($"Ошибка\n{err}");
             }
+        }
+
+        private void Main_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Вы действительно хотите выйти?", "Выход", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                DBHandler.returnProduct();
+            }
+            Application.Exit();
         }
         #endregion
         //public void CreateExcel()

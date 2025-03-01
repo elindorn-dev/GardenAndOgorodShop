@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.Drawing;
 using System.Data;
+using MySqlX.XDevAPI.Relational;
 
 namespace GardenAndOgorodShop
 {
@@ -18,6 +19,35 @@ namespace GardenAndOgorodShop
         public static string pwd = "";
         public static string database = "garden_and_ogorod_shop";
         public static string connect_string = $"host={host};uid={username};pwd={pwd};database={database}";
+
+        public static void returnProduct()
+        {
+            try
+            {
+                string query_current_order = "`products_orders` WHERE `products_orders`.orders_id = (SELECT MAX(orders.orders_id) FROM orders);";
+                DataTable korzina = new DataTable();
+                MySqlConnection con = new MySqlConnection(connect_string);
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand($"SELECT * FROM {query_current_order};", con);
+                cmd.ExecuteNonQuery();
+
+                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+
+                da.Fill(korzina);
+                con.Close();
+                foreach (DataRow row in korzina.Rows)
+                {
+                    string query_return = $"UPDATE `garden_and_ogorod_shop`.`products` SET `is_available` = `is_available` + '{row[2]}' WHERE (`products_id` = '{row[1]}');";
+                    randomSQLCommand(query_return);
+                }
+                
+                string query_cancel_order = $"UPDATE `garden_and_ogorod_shop`.`orders` SET `order_status` = 'Отменено' WHERE (`orders_id` = '{UserConfiguration.Current_order_id}');";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка: {ex.Message}");
+            }
+        }
 
         public static bool randomSQLCommand(string query_body)
         {
@@ -164,13 +194,13 @@ namespace GardenAndOgorodShop
             try
             {
                 MySqlConnection con = new MySqlConnection(connect_string);
-                con.Open();
+                await con.OpenAsync();
                 MySqlCommand cmd = new MySqlCommand($"SELECT * FROM {table};", con);
                 cmd.ExecuteNonQuery();
 
                 MySqlDataAdapter da = new MySqlDataAdapter(cmd);
 
-                da.Fill(dt);
+                await Task.Run(() => da.Fill(dt));
                 con.Close();
             }
             catch (Exception e)
