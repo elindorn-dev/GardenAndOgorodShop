@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
 //using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using Excel = Microsoft.Office.Interop.Excel;
+//using Excel = Microsoft.Office.Interop.Excel;
 using System.Runtime.InteropServices;
 
 namespace GardenAndOgorodShop
@@ -658,45 +658,93 @@ namespace GardenAndOgorodShop
                 MessageBox.Show($"{err.Message}");
             }
         }
-        #endregion
-        public void CreateExcel()
+
+        private void buttonCurrentOrder_Click(object sender, EventArgs e)
         {
-            Microsoft.Office.Interop.Excel.Application xlApp = new Microsoft.Office.Interop.Excel.Application();
-
-            if (xlApp == null)
-            {
-                MessageBox.Show("Excel is not properly installed!!");
-                return;
-            }
-
-
-            Microsoft.Office.Interop.Excel.Workbook xlWorkBook;
-            Microsoft.Office.Interop.Excel.Worksheet xlWorkSheet;
-            object misValue = System.Reflection.Missing.Value;
-
-            xlWorkBook = xlApp.Workbooks.Add(misValue);
-            xlWorkSheet = (Microsoft.Office.Interop.Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
-
-            xlWorkSheet.Cells[1, 1] = "ID";
-            xlWorkSheet.Cells[1, 2] = "Name";
-            xlWorkSheet.Cells[2, 1] = "1";
-            xlWorkSheet.Cells[2, 2] = "One";
-            xlWorkSheet.Cells[3, 1] = "2";
-            xlWorkSheet.Cells[3, 2] = "Two";
-
-            //Here saving the file in xlsx
-            xlWorkBook.SaveAs("C:\\Users\\Dmitry\\Downloads\\negr.xlsx", Microsoft.Office.Interop.Excel.XlFileFormat.xlOpenXMLWorkbook, misValue,
-            misValue, misValue, misValue, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
-
-
-            xlWorkBook.Close(true, misValue, misValue);
-            xlApp.Quit();
-
-            Marshal.ReleaseComObject(xlWorkSheet);
-            Marshal.ReleaseComObject(xlWorkBook);
-            Marshal.ReleaseComObject(xlApp);
-
-            MessageBox.Show("Excel file created , you can find the file d:\\csharp-Excel.xlsx");
+            CurrentOrder form = new CurrentOrder();
+            form.Show();
+            this.Hide();
         }
+
+        private void buttonBacket_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int index_row = dataGridViewProducts.SelectedCells[0].RowIndex;
+                DataRow selected_row = products_table.Rows[index_row];
+                if (!UserConfiguration.ExistProductsInOrder)
+                {
+                    if (DBHandler.randomSQLCommand($@"INSERT INTO `garden_and_ogorod_shop`.`orders` 
+                (`employees_id`, `order_date`, `order_status`, `payment_method`, `total_cost`, `tax_amount`, `notes`) 
+                VALUES 
+                ('{UserConfiguration.UserID}', NOW(), 'Обработка', 'Наличными', '0.00', '0.00', 'Заказ обрабатывается');"))
+                    {
+                        if (DBHandler.randomSQLCommand($@"
+                        INSERT INTO `garden_and_ogorod_shop`.`product_in_stock` (`products_id`, `amount_product`) VALUES ('{selected_row[0]}', '1');
+"))
+                        {
+                            MessageBox.Show("Товар добавлен в корзину");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Товар добавлен в корзину");
+                        }
+                        MessageBox.Show("Товар добавлен в корзину");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Товар добавлен в корзину");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Ошибка");
+                }
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show($"Ошибка\n{err}");
+            }
+        }
+        #endregion
+        //public void CreateExcel()
+        //{
+        //    Microsoft.Office.Interop.Excel.Application xlApp = new Microsoft.Office.Interop.Excel.Application();
+
+        //    if (xlApp == null)
+        //    {
+        //        MessageBox.Show("Excel is not properly installed!!");
+        //        return;
+        //    }
+
+
+        //    Microsoft.Office.Interop.Excel.Workbook xlWorkBook;
+        //    Microsoft.Office.Interop.Excel.Worksheet xlWorkSheet;
+        //    object misValue = System.Reflection.Missing.Value;
+
+        //    xlWorkBook = xlApp.Workbooks.Add(misValue);
+        //    xlWorkSheet = (Microsoft.Office.Interop.Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+
+        //    xlWorkSheet.Cells[1, 1] = "ID";
+        //    xlWorkSheet.Cells[1, 2] = "Name";
+        //    xlWorkSheet.Cells[2, 1] = "1";
+        //    xlWorkSheet.Cells[2, 2] = "One";
+        //    xlWorkSheet.Cells[3, 1] = "2";
+        //    xlWorkSheet.Cells[3, 2] = "Two";
+
+        //    //Here saving the file in xlsx
+        //    xlWorkBook.SaveAs("C:\\Users\\Dmitry\\Downloads\\negr.xlsx", Microsoft.Office.Interop.Excel.XlFileFormat.xlOpenXMLWorkbook, misValue,
+        //    misValue, misValue, misValue, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+
+
+        //    xlWorkBook.Close(true, misValue, misValue);
+        //    xlApp.Quit();
+
+        //    Marshal.ReleaseComObject(xlWorkSheet);
+        //    Marshal.ReleaseComObject(xlWorkBook);
+        //    Marshal.ReleaseComObject(xlApp);
+
+        //    MessageBox.Show("Excel file created , you can find the file d:\\csharp-Excel.xlsx");
+        //}
     }
 }

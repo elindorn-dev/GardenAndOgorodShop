@@ -19,7 +19,7 @@ namespace GardenAndOgorodShop
         public static string database = "garden_and_ogorod_shop";
         public static string connect_string = $"host={host};uid={username};pwd={pwd};database={database}";
 
-        private static bool randomSQLCommand(string query_body)
+        public static bool randomSQLCommand(string query_body)
         {
             try
             {

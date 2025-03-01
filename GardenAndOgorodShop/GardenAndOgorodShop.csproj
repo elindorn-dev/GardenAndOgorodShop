@@ -59,6 +59,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CurrentOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CurrentOrder.Designer.cs">
+      <DependentUpon>CurrentOrder.cs</DependentUpon>
+    </Compile>
     <Compile Include="HandleRecordForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,6 +87,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserConfiguration.cs" />
+    <EmbeddedResource Include="CurrentOrder.resx">
+      <DependentUpon>CurrentOrder.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="HandleRecordForm.resx">
       <DependentUpon>HandleRecordForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -122,6 +131,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\active_filter_icon.png" />
+    <None Include="Resources\seo-social-web-network-internet_276_icon-icons.com_61503.png" />
     <None Include="Resources\more_info.png" />
     <None Include="Resources\add_icon.png" />
     <None Include="Resources\none_image.png" />
