@@ -29,25 +29,25 @@ namespace GardenAndOgorodShop
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.labelTotalCost = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.buttonToCategoryForm = new System.Windows.Forms.Button();
+            this.textBoxOrderNotes = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridViewProducts = new System.Windows.Forms.DataGridView();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBoxProductDesc = new System.Windows.Forms.TextBox();
-            this.comboBoxBrands = new System.Windows.Forms.ComboBox();
-            this.buttonToCategoryForm = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this.labelTotalCost = new System.Windows.Forms.Label();
             this.ImageHeader = new System.Windows.Forms.DataGridViewImageColumn();
             this.TitleHeader = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PriceHeader = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.comboBoxPayMethod = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProducts)).BeginInit();
             this.SuspendLayout();
@@ -55,11 +55,11 @@ namespace GardenAndOgorodShop
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.comboBoxPayMethod);
             this.panel1.Controls.Add(this.labelTotalCost);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.buttonToCategoryForm);
-            this.panel1.Controls.Add(this.comboBoxBrands);
-            this.panel1.Controls.Add(this.textBoxProductDesc);
+            this.panel1.Controls.Add(this.textBoxOrderNotes);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
@@ -67,6 +67,70 @@ namespace GardenAndOgorodShop
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(845, 248);
             this.panel1.TabIndex = 4;
+            // 
+            // labelTotalCost
+            // 
+            this.labelTotalCost.AutoSize = true;
+            this.labelTotalCost.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelTotalCost.Location = new System.Drawing.Point(179, 195);
+            this.labelTotalCost.Name = "labelTotalCost";
+            this.labelTotalCost.Size = new System.Drawing.Size(32, 25);
+            this.labelTotalCost.TabIndex = 26;
+            this.labelTotalCost.Text = "00";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label4.Location = new System.Drawing.Point(21, 194);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(152, 25);
+            this.label4.TabIndex = 25;
+            this.label4.Text = "Сумма к оплате:";
+            // 
+            // buttonToCategoryForm
+            // 
+            this.buttonToCategoryForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(186)))), ((int)(((byte)(93)))));
+            this.buttonToCategoryForm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonToCategoryForm.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonToCategoryForm.Location = new System.Drawing.Point(657, 12);
+            this.buttonToCategoryForm.Name = "buttonToCategoryForm";
+            this.buttonToCategoryForm.Size = new System.Drawing.Size(175, 40);
+            this.buttonToCategoryForm.TabIndex = 24;
+            this.buttonToCategoryForm.Text = "Завершить";
+            this.buttonToCategoryForm.UseVisualStyleBackColor = false;
+            this.buttonToCategoryForm.Visible = false;
+            // 
+            // textBoxOrderNotes
+            // 
+            this.textBoxOrderNotes.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxOrderNotes.Location = new System.Drawing.Point(100, 96);
+            this.textBoxOrderNotes.MaxLength = 1000;
+            this.textBoxOrderNotes.Multiline = true;
+            this.textBoxOrderNotes.Name = "textBoxOrderNotes";
+            this.textBoxOrderNotes.Size = new System.Drawing.Size(732, 71);
+            this.textBoxOrderNotes.TabIndex = 6;
+            this.textBoxOrderNotes.Text = "Оплата прошла успешно";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.Location = new System.Drawing.Point(7, 96);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(87, 25);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Заметки:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.Location = new System.Drawing.Point(3, 59);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(149, 25);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Способ оплаты:";
             // 
             // label1
             // 
@@ -95,98 +159,20 @@ namespace GardenAndOgorodShop
             this.dataGridViewProducts.MultiSelect = false;
             this.dataGridViewProducts.Name = "dataGridViewProducts";
             this.dataGridViewProducts.ReadOnly = true;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewProducts.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewProducts.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewProducts.RowHeadersVisible = false;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.dataGridViewProducts.RowsDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.dataGridViewProducts.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridViewProducts.RowTemplate.Height = 150;
             this.dataGridViewProducts.Size = new System.Drawing.Size(844, 388);
             this.dataGridViewProducts.TabIndex = 3;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(3, 59);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(149, 25);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Способ оплаты:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(7, 96);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(87, 25);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Заметки:";
-            // 
-            // textBoxProductDesc
-            // 
-            this.textBoxProductDesc.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxProductDesc.Location = new System.Drawing.Point(100, 96);
-            this.textBoxProductDesc.MaxLength = 1000;
-            this.textBoxProductDesc.Multiline = true;
-            this.textBoxProductDesc.Name = "textBoxProductDesc";
-            this.textBoxProductDesc.Size = new System.Drawing.Size(732, 71);
-            this.textBoxProductDesc.TabIndex = 6;
-            this.textBoxProductDesc.Text = "Оплата прошла успешно";
-            // 
-            // comboBoxBrands
-            // 
-            this.comboBoxBrands.BackColor = System.Drawing.SystemColors.Window;
-            this.comboBoxBrands.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.comboBoxBrands.FormattingEnabled = true;
-            this.comboBoxBrands.Items.AddRange(new object[] {
-            "Наличными",
-            "Безналичными"});
-            this.comboBoxBrands.Location = new System.Drawing.Point(158, 56);
-            this.comboBoxBrands.Name = "comboBoxBrands";
-            this.comboBoxBrands.Size = new System.Drawing.Size(304, 33);
-            this.comboBoxBrands.TabIndex = 23;
-            this.comboBoxBrands.Visible = false;
-            // 
-            // buttonToCategoryForm
-            // 
-            this.buttonToCategoryForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(186)))), ((int)(((byte)(93)))));
-            this.buttonToCategoryForm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonToCategoryForm.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonToCategoryForm.Location = new System.Drawing.Point(657, 12);
-            this.buttonToCategoryForm.Name = "buttonToCategoryForm";
-            this.buttonToCategoryForm.Size = new System.Drawing.Size(175, 40);
-            this.buttonToCategoryForm.TabIndex = 24;
-            this.buttonToCategoryForm.Text = "Завершить";
-            this.buttonToCategoryForm.UseVisualStyleBackColor = false;
-            this.buttonToCategoryForm.Visible = false;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(21, 194);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(152, 25);
-            this.label4.TabIndex = 25;
-            this.label4.Text = "Сумма к оплате:";
-            // 
-            // labelTotalCost
-            // 
-            this.labelTotalCost.AutoSize = true;
-            this.labelTotalCost.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelTotalCost.Location = new System.Drawing.Point(179, 195);
-            this.labelTotalCost.Name = "labelTotalCost";
-            this.labelTotalCost.Size = new System.Drawing.Size(32, 25);
-            this.labelTotalCost.TabIndex = 26;
-            this.labelTotalCost.Text = "00";
             // 
             // ImageHeader
             // 
@@ -199,18 +185,18 @@ namespace GardenAndOgorodShop
             // TitleHeader
             // 
             this.TitleHeader.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
-            this.TitleHeader.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            this.TitleHeader.DefaultCellStyle = dataGridViewCellStyle1;
             this.TitleHeader.HeaderText = "Название";
             this.TitleHeader.Name = "TitleHeader";
             this.TitleHeader.ReadOnly = true;
             // 
             // PriceHeader
             // 
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
-            this.PriceHeader.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            this.PriceHeader.DefaultCellStyle = dataGridViewCellStyle2;
             this.PriceHeader.HeaderText = "Цена";
             this.PriceHeader.Name = "PriceHeader";
             this.PriceHeader.ReadOnly = true;
@@ -218,13 +204,27 @@ namespace GardenAndOgorodShop
             // 
             // Amount
             // 
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
-            this.Amount.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            this.Amount.DefaultCellStyle = dataGridViewCellStyle3;
             this.Amount.HeaderText = "Количество";
             this.Amount.Name = "Amount";
             this.Amount.ReadOnly = true;
             this.Amount.Width = 200;
+            // 
+            // comboBoxPayMethod
+            // 
+            this.comboBoxPayMethod.BackColor = System.Drawing.SystemColors.Window;
+            this.comboBoxPayMethod.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.comboBoxPayMethod.FormattingEnabled = true;
+            this.comboBoxPayMethod.Items.AddRange(new object[] {
+            "Наличными",
+            "Безналичными"});
+            this.comboBoxPayMethod.Location = new System.Drawing.Point(158, 59);
+            this.comboBoxPayMethod.Name = "comboBoxPayMethod";
+            this.comboBoxPayMethod.Size = new System.Drawing.Size(192, 29);
+            this.comboBoxPayMethod.TabIndex = 27;
+            this.comboBoxPayMethod.Visible = false;
             // 
             // CurrentOrder
             // 
@@ -251,8 +251,7 @@ namespace GardenAndOgorodShop
         private System.Windows.Forms.DataGridView dataGridViewProducts;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBoxProductDesc;
-        private System.Windows.Forms.ComboBox comboBoxBrands;
+        private System.Windows.Forms.TextBox textBoxOrderNotes;
         private System.Windows.Forms.Label labelTotalCost;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button buttonToCategoryForm;
@@ -260,5 +259,6 @@ namespace GardenAndOgorodShop
         private System.Windows.Forms.DataGridViewTextBoxColumn TitleHeader;
         private System.Windows.Forms.DataGridViewTextBoxColumn PriceHeader;
         private System.Windows.Forms.DataGridViewTextBoxColumn Amount;
+        private System.Windows.Forms.ComboBox comboBoxPayMethod;
     }
 }

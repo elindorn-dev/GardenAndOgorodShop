@@ -131,6 +131,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\active_filter_icon.png" />
+    <None Include="Resources\cancel.png" />
+    <None Include="Resources\ready.png" />
     <None Include="Resources\seo-social-web-network-internet_276_icon-icons.com_61503.png" />
     <None Include="Resources\more_info.png" />
     <None Include="Resources\add_icon.png" />

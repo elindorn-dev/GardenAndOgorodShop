@@ -121,11 +121,17 @@
   <data name="list_style_view_table" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\list_style_view_table.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="closed_menu" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\closed_menu.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="add_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\add_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="hide_password" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\hide_password.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ready" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ready.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="edit_record" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\edit_record.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -136,8 +142,8 @@
   <data name="none_image" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\none_image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="closed_menu" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\closed_menu.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="seo-social-web-network-internet_276_icon-icons.com_61503" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\seo-social-web-network-internet_276_icon-icons.com_61503.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="active_filter_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\active_filter_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -157,7 +163,7 @@
   <data name="burger_menu" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\burger_menu.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="seo-social-web-network-internet_276_icon-icons.com_61503" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\seo-social-web-network-internet_276_icon-icons.com_61503.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="cancel" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cancel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

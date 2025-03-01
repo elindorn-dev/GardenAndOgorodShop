@@ -116,3 +116,4 @@ C:\Users\Dmitry\Downloads\GardenAndOgorodShop (1)\GardenAndOgorodShop\GardenAndO
 C:\Users\Dmitry\Downloads\GardenAndOgorodShop (1)\GardenAndOgorodShop\GardenAndOgorodShop\obj\Debug\GardenAndOgorodShop.csproj.CopyComplete
 C:\Users\Dmitry\Downloads\GardenAndOgorodShop (1)\GardenAndOgorodShop\GardenAndOgorodShop\obj\Debug\GardenAndOgorodShop.exe
 C:\Users\Dmitry\Downloads\GardenAndOgorodShop (1)\GardenAndOgorodShop\GardenAndOgorodShop\obj\Debug\GardenAndOgorodShop.pdb
+C:\Users\Dmitry\Desktop\kursovaya\GardenAndOgorodShop\GardenAndOgorodShop\obj\Debug\GardenAndOgorodShop.CurrentOrder.resources

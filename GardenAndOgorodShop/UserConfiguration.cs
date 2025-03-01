@@ -12,7 +12,7 @@ namespace GardenAndOgorodShop
         public static int UserID { get; set; }
         public static string UserFIO { get; set; }
         public static int RecordsFocusTable { get; set; }
-        public static bool ExistProductsInOrder = false;
+        public static int Current_order_id = 0;
         
     }
 }

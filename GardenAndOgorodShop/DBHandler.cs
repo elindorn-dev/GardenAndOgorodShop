@@ -35,6 +35,41 @@ namespace GardenAndOgorodShop
             {
                 return false;
             }
+        
+        }
+        public static bool checkExistProduct_inOrder(int product_id)
+        {
+            try
+            {
+                MySqlConnection connect = new MySqlConnection(connect_string);
+                connect.Open();
+                string query = $@"SELECT 1 FROM products_orders WHERE products_id = {product_id} AND orders_id = {UserConfiguration.Current_order_id}";
+                MySqlCommand command_sql = new MySqlCommand(query, connect);
+                int exist = Convert.ToInt32(command_sql.ExecuteScalar());
+                connect.Close();
+                return exist == 1 ? true : false;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        public static int getNewIdOrder()
+        {
+            try
+            {
+                MySqlConnection connect = new MySqlConnection(connect_string);
+                connect.Open();
+                string query = $@"INSERT INTO `garden_and_ogorod_shop`.`orders` (`employees_id`, `order_date`, `order_status`, `payment_method`, `total_cost`, `tax_amount`, `notes`)  VALUES ('{UserConfiguration.UserID}', NOW(), 'Обработка', 'Наличными', '0.00', '0.00', 'Продажа создана'); SELECT MAX(orders_id) FROM orders;";
+                MySqlCommand command_sql = new MySqlCommand(query, connect);
+                int newOrderId = Convert.ToInt32(command_sql.ExecuteScalar());
+                connect.Close();
+                return newOrderId;
+            }
+            catch
+            {
+                return 0;
+            }
         }
         public static bool checkAutorization(string login, string pwd)
         {

@@ -665,40 +665,82 @@ namespace GardenAndOgorodShop
             form.Show();
             this.Hide();
         }
-
+        private async void badResultView()
+        {
+            buttonBacket.Enabled = false;
+            labelReadyOrNot.ForeColor = Color.Red;
+            labelReadyOrNot.Text = "Товар НЕ добавлен!";
+            pictureBoxReadyOrNot.BackgroundImage = Properties.Resources.cancel;
+            panelResult.Visible = true;
+            await Task.Delay(1000);
+            panelResult.Visible = false;
+            buttonBacket.Enabled = true;
+        }
+        private bool AddEditProduct_inOrder(int product_id)
+        {
+            try
+            {
+                if (DBHandler.checkExistProduct_inOrder(product_id))
+                {
+                    return DBHandler.randomSQLCommand($@"
+                    UPDATE `products_orders` 
+                    SET `product_amount` = `product_amount` + 1 
+                    WHERE products_id = {product_id} AND orders_id = {UserConfiguration.Current_order_id};");
+                }
+                else
+                {
+                    return DBHandler.randomSQLCommand($@"
+                    INSERT INTO `garden_and_ogorod_shop`.`products_orders` 
+                    (`products_id`, `orders_id`, `product_amount`) 
+                    VALUES ('{product_id}', '{UserConfiguration.Current_order_id}', '1');");
+                }
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show($"Ошибка\n{err}");
+                return false;
+            }
+        }
+        private async void resultAdd_inOrder(int product_id)
+        {
+            if (AddEditProduct_inOrder(product_id))
+            {
+                buttonBacket.Enabled = false;
+                labelReadyOrNot.ForeColor = Color.Green;
+                labelReadyOrNot.Text = "Товар добавлен.";
+                pictureBoxReadyOrNot.BackgroundImage = Properties.Resources.ready;
+                panelResult.Visible = true;
+                await Task.Delay(1000);
+                panelResult.Visible = false;
+                buttonBacket.Enabled = true;
+            }
+            else
+            {
+                badResultView();
+            }
+        }
         private void buttonBacket_Click(object sender, EventArgs e)
         {
             try
             {
                 int index_row = dataGridViewProducts.SelectedCells[0].RowIndex;
                 DataRow selected_row = products_table.Rows[index_row];
-                if (!UserConfiguration.ExistProductsInOrder)
+                int product_id = Convert.ToInt32(selected_row[0]);
+                if (UserConfiguration.Current_order_id == 0)
                 {
-                    if (DBHandler.randomSQLCommand($@"INSERT INTO `garden_and_ogorod_shop`.`orders` 
-                (`employees_id`, `order_date`, `order_status`, `payment_method`, `total_cost`, `tax_amount`, `notes`) 
-                VALUES 
-                ('{UserConfiguration.UserID}', NOW(), 'Обработка', 'Наличными', '0.00', '0.00', 'Заказ обрабатывается');"))
+                    UserConfiguration.Current_order_id = DBHandler.getNewIdOrder();
+                    if (UserConfiguration.Current_order_id != 0)
                     {
-                        if (DBHandler.randomSQLCommand($@"
-                        INSERT INTO `garden_and_ogorod_shop`.`product_in_stock` (`products_id`, `amount_product`) VALUES ('{selected_row[0]}', '1');
-"))
-                        {
-                            MessageBox.Show("Товар добавлен в корзину");
-                        }
-                        else
-                        {
-                            MessageBox.Show("Товар добавлен в корзину");
-                        }
-                        MessageBox.Show("Товар добавлен в корзину");
+                        resultAdd_inOrder(product_id);
                     }
                     else
                     {
-                        MessageBox.Show("Товар добавлен в корзину");
+                        badResultView();
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Ошибка");
+                    resultAdd_inOrder(product_id);
                 }
             }
             catch (Exception err)
