@@ -60,6 +60,7 @@ namespace GardenAndOgorodShop
         private async void CurrentOrder_Load(object sender, EventArgs e)
         {
             await reloadBacket();
+            buttonDoneOrder.Enabled = dataGridViewProducts.Rows.Count == 0 ? false : true;
         }
 
         private void buttonBack_Click(object sender, EventArgs e)
@@ -71,12 +72,9 @@ namespace GardenAndOgorodShop
 
         private void CurrentOrder_FormClosed(object sender, FormClosedEventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Вы действительно хотите выйти?", "Выход", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
-            {
-                DBHandler.returnProduct();
-            }
-            Application.Exit();
+            Main form = new Main();
+            form.Show();
+            this.Hide();
         }
 
         private async void buttonDeleteProduct_Click(object sender, EventArgs e)
@@ -113,10 +111,17 @@ namespace GardenAndOgorodShop
                     WHERE products_id = {product_id} AND orders_id = {UserConfiguration.Current_order_id};");
                     int new_amount = Convert.ToInt32(dataGridViewProducts.Rows[index_row].Cells[3].Value);
                     DBHandler.randomSQLCommand($"UPDATE `garden_and_ogorod_shop`.`products` SET `is_available` = `is_available` {edit_product} 1 WHERE (`products_id` = '{product_id}');");
-                    if (new_amount - 1 == 0)
+                    if (new_amount == 1)
                     {
-                        DBHandler.randomSQLCommand($"DELETE FROM `garden_and_ogorod_shop`.`products_orders` WHERE (`products_id` = '{product_id}') and (`orders_id` = '{UserConfiguration.Current_order_id}');");
-                        await reloadBacket();
+                        if (edit_backet == "-")
+                        {
+                            DBHandler.randomSQLCommand($"DELETE FROM `garden_and_ogorod_shop`.`products_orders` WHERE (`products_id` = '{product_id}') and (`orders_id` = '{UserConfiguration.Current_order_id}');");
+                            await reloadBacket();
+                        }
+                        else
+                        {
+                            dataGridViewProducts.Rows[index_row].Cells[3].Value = edit_backet == "+" ? $"{new_amount + 1}" : $"{new_amount - 1}";
+                        }
                     }
                     else
                     {
@@ -137,6 +142,11 @@ namespace GardenAndOgorodShop
         private async void buttonMinus_Click(object sender, EventArgs e)
         {
             await PlusMinusAmountProduct_inOrder("-", "+");
+        }
+
+        private void buttonDoneOrder_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -343,8 +343,8 @@ namespace GardenAndOgorodShop
             if (dialogResult == DialogResult.Yes)
             {
                 DBHandler.returnProduct();
-            }
-            Application.Exit();
+                Application.ExitThread();
+            }            
         }
 
         private void buttonLogOut_Click(object sender, EventArgs e)
@@ -353,10 +353,10 @@ namespace GardenAndOgorodShop
             if (dialogResult == DialogResult.Yes)
             {
                 DBHandler.returnProduct();
+                AuthForm form = new AuthForm();
+                form.Show();
+                this.Hide();
             }
-            AuthForm form = new AuthForm();
-            form.Show();
-            this.Hide();
         }
 
         private void buttonAddProduct_Click(object sender, EventArgs e)
@@ -453,13 +453,12 @@ namespace GardenAndOgorodShop
 
         bool flag_sort_employee_name = true;
         // переменные для определения методов
-        private string method_sort_price_product = "ASC";
-        private string method_sort_name_product = "ASC";
+        private string method_sort_product = "products_name ASC";
         private string method_filter_product = "1=1";
         private string method_search_product = "";
         private string method_product;
 
-        private string method_sort_name_employee = "ASC";
+        private string method_sort_name_employee = "last_name ASC";
         private string method_filter_employee = "1=1";
         private string method_search_employee = "";
         private string method_employee;
@@ -472,23 +471,20 @@ namespace GardenAndOgorodShop
         ///   Предназначен для переключения направления сортировки при следующем вызове.
         ///   - string: Текст атрибута с добавленным индикатором направления сортировки (↑ для ASC, ↓ для DESC).
         /// </returns>
-        private async Task<(string, bool, string)> definitionSorting(bool flag_sorting, string textAttributeBySort)
+        private (string, bool, string) definitionSorting(bool flag_sorting)
         {
             // проверяем что за сортировка: при true - DESC, false - ASC
             if (flag_sorting)
             {
                 // переопределяем флаг
                 flag_sorting = false;
-                // символ сортировки (можно обыграть по-другому)
-                textAttributeBySort += " ↓";
                 // вертаем: метод сортировки, обратный полеченному флаг, символ метода
-                return ("DESC", flag_sorting, textAttributeBySort);
+                return ("DESC", flag_sorting, " ↓");
             }
             else
             {
                 flag_sorting = true;
-                textAttributeBySort += " ↑";
-                return ("ASC", flag_sorting, textAttributeBySort);
+                return ("ASC", flag_sorting, " ↑");
             }
         }
 
@@ -511,7 +507,7 @@ namespace GardenAndOgorodShop
         {
             EnabledUsingHandleProducts(false);
             // определяем метод
-            method_product = $"products WHERE {method_filter_product} AND (products_name LIKE '%{method_search_product}%') AND is_available > 0 ORDER BY price {method_sort_price_product}, products_name {method_sort_name_product}";
+            method_product = $"products WHERE {method_filter_product} AND (products_name LIKE '%{method_search_product}%') AND is_available > 0 ORDER BY {method_sort_product}";
             // Загружаем новые данные таблицы
             products_table = await DBHandler.LoadData(method_product);
             dataGridViewProducts.Rows.Clear();
@@ -522,7 +518,7 @@ namespace GardenAndOgorodShop
         {
             EnabledUsingHandleEmployees(false);
             // определяем метод
-            method_employee = $"employees INNER JOIN users ON employees.users_id = users.users_id WHERE {method_filter_employee} AND (last_name LIKE '%{method_search_employee}%') ORDER BY last_name {method_sort_name_employee}";
+            method_employee = $"employees INNER JOIN users ON employees.users_id = users.users_id WHERE {method_filter_employee} AND (last_name LIKE '%{method_search_employee}%') ORDER BY {method_sort_name_employee}";
             // Загружаем новые данные таблицы
             employees_table = await DBHandler.LoadData(method_employee);
             dataGridViewEmployees.Rows.Clear();
@@ -534,13 +530,15 @@ namespace GardenAndOgorodShop
         {
             try
             {
+                //flag_sort_product_name = !(flag_sort_product_price);
                 // принимаем метод сортировки, обратный полеченному флаг, символ метода
-                (string method_sorting, bool flag_sorting, string textAttributeBySort) = await definitionSorting(flag_sort_product_price, "цене");
+                (string method_sorting, bool flag_sorting, string textAttributeBySort) = definitionSorting(flag_sort_product_price);
                 // приравниваем к глобальным переменным
-                method_sort_price_product = method_sorting;
+                method_sort_product = $"price {method_sorting}";
                 flag_sort_product_price = flag_sorting;
-                buttonSortProductByPrice.Text = textAttributeBySort;
-
+                buttonSortProductByPrice.Text = "цене"+textAttributeBySort;
+                buttonSortProductByName.Text = "наименованию ↑";
+                flag_sort_product_name = true;
                 await reloadProductData();
             }
             catch (Exception err)
@@ -554,11 +552,14 @@ namespace GardenAndOgorodShop
             try
             {
                 // принимаем метод сортировки, обратный полеченному флаг, символ метода
-                (string method_sorting, bool flag_sorting, string textAttributeBySort) = await definitionSorting(flag_sort_product_name, "наименованию");
+                (string method_sorting, bool flag_sorting, string textAttributeBySort) = definitionSorting(flag_sort_product_name);
                 // приравниваем к глобальным переменным
-                method_sort_name_product = method_sorting;
+                method_sort_product = $"products_name {method_sorting}";
                 flag_sort_product_name = flag_sorting;
-                buttonSortProductByName.Text = textAttributeBySort;
+                buttonSortProductByName.Text = "наименованию" + textAttributeBySort;
+                buttonSortProductByPrice.Text = "цене ↑";
+                flag_sort_product_price = true;
+
                 await reloadProductData();
             }
             catch (Exception err)
@@ -614,11 +615,11 @@ namespace GardenAndOgorodShop
             try
             {
                 // принимаем метод сортировки, обратный полеченному флаг, символ метода
-                (string method_sorting, bool flag_sorting, string textAttributeBySort) = await definitionSorting(flag_sort_employee_name, "фамилии");
+                (string method_sorting, bool flag_sorting, string textAttributeBySort) = definitionSorting(flag_sort_employee_name);
                 // приравниваем к глобальным переменным
-                method_sort_name_employee = method_sorting;
+                method_sort_name_employee = $"last_name {method_sorting}";
                 flag_sort_employee_name = flag_sorting;
-                buttonSortEmployeeByName.Text = textAttributeBySort;
+                buttonSortEmployeeByName.Text = $"фамилии{textAttributeBySort}";
 
                 await reloadEmployeeData();
             }
@@ -731,7 +732,7 @@ namespace GardenAndOgorodShop
                     int index_row = dataGridViewProducts.SelectedCells[0].RowIndex;
                     int new_amount = Convert.ToInt32(Convert.ToString(dataGridViewProducts.Rows[index_row].Cells[3].Value).Replace(" шт.", ""));
                     DBHandler.randomSQLCommand($"UPDATE `garden_and_ogorod_shop`.`products` SET `is_available` = '{new_amount - 1}' WHERE (`products_id` = '{product_id}');");
-                    if (new_amount-1 == 0)
+                    if (new_amount == 1)
                     {
                         await reloadProductData();
                     }
@@ -779,15 +780,20 @@ namespace GardenAndOgorodShop
                 MessageBox.Show($"Ошибка\n{err}");
             }
         }
-
-        private void Main_FormClosed(object sender, FormClosedEventArgs e)
+        private void saveProducts_delOrder()
         {
             DialogResult dialogResult = MessageBox.Show("Вы действительно хотите выйти?", "Выход", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
                 DBHandler.returnProduct();
+                AuthForm form = new AuthForm();
+                form.Show();
+                this.Hide();
             }
-            Application.Exit();
+        }
+        private void Main_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            saveProducts_delOrder();
         }
         #endregion
         //public void CreateExcel()

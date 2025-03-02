@@ -42,6 +42,7 @@ namespace GardenAndOgorodShop
                 }
                 
                 string query_cancel_order = $"UPDATE `garden_and_ogorod_shop`.`orders` SET `order_status` = 'Отменено' WHERE (`orders_id` = '{UserConfiguration.Current_order_id}');";
+                randomSQLCommand(query_cancel_order);
             }
             catch (Exception ex)
             {
