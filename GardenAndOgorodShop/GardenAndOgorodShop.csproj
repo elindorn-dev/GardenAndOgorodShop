@@ -131,6 +131,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\active_filter_icon.png" />
+    <None Include="Resources\warning_115257.png" />
     <None Include="Resources\minus.png" />
     <None Include="Resources\delete.png" />
     <None Include="Resources\cancel.png" />

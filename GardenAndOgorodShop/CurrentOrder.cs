@@ -87,7 +87,7 @@ namespace GardenAndOgorodShop
                     DataRow selected_row = products_table.Rows[index_row];
                     int product_id = Convert.ToInt32(selected_row[1]);
                     DBHandler.returnProduct();
-                    DBHandler.randomSQLCommand($"DELETE FROM `garden_and_ogorod_shop`.`products_orders` WHERE (`products_id` = '{product_id}') and (`orders_id` = '{UserConfiguration.Current_order_id}');");
+                    DBHandler.randomSQLCommand($"DELETE FROM `garden_and_ogorod_shop`.`products_orders` WHERE `orders_id` = '{UserConfiguration.Current_order_id}';");
                     await reloadBacket();
                 }
             }
@@ -146,7 +146,48 @@ namespace GardenAndOgorodShop
 
         private void buttonDoneOrder_Click(object sender, EventArgs e)
         {
+            if (comboBoxPayMethod.Text == "") {
+                MessageBox.Show(
+                    $"Проверьте заполнения способа оплаты!",
+                    "Проверка заполнения полей",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+            }
+            try
+            {
+                if (dataGridViewProducts.Rows.Count != 0 && comboBoxPayMethod.Text != "")
+                {
+                    DBHandler.randomSQLCommand($"UPDATE `garden_and_ogorod_shop`.`orders` SET" +
+                        $" `employees_id` = '{UserConfiguration.UserID}'," +
+                        $" `order_date` = NOW()," +
+                        $" `order_status` = 'Успешно'," +
+                        $" `payment_method` = '{comboBoxPayMethod.Text}'," +
+                        $" `total_cost` = '{labelTotalCost.Text.Replace(',', '.')}'," +
+                        $" `tax_amount` = '{Convert.ToString(Convert.ToDouble(labelTotalCost.Text) / 13.0).Replace(',', '.')}'," +
+                        $" `notes` = '{textBoxOrderNotes.Text}' " +
+                        $"WHERE (`orders_id` = '{UserConfiguration.Current_order_id}');");
+                    dataGridViewProducts.Rows.Clear();
+                    UserConfiguration.Current_order_id = 0;
+                    MessageBox.Show(
+                       $"Продажа проведена успешно",
+                       "Статус продажи",
+                       MessageBoxButtons.OK,
+                       MessageBoxIcon.Information);
+                    buttonDoneOrder.Enabled = false;
+                    labelTotalCost.Text = "0.0";
+                    comboBoxPayMethod.Text = "";
+                    buttonWarning.Visible = true;
+                }
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show($"Ошибка\n{err}");
+            }
+        }
 
+        private void comboBoxPayMethod_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            buttonWarning.Visible = comboBoxPayMethod.Text != "" ? false : true;
         }
     }
 }

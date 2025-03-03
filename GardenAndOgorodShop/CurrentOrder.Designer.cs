@@ -29,15 +29,12 @@ namespace GardenAndOgorodShop
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.buttonMinus = new System.Windows.Forms.Button();
-            this.buttonAddProduct = new System.Windows.Forms.Button();
-            this.buttonDeleteProduct = new System.Windows.Forms.Button();
             this.buttonBack = new System.Windows.Forms.Button();
             this.comboBoxPayMethod = new System.Windows.Forms.ComboBox();
             this.labelTotalCost = new System.Windows.Forms.Label();
@@ -52,6 +49,10 @@ namespace GardenAndOgorodShop
             this.TitleHeader = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PriceHeader = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.buttonWarning = new System.Windows.Forms.Button();
+            this.buttonMinus = new System.Windows.Forms.Button();
+            this.buttonAddProduct = new System.Windows.Forms.Button();
+            this.buttonDeleteProduct = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProducts)).BeginInit();
             this.SuspendLayout();
@@ -59,6 +60,7 @@ namespace GardenAndOgorodShop
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.buttonWarning);
             this.panel1.Controls.Add(this.buttonMinus);
             this.panel1.Controls.Add(this.buttonAddProduct);
             this.panel1.Controls.Add(this.buttonDeleteProduct);
@@ -76,45 +78,6 @@ namespace GardenAndOgorodShop
             this.panel1.Size = new System.Drawing.Size(845, 248);
             this.panel1.TabIndex = 4;
             // 
-            // buttonMinus
-            // 
-            this.buttonMinus.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.minus;
-            this.buttonMinus.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonMinus.FlatAppearance.BorderSize = 0;
-            this.buttonMinus.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonMinus.Location = new System.Drawing.Point(700, 194);
-            this.buttonMinus.Name = "buttonMinus";
-            this.buttonMinus.Size = new System.Drawing.Size(40, 40);
-            this.buttonMinus.TabIndex = 31;
-            this.buttonMinus.UseVisualStyleBackColor = true;
-            this.buttonMinus.Click += new System.EventHandler(this.buttonMinus_Click);
-            // 
-            // buttonAddProduct
-            // 
-            this.buttonAddProduct.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.add_icon;
-            this.buttonAddProduct.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonAddProduct.FlatAppearance.BorderSize = 0;
-            this.buttonAddProduct.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonAddProduct.Location = new System.Drawing.Point(746, 194);
-            this.buttonAddProduct.Name = "buttonAddProduct";
-            this.buttonAddProduct.Size = new System.Drawing.Size(40, 40);
-            this.buttonAddProduct.TabIndex = 30;
-            this.buttonAddProduct.UseVisualStyleBackColor = true;
-            this.buttonAddProduct.Click += new System.EventHandler(this.buttonAddProduct_Click);
-            // 
-            // buttonDeleteProduct
-            // 
-            this.buttonDeleteProduct.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.delete;
-            this.buttonDeleteProduct.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonDeleteProduct.FlatAppearance.BorderSize = 0;
-            this.buttonDeleteProduct.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonDeleteProduct.Location = new System.Drawing.Point(792, 194);
-            this.buttonDeleteProduct.Name = "buttonDeleteProduct";
-            this.buttonDeleteProduct.Size = new System.Drawing.Size(40, 40);
-            this.buttonDeleteProduct.TabIndex = 29;
-            this.buttonDeleteProduct.UseVisualStyleBackColor = true;
-            this.buttonDeleteProduct.Click += new System.EventHandler(this.buttonDeleteProduct_Click);
-            // 
             // buttonBack
             // 
             this.buttonBack.BackColor = System.Drawing.Color.Yellow;
@@ -130,7 +93,7 @@ namespace GardenAndOgorodShop
             // 
             // comboBoxPayMethod
             // 
-            this.comboBoxPayMethod.BackColor = System.Drawing.SystemColors.Window;
+            this.comboBoxPayMethod.BackColor = System.Drawing.Color.White;
             this.comboBoxPayMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxPayMethod.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.comboBoxPayMethod.FormattingEnabled = true;
@@ -141,6 +104,7 @@ namespace GardenAndOgorodShop
             this.comboBoxPayMethod.Name = "comboBoxPayMethod";
             this.comboBoxPayMethod.Size = new System.Drawing.Size(192, 29);
             this.comboBoxPayMethod.TabIndex = 27;
+            this.comboBoxPayMethod.SelectedIndexChanged += new System.EventHandler(this.comboBoxPayMethod_SelectedIndexChanged);
             // 
             // labelTotalCost
             // 
@@ -234,17 +198,17 @@ namespace GardenAndOgorodShop
             this.dataGridViewProducts.MultiSelect = false;
             this.dataGridViewProducts.Name = "dataGridViewProducts";
             this.dataGridViewProducts.ReadOnly = true;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewProducts.RowHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewProducts.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewProducts.RowHeadersVisible = false;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.dataGridViewProducts.RowsDefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.dataGridViewProducts.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridViewProducts.RowTemplate.Height = 150;
             this.dataGridViewProducts.Size = new System.Drawing.Size(844, 388);
             this.dataGridViewProducts.TabIndex = 3;
@@ -260,18 +224,18 @@ namespace GardenAndOgorodShop
             // TitleHeader
             // 
             this.TitleHeader.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.Black;
-            this.TitleHeader.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            this.TitleHeader.DefaultCellStyle = dataGridViewCellStyle1;
             this.TitleHeader.HeaderText = "Название";
             this.TitleHeader.Name = "TitleHeader";
             this.TitleHeader.ReadOnly = true;
             // 
             // PriceHeader
             // 
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.Black;
-            this.PriceHeader.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            this.PriceHeader.DefaultCellStyle = dataGridViewCellStyle2;
             this.PriceHeader.HeaderText = "Цена";
             this.PriceHeader.Name = "PriceHeader";
             this.PriceHeader.ReadOnly = true;
@@ -279,13 +243,64 @@ namespace GardenAndOgorodShop
             // 
             // Amount
             // 
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.Black;
-            this.Amount.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            this.Amount.DefaultCellStyle = dataGridViewCellStyle3;
             this.Amount.HeaderText = "Количество";
             this.Amount.Name = "Amount";
             this.Amount.ReadOnly = true;
             this.Amount.Width = 200;
+            // 
+            // buttonWarning
+            // 
+            this.buttonWarning.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.warning_115257;
+            this.buttonWarning.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonWarning.FlatAppearance.BorderSize = 0;
+            this.buttonWarning.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonWarning.Location = new System.Drawing.Point(356, 59);
+            this.buttonWarning.Name = "buttonWarning";
+            this.buttonWarning.Size = new System.Drawing.Size(31, 29);
+            this.buttonWarning.TabIndex = 32;
+            this.buttonWarning.UseVisualStyleBackColor = true;
+            // 
+            // buttonMinus
+            // 
+            this.buttonMinus.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.minus;
+            this.buttonMinus.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonMinus.FlatAppearance.BorderSize = 0;
+            this.buttonMinus.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonMinus.Location = new System.Drawing.Point(700, 194);
+            this.buttonMinus.Name = "buttonMinus";
+            this.buttonMinus.Size = new System.Drawing.Size(40, 40);
+            this.buttonMinus.TabIndex = 31;
+            this.buttonMinus.UseVisualStyleBackColor = true;
+            this.buttonMinus.Click += new System.EventHandler(this.buttonMinus_Click);
+            // 
+            // buttonAddProduct
+            // 
+            this.buttonAddProduct.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.add_icon;
+            this.buttonAddProduct.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonAddProduct.FlatAppearance.BorderSize = 0;
+            this.buttonAddProduct.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonAddProduct.Location = new System.Drawing.Point(746, 194);
+            this.buttonAddProduct.Name = "buttonAddProduct";
+            this.buttonAddProduct.Size = new System.Drawing.Size(40, 40);
+            this.buttonAddProduct.TabIndex = 30;
+            this.buttonAddProduct.UseVisualStyleBackColor = true;
+            this.buttonAddProduct.Click += new System.EventHandler(this.buttonAddProduct_Click);
+            // 
+            // buttonDeleteProduct
+            // 
+            this.buttonDeleteProduct.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.delete;
+            this.buttonDeleteProduct.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonDeleteProduct.FlatAppearance.BorderSize = 0;
+            this.buttonDeleteProduct.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonDeleteProduct.Location = new System.Drawing.Point(792, 194);
+            this.buttonDeleteProduct.Name = "buttonDeleteProduct";
+            this.buttonDeleteProduct.Size = new System.Drawing.Size(40, 40);
+            this.buttonDeleteProduct.TabIndex = 29;
+            this.buttonDeleteProduct.UseVisualStyleBackColor = true;
+            this.buttonDeleteProduct.Click += new System.EventHandler(this.buttonDeleteProduct_Click);
             // 
             // CurrentOrder
             // 
@@ -326,5 +341,6 @@ namespace GardenAndOgorodShop
         private System.Windows.Forms.Button buttonDeleteProduct;
         private System.Windows.Forms.Button buttonMinus;
         private System.Windows.Forms.Button buttonAddProduct;
+        private System.Windows.Forms.Button buttonWarning;
     }
 }
