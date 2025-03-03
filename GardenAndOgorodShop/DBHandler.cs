@@ -20,6 +20,29 @@ namespace GardenAndOgorodShop
         public static string database = "garden_and_ogorod_shop";
         public static string connect_string = $"host={host};uid={username};pwd={pwd};database={database}";
 
+        public static async Task<DataTable> getProductsOrder_forBill()
+        {
+            DataTable products = new DataTable();
+            try
+            {
+                string query = $"SELECT products.products_name, products_orders.product_amount, products.price FROM garden_and_ogorod_shop.products_orders INNER JOIN products ON products_orders.products_id = products.products_id WHERE orders_id  = '{UserConfiguration.Current_order_id}';";
+                MySqlConnection con = new MySqlConnection(connect_string);
+                await con.OpenAsync();
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.ExecuteNonQuery();
+
+                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+
+                da.Fill(products);
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка: {ex.Message}");
+            }
+            
+            return products;
+        }
         public static void returnProduct()
         {
             try

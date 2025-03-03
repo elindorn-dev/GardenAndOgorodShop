@@ -144,7 +144,7 @@ namespace GardenAndOgorodShop
             await PlusMinusAmountProduct_inOrder("-", "+");
         }
 
-        private void buttonDoneOrder_Click(object sender, EventArgs e)
+        private async void buttonDoneOrder_Click(object sender, EventArgs e)
         {
             if (comboBoxPayMethod.Text == "") {
                 MessageBox.Show(
@@ -167,7 +167,6 @@ namespace GardenAndOgorodShop
                         $" `notes` = '{textBoxOrderNotes.Text}' " +
                         $"WHERE (`orders_id` = '{UserConfiguration.Current_order_id}');");
                     dataGridViewProducts.Rows.Clear();
-                    UserConfiguration.Current_order_id = 0;
                     MessageBox.Show(
                        $"Продажа проведена успешно",
                        "Статус продажи",
@@ -177,6 +176,10 @@ namespace GardenAndOgorodShop
                     labelTotalCost.Text = "0.0";
                     comboBoxPayMethod.Text = "";
                     buttonWarning.Visible = true;
+                    //
+                    await PaymentAgreement.createExcelAgreement();
+                    //
+                    UserConfiguration.Current_order_id = 0;
                 }
             }
             catch (Exception err)

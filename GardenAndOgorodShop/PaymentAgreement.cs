@@ -1,0 +1,83 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.Runtime.InteropServices;
+using Excel = Microsoft.Office.Interop.Excel;
+using System.IO;
+using Microsoft.Office.Interop.Excel;
+
+namespace GardenAndOgorodShop
+{
+    public static class PaymentAgreement
+    {
+        public static async Task createExcelAgreement()
+        {
+            Excel.Application xlApp = null;
+            Workbook xlWorkbook = null;
+            Worksheet xlWorksheet = null;
+            try
+            {
+                System.Data.DataTable products_order = await DBHandler.getProductsOrder_forBill();
+                await Task.Run(() => // Выполняем в отдельном потоке
+                {
+                    xlApp = new Excel.Application();
+                    xlWorkbook = xlApp.Workbooks.Open($"{Directory.GetCurrentDirectory()}\\templatesAgreements\\templateXLSX.xlsx");
+                    xlWorksheet = (Excel.Worksheet)xlWorkbook.Sheets[1];
+
+                    xlWorksheet.Range["B3"].Value2 = DateTime.Now.ToString(); // Заполняем ячейки
+                    xlWorksheet.Range["B6"].Value2 = $"КАССИР {UserConfiguration.UserID}";
+                    xlWorksheet.Range["B7"].Value2 = $"#{UserConfiguration.Current_order_id}";
+
+                    int counter_row = 9;
+                    double summ = 0;
+                    if (products_order.Rows.Count > 0)
+                    {
+                        foreach (System.Data.DataRow product in products_order.Rows)
+                        {
+                            xlWorksheet.Range[$"A{counter_row}"].Value2 = $"{product[0]}";
+                            xlWorksheet.Range[$"B{counter_row}"].Value2 = $"{product[1]} x {product[2]}";
+                            counter_row++;
+                            summ += Convert.ToDouble(product[1]) * Convert.ToDouble(product[2]);
+                            xlWorksheet.Range[$"B{counter_row}"].Value2 = $"{summ}";
+                            counter_row++;
+                        }
+                    }
+                    double nds = summ * 0.13;
+                    xlWorksheet.Range[$"A{counter_row}"].Value2 = $"ИТОГ";
+                    xlWorksheet.Range[$"B{counter_row}"].Value2 = $"{summ}";
+                    xlWorksheet.Range[$"A{counter_row+=2}"].Value2 = $"НДС";
+                    xlWorksheet.Range[$"B{counter_row+=2}"].Value2 = $"{nds}";
+
+                    string path_name = $"PaymentAgreements\\Продажа {UserConfiguration.Current_order_id}.xlsx";
+                    xlWorkbook.SaveAs($"{Directory.GetCurrentDirectory()}\\{path_name}");
+                    xlWorkbook.Close();
+                    xlApp.Quit();
+                    MessageBox.Show($"Excel-чек создан, проверьте его по пути {path_name}");
+                });
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при заполнении шаблона Excel: {ex.Message}");
+            }
+            finally
+            {
+                // Освобождаем COM-объекты (ОЧЕНЬ ВАЖНО!)
+                if (xlWorksheet != null) Marshal.ReleaseComObject(xlWorksheet);
+                if (xlWorkbook != null) Marshal.ReleaseComObject(xlWorkbook);
+                if (xlApp != null) Marshal.ReleaseComObject(xlApp);
+            }
+        }
+        public static async Task createTxtAgreement()
+        {
+
+        }
+        public static async Task createPdfAgreement()
+        {
+
+        }
+    }
+}

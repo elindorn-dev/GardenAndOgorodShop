@@ -35,6 +35,10 @@ namespace GardenAndOgorodShop
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.buttonWarning = new System.Windows.Forms.Button();
+            this.buttonMinus = new System.Windows.Forms.Button();
+            this.buttonAddProduct = new System.Windows.Forms.Button();
+            this.buttonDeleteProduct = new System.Windows.Forms.Button();
             this.buttonBack = new System.Windows.Forms.Button();
             this.comboBoxPayMethod = new System.Windows.Forms.ComboBox();
             this.labelTotalCost = new System.Windows.Forms.Label();
@@ -49,10 +53,6 @@ namespace GardenAndOgorodShop
             this.TitleHeader = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PriceHeader = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.buttonWarning = new System.Windows.Forms.Button();
-            this.buttonMinus = new System.Windows.Forms.Button();
-            this.buttonAddProduct = new System.Windows.Forms.Button();
-            this.buttonDeleteProduct = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProducts)).BeginInit();
             this.SuspendLayout();
@@ -77,6 +77,57 @@ namespace GardenAndOgorodShop
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(845, 248);
             this.panel1.TabIndex = 4;
+            // 
+            // buttonWarning
+            // 
+            this.buttonWarning.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.warning_115257;
+            this.buttonWarning.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonWarning.FlatAppearance.BorderSize = 0;
+            this.buttonWarning.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonWarning.Location = new System.Drawing.Point(356, 59);
+            this.buttonWarning.Name = "buttonWarning";
+            this.buttonWarning.Size = new System.Drawing.Size(31, 29);
+            this.buttonWarning.TabIndex = 32;
+            this.buttonWarning.UseVisualStyleBackColor = true;
+            // 
+            // buttonMinus
+            // 
+            this.buttonMinus.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.minus;
+            this.buttonMinus.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonMinus.FlatAppearance.BorderSize = 0;
+            this.buttonMinus.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonMinus.Location = new System.Drawing.Point(700, 194);
+            this.buttonMinus.Name = "buttonMinus";
+            this.buttonMinus.Size = new System.Drawing.Size(40, 40);
+            this.buttonMinus.TabIndex = 31;
+            this.buttonMinus.UseVisualStyleBackColor = true;
+            this.buttonMinus.Click += new System.EventHandler(this.buttonMinus_Click);
+            // 
+            // buttonAddProduct
+            // 
+            this.buttonAddProduct.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.add_icon;
+            this.buttonAddProduct.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonAddProduct.FlatAppearance.BorderSize = 0;
+            this.buttonAddProduct.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonAddProduct.Location = new System.Drawing.Point(746, 194);
+            this.buttonAddProduct.Name = "buttonAddProduct";
+            this.buttonAddProduct.Size = new System.Drawing.Size(40, 40);
+            this.buttonAddProduct.TabIndex = 30;
+            this.buttonAddProduct.UseVisualStyleBackColor = true;
+            this.buttonAddProduct.Click += new System.EventHandler(this.buttonAddProduct_Click);
+            // 
+            // buttonDeleteProduct
+            // 
+            this.buttonDeleteProduct.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.delete;
+            this.buttonDeleteProduct.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonDeleteProduct.FlatAppearance.BorderSize = 0;
+            this.buttonDeleteProduct.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonDeleteProduct.Location = new System.Drawing.Point(792, 194);
+            this.buttonDeleteProduct.Name = "buttonDeleteProduct";
+            this.buttonDeleteProduct.Size = new System.Drawing.Size(40, 40);
+            this.buttonDeleteProduct.TabIndex = 29;
+            this.buttonDeleteProduct.UseVisualStyleBackColor = true;
+            this.buttonDeleteProduct.Click += new System.EventHandler(this.buttonDeleteProduct_Click);
             // 
             // buttonBack
             // 
@@ -250,57 +301,6 @@ namespace GardenAndOgorodShop
             this.Amount.Name = "Amount";
             this.Amount.ReadOnly = true;
             this.Amount.Width = 200;
-            // 
-            // buttonWarning
-            // 
-            this.buttonWarning.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.warning_115257;
-            this.buttonWarning.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonWarning.FlatAppearance.BorderSize = 0;
-            this.buttonWarning.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonWarning.Location = new System.Drawing.Point(356, 59);
-            this.buttonWarning.Name = "buttonWarning";
-            this.buttonWarning.Size = new System.Drawing.Size(31, 29);
-            this.buttonWarning.TabIndex = 32;
-            this.buttonWarning.UseVisualStyleBackColor = true;
-            // 
-            // buttonMinus
-            // 
-            this.buttonMinus.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.minus;
-            this.buttonMinus.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonMinus.FlatAppearance.BorderSize = 0;
-            this.buttonMinus.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonMinus.Location = new System.Drawing.Point(700, 194);
-            this.buttonMinus.Name = "buttonMinus";
-            this.buttonMinus.Size = new System.Drawing.Size(40, 40);
-            this.buttonMinus.TabIndex = 31;
-            this.buttonMinus.UseVisualStyleBackColor = true;
-            this.buttonMinus.Click += new System.EventHandler(this.buttonMinus_Click);
-            // 
-            // buttonAddProduct
-            // 
-            this.buttonAddProduct.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.add_icon;
-            this.buttonAddProduct.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonAddProduct.FlatAppearance.BorderSize = 0;
-            this.buttonAddProduct.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonAddProduct.Location = new System.Drawing.Point(746, 194);
-            this.buttonAddProduct.Name = "buttonAddProduct";
-            this.buttonAddProduct.Size = new System.Drawing.Size(40, 40);
-            this.buttonAddProduct.TabIndex = 30;
-            this.buttonAddProduct.UseVisualStyleBackColor = true;
-            this.buttonAddProduct.Click += new System.EventHandler(this.buttonAddProduct_Click);
-            // 
-            // buttonDeleteProduct
-            // 
-            this.buttonDeleteProduct.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.delete;
-            this.buttonDeleteProduct.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonDeleteProduct.FlatAppearance.BorderSize = 0;
-            this.buttonDeleteProduct.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonDeleteProduct.Location = new System.Drawing.Point(792, 194);
-            this.buttonDeleteProduct.Name = "buttonDeleteProduct";
-            this.buttonDeleteProduct.Size = new System.Drawing.Size(40, 40);
-            this.buttonDeleteProduct.TabIndex = 29;
-            this.buttonDeleteProduct.UseVisualStyleBackColor = true;
-            this.buttonDeleteProduct.Click += new System.EventHandler(this.buttonDeleteProduct_Click);
             // 
             // CurrentOrder
             // 
