@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,17 +15,27 @@ namespace GardenAndOgorodShop
     public partial class HandleRecordForm : Form
     {
         private int selected_page = 0;
-        public HandleRecordForm(int page)
+        private int id_record = 0;
+        private string selected_mode = "add";
+        public HandleRecordForm(int page, string mode, int id)
         {
             InitializeComponent();
             this.selected_page = page;
+            this.id_record = id;
+            this.selected_mode = mode;
         }
-
-        private async void LoadComboBoxSource(ComboBox comboBox, string table_name, string display_member, string value_member)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="comboBox"></param>
+        /// <param name="table_name"></param>
+        /// <param name="display_member"></param>
+        /// <param name="value_member"></param>
+        private void LoadComboBoxSource(ComboBox comboBox, string table_name, string display_member, string value_member)
         {
             try
             {
-                System.Data.DataTable dataTable = await DBHandler.LoadData(table_name);
+                System.Data.DataTable dataTable = DBHandler.LoadDataSync(table_name);
                 // Устанавливаем DataSource для ComboBox
                 comboBox.DataSource = dataTable;
 
@@ -40,12 +51,44 @@ namespace GardenAndOgorodShop
                 MessageBox.Show($"Ошибка при загрузке {table_name}: " + ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        private void loadEditDataProduct()
+        {
+            DataTable table = DBHandler.LoadDataSync($"products WHERE products_id = {id_record}");
+            DataRow selected_product = table.Rows[0];
+            if (selected_product != null)
+            {
+                textBoxProductName.Text = Convert.ToString(selected_product[1]);
+                textBoxProductDesc.Text = Convert.ToString(selected_product[2]);
+                textBoxProductCost.Text = Convert.ToString(selected_product[3]);
+                int count = comboBoxCategories.Items.Count;
+                comboBoxCategories.SelectedIndex = Convert.ToInt32(selected_product[4]);
+                comboBoxBrands.SelectedIndex = Convert.ToInt32(selected_product[5]);
+                textBoxProductIsAvaible.Text = Convert.ToString(selected_product[6]);
+                byte[] imageData = (byte[])selected_product[7];
+                using (MemoryStream ms = new MemoryStream(imageData))
+                {
+                    pictureBoxProduct.BackgroundImage = Image.FromStream(ms);
+                }
+                comboBoxSuppliers.SelectedIndex = Convert.ToInt32(selected_product[8]);
+                textBoxProductSeasonalDiscount.Text = Convert.ToString(selected_product[9]);
+                buttonAddEditProduct.Text = "Изменить";
+            }
+        }
+        private void loadEditData()
+        {
+
+        }
         private void HandleRecordForm_Load(object sender, EventArgs e)
         {
             tabControlRecords.SelectedIndex = selected_page;
             LoadComboBoxSource(comboBoxBrands, "brands", "brand_name", "brands_id");
             LoadComboBoxSource(comboBoxCategories, "categories", "category_name", "categories_id");
             LoadComboBoxSource(comboBoxSuppliers, "suppliers", "supplier_name", "suppliers_id");
+            LoadComboBoxSource(comboBoxEmployeeUser, "employees", "last_name", "employees_id");
+            if (this.selected_mode == "edit")
+            {
+                loadEditDataProduct();
+            }
         }
         private void buttonToMianForm_Click(object sender, EventArgs e)
         {
@@ -177,23 +220,48 @@ namespace GardenAndOgorodShop
             {
                 if (ValidateTabPage(tabControlRecords.SelectedTab))
                 {
-                    string[] result = DBHandler.InsertProduct(
+                    if (selected_mode == "add")
+                    {
+                        string[] result = DBHandler.InsertProduct(
                             textBoxProductName.Text,
                             textBoxProductDesc.Text,
-                            Convert.ToDouble(textBoxProductCost.Text),
+                            Convert.ToDecimal(textBoxProductCost.Text),
                             comboBoxCategories.SelectedIndex,
                             comboBoxBrands.SelectedIndex,
                             Convert.ToInt32(textBoxProductIsAvaible.Text),
                             pictureBoxProduct.BackgroundImage,
                             comboBoxSuppliers.SelectedIndex,
-                            Convert.ToInt32(textBoxProductSeasonalDiscount.Text)
-                    ) ? new string[] {"Товар добавлен.", "Успех"} : new string[] { "Товар НЕ добавлен!", "Провал" };
-                    MessageBox.Show(result[0], result[1], MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            Convert.ToDecimal(textBoxProductSeasonalDiscount.Text)
+                    ) ? new string[] { "Товар добавлен.", "Успех" } : new string[] { "Товар НЕ добавлен!", "Провал" };
+                        MessageBox.Show(result[0], result[1], MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        double cost = Convert.ToDouble(textBoxProductCost.Text);
+                        int amount = Convert.ToInt32(textBoxProductIsAvaible.Text);
+                        double discount = Convert.ToDouble(textBoxProductSeasonalDiscount.Text);
+
+
+                        string title = Convert.ToString(textBoxProductName.Text);
+
+                        string[] result = DBHandler.EditProduct(
+                            title,
+                            textBoxProductDesc.Text,
+                            cost,
+                            comboBoxCategories.SelectedIndex,
+                            comboBoxBrands.SelectedIndex,
+                            amount,
+                            pictureBoxProduct.BackgroundImage,
+                            comboBoxSuppliers.SelectedIndex,
+                            discount
+                    ) ? new string[] { "Товар изменен.", "Успех" } : new string[] { "Товар НЕ был изменен!", "Провал" };
+                        MessageBox.Show(result[0], result[1], MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
             }
             catch (Exception err)
             {
-                MessageBox.Show("Ошибка добавления продукта (form):\n" + err.Message);
+                MessageBox.Show("Ошибка обработки продукта (form):\n" + err.Message);
             }
         }
 

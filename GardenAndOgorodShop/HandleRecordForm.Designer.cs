@@ -59,100 +59,100 @@ namespace GardenAndOgorodShop
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBoxCategoryDesc = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBoxCategoryTitle = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label17 = new System.Windows.Forms.Label();
             this.tabPageEmployee = new System.Windows.Forms.TabPage();
-            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.textBoxEmployeePrice = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.textBoxPosition = new System.Windows.Forms.TextBox();
             this.label22 = new System.Windows.Forms.Label();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.textBoxEmployeeAddress = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxEmployeeEmail = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBoxGender = new System.Windows.Forms.ComboBox();
             this.label21 = new System.Windows.Forms.Label();
             this.labelAge = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.dateTimePickerAge = new System.Windows.Forms.DateTimePicker();
             this.label13 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.textBoxFathersName = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.textBoxFirstName = new System.Windows.Forms.TextBox();
             this.pictureBoxEmployee = new System.Windows.Forms.PictureBox();
-            this.maskedTextBox2 = new System.Windows.Forms.MaskedTextBox();
+            this.maskedTextBoxEmployeePhone = new System.Windows.Forms.MaskedTextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBoxEmployeeDesc = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.textBoxLastName = new System.Windows.Forms.TextBox();
             this.button4 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label11 = new System.Windows.Forms.Label();
             this.tabPageUser = new System.Windows.Forms.TabPage();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.comboBoxEmployeeUser = new System.Windows.Forms.ComboBox();
             this.label24 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.comboBoxRole = new System.Windows.Forms.ComboBox();
             this.label28 = new System.Windows.Forms.Label();
             this.label32 = new System.Windows.Forms.Label();
-            this.textBox16 = new System.Windows.Forms.TextBox();
+            this.textBoxPwd = new System.Windows.Forms.TextBox();
             this.label34 = new System.Windows.Forms.Label();
-            this.textBox17 = new System.Windows.Forms.TextBox();
+            this.textBoxUserDesc = new System.Windows.Forms.TextBox();
             this.label35 = new System.Windows.Forms.Label();
-            this.textBox18 = new System.Windows.Forms.TextBox();
+            this.textBoxLogin = new System.Windows.Forms.TextBox();
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label36 = new System.Windows.Forms.Label();
             this.tabPageBrand = new System.Windows.Forms.TabPage();
             this.label25 = new System.Windows.Forms.Label();
-            this.textBox14 = new System.Windows.Forms.TextBox();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.textBoxManAddress = new System.Windows.Forms.TextBox();
+            this.maskedTextBoxManPhone = new System.Windows.Forms.MaskedTextBox();
             this.label26 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
-            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.textBoxManEmail = new System.Windows.Forms.TextBox();
             this.label29 = new System.Windows.Forms.Label();
-            this.textBox12 = new System.Windows.Forms.TextBox();
+            this.textBoxManDesc = new System.Windows.Forms.TextBox();
             this.label30 = new System.Windows.Forms.Label();
-            this.textBox13 = new System.Windows.Forms.TextBox();
+            this.textBoxManName = new System.Windows.Forms.TextBox();
             this.button9 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
             this.label31 = new System.Windows.Forms.Label();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.label42 = new System.Windows.Forms.Label();
-            this.textBox22 = new System.Windows.Forms.TextBox();
+            this.textBoxSupINN = new System.Windows.Forms.TextBox();
             this.label33 = new System.Windows.Forms.Label();
-            this.textBox15 = new System.Windows.Forms.TextBox();
-            this.maskedTextBox3 = new System.Windows.Forms.MaskedTextBox();
+            this.textBoxSupAddress = new System.Windows.Forms.TextBox();
+            this.maskedTextBoxSupPhone = new System.Windows.Forms.MaskedTextBox();
             this.label37 = new System.Windows.Forms.Label();
             this.label38 = new System.Windows.Forms.Label();
-            this.textBox19 = new System.Windows.Forms.TextBox();
+            this.textBoxSupEmail = new System.Windows.Forms.TextBox();
             this.label39 = new System.Windows.Forms.Label();
-            this.textBox20 = new System.Windows.Forms.TextBox();
+            this.textBoxSupDesc = new System.Windows.Forms.TextBox();
             this.label40 = new System.Windows.Forms.Label();
-            this.textBox21 = new System.Windows.Forms.TextBox();
+            this.textBoxSupName = new System.Windows.Forms.TextBox();
             this.button11 = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
             this.label41 = new System.Windows.Forms.Label();
             this.tabPage7 = new System.Windows.Forms.TabPage();
-            this.comboBox6 = new System.Windows.Forms.ComboBox();
+            this.comboBoxPayMethod = new System.Windows.Forms.ComboBox();
             this.label45 = new System.Windows.Forms.Label();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
+            this.comboBoxStatus = new System.Windows.Forms.ComboBox();
             this.label46 = new System.Windows.Forms.Label();
             this.label50 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.dateTimePickerOrder = new System.Windows.Forms.DateTimePicker();
+            this.comboBoxEmployeeOrder = new System.Windows.Forms.ComboBox();
             this.label48 = new System.Windows.Forms.Label();
             this.label43 = new System.Windows.Forms.Label();
-            this.textBox23 = new System.Windows.Forms.TextBox();
+            this.textBoxTotalCost = new System.Windows.Forms.TextBox();
             this.label47 = new System.Windows.Forms.Label();
-            this.textBox26 = new System.Windows.Forms.TextBox();
+            this.textBoxOrderDesc = new System.Windows.Forms.TextBox();
             this.button13 = new System.Windows.Forms.Button();
             this.button14 = new System.Windows.Forms.Button();
             this.panel7 = new System.Windows.Forms.Panel();
@@ -165,9 +165,6 @@ namespace GardenAndOgorodShop
             this.buttonLogOut = new System.Windows.Forms.Button();
             this.buttonExitApp = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
-            this.label53 = new System.Windows.Forms.Label();
-            this.label54 = new System.Windows.Forms.Label();
-            this.textBoxAmountInStock = new System.Windows.Forms.TextBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.tabControlRecords.SuspendLayout();
             this.tabPageProduct.SuspendLayout();
@@ -210,9 +207,6 @@ namespace GardenAndOgorodShop
             // tabPageProduct
             // 
             this.tabPageProduct.BackColor = System.Drawing.Color.Transparent;
-            this.tabPageProduct.Controls.Add(this.label53);
-            this.tabPageProduct.Controls.Add(this.label54);
-            this.tabPageProduct.Controls.Add(this.textBoxAmountInStock);
             this.tabPageProduct.Controls.Add(this.label52);
             this.tabPageProduct.Controls.Add(this.label51);
             this.tabPageProduct.Controls.Add(this.label44);
@@ -321,7 +315,7 @@ namespace GardenAndOgorodShop
             // pictureBoxProduct
             // 
             this.pictureBoxProduct.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.none_image;
-            this.pictureBoxProduct.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBoxProduct.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBoxProduct.Location = new System.Drawing.Point(448, 84);
             this.pictureBoxProduct.Name = "pictureBoxProduct";
             this.pictureBoxProduct.Size = new System.Drawing.Size(287, 265);
@@ -500,9 +494,9 @@ namespace GardenAndOgorodShop
             this.tabPageCategory.Controls.Add(this.button2);
             this.tabPageCategory.Controls.Add(this.button3);
             this.tabPageCategory.Controls.Add(this.label15);
-            this.tabPageCategory.Controls.Add(this.textBox2);
+            this.tabPageCategory.Controls.Add(this.textBoxCategoryDesc);
             this.tabPageCategory.Controls.Add(this.label16);
-            this.tabPageCategory.Controls.Add(this.textBox3);
+            this.tabPageCategory.Controls.Add(this.textBoxCategoryTitle);
             this.tabPageCategory.Controls.Add(this.panel2);
             this.tabPageCategory.Location = new System.Drawing.Point(4, 22);
             this.tabPageCategory.Name = "tabPageCategory";
@@ -546,15 +540,15 @@ namespace GardenAndOgorodShop
             this.label15.TabIndex = 33;
             this.label15.Text = "Описание:";
             // 
-            // textBox2
+            // textBoxCategoryDesc
             // 
-            this.textBox2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox2.Location = new System.Drawing.Point(171, 143);
-            this.textBox2.MaxLength = 1000;
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(550, 244);
-            this.textBox2.TabIndex = 32;
+            this.textBoxCategoryDesc.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxCategoryDesc.Location = new System.Drawing.Point(171, 143);
+            this.textBoxCategoryDesc.MaxLength = 1000;
+            this.textBoxCategoryDesc.Multiline = true;
+            this.textBoxCategoryDesc.Name = "textBoxCategoryDesc";
+            this.textBoxCategoryDesc.Size = new System.Drawing.Size(550, 244);
+            this.textBoxCategoryDesc.TabIndex = 32;
             // 
             // label16
             // 
@@ -566,14 +560,14 @@ namespace GardenAndOgorodShop
             this.label16.TabIndex = 31;
             this.label16.Text = "Наименование:";
             // 
-            // textBox3
+            // textBoxCategoryTitle
             // 
-            this.textBox3.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox3.Location = new System.Drawing.Point(171, 86);
-            this.textBox3.MaxLength = 250;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(550, 33);
-            this.textBox3.TabIndex = 30;
+            this.textBoxCategoryTitle.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxCategoryTitle.Location = new System.Drawing.Point(171, 86);
+            this.textBoxCategoryTitle.MaxLength = 250;
+            this.textBoxCategoryTitle.Name = "textBoxCategoryTitle";
+            this.textBoxCategoryTitle.Size = new System.Drawing.Size(550, 33);
+            this.textBoxCategoryTitle.TabIndex = 30;
             // 
             // panel2
             // 
@@ -598,30 +592,30 @@ namespace GardenAndOgorodShop
             // 
             // tabPageEmployee
             // 
-            this.tabPageEmployee.Controls.Add(this.textBox10);
+            this.tabPageEmployee.Controls.Add(this.textBoxEmployeePrice);
             this.tabPageEmployee.Controls.Add(this.label23);
-            this.tabPageEmployee.Controls.Add(this.textBox9);
+            this.tabPageEmployee.Controls.Add(this.textBoxPosition);
             this.tabPageEmployee.Controls.Add(this.label22);
-            this.tabPageEmployee.Controls.Add(this.textBox8);
+            this.tabPageEmployee.Controls.Add(this.textBoxEmployeeAddress);
             this.tabPageEmployee.Controls.Add(this.label9);
-            this.tabPageEmployee.Controls.Add(this.textBox1);
+            this.tabPageEmployee.Controls.Add(this.textBoxEmployeeEmail);
             this.tabPageEmployee.Controls.Add(this.label1);
-            this.tabPageEmployee.Controls.Add(this.comboBox1);
+            this.tabPageEmployee.Controls.Add(this.comboBoxGender);
             this.tabPageEmployee.Controls.Add(this.label21);
             this.tabPageEmployee.Controls.Add(this.labelAge);
             this.tabPageEmployee.Controls.Add(this.label14);
             this.tabPageEmployee.Controls.Add(this.dateTimePickerAge);
             this.tabPageEmployee.Controls.Add(this.label13);
-            this.tabPageEmployee.Controls.Add(this.textBox7);
+            this.tabPageEmployee.Controls.Add(this.textBoxFathersName);
             this.tabPageEmployee.Controls.Add(this.label12);
-            this.tabPageEmployee.Controls.Add(this.textBox6);
+            this.tabPageEmployee.Controls.Add(this.textBoxFirstName);
             this.tabPageEmployee.Controls.Add(this.pictureBoxEmployee);
-            this.tabPageEmployee.Controls.Add(this.maskedTextBox2);
+            this.tabPageEmployee.Controls.Add(this.maskedTextBoxEmployeePhone);
             this.tabPageEmployee.Controls.Add(this.label18);
             this.tabPageEmployee.Controls.Add(this.label19);
-            this.tabPageEmployee.Controls.Add(this.textBox4);
+            this.tabPageEmployee.Controls.Add(this.textBoxEmployeeDesc);
             this.tabPageEmployee.Controls.Add(this.label20);
-            this.tabPageEmployee.Controls.Add(this.textBox5);
+            this.tabPageEmployee.Controls.Add(this.textBoxLastName);
             this.tabPageEmployee.Controls.Add(this.button4);
             this.tabPageEmployee.Controls.Add(this.button6);
             this.tabPageEmployee.Controls.Add(this.panel3);
@@ -632,15 +626,15 @@ namespace GardenAndOgorodShop
             this.tabPageEmployee.Text = "tabPageEmployee";
             this.tabPageEmployee.UseVisualStyleBackColor = true;
             // 
-            // textBox10
+            // textBoxEmployeePrice
             // 
-            this.textBox10.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox10.Location = new System.Drawing.Point(576, 365);
-            this.textBox10.MaxLength = 5;
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(159, 33);
-            this.textBox10.TabIndex = 89;
-            this.textBox10.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox10_KeyPress);
+            this.textBoxEmployeePrice.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxEmployeePrice.Location = new System.Drawing.Point(576, 365);
+            this.textBoxEmployeePrice.MaxLength = 5;
+            this.textBoxEmployeePrice.Name = "textBoxEmployeePrice";
+            this.textBoxEmployeePrice.Size = new System.Drawing.Size(159, 33);
+            this.textBoxEmployeePrice.TabIndex = 89;
+            this.textBoxEmployeePrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox10_KeyPress);
             // 
             // label23
             // 
@@ -652,14 +646,14 @@ namespace GardenAndOgorodShop
             this.label23.TabIndex = 88;
             this.label23.Text = "Зарплата:";
             // 
-            // textBox9
+            // textBoxPosition
             // 
-            this.textBox9.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox9.Location = new System.Drawing.Point(139, 322);
-            this.textBox9.MaxLength = 250;
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(299, 33);
-            this.textBox9.TabIndex = 87;
+            this.textBoxPosition.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxPosition.Location = new System.Drawing.Point(139, 322);
+            this.textBoxPosition.MaxLength = 250;
+            this.textBoxPosition.Name = "textBoxPosition";
+            this.textBoxPosition.Size = new System.Drawing.Size(299, 33);
+            this.textBoxPosition.TabIndex = 87;
             // 
             // label22
             // 
@@ -671,14 +665,14 @@ namespace GardenAndOgorodShop
             this.label22.TabIndex = 86;
             this.label22.Text = "Должность:";
             // 
-            // textBox8
+            // textBoxEmployeeAddress
             // 
-            this.textBox8.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox8.Location = new System.Drawing.Point(91, 283);
-            this.textBox8.MaxLength = 250;
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(347, 33);
-            this.textBox8.TabIndex = 85;
+            this.textBoxEmployeeAddress.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxEmployeeAddress.Location = new System.Drawing.Point(91, 283);
+            this.textBoxEmployeeAddress.MaxLength = 250;
+            this.textBoxEmployeeAddress.Name = "textBoxEmployeeAddress";
+            this.textBoxEmployeeAddress.Size = new System.Drawing.Size(347, 33);
+            this.textBoxEmployeeAddress.TabIndex = 85;
             // 
             // label9
             // 
@@ -690,14 +684,14 @@ namespace GardenAndOgorodShop
             this.label9.TabIndex = 84;
             this.label9.Text = "Адрес:";
             // 
-            // textBox1
+            // textBoxEmployeeEmail
             // 
-            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox1.Location = new System.Drawing.Point(91, 244);
-            this.textBox1.MaxLength = 250;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(347, 33);
-            this.textBox1.TabIndex = 83;
+            this.textBoxEmployeeEmail.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxEmployeeEmail.Location = new System.Drawing.Point(91, 244);
+            this.textBoxEmployeeEmail.MaxLength = 250;
+            this.textBoxEmployeeEmail.Name = "textBoxEmployeeEmail";
+            this.textBoxEmployeeEmail.Size = new System.Drawing.Size(347, 33);
+            this.textBoxEmployeeEmail.TabIndex = 83;
             // 
             // label1
             // 
@@ -709,17 +703,20 @@ namespace GardenAndOgorodShop
             this.label1.TabIndex = 82;
             this.label1.Text = "email:";
             // 
-            // comboBox1
+            // comboBoxGender
             // 
-            this.comboBox1.BackColor = System.Drawing.SystemColors.Window;
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBox1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(335, 365);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(135, 33);
-            this.comboBox1.TabIndex = 81;
+            this.comboBoxGender.BackColor = System.Drawing.SystemColors.Window;
+            this.comboBoxGender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxGender.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBoxGender.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.comboBoxGender.FormattingEnabled = true;
+            this.comboBoxGender.Items.AddRange(new object[] {
+            "мужской",
+            "женский"});
+            this.comboBoxGender.Location = new System.Drawing.Point(335, 365);
+            this.comboBoxGender.Name = "comboBoxGender";
+            this.comboBoxGender.Size = new System.Drawing.Size(135, 33);
+            this.comboBoxGender.TabIndex = 81;
             // 
             // label21
             // 
@@ -772,14 +769,14 @@ namespace GardenAndOgorodShop
             this.label13.TabIndex = 76;
             this.label13.Text = "Отчество:";
             // 
-            // textBox7
+            // textBoxFathersName
             // 
-            this.textBox7.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox7.Location = new System.Drawing.Point(117, 159);
-            this.textBox7.MaxLength = 250;
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(321, 33);
-            this.textBox7.TabIndex = 75;
+            this.textBoxFathersName.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxFathersName.Location = new System.Drawing.Point(117, 159);
+            this.textBoxFathersName.MaxLength = 250;
+            this.textBoxFathersName.Name = "textBoxFathersName";
+            this.textBoxFathersName.Size = new System.Drawing.Size(321, 33);
+            this.textBoxFathersName.TabIndex = 75;
             // 
             // label12
             // 
@@ -791,19 +788,19 @@ namespace GardenAndOgorodShop
             this.label12.TabIndex = 74;
             this.label12.Text = "Имя:";
             // 
-            // textBox6
+            // textBoxFirstName
             // 
-            this.textBox6.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox6.Location = new System.Drawing.Point(117, 120);
-            this.textBox6.MaxLength = 250;
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(321, 33);
-            this.textBox6.TabIndex = 73;
+            this.textBoxFirstName.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxFirstName.Location = new System.Drawing.Point(117, 120);
+            this.textBoxFirstName.MaxLength = 250;
+            this.textBoxFirstName.Name = "textBoxFirstName";
+            this.textBoxFirstName.Size = new System.Drawing.Size(321, 33);
+            this.textBoxFirstName.TabIndex = 73;
             // 
             // pictureBoxEmployee
             // 
             this.pictureBoxEmployee.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.none_employee;
-            this.pictureBoxEmployee.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBoxEmployee.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBoxEmployee.Location = new System.Drawing.Point(444, 81);
             this.pictureBoxEmployee.Name = "pictureBoxEmployee";
             this.pictureBoxEmployee.Size = new System.Drawing.Size(287, 265);
@@ -811,14 +808,14 @@ namespace GardenAndOgorodShop
             this.pictureBoxEmployee.TabStop = false;
             this.pictureBoxEmployee.Click += new System.EventHandler(this.pictureBoxEmployee_Click);
             // 
-            // maskedTextBox2
+            // maskedTextBoxEmployeePhone
             // 
-            this.maskedTextBox2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.maskedTextBox2.Location = new System.Drawing.Point(110, 365);
-            this.maskedTextBox2.Mask = "+7-(999)-000-00-00";
-            this.maskedTextBox2.Name = "maskedTextBox2";
-            this.maskedTextBox2.Size = new System.Drawing.Size(162, 33);
-            this.maskedTextBox2.TabIndex = 70;
+            this.maskedTextBoxEmployeePhone.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.maskedTextBoxEmployeePhone.Location = new System.Drawing.Point(110, 365);
+            this.maskedTextBoxEmployeePhone.Mask = "+7-(999)-000-00-00";
+            this.maskedTextBoxEmployeePhone.Name = "maskedTextBoxEmployeePhone";
+            this.maskedTextBoxEmployeePhone.Size = new System.Drawing.Size(162, 33);
+            this.maskedTextBoxEmployeePhone.TabIndex = 70;
             // 
             // label18
             // 
@@ -840,15 +837,15 @@ namespace GardenAndOgorodShop
             this.label19.TabIndex = 59;
             this.label19.Text = "Описание:";
             // 
-            // textBox4
+            // textBoxEmployeeDesc
             // 
-            this.textBox4.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox4.Location = new System.Drawing.Point(125, 408);
-            this.textBox4.MaxLength = 1000;
-            this.textBox4.Multiline = true;
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(304, 36);
-            this.textBox4.TabIndex = 58;
+            this.textBoxEmployeeDesc.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxEmployeeDesc.Location = new System.Drawing.Point(125, 408);
+            this.textBoxEmployeeDesc.MaxLength = 1000;
+            this.textBoxEmployeeDesc.Multiline = true;
+            this.textBoxEmployeeDesc.Name = "textBoxEmployeeDesc";
+            this.textBoxEmployeeDesc.Size = new System.Drawing.Size(304, 36);
+            this.textBoxEmployeeDesc.TabIndex = 58;
             // 
             // label20
             // 
@@ -860,14 +857,14 @@ namespace GardenAndOgorodShop
             this.label20.TabIndex = 57;
             this.label20.Text = "Фамилия:";
             // 
-            // textBox5
+            // textBoxLastName
             // 
-            this.textBox5.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox5.Location = new System.Drawing.Point(117, 81);
-            this.textBox5.MaxLength = 250;
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(321, 33);
-            this.textBox5.TabIndex = 56;
+            this.textBoxLastName.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxLastName.Location = new System.Drawing.Point(117, 81);
+            this.textBoxLastName.MaxLength = 250;
+            this.textBoxLastName.Name = "textBoxLastName";
+            this.textBoxLastName.Size = new System.Drawing.Size(321, 33);
+            this.textBoxLastName.TabIndex = 56;
             // 
             // button4
             // 
@@ -917,16 +914,16 @@ namespace GardenAndOgorodShop
             // 
             // tabPageUser
             // 
-            this.tabPageUser.Controls.Add(this.comboBox3);
+            this.tabPageUser.Controls.Add(this.comboBoxEmployeeUser);
             this.tabPageUser.Controls.Add(this.label24);
-            this.tabPageUser.Controls.Add(this.comboBox2);
+            this.tabPageUser.Controls.Add(this.comboBoxRole);
             this.tabPageUser.Controls.Add(this.label28);
             this.tabPageUser.Controls.Add(this.label32);
-            this.tabPageUser.Controls.Add(this.textBox16);
+            this.tabPageUser.Controls.Add(this.textBoxPwd);
             this.tabPageUser.Controls.Add(this.label34);
-            this.tabPageUser.Controls.Add(this.textBox17);
+            this.tabPageUser.Controls.Add(this.textBoxUserDesc);
             this.tabPageUser.Controls.Add(this.label35);
-            this.tabPageUser.Controls.Add(this.textBox18);
+            this.tabPageUser.Controls.Add(this.textBoxLogin);
             this.tabPageUser.Controls.Add(this.button7);
             this.tabPageUser.Controls.Add(this.button8);
             this.tabPageUser.Controls.Add(this.panel4);
@@ -937,17 +934,17 @@ namespace GardenAndOgorodShop
             this.tabPageUser.Text = "tabPageUser";
             this.tabPageUser.UseVisualStyleBackColor = true;
             // 
-            // comboBox3
+            // comboBoxEmployeeUser
             // 
-            this.comboBox3.BackColor = System.Drawing.SystemColors.Window;
-            this.comboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBox3.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(117, 219);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(321, 33);
-            this.comboBox3.TabIndex = 110;
+            this.comboBoxEmployeeUser.BackColor = System.Drawing.SystemColors.Window;
+            this.comboBoxEmployeeUser.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxEmployeeUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBoxEmployeeUser.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.comboBoxEmployeeUser.FormattingEnabled = true;
+            this.comboBoxEmployeeUser.Location = new System.Drawing.Point(117, 219);
+            this.comboBoxEmployeeUser.Name = "comboBoxEmployeeUser";
+            this.comboBoxEmployeeUser.Size = new System.Drawing.Size(321, 33);
+            this.comboBoxEmployeeUser.TabIndex = 110;
             // 
             // label24
             // 
@@ -959,20 +956,20 @@ namespace GardenAndOgorodShop
             this.label24.TabIndex = 109;
             this.label24.Text = "Сотрудник:";
             // 
-            // comboBox2
+            // comboBoxRole
             // 
-            this.comboBox2.BackColor = System.Drawing.SystemColors.Window;
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBox2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
+            this.comboBoxRole.BackColor = System.Drawing.SystemColors.Window;
+            this.comboBoxRole.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxRole.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBoxRole.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.comboBoxRole.FormattingEnabled = true;
+            this.comboBoxRole.Items.AddRange(new object[] {
             "Администратор",
             "Продавец"});
-            this.comboBox2.Location = new System.Drawing.Point(117, 168);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(194, 33);
-            this.comboBox2.TabIndex = 108;
+            this.comboBoxRole.Location = new System.Drawing.Point(117, 168);
+            this.comboBoxRole.Name = "comboBoxRole";
+            this.comboBoxRole.Size = new System.Drawing.Size(194, 33);
+            this.comboBoxRole.TabIndex = 108;
             // 
             // label28
             // 
@@ -994,14 +991,14 @@ namespace GardenAndOgorodShop
             this.label32.TabIndex = 101;
             this.label32.Text = "Пароль:";
             // 
-            // textBox16
+            // textBoxPwd
             // 
-            this.textBox16.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox16.Location = new System.Drawing.Point(117, 120);
-            this.textBox16.MaxLength = 250;
-            this.textBox16.Name = "textBox16";
-            this.textBox16.Size = new System.Drawing.Size(321, 33);
-            this.textBox16.TabIndex = 100;
+            this.textBoxPwd.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxPwd.Location = new System.Drawing.Point(117, 120);
+            this.textBoxPwd.MaxLength = 250;
+            this.textBoxPwd.Name = "textBoxPwd";
+            this.textBoxPwd.Size = new System.Drawing.Size(321, 33);
+            this.textBoxPwd.TabIndex = 100;
             // 
             // label34
             // 
@@ -1013,15 +1010,15 @@ namespace GardenAndOgorodShop
             this.label34.TabIndex = 96;
             this.label34.Text = "Описание:";
             // 
-            // textBox17
+            // textBoxUserDesc
             // 
-            this.textBox17.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox17.Location = new System.Drawing.Point(118, 271);
-            this.textBox17.MaxLength = 1000;
-            this.textBox17.Multiline = true;
-            this.textBox17.Name = "textBox17";
-            this.textBox17.Size = new System.Drawing.Size(320, 91);
-            this.textBox17.TabIndex = 95;
+            this.textBoxUserDesc.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxUserDesc.Location = new System.Drawing.Point(118, 271);
+            this.textBoxUserDesc.MaxLength = 1000;
+            this.textBoxUserDesc.Multiline = true;
+            this.textBoxUserDesc.Name = "textBoxUserDesc";
+            this.textBoxUserDesc.Size = new System.Drawing.Size(320, 91);
+            this.textBoxUserDesc.TabIndex = 95;
             // 
             // label35
             // 
@@ -1033,14 +1030,14 @@ namespace GardenAndOgorodShop
             this.label35.TabIndex = 94;
             this.label35.Text = "Логин:";
             // 
-            // textBox18
+            // textBoxLogin
             // 
-            this.textBox18.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox18.Location = new System.Drawing.Point(117, 81);
-            this.textBox18.MaxLength = 49;
-            this.textBox18.Name = "textBox18";
-            this.textBox18.Size = new System.Drawing.Size(321, 33);
-            this.textBox18.TabIndex = 93;
+            this.textBoxLogin.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxLogin.Location = new System.Drawing.Point(117, 81);
+            this.textBoxLogin.MaxLength = 49;
+            this.textBoxLogin.Name = "textBoxLogin";
+            this.textBoxLogin.Size = new System.Drawing.Size(321, 33);
+            this.textBoxLogin.TabIndex = 93;
             // 
             // button7
             // 
@@ -1091,15 +1088,15 @@ namespace GardenAndOgorodShop
             // tabPageBrand
             // 
             this.tabPageBrand.Controls.Add(this.label25);
-            this.tabPageBrand.Controls.Add(this.textBox14);
-            this.tabPageBrand.Controls.Add(this.maskedTextBox1);
+            this.tabPageBrand.Controls.Add(this.textBoxManAddress);
+            this.tabPageBrand.Controls.Add(this.maskedTextBoxManPhone);
             this.tabPageBrand.Controls.Add(this.label26);
             this.tabPageBrand.Controls.Add(this.label27);
-            this.tabPageBrand.Controls.Add(this.textBox11);
+            this.tabPageBrand.Controls.Add(this.textBoxManEmail);
             this.tabPageBrand.Controls.Add(this.label29);
-            this.tabPageBrand.Controls.Add(this.textBox12);
+            this.tabPageBrand.Controls.Add(this.textBoxManDesc);
             this.tabPageBrand.Controls.Add(this.label30);
-            this.tabPageBrand.Controls.Add(this.textBox13);
+            this.tabPageBrand.Controls.Add(this.textBoxManName);
             this.tabPageBrand.Controls.Add(this.button9);
             this.tabPageBrand.Controls.Add(this.button10);
             this.tabPageBrand.Controls.Add(this.panel5);
@@ -1120,23 +1117,23 @@ namespace GardenAndOgorodShop
             this.label25.TabIndex = 127;
             this.label25.Text = "Юрид. адрес:";
             // 
-            // textBox14
+            // textBoxManAddress
             // 
-            this.textBox14.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox14.Location = new System.Drawing.Point(141, 217);
-            this.textBox14.MaxLength = 250;
-            this.textBox14.Name = "textBox14";
-            this.textBox14.Size = new System.Drawing.Size(297, 33);
-            this.textBox14.TabIndex = 126;
+            this.textBoxManAddress.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxManAddress.Location = new System.Drawing.Point(141, 217);
+            this.textBoxManAddress.MaxLength = 250;
+            this.textBoxManAddress.Name = "textBoxManAddress";
+            this.textBoxManAddress.Size = new System.Drawing.Size(297, 33);
+            this.textBoxManAddress.TabIndex = 126;
             // 
-            // maskedTextBox1
+            // maskedTextBoxManPhone
             // 
-            this.maskedTextBox1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.maskedTextBox1.Location = new System.Drawing.Point(118, 173);
-            this.maskedTextBox1.Mask = "+7-(999)-000-00-00";
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(162, 33);
-            this.maskedTextBox1.TabIndex = 125;
+            this.maskedTextBoxManPhone.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.maskedTextBoxManPhone.Location = new System.Drawing.Point(118, 173);
+            this.maskedTextBoxManPhone.Mask = "+7-(999)-000-00-00";
+            this.maskedTextBoxManPhone.Name = "maskedTextBoxManPhone";
+            this.maskedTextBoxManPhone.Size = new System.Drawing.Size(162, 33);
+            this.maskedTextBoxManPhone.TabIndex = 125;
             // 
             // label26
             // 
@@ -1158,14 +1155,14 @@ namespace GardenAndOgorodShop
             this.label27.TabIndex = 119;
             this.label27.Text = "email:";
             // 
-            // textBox11
+            // textBoxManEmail
             // 
-            this.textBox11.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox11.Location = new System.Drawing.Point(117, 130);
-            this.textBox11.MaxLength = 250;
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(321, 33);
-            this.textBox11.TabIndex = 118;
+            this.textBoxManEmail.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxManEmail.Location = new System.Drawing.Point(117, 130);
+            this.textBoxManEmail.MaxLength = 250;
+            this.textBoxManEmail.Name = "textBoxManEmail";
+            this.textBoxManEmail.Size = new System.Drawing.Size(321, 33);
+            this.textBoxManEmail.TabIndex = 118;
             // 
             // label29
             // 
@@ -1177,15 +1174,15 @@ namespace GardenAndOgorodShop
             this.label29.TabIndex = 117;
             this.label29.Text = "Описание:";
             // 
-            // textBox12
+            // textBoxManDesc
             // 
-            this.textBox12.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox12.Location = new System.Drawing.Point(118, 281);
-            this.textBox12.MaxLength = 1000;
-            this.textBox12.Multiline = true;
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(320, 91);
-            this.textBox12.TabIndex = 116;
+            this.textBoxManDesc.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxManDesc.Location = new System.Drawing.Point(118, 281);
+            this.textBoxManDesc.MaxLength = 1000;
+            this.textBoxManDesc.Multiline = true;
+            this.textBoxManDesc.Name = "textBoxManDesc";
+            this.textBoxManDesc.Size = new System.Drawing.Size(320, 91);
+            this.textBoxManDesc.TabIndex = 116;
             // 
             // label30
             // 
@@ -1197,14 +1194,14 @@ namespace GardenAndOgorodShop
             this.label30.TabIndex = 115;
             this.label30.Text = "Название:";
             // 
-            // textBox13
+            // textBoxManName
             // 
-            this.textBox13.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox13.Location = new System.Drawing.Point(117, 91);
-            this.textBox13.MaxLength = 49;
-            this.textBox13.Name = "textBox13";
-            this.textBox13.Size = new System.Drawing.Size(321, 33);
-            this.textBox13.TabIndex = 114;
+            this.textBoxManName.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxManName.Location = new System.Drawing.Point(117, 91);
+            this.textBoxManName.MaxLength = 49;
+            this.textBoxManName.Name = "textBoxManName";
+            this.textBoxManName.Size = new System.Drawing.Size(321, 33);
+            this.textBoxManName.TabIndex = 114;
             // 
             // button9
             // 
@@ -1248,24 +1245,24 @@ namespace GardenAndOgorodShop
             this.label31.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(120)))), ((int)(((byte)(56)))));
             this.label31.Location = new System.Drawing.Point(8, 6);
             this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(326, 50);
+            this.label31.Size = new System.Drawing.Size(306, 50);
             this.label31.TabIndex = 2;
-            this.label31.Text = "Произваодитель";
+            this.label31.Text = "Производитель";
             // 
             // tabPage6
             // 
             this.tabPage6.Controls.Add(this.label42);
-            this.tabPage6.Controls.Add(this.textBox22);
+            this.tabPage6.Controls.Add(this.textBoxSupINN);
             this.tabPage6.Controls.Add(this.label33);
-            this.tabPage6.Controls.Add(this.textBox15);
-            this.tabPage6.Controls.Add(this.maskedTextBox3);
+            this.tabPage6.Controls.Add(this.textBoxSupAddress);
+            this.tabPage6.Controls.Add(this.maskedTextBoxSupPhone);
             this.tabPage6.Controls.Add(this.label37);
             this.tabPage6.Controls.Add(this.label38);
-            this.tabPage6.Controls.Add(this.textBox19);
+            this.tabPage6.Controls.Add(this.textBoxSupEmail);
             this.tabPage6.Controls.Add(this.label39);
-            this.tabPage6.Controls.Add(this.textBox20);
+            this.tabPage6.Controls.Add(this.textBoxSupDesc);
             this.tabPage6.Controls.Add(this.label40);
-            this.tabPage6.Controls.Add(this.textBox21);
+            this.tabPage6.Controls.Add(this.textBoxSupName);
             this.tabPage6.Controls.Add(this.button11);
             this.tabPage6.Controls.Add(this.button12);
             this.tabPage6.Controls.Add(this.panel6);
@@ -1286,15 +1283,15 @@ namespace GardenAndOgorodShop
             this.label42.TabIndex = 142;
             this.label42.Text = "ИНН:";
             // 
-            // textBox22
+            // textBoxSupINN
             // 
-            this.textBox22.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox22.Location = new System.Drawing.Point(141, 266);
-            this.textBox22.MaxLength = 50;
-            this.textBox22.Name = "textBox22";
-            this.textBox22.Size = new System.Drawing.Size(297, 33);
-            this.textBox22.TabIndex = 141;
-            this.textBox22.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox22_KeyPress);
+            this.textBoxSupINN.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxSupINN.Location = new System.Drawing.Point(141, 266);
+            this.textBoxSupINN.MaxLength = 50;
+            this.textBoxSupINN.Name = "textBoxSupINN";
+            this.textBoxSupINN.Size = new System.Drawing.Size(297, 33);
+            this.textBoxSupINN.TabIndex = 141;
+            this.textBoxSupINN.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox22_KeyPress);
             // 
             // label33
             // 
@@ -1306,23 +1303,23 @@ namespace GardenAndOgorodShop
             this.label33.TabIndex = 140;
             this.label33.Text = "Юрид. адрес:";
             // 
-            // textBox15
+            // textBoxSupAddress
             // 
-            this.textBox15.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox15.Location = new System.Drawing.Point(141, 217);
-            this.textBox15.MaxLength = 250;
-            this.textBox15.Name = "textBox15";
-            this.textBox15.Size = new System.Drawing.Size(297, 33);
-            this.textBox15.TabIndex = 139;
+            this.textBoxSupAddress.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxSupAddress.Location = new System.Drawing.Point(141, 217);
+            this.textBoxSupAddress.MaxLength = 250;
+            this.textBoxSupAddress.Name = "textBoxSupAddress";
+            this.textBoxSupAddress.Size = new System.Drawing.Size(297, 33);
+            this.textBoxSupAddress.TabIndex = 139;
             // 
-            // maskedTextBox3
+            // maskedTextBoxSupPhone
             // 
-            this.maskedTextBox3.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.maskedTextBox3.Location = new System.Drawing.Point(118, 173);
-            this.maskedTextBox3.Mask = "+7-(999)-000-00-00";
-            this.maskedTextBox3.Name = "maskedTextBox3";
-            this.maskedTextBox3.Size = new System.Drawing.Size(161, 33);
-            this.maskedTextBox3.TabIndex = 138;
+            this.maskedTextBoxSupPhone.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.maskedTextBoxSupPhone.Location = new System.Drawing.Point(118, 173);
+            this.maskedTextBoxSupPhone.Mask = "+7-(999)-000-00-00";
+            this.maskedTextBoxSupPhone.Name = "maskedTextBoxSupPhone";
+            this.maskedTextBoxSupPhone.Size = new System.Drawing.Size(161, 33);
+            this.maskedTextBoxSupPhone.TabIndex = 138;
             // 
             // label37
             // 
@@ -1344,14 +1341,14 @@ namespace GardenAndOgorodShop
             this.label38.TabIndex = 136;
             this.label38.Text = "email:";
             // 
-            // textBox19
+            // textBoxSupEmail
             // 
-            this.textBox19.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox19.Location = new System.Drawing.Point(117, 130);
-            this.textBox19.MaxLength = 250;
-            this.textBox19.Name = "textBox19";
-            this.textBox19.Size = new System.Drawing.Size(321, 33);
-            this.textBox19.TabIndex = 135;
+            this.textBoxSupEmail.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxSupEmail.Location = new System.Drawing.Point(117, 130);
+            this.textBoxSupEmail.MaxLength = 250;
+            this.textBoxSupEmail.Name = "textBoxSupEmail";
+            this.textBoxSupEmail.Size = new System.Drawing.Size(321, 33);
+            this.textBoxSupEmail.TabIndex = 135;
             // 
             // label39
             // 
@@ -1363,15 +1360,15 @@ namespace GardenAndOgorodShop
             this.label39.TabIndex = 134;
             this.label39.Text = "Описание:";
             // 
-            // textBox20
+            // textBoxSupDesc
             // 
-            this.textBox20.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox20.Location = new System.Drawing.Point(118, 313);
-            this.textBox20.MaxLength = 1000;
-            this.textBox20.Multiline = true;
-            this.textBox20.Name = "textBox20";
-            this.textBox20.Size = new System.Drawing.Size(320, 71);
-            this.textBox20.TabIndex = 133;
+            this.textBoxSupDesc.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxSupDesc.Location = new System.Drawing.Point(118, 313);
+            this.textBoxSupDesc.MaxLength = 1000;
+            this.textBoxSupDesc.Multiline = true;
+            this.textBoxSupDesc.Name = "textBoxSupDesc";
+            this.textBoxSupDesc.Size = new System.Drawing.Size(320, 71);
+            this.textBoxSupDesc.TabIndex = 133;
             // 
             // label40
             // 
@@ -1383,14 +1380,14 @@ namespace GardenAndOgorodShop
             this.label40.TabIndex = 132;
             this.label40.Text = "Название:";
             // 
-            // textBox21
+            // textBoxSupName
             // 
-            this.textBox21.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox21.Location = new System.Drawing.Point(117, 91);
-            this.textBox21.MaxLength = 49;
-            this.textBox21.Name = "textBox21";
-            this.textBox21.Size = new System.Drawing.Size(321, 33);
-            this.textBox21.TabIndex = 131;
+            this.textBoxSupName.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxSupName.Location = new System.Drawing.Point(117, 91);
+            this.textBoxSupName.MaxLength = 49;
+            this.textBoxSupName.Name = "textBoxSupName";
+            this.textBoxSupName.Size = new System.Drawing.Size(321, 33);
+            this.textBoxSupName.TabIndex = 131;
             // 
             // button11
             // 
@@ -1440,18 +1437,18 @@ namespace GardenAndOgorodShop
             // 
             // tabPage7
             // 
-            this.tabPage7.Controls.Add(this.comboBox6);
+            this.tabPage7.Controls.Add(this.comboBoxPayMethod);
             this.tabPage7.Controls.Add(this.label45);
-            this.tabPage7.Controls.Add(this.comboBox5);
+            this.tabPage7.Controls.Add(this.comboBoxStatus);
             this.tabPage7.Controls.Add(this.label46);
             this.tabPage7.Controls.Add(this.label50);
-            this.tabPage7.Controls.Add(this.dateTimePicker1);
-            this.tabPage7.Controls.Add(this.comboBox4);
+            this.tabPage7.Controls.Add(this.dateTimePickerOrder);
+            this.tabPage7.Controls.Add(this.comboBoxEmployeeOrder);
             this.tabPage7.Controls.Add(this.label48);
             this.tabPage7.Controls.Add(this.label43);
-            this.tabPage7.Controls.Add(this.textBox23);
+            this.tabPage7.Controls.Add(this.textBoxTotalCost);
             this.tabPage7.Controls.Add(this.label47);
-            this.tabPage7.Controls.Add(this.textBox26);
+            this.tabPage7.Controls.Add(this.textBoxOrderDesc);
             this.tabPage7.Controls.Add(this.button13);
             this.tabPage7.Controls.Add(this.button14);
             this.tabPage7.Controls.Add(this.panel7);
@@ -1462,21 +1459,20 @@ namespace GardenAndOgorodShop
             this.tabPage7.Text = "tabPageOrder";
             this.tabPage7.UseVisualStyleBackColor = true;
             // 
-            // comboBox6
+            // comboBoxPayMethod
             // 
-            this.comboBox6.BackColor = System.Drawing.SystemColors.Window;
-            this.comboBox6.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBox6.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.comboBox6.FormattingEnabled = true;
-            this.comboBox6.Items.AddRange(new object[] {
-            "Отменено",
-            "Обработка",
-            "Успешно"});
-            this.comboBox6.Location = new System.Drawing.Point(168, 215);
-            this.comboBox6.Name = "comboBox6";
-            this.comboBox6.Size = new System.Drawing.Size(241, 33);
-            this.comboBox6.TabIndex = 165;
+            this.comboBoxPayMethod.BackColor = System.Drawing.SystemColors.Window;
+            this.comboBoxPayMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxPayMethod.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBoxPayMethod.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.comboBoxPayMethod.FormattingEnabled = true;
+            this.comboBoxPayMethod.Items.AddRange(new object[] {
+            "Наличными",
+            "Безналичными"});
+            this.comboBoxPayMethod.Location = new System.Drawing.Point(168, 215);
+            this.comboBoxPayMethod.Name = "comboBoxPayMethod";
+            this.comboBoxPayMethod.Size = new System.Drawing.Size(241, 33);
+            this.comboBoxPayMethod.TabIndex = 165;
             // 
             // label45
             // 
@@ -1488,21 +1484,21 @@ namespace GardenAndOgorodShop
             this.label45.TabIndex = 164;
             this.label45.Text = "Способ оплаты:";
             // 
-            // comboBox5
+            // comboBoxStatus
             // 
-            this.comboBox5.BackColor = System.Drawing.SystemColors.Window;
-            this.comboBox5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBox5.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Items.AddRange(new object[] {
+            this.comboBoxStatus.BackColor = System.Drawing.SystemColors.Window;
+            this.comboBoxStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxStatus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBoxStatus.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.comboBoxStatus.FormattingEnabled = true;
+            this.comboBoxStatus.Items.AddRange(new object[] {
             "Отменено",
             "Обработка",
             "Успешно"});
-            this.comboBox5.Location = new System.Drawing.Point(117, 173);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(207, 33);
-            this.comboBox5.TabIndex = 163;
+            this.comboBoxStatus.Location = new System.Drawing.Point(117, 173);
+            this.comboBoxStatus.Name = "comboBoxStatus";
+            this.comboBoxStatus.Size = new System.Drawing.Size(207, 33);
+            this.comboBoxStatus.TabIndex = 163;
             // 
             // label46
             // 
@@ -1524,28 +1520,28 @@ namespace GardenAndOgorodShop
             this.label50.TabIndex = 161;
             this.label50.Text = "Дата:";
             // 
-            // dateTimePicker1
+            // dateTimePickerOrder
             // 
-            this.dateTimePicker1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.dateTimePicker1.Location = new System.Drawing.Point(118, 134);
-            this.dateTimePicker1.MaxDate = new System.DateTime(2010, 1, 1, 0, 0, 0, 0);
-            this.dateTimePicker1.MinDate = new System.DateTime(1970, 1, 1, 0, 0, 0, 0);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(206, 33);
-            this.dateTimePicker1.TabIndex = 160;
-            this.dateTimePicker1.Value = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
+            this.dateTimePickerOrder.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.dateTimePickerOrder.Location = new System.Drawing.Point(118, 134);
+            this.dateTimePickerOrder.MaxDate = new System.DateTime(2010, 1, 1, 0, 0, 0, 0);
+            this.dateTimePickerOrder.MinDate = new System.DateTime(1970, 1, 1, 0, 0, 0, 0);
+            this.dateTimePickerOrder.Name = "dateTimePickerOrder";
+            this.dateTimePickerOrder.Size = new System.Drawing.Size(206, 33);
+            this.dateTimePickerOrder.TabIndex = 160;
+            this.dateTimePickerOrder.Value = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
             // 
-            // comboBox4
+            // comboBoxEmployeeOrder
             // 
-            this.comboBox4.BackColor = System.Drawing.SystemColors.Window;
-            this.comboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBox4.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(122, 89);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(321, 33);
-            this.comboBox4.TabIndex = 159;
+            this.comboBoxEmployeeOrder.BackColor = System.Drawing.SystemColors.Window;
+            this.comboBoxEmployeeOrder.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxEmployeeOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBoxEmployeeOrder.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.comboBoxEmployeeOrder.FormattingEnabled = true;
+            this.comboBoxEmployeeOrder.Location = new System.Drawing.Point(122, 89);
+            this.comboBoxEmployeeOrder.Name = "comboBoxEmployeeOrder";
+            this.comboBoxEmployeeOrder.Size = new System.Drawing.Size(321, 33);
+            this.comboBoxEmployeeOrder.TabIndex = 159;
             // 
             // label48
             // 
@@ -1567,14 +1563,14 @@ namespace GardenAndOgorodShop
             this.label43.TabIndex = 157;
             this.label43.Text = "Итоговая стоимость:";
             // 
-            // textBox23
+            // textBoxTotalCost
             // 
-            this.textBox23.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox23.Location = new System.Drawing.Point(207, 256);
-            this.textBox23.MaxLength = 5;
-            this.textBox23.Name = "textBox23";
-            this.textBox23.Size = new System.Drawing.Size(85, 33);
-            this.textBox23.TabIndex = 156;
+            this.textBoxTotalCost.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxTotalCost.Location = new System.Drawing.Point(207, 256);
+            this.textBoxTotalCost.MaxLength = 5;
+            this.textBoxTotalCost.Name = "textBoxTotalCost";
+            this.textBoxTotalCost.Size = new System.Drawing.Size(85, 33);
+            this.textBoxTotalCost.TabIndex = 156;
             // 
             // label47
             // 
@@ -1586,15 +1582,15 @@ namespace GardenAndOgorodShop
             this.label47.TabIndex = 149;
             this.label47.Text = "Описание:";
             // 
-            // textBox26
+            // textBoxOrderDesc
             // 
-            this.textBox26.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox26.Location = new System.Drawing.Point(118, 313);
-            this.textBox26.MaxLength = 1000;
-            this.textBox26.Multiline = true;
-            this.textBox26.Name = "textBox26";
-            this.textBox26.Size = new System.Drawing.Size(320, 71);
-            this.textBox26.TabIndex = 148;
+            this.textBoxOrderDesc.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxOrderDesc.Location = new System.Drawing.Point(118, 313);
+            this.textBoxOrderDesc.MaxLength = 1000;
+            this.textBoxOrderDesc.Multiline = true;
+            this.textBoxOrderDesc.Name = "textBoxOrderDesc";
+            this.textBoxOrderDesc.Size = new System.Drawing.Size(320, 71);
+            this.textBoxOrderDesc.TabIndex = 148;
             // 
             // button13
             // 
@@ -1739,36 +1735,6 @@ namespace GardenAndOgorodShop
             this.button5.TabIndex = 20;
             this.button5.UseVisualStyleBackColor = true;
             // 
-            // label53
-            // 
-            this.label53.AutoSize = true;
-            this.label53.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label53.Location = new System.Drawing.Point(200, 418);
-            this.label53.Name = "label53";
-            this.label53.Size = new System.Drawing.Size(34, 21);
-            this.label53.TabIndex = 36;
-            this.label53.Text = "шт.";
-            // 
-            // label54
-            // 
-            this.label54.AutoSize = true;
-            this.label54.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label54.Location = new System.Drawing.Point(25, 413);
-            this.label54.Name = "label54";
-            this.label54.Size = new System.Drawing.Size(102, 25);
-            this.label54.TabIndex = 35;
-            this.label54.Text = "На складе:";
-            // 
-            // textBoxAmountInStock
-            // 
-            this.textBoxAmountInStock.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxAmountInStock.Location = new System.Drawing.Point(138, 411);
-            this.textBoxAmountInStock.MaxLength = 5;
-            this.textBoxAmountInStock.Name = "textBoxAmountInStock";
-            this.textBoxAmountInStock.Size = new System.Drawing.Size(56, 33);
-            this.textBoxAmountInStock.TabIndex = 34;
-            this.textBoxAmountInStock.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxAmountInStock_KeyPress);
-            // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
@@ -1862,95 +1828,95 @@ namespace GardenAndOgorodShop
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBoxCategoryDesc;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBoxCategoryTitle;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.TextBox textBoxEmployeePrice;
         private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox textBoxPosition;
         private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox textBoxEmployeeAddress;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxEmployeeEmail;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBoxGender;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label labelAge;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.DateTimePicker dateTimePickerAge;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox textBoxFathersName;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox textBoxFirstName;
         private System.Windows.Forms.PictureBox pictureBoxEmployee;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox2;
+        private System.Windows.Forms.MaskedTextBox maskedTextBoxEmployeePhone;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox textBoxEmployeeDesc;
         private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox textBoxLastName;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox comboBoxEmployeeUser;
         private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox comboBoxRole;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Label label32;
-        private System.Windows.Forms.TextBox textBox16;
+        private System.Windows.Forms.TextBox textBoxPwd;
         private System.Windows.Forms.Label label34;
-        private System.Windows.Forms.TextBox textBox17;
+        private System.Windows.Forms.TextBox textBoxUserDesc;
         private System.Windows.Forms.Label label35;
-        private System.Windows.Forms.TextBox textBox18;
+        private System.Windows.Forms.TextBox textBoxLogin;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label36;
         private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.TextBox textBox11;
+        private System.Windows.Forms.TextBox textBoxManEmail;
         private System.Windows.Forms.Label label29;
-        private System.Windows.Forms.TextBox textBox12;
+        private System.Windows.Forms.TextBox textBoxManDesc;
         private System.Windows.Forms.Label label30;
-        private System.Windows.Forms.TextBox textBox13;
+        private System.Windows.Forms.TextBox textBoxManName;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.TextBox textBox14;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private System.Windows.Forms.TextBox textBoxManAddress;
+        private System.Windows.Forms.MaskedTextBox maskedTextBoxManPhone;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label label42;
-        private System.Windows.Forms.TextBox textBox22;
+        private System.Windows.Forms.TextBox textBoxSupINN;
         private System.Windows.Forms.Label label33;
-        private System.Windows.Forms.TextBox textBox15;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox3;
+        private System.Windows.Forms.TextBox textBoxSupAddress;
+        private System.Windows.Forms.MaskedTextBox maskedTextBoxSupPhone;
         private System.Windows.Forms.Label label37;
         private System.Windows.Forms.Label label38;
-        private System.Windows.Forms.TextBox textBox19;
+        private System.Windows.Forms.TextBox textBoxSupEmail;
         private System.Windows.Forms.Label label39;
-        private System.Windows.Forms.TextBox textBox20;
+        private System.Windows.Forms.TextBox textBoxSupDesc;
         private System.Windows.Forms.Label label40;
-        private System.Windows.Forms.TextBox textBox21;
+        private System.Windows.Forms.TextBox textBoxSupName;
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Label label41;
-        private System.Windows.Forms.ComboBox comboBox6;
+        private System.Windows.Forms.ComboBox comboBoxPayMethod;
         private System.Windows.Forms.Label label45;
-        private System.Windows.Forms.ComboBox comboBox5;
+        private System.Windows.Forms.ComboBox comboBoxStatus;
         private System.Windows.Forms.Label label46;
         private System.Windows.Forms.Label label50;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.ComboBox comboBox4;
+        private System.Windows.Forms.DateTimePicker dateTimePickerOrder;
+        private System.Windows.Forms.ComboBox comboBoxEmployeeOrder;
         private System.Windows.Forms.Label label48;
         private System.Windows.Forms.Label label43;
-        private System.Windows.Forms.TextBox textBox23;
+        private System.Windows.Forms.TextBox textBoxTotalCost;
         private System.Windows.Forms.Label label47;
-        private System.Windows.Forms.TextBox textBox26;
+        private System.Windows.Forms.TextBox textBoxOrderDesc;
         private System.Windows.Forms.Button button13;
         private System.Windows.Forms.Button button14;
         private System.Windows.Forms.Panel panel7;
@@ -1960,9 +1926,6 @@ namespace GardenAndOgorodShop
         private System.Windows.Forms.Label label44;
         private System.Windows.Forms.TextBox textBoxProductCost;
         private System.Windows.Forms.TextBox textBoxProductSeasonalDiscount;
-        private System.Windows.Forms.Label label53;
-        private System.Windows.Forms.Label label54;
-        private System.Windows.Forms.TextBox textBoxAmountInStock;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }

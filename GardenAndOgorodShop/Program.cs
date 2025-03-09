@@ -16,8 +16,8 @@ namespace GardenAndOgorodShop
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new Main());
-            Application.Run(new HandleRecordForm(0));
+            Application.Run(new Main());
+            //Application.Run(new HandleRecordForm(0));
         }
     }
 }

@@ -361,7 +361,7 @@ namespace GardenAndOgorodShop
 
         private void buttonAddProduct_Click(object sender, EventArgs e)
         {
-            HandleRecordForm form = new HandleRecordForm(0);
+            HandleRecordForm form = new HandleRecordForm(0, "add", 0);
             form.Show();
             this.Hide();
         }
@@ -796,5 +796,15 @@ namespace GardenAndOgorodShop
             saveProducts_delOrder();
         }
         #endregion
+
+        private void buttonInfoProduct_Click(object sender, EventArgs e)
+        {
+            int index_row = dataGridViewProducts.SelectedCells[0].RowIndex;
+            DataRow selected_row = products_table.Rows[index_row];
+            int product_id = Convert.ToInt32(selected_row[0]);
+            HandleRecordForm form = new HandleRecordForm(0, "edit", product_id);
+            form.Show();
+            this.Hide();
+        }
     }
 }

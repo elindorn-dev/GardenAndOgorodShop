@@ -9,6 +9,7 @@ using System.IO;
 using System.Drawing;
 using System.Data;
 using MySqlX.XDevAPI.Relational;
+using System.Data.SqlClient;
 
 namespace GardenAndOgorodShop
 {
@@ -212,6 +213,27 @@ namespace GardenAndOgorodShop
                 return (null, null, null, null);  
             }
         }
+        public static DataTable LoadDataSync(string table)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                MySqlConnection con = new MySqlConnection(connect_string);
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand($"SELECT * FROM {table};", con);
+                cmd.ExecuteNonQuery();
+
+                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+
+                 da.Fill(dt);
+                con.Close();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+            return dt;
+        }
         public static async Task<DataTable> LoadData(string table)
         {
             DataTable dt = new DataTable();
@@ -235,7 +257,7 @@ namespace GardenAndOgorodShop
             return dt;
         }
         #region Add records
-        public static bool InsertProduct(string title, string descript, double price, int category, int brand, int is_avaible, Image image, int supplier, int discount)
+        public static bool InsertProduct(string title, string descript, decimal price, int category, int brand, int is_avaible, Image image, int supplier, decimal discount)
         {
             try
             {
@@ -255,18 +277,18 @@ namespace GardenAndOgorodShop
 
                 using (MySqlCommand cmd = new MySqlCommand(query, con))
                 {
-                    cmd.Parameters.Add("@title", MySqlDbType.VarChar).Value = title;
-                    cmd.Parameters.Add("@descript", MySqlDbType.Text).Value = descript;
-                    cmd.Parameters.Add("@price", MySqlDbType.Decimal).Value = price;
+                    cmd.Parameters.AddWithValue("@title", title);
+                    cmd.Parameters.AddWithValue("@descript", descript);
+                    cmd.Parameters.AddWithValue("@price", price);
                     category = category == 0 ? 1 : category;
-                    cmd.Parameters.Add("@category", MySqlDbType.Int32).Value = category;
+                    cmd.Parameters.AddWithValue("@category", category);
                     brand = brand == 0 ? 1 : brand;
-                    cmd.Parameters.Add("@brand", MySqlDbType.Int32).Value = brand;
-                    cmd.Parameters.Add("@is_available", MySqlDbType.Int32).Value = is_avaible;
+                    cmd.Parameters.AddWithValue("@brand", brand);
+                    cmd.Parameters.AddWithValue("@is_available", is_avaible);
                     cmd.Parameters.Add("@image", MySqlDbType.MediumBlob).Value = blobData;
                     supplier = supplier == 0 ? 1 : supplier;
-                    cmd.Parameters.Add("@supplier", MySqlDbType.Int32).Value = supplier;
-                    cmd.Parameters.Add("@discount", MySqlDbType.Int32).Value = discount;
+                    cmd.Parameters.AddWithValue("@supplier", supplier);
+                    cmd.Parameters.AddWithValue("@discount", discount);
 
 
                     cmd.ExecuteNonQuery();
@@ -278,6 +300,61 @@ namespace GardenAndOgorodShop
             catch (Exception e)
             {
                 MessageBox.Show("Ошибка добавления продукта (db):\n"+e.Message);
+                return false;
+            }
+        }
+        #endregion
+        #region Edit records
+        public static bool EditProduct(string title, string descript, double price, int category, int brand, int is_avaible, Image image, int supplier, double discount)
+        {
+            try
+            {
+                MySqlConnection con = new MySqlConnection(connect_string);
+                con.Open();
+                byte[] blobData;
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                    blobData = ms.ToArray();
+                }
+
+                string query = $"UPDATE `garden_and_ogorod_shop`.`products` SET " +
+                    "`products_name` = '@title', " +
+                    "`descript` = '@descript', " +
+                    "`price` = '@price', " +
+                    "`categories_id` = '@category', " +
+                    "`brands_id` = '@brand', " +
+                    "`is_available` = '@is_available', " +
+                    "`image` = @image, " +
+                    "`suppliers_id` = '@supplier', " +
+                    "`seasonal_discount` = '@discount' " +
+                    "WHERE (`products_id` = '8');";
+
+                using (MySqlCommand cmd = new MySqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@title", title);
+                    cmd.Parameters.AddWithValue("@descript", descript);
+                    cmd.Parameters.AddWithValue("@price", price);
+                    category = category == 0 ? 1 : category;
+                    cmd.Parameters.AddWithValue("@category", category);
+                    brand = brand == 0 ? 1 : brand;
+                    cmd.Parameters.AddWithValue("@brand", brand);
+                    cmd.Parameters.AddWithValue("@is_available", is_avaible);
+                    cmd.Parameters.Add("@image", MySqlDbType.MediumBlob).Value = blobData;
+                    supplier = supplier == 0 ? 1 : supplier;
+                    cmd.Parameters.AddWithValue("@supplier", supplier);
+                    cmd.Parameters.AddWithValue("@discount", discount);
+
+
+                    cmd.ExecuteNonQuery();
+                }
+
+                con.Close();
+                return true;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Ошибка добавления продукта (db):\n" + e.Message);
                 return false;
             }
         }
