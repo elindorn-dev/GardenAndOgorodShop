@@ -310,7 +310,7 @@ namespace GardenAndOgorodShop
                 labelEmployeeName.Text = employeeData.lastName + " " + employeeData.firstName.Substring(0, 1) + "." + employeeData.fathersName.Substring(0, 1) + ".";
                 pictureBoxUser.BackgroundImage = employeeData.photo;
             }
-            catch
+            catch (Exception err)
             {
                 MessageBox.Show("Ошибка загрузки пользователя");
             }

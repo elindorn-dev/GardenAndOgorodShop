@@ -170,10 +170,10 @@ namespace GardenAndOgorodShop
         }
         public static (string firstName, string lastName, string fathersName, Image photo) LoadEmployeeData()
         {
-            string firstName = null;
-            string lastName = null;
-            string fathersName = null;
-            Image photo = null;
+            string firstName = "";
+            string lastName = "";
+            string fathersName = "";
+            Image photo = Properties.Resources.none_employee;
 
             try
             {
@@ -234,5 +234,53 @@ namespace GardenAndOgorodShop
             }
             return dt;
         }
+        #region Add records
+        public static bool InsertProduct(string title, string descript, double price, int category, int brand, int is_avaible, Image image, int supplier, int discount)
+        {
+            try
+            {
+                MySqlConnection con = new MySqlConnection(connect_string);
+                con.Open();
+                byte[] blobData;
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                    blobData = ms.ToArray();
+                }
+
+                string query = "INSERT INTO `garden_and_ogorod_shop`.`products` " +
+                               "(`products_name`, `descript`, `price`, `categories_id`, `brands_id`, `is_available`, `image`, `suppliers_id`, `seasonal_discount`) " +
+                               "VALUES " +
+                               "(@title, @descript, @price, @category, @brand, @is_available, @image, @supplier, @discount)";
+
+                using (MySqlCommand cmd = new MySqlCommand(query, con))
+                {
+                    cmd.Parameters.Add("@title", MySqlDbType.VarChar).Value = title;
+                    cmd.Parameters.Add("@descript", MySqlDbType.Text).Value = descript;
+                    cmd.Parameters.Add("@price", MySqlDbType.Decimal).Value = price;
+                    category = category == 0 ? 1 : category;
+                    cmd.Parameters.Add("@category", MySqlDbType.Int32).Value = category;
+                    brand = brand == 0 ? 1 : brand;
+                    cmd.Parameters.Add("@brand", MySqlDbType.Int32).Value = brand;
+                    cmd.Parameters.Add("@is_available", MySqlDbType.Int32).Value = is_avaible;
+                    cmd.Parameters.Add("@image", MySqlDbType.MediumBlob).Value = blobData;
+                    supplier = supplier == 0 ? 1 : supplier;
+                    cmd.Parameters.Add("@supplier", MySqlDbType.Int32).Value = supplier;
+                    cmd.Parameters.Add("@discount", MySqlDbType.Int32).Value = discount;
+
+
+                    cmd.ExecuteNonQuery();
+                }
+
+                con.Close();
+                return true;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Ошибка добавления продукта (db):\n"+e.Message);
+                return false;
+            }
+        }
+        #endregion
     }
 }

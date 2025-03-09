@@ -31,9 +31,14 @@ namespace GardenAndOgorodShop
         {
             this.tabControlRecords = new System.Windows.Forms.TabControl();
             this.tabPageProduct = new System.Windows.Forms.TabPage();
+            this.label52 = new System.Windows.Forms.Label();
+            this.label51 = new System.Windows.Forms.Label();
+            this.label44 = new System.Windows.Forms.Label();
+            this.textBoxProductCost = new System.Windows.Forms.TextBox();
+            this.textBoxProductSeasonalDiscount = new System.Windows.Forms.TextBox();
+            this.buttonAddEditProduct = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.pictureBoxProduct = new System.Windows.Forms.PictureBox();
-            this.TextBoxProductDiscount = new System.Windows.Forms.MaskedTextBox();
-            this.TextBoxProductPrice = new System.Windows.Forms.MaskedTextBox();
             this.comboBoxSuppliers = new System.Windows.Forms.ComboBox();
             this.comboBoxBrands = new System.Windows.Forms.ComboBox();
             this.comboBoxCategories = new System.Windows.Forms.ComboBox();
@@ -51,21 +56,6 @@ namespace GardenAndOgorodShop
             this.panel1 = new System.Windows.Forms.Panel();
             this.labelTitleProduct = new System.Windows.Forms.Label();
             this.tabPageCategory = new System.Windows.Forms.TabPage();
-            this.tabPageEmployee = new System.Windows.Forms.TabPage();
-            this.tabPageUser = new System.Windows.Forms.TabPage();
-            this.tabPageBrand = new System.Windows.Forms.TabPage();
-            this.tabPage6 = new System.Windows.Forms.TabPage();
-            this.tabPage7 = new System.Windows.Forms.TabPage();
-            this.panelMenu = new System.Windows.Forms.Panel();
-            this.buttonToMianForm = new System.Windows.Forms.Button();
-            this.panelEmployeeData = new System.Windows.Forms.Panel();
-            this.labelEmployeeName = new System.Windows.Forms.Label();
-            this.pictureBoxUser = new System.Windows.Forms.PictureBox();
-            this.buttonLogOut = new System.Windows.Forms.Button();
-            this.buttonExitApp = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.buttonAddEditProduct = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
@@ -74,34 +64,38 @@ namespace GardenAndOgorodShop
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label17 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.label11 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.tabPageEmployee = new System.Windows.Forms.TabPage();
+            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.labelAge = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.dateTimePickerAge = new System.Windows.Forms.DateTimePicker();
+            this.label13 = new System.Windows.Forms.Label();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.pictureBoxEmployee = new System.Windows.Forms.PictureBox();
             this.maskedTextBox2 = new System.Windows.Forms.MaskedTextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.textBox5 = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.dateTimePickerAge = new System.Windows.Forms.DateTimePicker();
-            this.label14 = new System.Windows.Forms.Label();
-            this.labelAge = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.label22 = new System.Windows.Forms.Label();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.label23 = new System.Windows.Forms.Label();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.label11 = new System.Windows.Forms.Label();
+            this.tabPageUser = new System.Windows.Forms.TabPage();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.label24 = new System.Windows.Forms.Label();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label28 = new System.Windows.Forms.Label();
             this.label32 = new System.Windows.Forms.Label();
@@ -114,8 +108,11 @@ namespace GardenAndOgorodShop
             this.button8 = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label36 = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.label24 = new System.Windows.Forms.Label();
+            this.tabPageBrand = new System.Windows.Forms.TabPage();
+            this.label25 = new System.Windows.Forms.Label();
+            this.textBox14 = new System.Windows.Forms.TextBox();
+            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.label26 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.textBox11 = new System.Windows.Forms.TextBox();
             this.label29 = new System.Windows.Forms.Label();
@@ -126,10 +123,9 @@ namespace GardenAndOgorodShop
             this.button10 = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
             this.label31 = new System.Windows.Forms.Label();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
-            this.label26 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.textBox14 = new System.Windows.Forms.TextBox();
+            this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.label42 = new System.Windows.Forms.Label();
+            this.textBox22 = new System.Windows.Forms.TextBox();
             this.label33 = new System.Windows.Forms.Label();
             this.textBox15 = new System.Windows.Forms.TextBox();
             this.maskedTextBox3 = new System.Windows.Forms.MaskedTextBox();
@@ -144,8 +140,15 @@ namespace GardenAndOgorodShop
             this.button12 = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
             this.label41 = new System.Windows.Forms.Label();
-            this.label42 = new System.Windows.Forms.Label();
-            this.textBox22 = new System.Windows.Forms.TextBox();
+            this.tabPage7 = new System.Windows.Forms.TabPage();
+            this.comboBox6 = new System.Windows.Forms.ComboBox();
+            this.label45 = new System.Windows.Forms.Label();
+            this.comboBox5 = new System.Windows.Forms.ComboBox();
+            this.label46 = new System.Windows.Forms.Label();
+            this.label50 = new System.Windows.Forms.Label();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.label48 = new System.Windows.Forms.Label();
             this.label43 = new System.Windows.Forms.Label();
             this.textBox23 = new System.Windows.Forms.TextBox();
             this.label47 = new System.Windows.Forms.Label();
@@ -154,34 +157,38 @@ namespace GardenAndOgorodShop
             this.button14 = new System.Windows.Forms.Button();
             this.panel7 = new System.Windows.Forms.Panel();
             this.label49 = new System.Windows.Forms.Label();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
-            this.label48 = new System.Windows.Forms.Label();
-            this.label50 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
-            this.label46 = new System.Windows.Forms.Label();
-            this.comboBox6 = new System.Windows.Forms.ComboBox();
-            this.label45 = new System.Windows.Forms.Label();
+            this.panelMenu = new System.Windows.Forms.Panel();
+            this.buttonToMianForm = new System.Windows.Forms.Button();
+            this.panelEmployeeData = new System.Windows.Forms.Panel();
+            this.labelEmployeeName = new System.Windows.Forms.Label();
+            this.pictureBoxUser = new System.Windows.Forms.PictureBox();
+            this.buttonLogOut = new System.Windows.Forms.Button();
+            this.buttonExitApp = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.label53 = new System.Windows.Forms.Label();
+            this.label54 = new System.Windows.Forms.Label();
+            this.textBoxAmountInStock = new System.Windows.Forms.TextBox();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.tabControlRecords.SuspendLayout();
             this.tabPageProduct.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProduct)).BeginInit();
             this.panel1.SuspendLayout();
             this.tabPageCategory.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.tabPageEmployee.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEmployee)).BeginInit();
+            this.panel3.SuspendLayout();
             this.tabPageUser.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.tabPageBrand.SuspendLayout();
+            this.panel5.SuspendLayout();
             this.tabPage6.SuspendLayout();
+            this.panel6.SuspendLayout();
             this.tabPage7.SuspendLayout();
+            this.panel7.SuspendLayout();
             this.panelMenu.SuspendLayout();
             this.panelEmployeeData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUser)).BeginInit();
-            this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.panel4.SuspendLayout();
-            this.panel5.SuspendLayout();
-            this.panel6.SuspendLayout();
-            this.panel7.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControlRecords
@@ -203,11 +210,17 @@ namespace GardenAndOgorodShop
             // tabPageProduct
             // 
             this.tabPageProduct.BackColor = System.Drawing.Color.Transparent;
+            this.tabPageProduct.Controls.Add(this.label53);
+            this.tabPageProduct.Controls.Add(this.label54);
+            this.tabPageProduct.Controls.Add(this.textBoxAmountInStock);
+            this.tabPageProduct.Controls.Add(this.label52);
+            this.tabPageProduct.Controls.Add(this.label51);
+            this.tabPageProduct.Controls.Add(this.label44);
+            this.tabPageProduct.Controls.Add(this.textBoxProductCost);
+            this.tabPageProduct.Controls.Add(this.textBoxProductSeasonalDiscount);
             this.tabPageProduct.Controls.Add(this.buttonAddEditProduct);
             this.tabPageProduct.Controls.Add(this.button1);
             this.tabPageProduct.Controls.Add(this.pictureBoxProduct);
-            this.tabPageProduct.Controls.Add(this.TextBoxProductDiscount);
-            this.tabPageProduct.Controls.Add(this.TextBoxProductPrice);
             this.tabPageProduct.Controls.Add(this.comboBoxSuppliers);
             this.tabPageProduct.Controls.Add(this.comboBoxBrands);
             this.tabPageProduct.Controls.Add(this.comboBoxCategories);
@@ -229,6 +242,82 @@ namespace GardenAndOgorodShop
             this.tabPageProduct.TabIndex = 0;
             this.tabPageProduct.Text = "tabPageProduct";
             // 
+            // label52
+            // 
+            this.label52.AutoSize = true;
+            this.label52.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label52.Location = new System.Drawing.Point(687, 371);
+            this.label52.Name = "label52";
+            this.label52.Size = new System.Drawing.Size(34, 21);
+            this.label52.TabIndex = 33;
+            this.label52.Text = "шт.";
+            // 
+            // label51
+            // 
+            this.label51.AutoSize = true;
+            this.label51.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label51.Location = new System.Drawing.Point(444, 370);
+            this.label51.Name = "label51";
+            this.label51.Size = new System.Drawing.Size(24, 21);
+            this.label51.TabIndex = 32;
+            this.label51.Text = "%";
+            // 
+            // label44
+            // 
+            this.label44.AutoSize = true;
+            this.label44.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label44.Location = new System.Drawing.Point(156, 370);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(43, 21);
+            this.label44.TabIndex = 31;
+            this.label44.Text = "руб.";
+            // 
+            // textBoxProductCost
+            // 
+            this.textBoxProductCost.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxProductCost.Location = new System.Drawing.Point(94, 364);
+            this.textBoxProductCost.MaxLength = 5;
+            this.textBoxProductCost.Name = "textBoxProductCost";
+            this.textBoxProductCost.Size = new System.Drawing.Size(56, 33);
+            this.textBoxProductCost.TabIndex = 30;
+            this.textBoxProductCost.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxProductCost_KeyPress);
+            // 
+            // textBoxProductSeasonalDiscount
+            // 
+            this.textBoxProductSeasonalDiscount.BackColor = System.Drawing.SystemColors.Window;
+            this.textBoxProductSeasonalDiscount.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxProductSeasonalDiscount.Location = new System.Drawing.Point(382, 364);
+            this.textBoxProductSeasonalDiscount.MaxLength = 2;
+            this.textBoxProductSeasonalDiscount.Name = "textBoxProductSeasonalDiscount";
+            this.textBoxProductSeasonalDiscount.Size = new System.Drawing.Size(56, 33);
+            this.textBoxProductSeasonalDiscount.TabIndex = 29;
+            this.textBoxProductSeasonalDiscount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxProductSeasonalDiscount_KeyPress);
+            // 
+            // buttonAddEditProduct
+            // 
+            this.buttonAddEditProduct.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(186)))), ((int)(((byte)(93)))));
+            this.buttonAddEditProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonAddEditProduct.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonAddEditProduct.Location = new System.Drawing.Point(553, 413);
+            this.buttonAddEditProduct.Name = "buttonAddEditProduct";
+            this.buttonAddEditProduct.Size = new System.Drawing.Size(182, 40);
+            this.buttonAddEditProduct.TabIndex = 28;
+            this.buttonAddEditProduct.Text = "Добавить";
+            this.buttonAddEditProduct.UseVisualStyleBackColor = false;
+            this.buttonAddEditProduct.Click += new System.EventHandler(this.buttonAddEditProduct_Click);
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(52)))), ((int)(((byte)(52)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.button1.Location = new System.Drawing.Point(436, 413);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(111, 40);
+            this.button1.TabIndex = 27;
+            this.button1.Text = "Очистить";
+            this.button1.UseVisualStyleBackColor = false;
+            // 
             // pictureBoxProduct
             // 
             this.pictureBoxProduct.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.none_image;
@@ -238,57 +327,43 @@ namespace GardenAndOgorodShop
             this.pictureBoxProduct.Size = new System.Drawing.Size(287, 265);
             this.pictureBoxProduct.TabIndex = 26;
             this.pictureBoxProduct.TabStop = false;
-            // 
-            // TextBoxProductDiscount
-            // 
-            this.TextBoxProductDiscount.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.TextBoxProductDiscount.Location = new System.Drawing.Point(382, 364);
-            this.TextBoxProductDiscount.Mask = "11%";
-            this.TextBoxProductDiscount.Name = "TextBoxProductDiscount";
-            this.TextBoxProductDiscount.Size = new System.Drawing.Size(100, 33);
-            this.TextBoxProductDiscount.TabIndex = 25;
-            // 
-            // TextBoxProductPrice
-            // 
-            this.TextBoxProductPrice.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.TextBoxProductPrice.Location = new System.Drawing.Point(94, 364);
-            this.TextBoxProductPrice.Mask = "11 ₽";
-            this.TextBoxProductPrice.Name = "TextBoxProductPrice";
-            this.TextBoxProductPrice.Size = new System.Drawing.Size(100, 33);
-            this.TextBoxProductPrice.TabIndex = 24;
+            this.pictureBoxProduct.Click += new System.EventHandler(this.pictureBoxProduct_Click);
             // 
             // comboBoxSuppliers
             // 
             this.comboBoxSuppliers.BackColor = System.Drawing.SystemColors.Window;
+            this.comboBoxSuppliers.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxSuppliers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBoxSuppliers.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.comboBoxSuppliers.FormattingEnabled = true;
             this.comboBoxSuppliers.Location = new System.Drawing.Point(138, 316);
             this.comboBoxSuppliers.Name = "comboBoxSuppliers";
             this.comboBoxSuppliers.Size = new System.Drawing.Size(304, 33);
             this.comboBoxSuppliers.TabIndex = 23;
-            this.comboBoxSuppliers.Visible = false;
             // 
             // comboBoxBrands
             // 
             this.comboBoxBrands.BackColor = System.Drawing.SystemColors.Window;
+            this.comboBoxBrands.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxBrands.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBoxBrands.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.comboBoxBrands.FormattingEnabled = true;
             this.comboBoxBrands.Location = new System.Drawing.Point(138, 273);
             this.comboBoxBrands.Name = "comboBoxBrands";
             this.comboBoxBrands.Size = new System.Drawing.Size(304, 33);
             this.comboBoxBrands.TabIndex = 22;
-            this.comboBoxBrands.Visible = false;
             // 
             // comboBoxCategories
             // 
             this.comboBoxCategories.BackColor = System.Drawing.SystemColors.Window;
+            this.comboBoxCategories.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxCategories.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBoxCategories.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.comboBoxCategories.FormattingEnabled = true;
             this.comboBoxCategories.Location = new System.Drawing.Point(138, 230);
             this.comboBoxCategories.Name = "comboBoxCategories";
             this.comboBoxCategories.Size = new System.Drawing.Size(304, 33);
             this.comboBoxCategories.TabIndex = 21;
-            this.comboBoxCategories.Visible = false;
             // 
             // label10
             // 
@@ -304,7 +379,7 @@ namespace GardenAndOgorodShop
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label8.Location = new System.Drawing.Point(512, 367);
+            this.label8.Location = new System.Drawing.Point(512, 366);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(107, 25);
             this.label8.TabIndex = 16;
@@ -313,11 +388,12 @@ namespace GardenAndOgorodShop
             // textBoxProductIsAvaible
             // 
             this.textBoxProductIsAvaible.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxProductIsAvaible.Location = new System.Drawing.Point(625, 367);
-            this.textBoxProductIsAvaible.MaxLength = 3;
+            this.textBoxProductIsAvaible.Location = new System.Drawing.Point(625, 364);
+            this.textBoxProductIsAvaible.MaxLength = 5;
             this.textBoxProductIsAvaible.Name = "textBoxProductIsAvaible";
             this.textBoxProductIsAvaible.Size = new System.Drawing.Size(56, 33);
             this.textBoxProductIsAvaible.TabIndex = 15;
+            this.textBoxProductIsAvaible.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxProductIsAvaible_KeyPress);
             // 
             // label7
             // 
@@ -435,257 +511,6 @@ namespace GardenAndOgorodShop
             this.tabPageCategory.Text = "tabPageCategory";
             this.tabPageCategory.UseVisualStyleBackColor = true;
             // 
-            // tabPageEmployee
-            // 
-            this.tabPageEmployee.Controls.Add(this.textBox10);
-            this.tabPageEmployee.Controls.Add(this.label23);
-            this.tabPageEmployee.Controls.Add(this.textBox9);
-            this.tabPageEmployee.Controls.Add(this.label22);
-            this.tabPageEmployee.Controls.Add(this.textBox8);
-            this.tabPageEmployee.Controls.Add(this.label9);
-            this.tabPageEmployee.Controls.Add(this.textBox1);
-            this.tabPageEmployee.Controls.Add(this.label1);
-            this.tabPageEmployee.Controls.Add(this.comboBox1);
-            this.tabPageEmployee.Controls.Add(this.label21);
-            this.tabPageEmployee.Controls.Add(this.labelAge);
-            this.tabPageEmployee.Controls.Add(this.label14);
-            this.tabPageEmployee.Controls.Add(this.dateTimePickerAge);
-            this.tabPageEmployee.Controls.Add(this.label13);
-            this.tabPageEmployee.Controls.Add(this.textBox7);
-            this.tabPageEmployee.Controls.Add(this.label12);
-            this.tabPageEmployee.Controls.Add(this.textBox6);
-            this.tabPageEmployee.Controls.Add(this.pictureBox1);
-            this.tabPageEmployee.Controls.Add(this.maskedTextBox2);
-            this.tabPageEmployee.Controls.Add(this.label18);
-            this.tabPageEmployee.Controls.Add(this.label19);
-            this.tabPageEmployee.Controls.Add(this.textBox4);
-            this.tabPageEmployee.Controls.Add(this.label20);
-            this.tabPageEmployee.Controls.Add(this.textBox5);
-            this.tabPageEmployee.Controls.Add(this.button4);
-            this.tabPageEmployee.Controls.Add(this.button6);
-            this.tabPageEmployee.Controls.Add(this.panel3);
-            this.tabPageEmployee.Location = new System.Drawing.Point(4, 22);
-            this.tabPageEmployee.Name = "tabPageEmployee";
-            this.tabPageEmployee.Size = new System.Drawing.Size(743, 460);
-            this.tabPageEmployee.TabIndex = 2;
-            this.tabPageEmployee.Text = "tabPageEmployee";
-            this.tabPageEmployee.UseVisualStyleBackColor = true;
-            // 
-            // tabPageUser
-            // 
-            this.tabPageUser.Controls.Add(this.comboBox3);
-            this.tabPageUser.Controls.Add(this.label24);
-            this.tabPageUser.Controls.Add(this.comboBox2);
-            this.tabPageUser.Controls.Add(this.label28);
-            this.tabPageUser.Controls.Add(this.label32);
-            this.tabPageUser.Controls.Add(this.textBox16);
-            this.tabPageUser.Controls.Add(this.label34);
-            this.tabPageUser.Controls.Add(this.textBox17);
-            this.tabPageUser.Controls.Add(this.label35);
-            this.tabPageUser.Controls.Add(this.textBox18);
-            this.tabPageUser.Controls.Add(this.button7);
-            this.tabPageUser.Controls.Add(this.button8);
-            this.tabPageUser.Controls.Add(this.panel4);
-            this.tabPageUser.Location = new System.Drawing.Point(4, 22);
-            this.tabPageUser.Name = "tabPageUser";
-            this.tabPageUser.Size = new System.Drawing.Size(743, 460);
-            this.tabPageUser.TabIndex = 3;
-            this.tabPageUser.Text = "tabPageUser";
-            this.tabPageUser.UseVisualStyleBackColor = true;
-            // 
-            // tabPageBrand
-            // 
-            this.tabPageBrand.Controls.Add(this.label25);
-            this.tabPageBrand.Controls.Add(this.textBox14);
-            this.tabPageBrand.Controls.Add(this.maskedTextBox1);
-            this.tabPageBrand.Controls.Add(this.label26);
-            this.tabPageBrand.Controls.Add(this.label27);
-            this.tabPageBrand.Controls.Add(this.textBox11);
-            this.tabPageBrand.Controls.Add(this.label29);
-            this.tabPageBrand.Controls.Add(this.textBox12);
-            this.tabPageBrand.Controls.Add(this.label30);
-            this.tabPageBrand.Controls.Add(this.textBox13);
-            this.tabPageBrand.Controls.Add(this.button9);
-            this.tabPageBrand.Controls.Add(this.button10);
-            this.tabPageBrand.Controls.Add(this.panel5);
-            this.tabPageBrand.Location = new System.Drawing.Point(4, 22);
-            this.tabPageBrand.Name = "tabPageBrand";
-            this.tabPageBrand.Size = new System.Drawing.Size(743, 460);
-            this.tabPageBrand.TabIndex = 4;
-            this.tabPageBrand.Text = "tabPageBrand";
-            this.tabPageBrand.UseVisualStyleBackColor = true;
-            // 
-            // tabPage6
-            // 
-            this.tabPage6.Controls.Add(this.label42);
-            this.tabPage6.Controls.Add(this.textBox22);
-            this.tabPage6.Controls.Add(this.label33);
-            this.tabPage6.Controls.Add(this.textBox15);
-            this.tabPage6.Controls.Add(this.maskedTextBox3);
-            this.tabPage6.Controls.Add(this.label37);
-            this.tabPage6.Controls.Add(this.label38);
-            this.tabPage6.Controls.Add(this.textBox19);
-            this.tabPage6.Controls.Add(this.label39);
-            this.tabPage6.Controls.Add(this.textBox20);
-            this.tabPage6.Controls.Add(this.label40);
-            this.tabPage6.Controls.Add(this.textBox21);
-            this.tabPage6.Controls.Add(this.button11);
-            this.tabPage6.Controls.Add(this.button12);
-            this.tabPage6.Controls.Add(this.panel6);
-            this.tabPage6.Location = new System.Drawing.Point(4, 22);
-            this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Size = new System.Drawing.Size(743, 460);
-            this.tabPage6.TabIndex = 5;
-            this.tabPage6.Text = "tabPageSupplier";
-            this.tabPage6.UseVisualStyleBackColor = true;
-            // 
-            // tabPage7
-            // 
-            this.tabPage7.Controls.Add(this.comboBox6);
-            this.tabPage7.Controls.Add(this.label45);
-            this.tabPage7.Controls.Add(this.comboBox5);
-            this.tabPage7.Controls.Add(this.label46);
-            this.tabPage7.Controls.Add(this.label50);
-            this.tabPage7.Controls.Add(this.dateTimePicker1);
-            this.tabPage7.Controls.Add(this.comboBox4);
-            this.tabPage7.Controls.Add(this.label48);
-            this.tabPage7.Controls.Add(this.label43);
-            this.tabPage7.Controls.Add(this.textBox23);
-            this.tabPage7.Controls.Add(this.label47);
-            this.tabPage7.Controls.Add(this.textBox26);
-            this.tabPage7.Controls.Add(this.button13);
-            this.tabPage7.Controls.Add(this.button14);
-            this.tabPage7.Controls.Add(this.panel7);
-            this.tabPage7.Location = new System.Drawing.Point(4, 22);
-            this.tabPage7.Name = "tabPage7";
-            this.tabPage7.Size = new System.Drawing.Size(743, 460);
-            this.tabPage7.TabIndex = 6;
-            this.tabPage7.Text = "tabPageOrder";
-            this.tabPage7.UseVisualStyleBackColor = true;
-            // 
-            // panelMenu
-            // 
-            this.panelMenu.BackColor = System.Drawing.Color.White;
-            this.panelMenu.Controls.Add(this.buttonToMianForm);
-            this.panelMenu.Controls.Add(this.panelEmployeeData);
-            this.panelMenu.Controls.Add(this.buttonLogOut);
-            this.panelMenu.Controls.Add(this.buttonExitApp);
-            this.panelMenu.Controls.Add(this.button5);
-            this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelMenu.Location = new System.Drawing.Point(0, 0);
-            this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Size = new System.Drawing.Size(52, 486);
-            this.panelMenu.TabIndex = 1;
-            // 
-            // buttonToMianForm
-            // 
-            this.buttonToMianForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(186)))), ((int)(((byte)(93)))));
-            this.buttonToMianForm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonToMianForm.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonToMianForm.Location = new System.Drawing.Point(13, 106);
-            this.buttonToMianForm.Name = "buttonToMianForm";
-            this.buttonToMianForm.Size = new System.Drawing.Size(175, 40);
-            this.buttonToMianForm.TabIndex = 24;
-            this.buttonToMianForm.Text = "На главную";
-            this.buttonToMianForm.UseVisualStyleBackColor = false;
-            this.buttonToMianForm.Visible = false;
-            this.buttonToMianForm.Click += new System.EventHandler(this.buttonToMianForm_Click);
-            // 
-            // panelEmployeeData
-            // 
-            this.panelEmployeeData.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(186)))), ((int)(((byte)(93)))));
-            this.panelEmployeeData.Controls.Add(this.labelEmployeeName);
-            this.panelEmployeeData.Controls.Add(this.pictureBoxUser);
-            this.panelEmployeeData.Location = new System.Drawing.Point(2, 50);
-            this.panelEmployeeData.Name = "panelEmployeeData";
-            this.panelEmployeeData.Size = new System.Drawing.Size(212, 50);
-            this.panelEmployeeData.TabIndex = 23;
-            // 
-            // labelEmployeeName
-            // 
-            this.labelEmployeeName.AutoSize = true;
-            this.labelEmployeeName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelEmployeeName.Location = new System.Drawing.Point(56, 15);
-            this.labelEmployeeName.Name = "labelEmployeeName";
-            this.labelEmployeeName.Size = new System.Drawing.Size(79, 21);
-            this.labelEmployeeName.TabIndex = 1;
-            this.labelEmployeeName.Text = "none user";
-            // 
-            // pictureBoxUser
-            // 
-            this.pictureBoxUser.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.none_employee;
-            this.pictureBoxUser.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBoxUser.Location = new System.Drawing.Point(5, 5);
-            this.pictureBoxUser.Name = "pictureBoxUser";
-            this.pictureBoxUser.Size = new System.Drawing.Size(40, 40);
-            this.pictureBoxUser.TabIndex = 0;
-            this.pictureBoxUser.TabStop = false;
-            // 
-            // buttonLogOut
-            // 
-            this.buttonLogOut.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(120)))), ((int)(((byte)(56)))));
-            this.buttonLogOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonLogOut.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonLogOut.Location = new System.Drawing.Point(12, 338);
-            this.buttonLogOut.Name = "buttonLogOut";
-            this.buttonLogOut.Size = new System.Drawing.Size(175, 63);
-            this.buttonLogOut.TabIndex = 22;
-            this.buttonLogOut.Text = "Сменить аккаунт";
-            this.buttonLogOut.UseVisualStyleBackColor = false;
-            this.buttonLogOut.Visible = false;
-            // 
-            // buttonExitApp
-            // 
-            this.buttonExitApp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(52)))), ((int)(((byte)(52)))));
-            this.buttonExitApp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonExitApp.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonExitApp.Location = new System.Drawing.Point(12, 418);
-            this.buttonExitApp.Name = "buttonExitApp";
-            this.buttonExitApp.Size = new System.Drawing.Size(175, 40);
-            this.buttonExitApp.TabIndex = 21;
-            this.buttonExitApp.Text = "Выйти";
-            this.buttonExitApp.UseVisualStyleBackColor = false;
-            this.buttonExitApp.Visible = false;
-            // 
-            // button5
-            // 
-            this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button5.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.burger_menu;
-            this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button5.FlatAppearance.BorderSize = 0;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Location = new System.Drawing.Point(6, 3);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(40, 40);
-            this.button5.TabIndex = 20;
-            this.button5.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(52)))), ((int)(((byte)(52)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button1.Location = new System.Drawing.Point(436, 413);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(111, 40);
-            this.button1.TabIndex = 27;
-            this.button1.Text = "Очистить";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Visible = false;
-            // 
-            // buttonAddEditProduct
-            // 
-            this.buttonAddEditProduct.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(186)))), ((int)(((byte)(93)))));
-            this.buttonAddEditProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonAddEditProduct.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonAddEditProduct.Location = new System.Drawing.Point(553, 413);
-            this.buttonAddEditProduct.Name = "buttonAddEditProduct";
-            this.buttonAddEditProduct.Size = new System.Drawing.Size(182, 40);
-            this.buttonAddEditProduct.TabIndex = 28;
-            this.buttonAddEditProduct.Text = "Добавить";
-            this.buttonAddEditProduct.UseVisualStyleBackColor = false;
-            this.buttonAddEditProduct.Visible = false;
-            // 
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(186)))), ((int)(((byte)(93)))));
@@ -697,7 +522,7 @@ namespace GardenAndOgorodShop
             this.button2.TabIndex = 48;
             this.button2.Text = "Добавить";
             this.button2.UseVisualStyleBackColor = false;
-            this.button2.Visible = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
@@ -710,7 +535,6 @@ namespace GardenAndOgorodShop
             this.button3.TabIndex = 47;
             this.button3.Text = "Очистить";
             this.button3.UseVisualStyleBackColor = false;
-            this.button3.Visible = false;
             // 
             // label15
             // 
@@ -772,62 +596,220 @@ namespace GardenAndOgorodShop
             this.label17.TabIndex = 2;
             this.label17.Text = "Категория";
             // 
-            // button4
+            // tabPageEmployee
             // 
-            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(186)))), ((int)(((byte)(93)))));
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button4.Location = new System.Drawing.Point(551, 415);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(182, 40);
-            this.button4.TabIndex = 55;
-            this.button4.Text = "Добавить";
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.Visible = false;
+            this.tabPageEmployee.Controls.Add(this.textBox10);
+            this.tabPageEmployee.Controls.Add(this.label23);
+            this.tabPageEmployee.Controls.Add(this.textBox9);
+            this.tabPageEmployee.Controls.Add(this.label22);
+            this.tabPageEmployee.Controls.Add(this.textBox8);
+            this.tabPageEmployee.Controls.Add(this.label9);
+            this.tabPageEmployee.Controls.Add(this.textBox1);
+            this.tabPageEmployee.Controls.Add(this.label1);
+            this.tabPageEmployee.Controls.Add(this.comboBox1);
+            this.tabPageEmployee.Controls.Add(this.label21);
+            this.tabPageEmployee.Controls.Add(this.labelAge);
+            this.tabPageEmployee.Controls.Add(this.label14);
+            this.tabPageEmployee.Controls.Add(this.dateTimePickerAge);
+            this.tabPageEmployee.Controls.Add(this.label13);
+            this.tabPageEmployee.Controls.Add(this.textBox7);
+            this.tabPageEmployee.Controls.Add(this.label12);
+            this.tabPageEmployee.Controls.Add(this.textBox6);
+            this.tabPageEmployee.Controls.Add(this.pictureBoxEmployee);
+            this.tabPageEmployee.Controls.Add(this.maskedTextBox2);
+            this.tabPageEmployee.Controls.Add(this.label18);
+            this.tabPageEmployee.Controls.Add(this.label19);
+            this.tabPageEmployee.Controls.Add(this.textBox4);
+            this.tabPageEmployee.Controls.Add(this.label20);
+            this.tabPageEmployee.Controls.Add(this.textBox5);
+            this.tabPageEmployee.Controls.Add(this.button4);
+            this.tabPageEmployee.Controls.Add(this.button6);
+            this.tabPageEmployee.Controls.Add(this.panel3);
+            this.tabPageEmployee.Location = new System.Drawing.Point(4, 22);
+            this.tabPageEmployee.Name = "tabPageEmployee";
+            this.tabPageEmployee.Size = new System.Drawing.Size(743, 460);
+            this.tabPageEmployee.TabIndex = 2;
+            this.tabPageEmployee.Text = "tabPageEmployee";
+            this.tabPageEmployee.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // textBox10
             // 
-            this.button6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(52)))), ((int)(((byte)(52)))));
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button6.Location = new System.Drawing.Point(434, 415);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(111, 40);
-            this.button6.TabIndex = 54;
-            this.button6.Text = "Очистить";
-            this.button6.UseVisualStyleBackColor = false;
-            this.button6.Visible = false;
+            this.textBox10.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox10.Location = new System.Drawing.Point(576, 365);
+            this.textBox10.MaxLength = 5;
+            this.textBox10.Name = "textBox10";
+            this.textBox10.Size = new System.Drawing.Size(159, 33);
+            this.textBox10.TabIndex = 89;
+            this.textBox10.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox10_KeyPress);
             // 
-            // panel3
+            // label23
             // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(120)))), ((int)(((byte)(56)))));
-            this.panel3.Controls.Add(this.label11);
-            this.panel3.Location = new System.Drawing.Point(4, 5);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(734, 70);
-            this.panel3.TabIndex = 49;
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label23.Location = new System.Drawing.Point(476, 368);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(96, 25);
+            this.label23.TabIndex = 88;
+            this.label23.Text = "Зарплата:";
             // 
-            // label11
+            // textBox9
             // 
-            this.label11.AutoSize = true;
-            this.label11.BackColor = System.Drawing.Color.White;
-            this.label11.Font = new System.Drawing.Font("Segoe UI", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(120)))), ((int)(((byte)(56)))));
-            this.label11.Location = new System.Drawing.Point(8, 6);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(215, 50);
-            this.label11.TabIndex = 2;
-            this.label11.Text = "Сотрудник";
+            this.textBox9.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox9.Location = new System.Drawing.Point(139, 322);
+            this.textBox9.MaxLength = 250;
+            this.textBox9.Name = "textBox9";
+            this.textBox9.Size = new System.Drawing.Size(299, 33);
+            this.textBox9.TabIndex = 87;
             // 
-            // pictureBox1
+            // label22
             // 
-            this.pictureBox1.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.none_employee;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(444, 81);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(287, 265);
-            this.pictureBox1.TabIndex = 72;
-            this.pictureBox1.TabStop = false;
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label22.Location = new System.Drawing.Point(16, 325);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(113, 25);
+            this.label22.TabIndex = 86;
+            this.label22.Text = "Должность:";
+            // 
+            // textBox8
+            // 
+            this.textBox8.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox8.Location = new System.Drawing.Point(91, 283);
+            this.textBox8.MaxLength = 250;
+            this.textBox8.Name = "textBox8";
+            this.textBox8.Size = new System.Drawing.Size(347, 33);
+            this.textBox8.TabIndex = 85;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label9.Location = new System.Drawing.Point(20, 286);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(68, 25);
+            this.label9.TabIndex = 84;
+            this.label9.Text = "Адрес:";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox1.Location = new System.Drawing.Point(91, 244);
+            this.textBox1.MaxLength = 250;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(347, 33);
+            this.textBox1.TabIndex = 83;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label1.Location = new System.Drawing.Point(23, 247);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(62, 25);
+            this.label1.TabIndex = 82;
+            this.label1.Text = "email:";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.BackColor = System.Drawing.SystemColors.Window;
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBox1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(335, 365);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(135, 33);
+            this.comboBox1.TabIndex = 81;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label21.Location = new System.Drawing.Point(278, 368);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(51, 25);
+            this.label21.TabIndex = 80;
+            this.label21.Text = "Пол:";
+            // 
+            // labelAge
+            // 
+            this.labelAge.AutoSize = true;
+            this.labelAge.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelAge.Location = new System.Drawing.Point(113, 205);
+            this.labelAge.Name = "labelAge";
+            this.labelAge.Size = new System.Drawing.Size(32, 25);
+            this.labelAge.TabIndex = 79;
+            this.labelAge.Text = "00";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label14.Location = new System.Drawing.Point(23, 205);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(84, 25);
+            this.label14.TabIndex = 78;
+            this.label14.Text = "Возраст:";
+            // 
+            // dateTimePickerAge
+            // 
+            this.dateTimePickerAge.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.dateTimePickerAge.Location = new System.Drawing.Point(151, 205);
+            this.dateTimePickerAge.MaxDate = new System.DateTime(2010, 1, 1, 0, 0, 0, 0);
+            this.dateTimePickerAge.MinDate = new System.DateTime(1970, 1, 1, 0, 0, 0, 0);
+            this.dateTimePickerAge.Name = "dateTimePickerAge";
+            this.dateTimePickerAge.Size = new System.Drawing.Size(206, 33);
+            this.dateTimePickerAge.TabIndex = 77;
+            this.dateTimePickerAge.Value = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label13.Location = new System.Drawing.Point(16, 162);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(97, 25);
+            this.label13.TabIndex = 76;
+            this.label13.Text = "Отчество:";
+            // 
+            // textBox7
+            // 
+            this.textBox7.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox7.Location = new System.Drawing.Point(117, 159);
+            this.textBox7.MaxLength = 250;
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(321, 33);
+            this.textBox7.TabIndex = 75;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label12.Location = new System.Drawing.Point(58, 123);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(53, 25);
+            this.label12.TabIndex = 74;
+            this.label12.Text = "Имя:";
+            // 
+            // textBox6
+            // 
+            this.textBox6.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox6.Location = new System.Drawing.Point(117, 120);
+            this.textBox6.MaxLength = 250;
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(321, 33);
+            this.textBox6.TabIndex = 73;
+            // 
+            // pictureBoxEmployee
+            // 
+            this.pictureBoxEmployee.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.none_employee;
+            this.pictureBoxEmployee.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBoxEmployee.Location = new System.Drawing.Point(444, 81);
+            this.pictureBoxEmployee.Name = "pictureBoxEmployee";
+            this.pictureBoxEmployee.Size = new System.Drawing.Size(287, 265);
+            this.pictureBoxEmployee.TabIndex = 72;
+            this.pictureBoxEmployee.TabStop = false;
+            this.pictureBoxEmployee.Click += new System.EventHandler(this.pictureBoxEmployee_Click);
             // 
             // maskedTextBox2
             // 
@@ -887,175 +869,101 @@ namespace GardenAndOgorodShop
             this.textBox5.Size = new System.Drawing.Size(321, 33);
             this.textBox5.TabIndex = 56;
             // 
-            // label12
+            // button4
             // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label12.Location = new System.Drawing.Point(58, 123);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(53, 25);
-            this.label12.TabIndex = 74;
-            this.label12.Text = "Имя:";
+            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(186)))), ((int)(((byte)(93)))));
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.button4.Location = new System.Drawing.Point(551, 415);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(182, 40);
+            this.button4.TabIndex = 55;
+            this.button4.Text = "Добавить";
+            this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
-            // textBox6
+            // button6
             // 
-            this.textBox6.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox6.Location = new System.Drawing.Point(117, 120);
-            this.textBox6.MaxLength = 250;
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(321, 33);
-            this.textBox6.TabIndex = 73;
+            this.button6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(52)))), ((int)(((byte)(52)))));
+            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button6.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.button6.Location = new System.Drawing.Point(434, 415);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(111, 40);
+            this.button6.TabIndex = 54;
+            this.button6.Text = "Очистить";
+            this.button6.UseVisualStyleBackColor = false;
             // 
-            // label13
+            // panel3
             // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label13.Location = new System.Drawing.Point(16, 162);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(97, 25);
-            this.label13.TabIndex = 76;
-            this.label13.Text = "Отчество:";
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(120)))), ((int)(((byte)(56)))));
+            this.panel3.Controls.Add(this.label11);
+            this.panel3.Location = new System.Drawing.Point(4, 5);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(734, 70);
+            this.panel3.TabIndex = 49;
             // 
-            // textBox7
+            // label11
             // 
-            this.textBox7.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox7.Location = new System.Drawing.Point(117, 159);
-            this.textBox7.MaxLength = 250;
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(321, 33);
-            this.textBox7.TabIndex = 75;
+            this.label11.AutoSize = true;
+            this.label11.BackColor = System.Drawing.Color.White;
+            this.label11.Font = new System.Drawing.Font("Segoe UI", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(120)))), ((int)(((byte)(56)))));
+            this.label11.Location = new System.Drawing.Point(8, 6);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(215, 50);
+            this.label11.TabIndex = 2;
+            this.label11.Text = "Сотрудник";
             // 
-            // dateTimePickerAge
+            // tabPageUser
             // 
-            this.dateTimePickerAge.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.dateTimePickerAge.Location = new System.Drawing.Point(151, 205);
-            this.dateTimePickerAge.MaxDate = new System.DateTime(2010, 1, 1, 0, 0, 0, 0);
-            this.dateTimePickerAge.MinDate = new System.DateTime(1970, 1, 1, 0, 0, 0, 0);
-            this.dateTimePickerAge.Name = "dateTimePickerAge";
-            this.dateTimePickerAge.Size = new System.Drawing.Size(206, 33);
-            this.dateTimePickerAge.TabIndex = 77;
-            this.dateTimePickerAge.Value = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
+            this.tabPageUser.Controls.Add(this.comboBox3);
+            this.tabPageUser.Controls.Add(this.label24);
+            this.tabPageUser.Controls.Add(this.comboBox2);
+            this.tabPageUser.Controls.Add(this.label28);
+            this.tabPageUser.Controls.Add(this.label32);
+            this.tabPageUser.Controls.Add(this.textBox16);
+            this.tabPageUser.Controls.Add(this.label34);
+            this.tabPageUser.Controls.Add(this.textBox17);
+            this.tabPageUser.Controls.Add(this.label35);
+            this.tabPageUser.Controls.Add(this.textBox18);
+            this.tabPageUser.Controls.Add(this.button7);
+            this.tabPageUser.Controls.Add(this.button8);
+            this.tabPageUser.Controls.Add(this.panel4);
+            this.tabPageUser.Location = new System.Drawing.Point(4, 22);
+            this.tabPageUser.Name = "tabPageUser";
+            this.tabPageUser.Size = new System.Drawing.Size(743, 460);
+            this.tabPageUser.TabIndex = 3;
+            this.tabPageUser.Text = "tabPageUser";
+            this.tabPageUser.UseVisualStyleBackColor = true;
             // 
-            // label14
+            // comboBox3
             // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label14.Location = new System.Drawing.Point(23, 205);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(84, 25);
-            this.label14.TabIndex = 78;
-            this.label14.Text = "Возраст:";
+            this.comboBox3.BackColor = System.Drawing.SystemColors.Window;
+            this.comboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBox3.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Location = new System.Drawing.Point(117, 219);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(321, 33);
+            this.comboBox3.TabIndex = 110;
             // 
-            // labelAge
+            // label24
             // 
-            this.labelAge.AutoSize = true;
-            this.labelAge.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelAge.Location = new System.Drawing.Point(113, 205);
-            this.labelAge.Name = "labelAge";
-            this.labelAge.Size = new System.Drawing.Size(32, 25);
-            this.labelAge.TabIndex = 79;
-            this.labelAge.Text = "00";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.BackColor = System.Drawing.SystemColors.Window;
-            this.comboBox1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(335, 365);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(135, 33);
-            this.comboBox1.TabIndex = 81;
-            this.comboBox1.Visible = false;
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label21.Location = new System.Drawing.Point(278, 368);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(51, 25);
-            this.label21.TabIndex = 80;
-            this.label21.Text = "Пол:";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.Location = new System.Drawing.Point(23, 247);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(62, 25);
-            this.label1.TabIndex = 82;
-            this.label1.Text = "email:";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox1.Location = new System.Drawing.Point(91, 244);
-            this.textBox1.MaxLength = 250;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(347, 33);
-            this.textBox1.TabIndex = 83;
-            // 
-            // textBox8
-            // 
-            this.textBox8.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox8.Location = new System.Drawing.Point(91, 283);
-            this.textBox8.MaxLength = 250;
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(347, 33);
-            this.textBox8.TabIndex = 85;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label9.Location = new System.Drawing.Point(20, 286);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(68, 25);
-            this.label9.TabIndex = 84;
-            this.label9.Text = "Адрес:";
-            // 
-            // textBox9
-            // 
-            this.textBox9.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox9.Location = new System.Drawing.Point(139, 322);
-            this.textBox9.MaxLength = 250;
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(299, 33);
-            this.textBox9.TabIndex = 87;
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label22.Location = new System.Drawing.Point(16, 325);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(113, 25);
-            this.label22.TabIndex = 86;
-            this.label22.Text = "Должность:";
-            // 
-            // textBox10
-            // 
-            this.textBox10.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox10.Location = new System.Drawing.Point(576, 365);
-            this.textBox10.MaxLength = 5;
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(159, 33);
-            this.textBox10.TabIndex = 89;
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label23.Location = new System.Drawing.Point(476, 368);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(96, 25);
-            this.label23.TabIndex = 88;
-            this.label23.Text = "Зарплата:";
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label24.Location = new System.Drawing.Point(4, 222);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(108, 25);
+            this.label24.TabIndex = 109;
+            this.label24.Text = "Сотрудник:";
             // 
             // comboBox2
             // 
             this.comboBox2.BackColor = System.Drawing.SystemColors.Window;
+            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBox2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Items.AddRange(new object[] {
@@ -1065,7 +973,6 @@ namespace GardenAndOgorodShop
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(194, 33);
             this.comboBox2.TabIndex = 108;
-            this.comboBox2.Visible = false;
             // 
             // label28
             // 
@@ -1146,7 +1053,7 @@ namespace GardenAndOgorodShop
             this.button7.TabIndex = 92;
             this.button7.Text = "Добавить";
             this.button7.UseVisualStyleBackColor = false;
-            this.button7.Visible = false;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // button8
             // 
@@ -1159,7 +1066,6 @@ namespace GardenAndOgorodShop
             this.button8.TabIndex = 91;
             this.button8.Text = "Очистить";
             this.button8.UseVisualStyleBackColor = false;
-            this.button8.Visible = false;
             // 
             // panel4
             // 
@@ -1182,26 +1088,65 @@ namespace GardenAndOgorodShop
             this.label36.TabIndex = 2;
             this.label36.Text = "Пользователь";
             // 
-            // comboBox3
+            // tabPageBrand
             // 
-            this.comboBox3.BackColor = System.Drawing.SystemColors.Window;
-            this.comboBox3.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(117, 219);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(321, 33);
-            this.comboBox3.TabIndex = 110;
-            this.comboBox3.Visible = false;
+            this.tabPageBrand.Controls.Add(this.label25);
+            this.tabPageBrand.Controls.Add(this.textBox14);
+            this.tabPageBrand.Controls.Add(this.maskedTextBox1);
+            this.tabPageBrand.Controls.Add(this.label26);
+            this.tabPageBrand.Controls.Add(this.label27);
+            this.tabPageBrand.Controls.Add(this.textBox11);
+            this.tabPageBrand.Controls.Add(this.label29);
+            this.tabPageBrand.Controls.Add(this.textBox12);
+            this.tabPageBrand.Controls.Add(this.label30);
+            this.tabPageBrand.Controls.Add(this.textBox13);
+            this.tabPageBrand.Controls.Add(this.button9);
+            this.tabPageBrand.Controls.Add(this.button10);
+            this.tabPageBrand.Controls.Add(this.panel5);
+            this.tabPageBrand.Location = new System.Drawing.Point(4, 22);
+            this.tabPageBrand.Name = "tabPageBrand";
+            this.tabPageBrand.Size = new System.Drawing.Size(743, 460);
+            this.tabPageBrand.TabIndex = 4;
+            this.tabPageBrand.Text = "tabPageBrand";
+            this.tabPageBrand.UseVisualStyleBackColor = true;
             // 
-            // label24
+            // label25
             // 
-            this.label24.AutoSize = true;
-            this.label24.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label24.Location = new System.Drawing.Point(4, 222);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(108, 25);
-            this.label24.TabIndex = 109;
-            this.label24.Text = "Сотрудник:";
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label25.Location = new System.Drawing.Point(9, 220);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(126, 25);
+            this.label25.TabIndex = 127;
+            this.label25.Text = "Юрид. адрес:";
+            // 
+            // textBox14
+            // 
+            this.textBox14.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox14.Location = new System.Drawing.Point(141, 217);
+            this.textBox14.MaxLength = 250;
+            this.textBox14.Name = "textBox14";
+            this.textBox14.Size = new System.Drawing.Size(297, 33);
+            this.textBox14.TabIndex = 126;
+            // 
+            // maskedTextBox1
+            // 
+            this.maskedTextBox1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.maskedTextBox1.Location = new System.Drawing.Point(118, 173);
+            this.maskedTextBox1.Mask = "+7-(999)-000-00-00";
+            this.maskedTextBox1.Name = "maskedTextBox1";
+            this.maskedTextBox1.Size = new System.Drawing.Size(162, 33);
+            this.maskedTextBox1.TabIndex = 125;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label26.Location = new System.Drawing.Point(24, 176);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(91, 25);
+            this.label26.TabIndex = 124;
+            this.label26.Text = "Телефон:";
             // 
             // label27
             // 
@@ -1272,7 +1217,7 @@ namespace GardenAndOgorodShop
             this.button9.TabIndex = 113;
             this.button9.Text = "Добавить";
             this.button9.UseVisualStyleBackColor = false;
-            this.button9.Visible = false;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // button10
             // 
@@ -1285,7 +1230,6 @@ namespace GardenAndOgorodShop
             this.button10.TabIndex = 112;
             this.button10.Text = "Очистить";
             this.button10.UseVisualStyleBackColor = false;
-            this.button10.Visible = false;
             // 
             // panel5
             // 
@@ -1308,43 +1252,49 @@ namespace GardenAndOgorodShop
             this.label31.TabIndex = 2;
             this.label31.Text = "Произваодитель";
             // 
-            // maskedTextBox1
+            // tabPage6
             // 
-            this.maskedTextBox1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.maskedTextBox1.Location = new System.Drawing.Point(118, 173);
-            this.maskedTextBox1.Mask = "+7-(999)-000-00-00";
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(162, 33);
-            this.maskedTextBox1.TabIndex = 125;
+            this.tabPage6.Controls.Add(this.label42);
+            this.tabPage6.Controls.Add(this.textBox22);
+            this.tabPage6.Controls.Add(this.label33);
+            this.tabPage6.Controls.Add(this.textBox15);
+            this.tabPage6.Controls.Add(this.maskedTextBox3);
+            this.tabPage6.Controls.Add(this.label37);
+            this.tabPage6.Controls.Add(this.label38);
+            this.tabPage6.Controls.Add(this.textBox19);
+            this.tabPage6.Controls.Add(this.label39);
+            this.tabPage6.Controls.Add(this.textBox20);
+            this.tabPage6.Controls.Add(this.label40);
+            this.tabPage6.Controls.Add(this.textBox21);
+            this.tabPage6.Controls.Add(this.button11);
+            this.tabPage6.Controls.Add(this.button12);
+            this.tabPage6.Controls.Add(this.panel6);
+            this.tabPage6.Location = new System.Drawing.Point(4, 22);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Size = new System.Drawing.Size(743, 460);
+            this.tabPage6.TabIndex = 5;
+            this.tabPage6.Text = "tabPageSupplier";
+            this.tabPage6.UseVisualStyleBackColor = true;
             // 
-            // label26
+            // label42
             // 
-            this.label26.AutoSize = true;
-            this.label26.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label26.Location = new System.Drawing.Point(24, 176);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(91, 25);
-            this.label26.TabIndex = 124;
-            this.label26.Text = "Телефон:";
+            this.label42.AutoSize = true;
+            this.label42.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label42.Location = new System.Drawing.Point(77, 269);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(56, 25);
+            this.label42.TabIndex = 142;
+            this.label42.Text = "ИНН:";
             // 
-            // label25
+            // textBox22
             // 
-            this.label25.AutoSize = true;
-            this.label25.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label25.Location = new System.Drawing.Point(9, 220);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(126, 25);
-            this.label25.TabIndex = 127;
-            this.label25.Text = "Юрид. адрес:";
-            // 
-            // textBox14
-            // 
-            this.textBox14.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox14.Location = new System.Drawing.Point(141, 217);
-            this.textBox14.MaxLength = 250;
-            this.textBox14.Name = "textBox14";
-            this.textBox14.Size = new System.Drawing.Size(297, 33);
-            this.textBox14.TabIndex = 126;
+            this.textBox22.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox22.Location = new System.Drawing.Point(141, 266);
+            this.textBox22.MaxLength = 50;
+            this.textBox22.Name = "textBox22";
+            this.textBox22.Size = new System.Drawing.Size(297, 33);
+            this.textBox22.TabIndex = 141;
+            this.textBox22.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox22_KeyPress);
             // 
             // label33
             // 
@@ -1453,7 +1403,7 @@ namespace GardenAndOgorodShop
             this.button11.TabIndex = 130;
             this.button11.Text = "Добавить";
             this.button11.UseVisualStyleBackColor = false;
-            this.button11.Visible = false;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
             // button12
             // 
@@ -1466,7 +1416,6 @@ namespace GardenAndOgorodShop
             this.button12.TabIndex = 129;
             this.button12.Text = "Очистить";
             this.button12.UseVisualStyleBackColor = false;
-            this.button12.Visible = false;
             // 
             // panel6
             // 
@@ -1489,24 +1438,124 @@ namespace GardenAndOgorodShop
             this.label41.TabIndex = 2;
             this.label41.Text = "Поставщик";
             // 
-            // label42
+            // tabPage7
             // 
-            this.label42.AutoSize = true;
-            this.label42.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label42.Location = new System.Drawing.Point(77, 269);
-            this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(56, 25);
-            this.label42.TabIndex = 142;
-            this.label42.Text = "ИНН:";
+            this.tabPage7.Controls.Add(this.comboBox6);
+            this.tabPage7.Controls.Add(this.label45);
+            this.tabPage7.Controls.Add(this.comboBox5);
+            this.tabPage7.Controls.Add(this.label46);
+            this.tabPage7.Controls.Add(this.label50);
+            this.tabPage7.Controls.Add(this.dateTimePicker1);
+            this.tabPage7.Controls.Add(this.comboBox4);
+            this.tabPage7.Controls.Add(this.label48);
+            this.tabPage7.Controls.Add(this.label43);
+            this.tabPage7.Controls.Add(this.textBox23);
+            this.tabPage7.Controls.Add(this.label47);
+            this.tabPage7.Controls.Add(this.textBox26);
+            this.tabPage7.Controls.Add(this.button13);
+            this.tabPage7.Controls.Add(this.button14);
+            this.tabPage7.Controls.Add(this.panel7);
+            this.tabPage7.Location = new System.Drawing.Point(4, 22);
+            this.tabPage7.Name = "tabPage7";
+            this.tabPage7.Size = new System.Drawing.Size(743, 460);
+            this.tabPage7.TabIndex = 6;
+            this.tabPage7.Text = "tabPageOrder";
+            this.tabPage7.UseVisualStyleBackColor = true;
             // 
-            // textBox22
+            // comboBox6
             // 
-            this.textBox22.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox22.Location = new System.Drawing.Point(141, 266);
-            this.textBox22.MaxLength = 50;
-            this.textBox22.Name = "textBox22";
-            this.textBox22.Size = new System.Drawing.Size(297, 33);
-            this.textBox22.TabIndex = 141;
+            this.comboBox6.BackColor = System.Drawing.SystemColors.Window;
+            this.comboBox6.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBox6.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.comboBox6.FormattingEnabled = true;
+            this.comboBox6.Items.AddRange(new object[] {
+            "Отменено",
+            "Обработка",
+            "Успешно"});
+            this.comboBox6.Location = new System.Drawing.Point(168, 215);
+            this.comboBox6.Name = "comboBox6";
+            this.comboBox6.Size = new System.Drawing.Size(241, 33);
+            this.comboBox6.TabIndex = 165;
+            // 
+            // label45
+            // 
+            this.label45.AutoSize = true;
+            this.label45.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label45.Location = new System.Drawing.Point(13, 218);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(149, 25);
+            this.label45.TabIndex = 164;
+            this.label45.Text = "Способ оплаты:";
+            // 
+            // comboBox5
+            // 
+            this.comboBox5.BackColor = System.Drawing.SystemColors.Window;
+            this.comboBox5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBox5.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.comboBox5.FormattingEnabled = true;
+            this.comboBox5.Items.AddRange(new object[] {
+            "Отменено",
+            "Обработка",
+            "Успешно"});
+            this.comboBox5.Location = new System.Drawing.Point(117, 173);
+            this.comboBox5.Name = "comboBox5";
+            this.comboBox5.Size = new System.Drawing.Size(207, 33);
+            this.comboBox5.TabIndex = 163;
+            // 
+            // label46
+            // 
+            this.label46.AutoSize = true;
+            this.label46.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label46.Location = new System.Drawing.Point(39, 173);
+            this.label46.Name = "label46";
+            this.label46.Size = new System.Drawing.Size(72, 25);
+            this.label46.TabIndex = 162;
+            this.label46.Text = "Статус:";
+            // 
+            // label50
+            // 
+            this.label50.AutoSize = true;
+            this.label50.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label50.Location = new System.Drawing.Point(55, 136);
+            this.label50.Name = "label50";
+            this.label50.Size = new System.Drawing.Size(57, 25);
+            this.label50.TabIndex = 161;
+            this.label50.Text = "Дата:";
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.dateTimePicker1.Location = new System.Drawing.Point(118, 134);
+            this.dateTimePicker1.MaxDate = new System.DateTime(2010, 1, 1, 0, 0, 0, 0);
+            this.dateTimePicker1.MinDate = new System.DateTime(1970, 1, 1, 0, 0, 0, 0);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(206, 33);
+            this.dateTimePicker1.TabIndex = 160;
+            this.dateTimePicker1.Value = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
+            // 
+            // comboBox4
+            // 
+            this.comboBox4.BackColor = System.Drawing.SystemColors.Window;
+            this.comboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBox4.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.comboBox4.FormattingEnabled = true;
+            this.comboBox4.Location = new System.Drawing.Point(122, 89);
+            this.comboBox4.Name = "comboBox4";
+            this.comboBox4.Size = new System.Drawing.Size(321, 33);
+            this.comboBox4.TabIndex = 159;
+            // 
+            // label48
+            // 
+            this.label48.AutoSize = true;
+            this.label48.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label48.Location = new System.Drawing.Point(9, 92);
+            this.label48.Name = "label48";
+            this.label48.Size = new System.Drawing.Size(108, 25);
+            this.label48.TabIndex = 158;
+            this.label48.Text = "Сотрудник:";
             // 
             // label43
             // 
@@ -1558,7 +1607,7 @@ namespace GardenAndOgorodShop
             this.button13.TabIndex = 145;
             this.button13.Text = "Добавить";
             this.button13.UseVisualStyleBackColor = false;
-            this.button13.Visible = false;
+            this.button13.Click += new System.EventHandler(this.button13_Click);
             // 
             // button14
             // 
@@ -1571,7 +1620,6 @@ namespace GardenAndOgorodShop
             this.button14.TabIndex = 144;
             this.button14.Text = "Очистить";
             this.button14.UseVisualStyleBackColor = false;
-            this.button14.Visible = false;
             // 
             // panel7
             // 
@@ -1594,97 +1642,136 @@ namespace GardenAndOgorodShop
             this.label49.TabIndex = 2;
             this.label49.Text = "Продажи";
             // 
-            // comboBox4
+            // panelMenu
             // 
-            this.comboBox4.BackColor = System.Drawing.SystemColors.Window;
-            this.comboBox4.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(122, 89);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(321, 33);
-            this.comboBox4.TabIndex = 159;
-            this.comboBox4.Visible = false;
+            this.panelMenu.BackColor = System.Drawing.Color.White;
+            this.panelMenu.Controls.Add(this.buttonToMianForm);
+            this.panelMenu.Controls.Add(this.panelEmployeeData);
+            this.panelMenu.Controls.Add(this.buttonLogOut);
+            this.panelMenu.Controls.Add(this.buttonExitApp);
+            this.panelMenu.Controls.Add(this.button5);
+            this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panelMenu.Location = new System.Drawing.Point(0, 0);
+            this.panelMenu.Name = "panelMenu";
+            this.panelMenu.Size = new System.Drawing.Size(52, 486);
+            this.panelMenu.TabIndex = 1;
             // 
-            // label48
+            // buttonToMianForm
             // 
-            this.label48.AutoSize = true;
-            this.label48.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label48.Location = new System.Drawing.Point(9, 92);
-            this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(108, 25);
-            this.label48.TabIndex = 158;
-            this.label48.Text = "Сотрудник:";
+            this.buttonToMianForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(186)))), ((int)(((byte)(93)))));
+            this.buttonToMianForm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonToMianForm.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonToMianForm.Location = new System.Drawing.Point(13, 106);
+            this.buttonToMianForm.Name = "buttonToMianForm";
+            this.buttonToMianForm.Size = new System.Drawing.Size(175, 40);
+            this.buttonToMianForm.TabIndex = 24;
+            this.buttonToMianForm.Text = "На главную";
+            this.buttonToMianForm.UseVisualStyleBackColor = false;
+            this.buttonToMianForm.Visible = false;
+            this.buttonToMianForm.Click += new System.EventHandler(this.buttonToMianForm_Click);
             // 
-            // label50
+            // panelEmployeeData
             // 
-            this.label50.AutoSize = true;
-            this.label50.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label50.Location = new System.Drawing.Point(55, 136);
-            this.label50.Name = "label50";
-            this.label50.Size = new System.Drawing.Size(57, 25);
-            this.label50.TabIndex = 161;
-            this.label50.Text = "Дата:";
+            this.panelEmployeeData.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(186)))), ((int)(((byte)(93)))));
+            this.panelEmployeeData.Controls.Add(this.labelEmployeeName);
+            this.panelEmployeeData.Controls.Add(this.pictureBoxUser);
+            this.panelEmployeeData.Location = new System.Drawing.Point(2, 50);
+            this.panelEmployeeData.Name = "panelEmployeeData";
+            this.panelEmployeeData.Size = new System.Drawing.Size(212, 50);
+            this.panelEmployeeData.TabIndex = 23;
             // 
-            // dateTimePicker1
+            // labelEmployeeName
             // 
-            this.dateTimePicker1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.dateTimePicker1.Location = new System.Drawing.Point(118, 134);
-            this.dateTimePicker1.MaxDate = new System.DateTime(2010, 1, 1, 0, 0, 0, 0);
-            this.dateTimePicker1.MinDate = new System.DateTime(1970, 1, 1, 0, 0, 0, 0);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(206, 33);
-            this.dateTimePicker1.TabIndex = 160;
-            this.dateTimePicker1.Value = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
+            this.labelEmployeeName.AutoSize = true;
+            this.labelEmployeeName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelEmployeeName.Location = new System.Drawing.Point(56, 15);
+            this.labelEmployeeName.Name = "labelEmployeeName";
+            this.labelEmployeeName.Size = new System.Drawing.Size(79, 21);
+            this.labelEmployeeName.TabIndex = 1;
+            this.labelEmployeeName.Text = "none user";
             // 
-            // comboBox5
+            // pictureBoxUser
             // 
-            this.comboBox5.BackColor = System.Drawing.SystemColors.Window;
-            this.comboBox5.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Items.AddRange(new object[] {
-            "Отменено",
-            "Обработка",
-            "Успешно"});
-            this.comboBox5.Location = new System.Drawing.Point(117, 173);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(207, 33);
-            this.comboBox5.TabIndex = 163;
-            this.comboBox5.Visible = false;
+            this.pictureBoxUser.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.none_employee;
+            this.pictureBoxUser.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBoxUser.Location = new System.Drawing.Point(5, 5);
+            this.pictureBoxUser.Name = "pictureBoxUser";
+            this.pictureBoxUser.Size = new System.Drawing.Size(40, 40);
+            this.pictureBoxUser.TabIndex = 0;
+            this.pictureBoxUser.TabStop = false;
             // 
-            // label46
+            // buttonLogOut
             // 
-            this.label46.AutoSize = true;
-            this.label46.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label46.Location = new System.Drawing.Point(39, 173);
-            this.label46.Name = "label46";
-            this.label46.Size = new System.Drawing.Size(72, 25);
-            this.label46.TabIndex = 162;
-            this.label46.Text = "Статус:";
+            this.buttonLogOut.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(120)))), ((int)(((byte)(56)))));
+            this.buttonLogOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonLogOut.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonLogOut.Location = new System.Drawing.Point(12, 338);
+            this.buttonLogOut.Name = "buttonLogOut";
+            this.buttonLogOut.Size = new System.Drawing.Size(175, 63);
+            this.buttonLogOut.TabIndex = 22;
+            this.buttonLogOut.Text = "Сменить аккаунт";
+            this.buttonLogOut.UseVisualStyleBackColor = false;
+            this.buttonLogOut.Visible = false;
             // 
-            // comboBox6
+            // buttonExitApp
             // 
-            this.comboBox6.BackColor = System.Drawing.SystemColors.Window;
-            this.comboBox6.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.comboBox6.FormattingEnabled = true;
-            this.comboBox6.Items.AddRange(new object[] {
-            "Отменено",
-            "Обработка",
-            "Успешно"});
-            this.comboBox6.Location = new System.Drawing.Point(168, 215);
-            this.comboBox6.Name = "comboBox6";
-            this.comboBox6.Size = new System.Drawing.Size(241, 33);
-            this.comboBox6.TabIndex = 165;
-            this.comboBox6.Visible = false;
+            this.buttonExitApp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(52)))), ((int)(((byte)(52)))));
+            this.buttonExitApp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonExitApp.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonExitApp.Location = new System.Drawing.Point(12, 418);
+            this.buttonExitApp.Name = "buttonExitApp";
+            this.buttonExitApp.Size = new System.Drawing.Size(175, 40);
+            this.buttonExitApp.TabIndex = 21;
+            this.buttonExitApp.Text = "Выйти";
+            this.buttonExitApp.UseVisualStyleBackColor = false;
+            this.buttonExitApp.Visible = false;
             // 
-            // label45
+            // button5
             // 
-            this.label45.AutoSize = true;
-            this.label45.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label45.Location = new System.Drawing.Point(13, 218);
-            this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(149, 25);
-            this.label45.TabIndex = 164;
-            this.label45.Text = "Способ оплаты:";
+            this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button5.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.burger_menu;
+            this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button5.FlatAppearance.BorderSize = 0;
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button5.Location = new System.Drawing.Point(6, 3);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(40, 40);
+            this.button5.TabIndex = 20;
+            this.button5.UseVisualStyleBackColor = true;
+            // 
+            // label53
+            // 
+            this.label53.AutoSize = true;
+            this.label53.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label53.Location = new System.Drawing.Point(200, 418);
+            this.label53.Name = "label53";
+            this.label53.Size = new System.Drawing.Size(34, 21);
+            this.label53.TabIndex = 36;
+            this.label53.Text = "шт.";
+            // 
+            // label54
+            // 
+            this.label54.AutoSize = true;
+            this.label54.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label54.Location = new System.Drawing.Point(25, 413);
+            this.label54.Name = "label54";
+            this.label54.Size = new System.Drawing.Size(102, 25);
+            this.label54.TabIndex = 35;
+            this.label54.Text = "На складе:";
+            // 
+            // textBoxAmountInStock
+            // 
+            this.textBoxAmountInStock.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxAmountInStock.Location = new System.Drawing.Point(138, 411);
+            this.textBoxAmountInStock.MaxLength = 5;
+            this.textBoxAmountInStock.Name = "textBoxAmountInStock";
+            this.textBoxAmountInStock.Size = new System.Drawing.Size(56, 33);
+            this.textBoxAmountInStock.TabIndex = 34;
+            this.textBoxAmountInStock.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxAmountInStock_KeyPress);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // HandleRecordForm
             // 
@@ -1704,33 +1791,33 @@ namespace GardenAndOgorodShop
             this.panel1.PerformLayout();
             this.tabPageCategory.ResumeLayout(false);
             this.tabPageCategory.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.tabPageEmployee.ResumeLayout(false);
             this.tabPageEmployee.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEmployee)).EndInit();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.tabPageUser.ResumeLayout(false);
             this.tabPageUser.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.tabPageBrand.ResumeLayout(false);
             this.tabPageBrand.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
             this.tabPage6.ResumeLayout(false);
             this.tabPage6.PerformLayout();
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
             this.tabPage7.ResumeLayout(false);
             this.tabPage7.PerformLayout();
+            this.panel7.ResumeLayout(false);
+            this.panel7.PerformLayout();
             this.panelMenu.ResumeLayout(false);
             this.panelEmployeeData.ResumeLayout(false);
             this.panelEmployeeData.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUser)).EndInit();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
-            this.panel6.ResumeLayout(false);
-            this.panel6.PerformLayout();
-            this.panel7.ResumeLayout(false);
-            this.panel7.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1767,8 +1854,6 @@ namespace GardenAndOgorodShop
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBoxProductDesc;
         private System.Windows.Forms.PictureBox pictureBoxProduct;
-        private System.Windows.Forms.MaskedTextBox TextBoxProductDiscount;
-        private System.Windows.Forms.MaskedTextBox TextBoxProductPrice;
         private System.Windows.Forms.ComboBox comboBoxSuppliers;
         private System.Windows.Forms.ComboBox comboBoxBrands;
         private System.Windows.Forms.ComboBox comboBoxCategories;
@@ -1799,7 +1884,7 @@ namespace GardenAndOgorodShop
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBoxEmployee;
         private System.Windows.Forms.MaskedTextBox maskedTextBox2;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label19;
@@ -1870,5 +1955,14 @@ namespace GardenAndOgorodShop
         private System.Windows.Forms.Button button14;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Label label49;
+        private System.Windows.Forms.Label label52;
+        private System.Windows.Forms.Label label51;
+        private System.Windows.Forms.Label label44;
+        private System.Windows.Forms.TextBox textBoxProductCost;
+        private System.Windows.Forms.TextBox textBoxProductSeasonalDiscount;
+        private System.Windows.Forms.Label label53;
+        private System.Windows.Forms.Label label54;
+        private System.Windows.Forms.TextBox textBoxAmountInStock;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
