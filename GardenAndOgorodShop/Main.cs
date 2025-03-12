@@ -831,5 +831,12 @@ namespace GardenAndOgorodShop
             form.Show();
             this.Hide();
         }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            HandleRecordForm form = new HandleRecordForm(3, "add", 0);
+            form.Show();
+            this.Hide();
+        }
     }
 }

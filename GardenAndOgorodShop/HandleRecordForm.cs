@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -49,6 +50,21 @@ namespace GardenAndOgorodShop
             catch (Exception ex)
             {
                 MessageBox.Show($"Ошибка при загрузке {table_name}: " + ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void LoadComboBoxSourceEmployee()
+        {
+            try
+            {
+                System.Data.DataTable dataTable = DBHandler.LoadDataSync("employees");
+                foreach(DataRow row in dataTable.Rows)
+                {
+                    comboBoxEmployeeUser.Items.Add($"{row[2]} {row[1].ToString().Substring(0, 1)}. {row[3].ToString().Substring(0, 1)}.\t{row[6]}");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при загрузке списка сотрудников: " + ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         byte[] imageData;
@@ -118,6 +134,16 @@ namespace GardenAndOgorodShop
                 buttonAddEditEmployee.Text = "Изменить";
             }
         }
+        private void loadEditData_user()
+        {
+            DataTable table = DBHandler.LoadDataSync($"employees WHERE employees_id = {id_record}");
+            DataRow selected_row = table.Rows[0];
+            if (selected_row != null)
+            {
+                
+                buttonAddEditUser.Text = "Изменить";
+            }
+        }
         private void loadEditData()
         {
             switch (tabControlRecords.SelectedIndex)
@@ -125,7 +151,7 @@ namespace GardenAndOgorodShop
                 case 0: loadEditDataProduct(); break;
                 case 1: loadEditDataCategory(); break;
                 case 2: loadEditData_employee(); break;
-                case 3: ; break;
+                case 3: loadEditData_user(); break;
                 case 4: ; break;
                 case 5: ; break;
                 case 6: ; break;
@@ -138,7 +164,8 @@ namespace GardenAndOgorodShop
             LoadComboBoxSource(comboBoxBrands, "brands", "brand_name", "brands_id");
             LoadComboBoxSource(comboBoxCategories, "categories", "category_name", "categories_id");
             LoadComboBoxSource(comboBoxSuppliers, "suppliers", "supplier_name", "suppliers_id");
-            LoadComboBoxSource(comboBoxEmployeeUser, "employees", "last_name", "employees_id");
+            //LoadComboBoxSource(comboBoxEmployeeUser, "employees", "last_name", "employees_id");
+            LoadComboBoxSourceEmployee();
             if (this.selected_mode == "edit")
             {
                 loadEditData();
@@ -458,12 +485,60 @@ namespace GardenAndOgorodShop
                 }
             }
         }
+        static string ComputeSha256Hash(string rawData)
+        {
+            // Создаем новый экземпляр SHA256
+            using (SHA256 sha256Hash = SHA256.Create())
+            {
+                // Вычисляем хэш
+                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(rawData));
 
+                // Преобразуем байты в строку
+                StringBuilder builder = new StringBuilder();
+                for (int i = 0; i < bytes.Length; i++)
+                {
+                    builder.Append(bytes[i].ToString("x2")); // Преобразуем в шестнадцатеричный формат
+                }
+                return builder.ToString();
+            }
+        }
         private void button7_Click(object sender, EventArgs e)
         {
             if (ValidateTabPage(tabControlRecords.SelectedTab))
             {
-                MessageBox.Show("Все поля заполнены!", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                string elem_table = "Пользователь";
+                if (selected_mode == "add")
+                {
+                    string[] result = DBHandler.InsertUser(
+                        textBoxLogin.Text,
+                        ComputeSha256Hash(textBoxPwd.Text),
+                        comboBoxEmployeeUser.SelectedIndex+1,
+                        comboBoxRole.SelectedIndex+1,
+                        textBoxUserDesc.Text
+                )
+                ? SuccessAddRecordResult(elem_table, "employee") : new string[] { $"{elem_table} НЕ добавлен!", "Провал" };
+                    MessageBox.Show(result[0], result[1], MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    string[] result = DBHandler.EditEmployee(
+                        textBoxLastName.Text,
+                        textBoxFirstName.Text,
+                        textBoxFathersName.Text,
+                        dateTimePickerAge.Value.ToString("yyyy-MM-dd"),
+                        comboBoxGender.Text,
+                        maskedTextBoxEmployeePhone.Text,
+                        textBoxEmployeeEmail.Text,
+                        textBoxEmployeeAddress.Text,
+                        textBoxPosition.Text,
+                        textBoxEmployeePrice.Text,
+                        textBoxEmployeeDesc.Text,
+                        pictureBoxEmployee.BackgroundImage,
+                        id_record
+               )
+               ? new string[] { $"{elem_table} изменен.", "Успех" } : new string[] { $"{elem_table} НЕ был изменен!", "Провал" };
+                    MessageBox.Show(result[0], result[1], MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
         }
 

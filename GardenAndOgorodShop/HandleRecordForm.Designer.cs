@@ -104,7 +104,7 @@ namespace GardenAndOgorodShop
             this.textBoxUserDesc = new System.Windows.Forms.TextBox();
             this.label35 = new System.Windows.Forms.Label();
             this.textBoxLogin = new System.Windows.Forms.TextBox();
-            this.button7 = new System.Windows.Forms.Button();
+            this.buttonAddEditUser = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label36 = new System.Windows.Forms.Label();
@@ -923,7 +923,7 @@ namespace GardenAndOgorodShop
             this.tabPageUser.Controls.Add(this.textBoxUserDesc);
             this.tabPageUser.Controls.Add(this.label35);
             this.tabPageUser.Controls.Add(this.textBoxLogin);
-            this.tabPageUser.Controls.Add(this.button7);
+            this.tabPageUser.Controls.Add(this.buttonAddEditUser);
             this.tabPageUser.Controls.Add(this.button8);
             this.tabPageUser.Controls.Add(this.panel4);
             this.tabPageUser.Location = new System.Drawing.Point(4, 22);
@@ -1038,18 +1038,18 @@ namespace GardenAndOgorodShop
             this.textBoxLogin.Size = new System.Drawing.Size(321, 33);
             this.textBoxLogin.TabIndex = 93;
             // 
-            // button7
+            // buttonAddEditUser
             // 
-            this.button7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(186)))), ((int)(((byte)(93)))));
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button7.Location = new System.Drawing.Point(258, 396);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(182, 40);
-            this.button7.TabIndex = 92;
-            this.button7.Text = "Добавить";
-            this.button7.UseVisualStyleBackColor = false;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
+            this.buttonAddEditUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(186)))), ((int)(((byte)(93)))));
+            this.buttonAddEditUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonAddEditUser.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonAddEditUser.Location = new System.Drawing.Point(258, 396);
+            this.buttonAddEditUser.Name = "buttonAddEditUser";
+            this.buttonAddEditUser.Size = new System.Drawing.Size(182, 40);
+            this.buttonAddEditUser.TabIndex = 92;
+            this.buttonAddEditUser.Text = "Добавить";
+            this.buttonAddEditUser.UseVisualStyleBackColor = false;
+            this.buttonAddEditUser.Click += new System.EventHandler(this.button7_Click);
             // 
             // button8
             // 
@@ -1842,7 +1842,7 @@ namespace GardenAndOgorodShop
         private System.Windows.Forms.TextBox textBoxUserDesc;
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.TextBox textBoxLogin;
-        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button buttonAddEditUser;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label36;

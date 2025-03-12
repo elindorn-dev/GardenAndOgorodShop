@@ -10,7 +10,7 @@ using System.Drawing;
 using System.Data;
 using MySqlX.XDevAPI.Relational;
 using System.Data.SqlClient;
-using Microsoft.Office.Interop.Excel;
+using System.Net;
 
 namespace GardenAndOgorodShop
 {
@@ -380,7 +380,37 @@ namespace GardenAndOgorodShop
             }
             catch (Exception e)
             {
-                MessageBox.Show("Ошибка добавления категории (db):\n" + e.Message);
+                MessageBox.Show("Ошибка добавления сотрудника (db):\n" + e.Message);
+                return false;
+            }
+        }
+        public static bool InsertUser(string username, string hash, int employee_id, int role_id, string descript)
+        {
+            try
+            {
+                MySqlConnection con = new MySqlConnection(connect_string);
+                con.Open();
+
+                string query = "INSERT INTO `garden_and_ogorod_shop`.`users` (`username`, `password_hash`, `employees_id`, `role_id`, `last_login_date`, `notes`) " +
+               "VALUES (@username, @hash, @employee_id, @role_id, NOW(), @notes);";
+
+                using (MySqlCommand cmd = new MySqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@username", username);
+                    cmd.Parameters.AddWithValue("@hash", hash);
+                    cmd.Parameters.AddWithValue("@employee_id", employee_id); 
+                    cmd.Parameters.AddWithValue("@role_id", role_id);       
+                    cmd.Parameters.AddWithValue("@notes", descript);
+
+                    cmd.ExecuteNonQuery();
+                }
+
+                con.Close();
+                return true;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Ошибка добавления пользователя (db):\n" + e.Message);
                 return false;
             }
         }
