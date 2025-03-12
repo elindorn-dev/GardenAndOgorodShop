@@ -352,7 +352,26 @@ namespace GardenAndOgorodShop
         {
             if (ValidateTabPage(tabControlRecords.SelectedTab))
             {
-                MessageBox.Show("Все поля заполнены!", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                string elem_table = "Сотрудник";
+                if (selected_mode == "add")
+                {
+                    string[] result = DBHandler.InsertCategory(
+                        textBoxCategoryTitle.Text,
+                        textBoxCategoryDesc.Text
+                )
+                ? SuccessAddRecordResult(elem_table, "employee") : new string[] { $"{elem_table} НЕ добавлен!", "Провал" };
+                    MessageBox.Show(result[0], result[1], MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    string[] result = DBHandler.EditCategory(
+                       textBoxCategoryTitle.Text,
+                       textBoxCategoryDesc.Text,
+                       id_record
+               )
+               ? new string[] { $"{elem_table} изменена.", "Успех" } : new string[] { $"{elem_table} НЕ был изменен!", "Провал" };
+                    MessageBox.Show(result[0], result[1], MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
         }
 

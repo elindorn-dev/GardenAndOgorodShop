@@ -56,6 +56,17 @@ namespace GardenAndOgorodShop
                     xlWorkbook.Close();
                     xlApp.Quit();
                     MessageBox.Show($"Excel-чек создан, проверьте его по пути {path_name}");
+                    string filePath = $"{Directory.GetCurrentDirectory()}\\{path_name}";
+
+                    // Создаем экземпляр Excel
+                    Excel.Application excelApp = new Excel.Application();
+                    excelApp.Visible = true; // Делаем Excel видимым
+
+                    // Открываем документ
+                    Excel.Workbook workbook = excelApp.Workbooks.Open(filePath);
+
+                    // Устанавливаем режим просмотра на печать
+                    excelApp.ActiveWindow.View = Excel.XlWindowView.xlPageLayoutView;
                 });
 
             }

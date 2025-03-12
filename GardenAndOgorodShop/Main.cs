@@ -296,7 +296,7 @@ namespace GardenAndOgorodShop
             
             getCategories();
             products_table = await DBHandler.LoadData("products WHERE is_available > 0");
-            employees_table = await DBHandler.LoadData("employees INNER JOIN users ON employees.users_id = users.users_id");
+            employees_table = await DBHandler.LoadData("employees INNER JOIN users ON employees.employees_id = users.employees_id");
 
             comboBoxCategories.Items.Add("без фильтрации");
             for (int i = 0; i< categories_strings.Length;i++)
@@ -322,7 +322,7 @@ namespace GardenAndOgorodShop
             LoadOrdersDataGridView();
             LoadBrandsDataGridView();
             LoadSuppliersDataGridView();
-            if (UserConfiguration.UserRole == "seller") { HideForCommonUser(); } else buttonCurrentOrder.Visible = false; buttonBacket.Visible = false;
+            if (UserConfiguration.UserRole == "seller") { HideForCommonUser(); } else { buttonCurrentOrder.Visible = false; buttonBacket.Visible = false; }
         }
 
         private void button5_Click(object sender, EventArgs e)

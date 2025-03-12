@@ -181,7 +181,7 @@ namespace GardenAndOgorodShop
                 using (MySqlConnection connect = new MySqlConnection(connect_string))
                 {
                     connect.Open();
-                    string query = "SELECT first_name, last_name, fathers_name, photo FROM employees WHERE users_id = @userId;";
+                    string query = "SELECT first_name, last_name, fathers_name, photo FROM employees INNER JOIN users ON employees.employees_id = users.employees_id WHERE users.users_id = @userId;";
                     using (MySqlCommand command_sql = new MySqlCommand(query, connect))
                     {
                         command_sql.Parameters.AddWithValue("@userId", UserConfiguration.UserID);
@@ -323,6 +323,31 @@ namespace GardenAndOgorodShop
         /// <param name="descript"></param>
         /// <returns></returns>
         public static bool InsertCategory(string title, string descript)
+        {
+            try
+            {
+                MySqlConnection con = new MySqlConnection(connect_string);
+                con.Open();
+
+                string query = "INSERT INTO `garden_and_ogorod_shop`.`categories` (`category_name`, `descript`) VALUES ('@title', '@description');";
+
+                using (MySqlCommand cmd = new MySqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@title", title);
+                    cmd.Parameters.AddWithValue("@descript", descript);
+                    cmd.ExecuteNonQuery();
+                }
+
+                con.Close();
+                return true;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Ошибка добавления категории (db):\n" + e.Message);
+                return false;
+            }
+        }
+        public static bool InsertEmployee(string title, string descript)
         {
             try
             {

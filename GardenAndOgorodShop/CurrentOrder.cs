@@ -111,22 +111,37 @@ namespace GardenAndOgorodShop
                     WHERE products_id = {product_id} AND orders_id = {UserConfiguration.Current_order_id};");
                     int new_amount = Convert.ToInt32(dataGridViewProducts.Rows[index_row].Cells[3].Value);
                     DBHandler.randomSQLCommand($"UPDATE `garden_and_ogorod_shop`.`products` SET `is_available` = `is_available` {edit_product} 1 WHERE (`products_id` = '{product_id}');");
+
+                    double cost = Convert.ToDouble(labelTotalCost.Text);
                     if (new_amount == 1)
                     {
                         if (edit_backet == "-")
                         {
+                            dataGridViewProducts.Rows[index_row].Cells[3].Value = $"{new_amount - 1}";
+                            cost -= Convert.ToDouble(selected_row[6]);
                             DBHandler.randomSQLCommand($"DELETE FROM `garden_and_ogorod_shop`.`products_orders` WHERE (`products_id` = '{product_id}') and (`orders_id` = '{UserConfiguration.Current_order_id}');");
                             await reloadBacket();
                         }
                         else
                         {
-                            dataGridViewProducts.Rows[index_row].Cells[3].Value = edit_backet == "+" ? $"{new_amount + 1}" : $"{new_amount - 1}";
+                            dataGridViewProducts.Rows[index_row].Cells[3].Value = $"{new_amount + 1}";
+                            cost += Convert.ToDouble(selected_row[6]);
                         }
                     }
                     else
                     {
-                        dataGridViewProducts.Rows[index_row].Cells[3].Value = edit_backet == "+" ? $"{new_amount + 1}" : $"{new_amount - 1}";
+                        if (edit_backet == "+")
+                        {
+                            dataGridViewProducts.Rows[index_row].Cells[3].Value = $"{new_amount + 1}";
+                            cost += Convert.ToDouble(selected_row[6]);
+                        }
+                        else
+                        {
+                            dataGridViewProducts.Rows[index_row].Cells[3].Value = $"{new_amount - 1}";
+                            cost -= Convert.ToDouble(selected_row[6]);
+                        }
                     }
+                    labelTotalCost.Text = Convert.ToString(cost);
                 }
             }
             catch (Exception err)
@@ -180,6 +195,10 @@ namespace GardenAndOgorodShop
                     await PaymentAgreement.createExcelAgreement();
                     //
                     UserConfiguration.Current_order_id = 0;
+                }
+                else
+                {
+                    MessageBox.Show("Корзина пуста");
                 }
             }
             catch (Exception err)
