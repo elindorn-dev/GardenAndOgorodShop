@@ -322,7 +322,7 @@ namespace GardenAndOgorodShop
             LoadOrdersDataGridView();
             LoadBrandsDataGridView();
             LoadSuppliersDataGridView();
-            if (UserConfiguration.UserRole == "seller") { HideForCommonUser(); } else buttonCurrentOrder.Visible = false;
+            if (UserConfiguration.UserRole == "seller") { HideForCommonUser(); } else buttonCurrentOrder.Visible = false; buttonBacket.Visible = false;
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -803,6 +803,23 @@ namespace GardenAndOgorodShop
             DataRow selected_row = products_table.Rows[index_row];
             int product_id = Convert.ToInt32(selected_row[0]);
             HandleRecordForm form = new HandleRecordForm(0, "edit", product_id);
+            form.Show();
+            this.Hide();
+        }
+
+        private void buttonAddCategory_Click(object sender, EventArgs e)
+        {
+            HandleRecordForm form = new HandleRecordForm(1, "add", 0);
+            form.Show();
+            this.Hide();
+        }
+
+        private void buttonEditCategory_Click(object sender, EventArgs e)
+        {
+            int index_row = dataGridViewCategories.SelectedCells[0].RowIndex;
+            DataRow selected_row = DBHandler.LoadDataSync("categories").Rows[index_row];
+            int _id = Convert.ToInt32(selected_row[0]);
+            HandleRecordForm form = new HandleRecordForm(1, "edit", _id);
             form.Show();
             this.Hide();
         }

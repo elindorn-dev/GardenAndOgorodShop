@@ -257,6 +257,19 @@ namespace GardenAndOgorodShop
             return dt;
         }
         #region Add records
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="title"></param>
+        /// <param name="descript"></param>
+        /// <param name="price"></param>
+        /// <param name="category"></param>
+        /// <param name="brand"></param>
+        /// <param name="is_avaible"></param>
+        /// <param name="image"></param>
+        /// <param name="supplier"></param>
+        /// <param name="discount"></param>
+        /// <returns></returns>
         public static bool InsertProduct(string title, string descript, decimal price, int category, int brand, int is_avaible, Image image, int supplier, decimal discount)
         {
             try
@@ -303,9 +316,54 @@ namespace GardenAndOgorodShop
                 return false;
             }
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="title"></param>
+        /// <param name="descript"></param>
+        /// <returns></returns>
+        public static bool InsertCategory(string title, string descript)
+        {
+            try
+            {
+                MySqlConnection con = new MySqlConnection(connect_string);
+                con.Open();
+
+                string query = "INSERT INTO `garden_and_ogorod_shop`.`categories` (`category_name`, `descript`) VALUES ('@title', '@description');";
+
+                using (MySqlCommand cmd = new MySqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@title", title);
+                    cmd.Parameters.AddWithValue("@descript", descript);
+                    cmd.ExecuteNonQuery();
+                }
+
+                con.Close();
+                return true;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Ошибка добавления категории (db):\n" + e.Message);
+                return false;
+            }
+        }
         #endregion
         #region Edit records
-        public static bool EditProduct(string title, string descript, double price, int category, int brand, int is_avaible, Image image, int supplier, double discount)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="title"></param>
+        /// <param name="descript"></param>
+        /// <param name="price"></param>
+        /// <param name="category"></param>
+        /// <param name="brand"></param>
+        /// <param name="is_avaible"></param>
+        /// <param name="image"></param>
+        /// <param name="supplier"></param>
+        /// <param name="discount"></param>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public static bool EditProduct(string title, string descript, double price, int category, int brand, int is_avaible, Image image, int supplier, double discount, int id)
         {
             try
             {
@@ -317,23 +375,22 @@ namespace GardenAndOgorodShop
                     image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
                     blobData = ms.ToArray();
                 }
-
                 string query = $"UPDATE `garden_and_ogorod_shop`.`products` SET " +
-                    "`products_name` = '@title', " +
-                    "`descript` = '@descript', " +
-                    "`price` = '@price', " +
-                    "`categories_id` = '@category', " +
-                    "`brands_id` = '@brand', " +
-                    "`is_available` = '@is_available', " +
+                    "`products_name` = @title, " +
+                    "`descript` = @descript, " +
+                    "`price` = @price, " +
+                    "`categories_id` = @category, " +
+                    "`brands_id` = @brand, " +
+                    "`is_available` = @is_available, " +
                     "`image` = @image, " +
-                    "`suppliers_id` = '@supplier', " +
-                    "`seasonal_discount` = '@discount' " +
-                    "WHERE (`products_id` = '8');";
+                    "`suppliers_id` = @supplier, " +
+                    "`seasonal_discount` = @discount " +
+                    $"WHERE (`products_id` = '{id}');";
 
                 using (MySqlCommand cmd = new MySqlCommand(query, con))
                 {
-                    cmd.Parameters.AddWithValue("@title", title);
-                    cmd.Parameters.AddWithValue("@descript", descript);
+                    cmd.Parameters.AddWithValue("@title", $"{title}");
+                    cmd.Parameters.AddWithValue("@descript", $"{descript}");
                     cmd.Parameters.AddWithValue("@price", price);
                     category = category == 0 ? 1 : category;
                     cmd.Parameters.AddWithValue("@category", category);
@@ -354,7 +411,39 @@ namespace GardenAndOgorodShop
             }
             catch (Exception e)
             {
-                MessageBox.Show("Ошибка добавления продукта (db):\n" + e.Message);
+                MessageBox.Show("Ошибка изменения продукта (db):\n" + e.Message);
+                return false;
+            }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="title"></param>
+        /// <param name="descript"></param>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public static bool EditCategory(string title, string descript, int id)
+        {
+            try
+            {
+                MySqlConnection con = new MySqlConnection(connect_string);
+                con.Open();
+                string query = $"UPDATE `garden_and_ogorod_shop`.`categories` SET `category_name` = @title, `descript` = @descript WHERE (`categories_id` = '{id}');";
+
+                using (MySqlCommand cmd = new MySqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@title", title);
+                    cmd.Parameters.AddWithValue("@descript", descript);
+
+                    cmd.ExecuteNonQuery();
+                }
+
+                con.Close();
+                return true;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Ошибка изменения категории (db):\n" + e.Message);
                 return false;
             }
         }

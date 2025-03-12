@@ -51,6 +51,7 @@ namespace GardenAndOgorodShop
                 MessageBox.Show($"Ошибка при загрузке {table_name}: " + ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        byte[] imageData;
         private void loadEditDataProduct()
         {
             DataTable table = DBHandler.LoadDataSync($"products WHERE products_id = {id_record}");
@@ -64,7 +65,7 @@ namespace GardenAndOgorodShop
                 comboBoxCategories.SelectedIndex = Convert.ToInt32(selected_product[4]);
                 comboBoxBrands.SelectedIndex = Convert.ToInt32(selected_product[5]);
                 textBoxProductIsAvaible.Text = Convert.ToString(selected_product[6]);
-                byte[] imageData = (byte[])selected_product[7];
+                imageData = (byte[])selected_product[7];
                 using (MemoryStream ms = new MemoryStream(imageData))
                 {
                     pictureBoxProduct.BackgroundImage = Image.FromStream(ms);
@@ -74,9 +75,30 @@ namespace GardenAndOgorodShop
                 buttonAddEditProduct.Text = "Изменить";
             }
         }
+        private void loadEditDataCategory()
+        {
+            DataTable table = DBHandler.LoadDataSync($"categories WHERE categories_id = {id_record}");
+            DataRow selected_row = table.Rows[0];
+            if (selected_row != null)
+            {
+                textBoxCategoryTitle.Text = Convert.ToString(selected_row[1]);
+                textBoxCategoryDesc.Text = Convert.ToString(selected_row[2]);
+                buttonAddEditCategory.Text = "Изменить";
+            }
+        }
         private void loadEditData()
         {
-
+            switch (tabControlRecords.SelectedIndex)
+            {
+                case 0: loadEditDataProduct(); break;
+                case 1: loadEditDataCategory(); break;
+                case 2: ; break;
+                case 3: ; break;
+                case 4: ; break;
+                case 5: ; break;
+                case 6: ; break;
+                default: MessageBox.Show("Не найдена нужная таблица\n(selected index -> table)"); Main form = new Main(); form.Show(); this.Hide(); break;
+            }
         }
         private void HandleRecordForm_Load(object sender, EventArgs e)
         {
@@ -87,7 +109,7 @@ namespace GardenAndOgorodShop
             LoadComboBoxSource(comboBoxEmployeeUser, "employees", "last_name", "employees_id");
             if (this.selected_mode == "edit")
             {
-                loadEditDataProduct();
+                loadEditData();
             }
         }
         private void buttonToMianForm_Click(object sender, EventArgs e)
@@ -213,7 +235,37 @@ namespace GardenAndOgorodShop
 
             return isValid;
         }
-
+        private void ClearFieldsOnForm_product()
+        {
+            textBoxProductName.Text = "";
+            textBoxProductDesc.Text = "";
+            textBoxProductCost.Text = "";
+            comboBoxCategories.SelectedIndex = -1;
+            comboBoxBrands.SelectedIndex = -1;
+            textBoxProductIsAvaible.Text = "";
+            pictureBoxProduct.BackgroundImage = Properties.Resources.none_image;
+            comboBoxSuppliers.SelectedIndex = -1;
+            textBoxProductSeasonalDiscount.Text = "";
+        }
+        private void ClearFieldsOnForm_category()
+        {
+            
+        }
+        private string[] SuccessAddRecordResult(string elem, string form)
+        {
+            switch (form)
+            {
+                case "product": ClearFieldsOnForm_product(); break;
+                case "category": ClearFieldsOnForm_category(); break;
+                default:;break;
+            }
+            return new string[] { $"{elem} добавлен.", "Успех" };
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonAddEditProduct_Click(object sender, EventArgs e)
         {
             try
@@ -232,7 +284,7 @@ namespace GardenAndOgorodShop
                             pictureBoxProduct.BackgroundImage,
                             comboBoxSuppliers.SelectedIndex,
                             Convert.ToDecimal(textBoxProductSeasonalDiscount.Text)
-                    ) ? new string[] { "Товар добавлен.", "Успех" } : new string[] { "Товар НЕ добавлен!", "Провал" };
+                    ) ? SuccessAddRecordResult("Товар", "product") : new string[] { "Товар НЕ добавлен!", "Провал" };
                         MessageBox.Show(result[0], result[1], MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
@@ -240,7 +292,6 @@ namespace GardenAndOgorodShop
                         double cost = Convert.ToDouble(textBoxProductCost.Text);
                         int amount = Convert.ToInt32(textBoxProductIsAvaible.Text);
                         double discount = Convert.ToDouble(textBoxProductSeasonalDiscount.Text);
-
 
                         string title = Convert.ToString(textBoxProductName.Text);
 
@@ -253,7 +304,8 @@ namespace GardenAndOgorodShop
                             amount,
                             pictureBoxProduct.BackgroundImage,
                             comboBoxSuppliers.SelectedIndex,
-                            discount
+                            discount,
+                            id_record
                     ) ? new string[] { "Товар изменен.", "Успех" } : new string[] { "Товар НЕ был изменен!", "Провал" };
                         MessageBox.Show(result[0], result[1], MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
@@ -264,12 +316,35 @@ namespace GardenAndOgorodShop
                 MessageBox.Show("Ошибка обработки продукта (form):\n" + err.Message);
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button2_Click(object sender, EventArgs e)
         {
             if (ValidateTabPage(tabControlRecords.SelectedTab))
             {
-                MessageBox.Show("Все поля заполнены!", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                string elem_table = "Категория";
+                if (selected_mode == "add")
+                {
+                    string[] result = DBHandler.InsertCategory(
+                        textBoxCategoryTitle.Text,
+                        textBoxCategoryDesc.Text
+                )
+                ? SuccessAddRecordResult(elem_table, "category") : new string[] { $"{elem_table} НЕ добавлена!", "Провал" };
+                    MessageBox.Show(result[0], result[1], MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    string[] result = DBHandler.EditCategory(
+                       textBoxCategoryTitle.Text,
+                       textBoxCategoryDesc.Text,
+                       id_record
+               )
+               ? new string[] { $"{elem_table} изменена.", "Успех" } : new string[] { $"{elem_table} НЕ была изменена!", "Провал" };
+                    MessageBox.Show(result[0], result[1], MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
         }
 
@@ -310,6 +385,71 @@ namespace GardenAndOgorodShop
             if (ValidateTabPage(tabControlRecords.SelectedTab))
             {
                 MessageBox.Show("Все поля заполнены!", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+        #region Handle panel menu
+        bool setting_active_status = false;
+        bool moving;
+        // ФУНКЦИЯ ВИДИМОСТИ ЭЛЕМЕНТОВ ПАНЕЛИ НАВИГАЦИИ
+        private void VisibleItemsNavigation(bool visible)
+        {
+            foreach (Control control in panelNavigation.Controls)
+            {
+                control.Visible = visible;
+            }
+        }
+        // ФУНКЦИЯ ПОЯВЛЕНИЯ ПАНЕЛИ НАВИГАЦИИ
+        private async void ActiveSetting()
+        {
+            // задаём будущее положение панели настроек
+            int future_location_pannelSettings = panelNavigation.Width + 160;
+            // цикл по пиксельного перемещения с итерационным созданием точки локации на форме
+            while (!moving && panelNavigation.Width < future_location_pannelSettings)
+            {
+                moving = true;
+                await Task.Delay(1);
+                panelNavigation.Width += 20;
+                moving = false;
+            }
+            setting_active_status = true;
+            VisibleItemsNavigation(true);
+            pictureBoxUser.Visible = true;
+            panelEmployeeData.Visible = true;
+            buttonMenu.Visible = true;
+            buttonMenu.BackgroundImage = GardenAndOgorodShop.Properties.Resources.closed_menu;
+
+        }
+        // ФУНКЦИЯ СКРЫТИЯ ПАНЕЛИ НАВИГАЦИИ
+        private async void DisactiveSetting()
+        {
+            // задаём будущее положение панели настроек
+            int future_location_pannelSettings = panelNavigation.Width - 160;
+            // цикл по пиксельного перемещения с итерационным созданием точки локации на форме
+            while (!moving && panelNavigation.Width > future_location_pannelSettings)
+            {
+                moving = true;
+                await Task.Delay(1);
+                panelNavigation.Width -= 20;
+                moving = false;
+            }
+            setting_active_status = false;
+            VisibleItemsNavigation(false);
+            pictureBoxUser.Visible = true;
+            panelEmployeeData.Visible = true;
+            buttonMenu.Visible = true;
+            buttonMenu.BackgroundImage = GardenAndOgorodShop.Properties.Resources.burger_menu;
+        }
+        #endregion
+        
+        private void buttonMenu_Click(object sender, EventArgs e)
+        {
+            if (!setting_active_status)
+            {
+                ActiveSetting();
+            }
+            else
+            {
+                DisactiveSetting();
             }
         }
     }

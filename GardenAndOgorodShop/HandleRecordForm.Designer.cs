@@ -56,7 +56,7 @@ namespace GardenAndOgorodShop
             this.panel1 = new System.Windows.Forms.Panel();
             this.labelTitleProduct = new System.Windows.Forms.Label();
             this.tabPageCategory = new System.Windows.Forms.TabPage();
-            this.button2 = new System.Windows.Forms.Button();
+            this.buttonAddEditCategory = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
             this.textBoxCategoryDesc = new System.Windows.Forms.TextBox();
@@ -157,14 +157,14 @@ namespace GardenAndOgorodShop
             this.button14 = new System.Windows.Forms.Button();
             this.panel7 = new System.Windows.Forms.Panel();
             this.label49 = new System.Windows.Forms.Label();
-            this.panelMenu = new System.Windows.Forms.Panel();
+            this.panelNavigation = new System.Windows.Forms.Panel();
             this.buttonToMianForm = new System.Windows.Forms.Button();
             this.panelEmployeeData = new System.Windows.Forms.Panel();
             this.labelEmployeeName = new System.Windows.Forms.Label();
             this.pictureBoxUser = new System.Windows.Forms.PictureBox();
             this.buttonLogOut = new System.Windows.Forms.Button();
             this.buttonExitApp = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.buttonMenu = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.tabControlRecords.SuspendLayout();
             this.tabPageProduct.SuspendLayout();
@@ -183,7 +183,7 @@ namespace GardenAndOgorodShop
             this.panel6.SuspendLayout();
             this.tabPage7.SuspendLayout();
             this.panel7.SuspendLayout();
-            this.panelMenu.SuspendLayout();
+            this.panelNavigation.SuspendLayout();
             this.panelEmployeeData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUser)).BeginInit();
             this.SuspendLayout();
@@ -491,7 +491,7 @@ namespace GardenAndOgorodShop
             // 
             // tabPageCategory
             // 
-            this.tabPageCategory.Controls.Add(this.button2);
+            this.tabPageCategory.Controls.Add(this.buttonAddEditCategory);
             this.tabPageCategory.Controls.Add(this.button3);
             this.tabPageCategory.Controls.Add(this.label15);
             this.tabPageCategory.Controls.Add(this.textBoxCategoryDesc);
@@ -505,18 +505,18 @@ namespace GardenAndOgorodShop
             this.tabPageCategory.Text = "tabPageCategory";
             this.tabPageCategory.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // buttonAddEditCategory
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(186)))), ((int)(((byte)(93)))));
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button2.Location = new System.Drawing.Point(551, 415);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(182, 40);
-            this.button2.TabIndex = 48;
-            this.button2.Text = "Добавить";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.buttonAddEditCategory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(186)))), ((int)(((byte)(93)))));
+            this.buttonAddEditCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonAddEditCategory.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonAddEditCategory.Location = new System.Drawing.Point(551, 415);
+            this.buttonAddEditCategory.Name = "buttonAddEditCategory";
+            this.buttonAddEditCategory.Size = new System.Drawing.Size(182, 40);
+            this.buttonAddEditCategory.TabIndex = 48;
+            this.buttonAddEditCategory.Text = "Добавить";
+            this.buttonAddEditCategory.UseVisualStyleBackColor = false;
+            this.buttonAddEditCategory.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
@@ -1638,19 +1638,20 @@ namespace GardenAndOgorodShop
             this.label49.TabIndex = 2;
             this.label49.Text = "Продажи";
             // 
-            // panelMenu
+            // panelNavigation
             // 
-            this.panelMenu.BackColor = System.Drawing.Color.White;
-            this.panelMenu.Controls.Add(this.buttonToMianForm);
-            this.panelMenu.Controls.Add(this.panelEmployeeData);
-            this.panelMenu.Controls.Add(this.buttonLogOut);
-            this.panelMenu.Controls.Add(this.buttonExitApp);
-            this.panelMenu.Controls.Add(this.button5);
-            this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelMenu.Location = new System.Drawing.Point(0, 0);
-            this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Size = new System.Drawing.Size(52, 486);
-            this.panelMenu.TabIndex = 1;
+            this.panelNavigation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.panelNavigation.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelNavigation.Controls.Add(this.buttonToMianForm);
+            this.panelNavigation.Controls.Add(this.panelEmployeeData);
+            this.panelNavigation.Controls.Add(this.buttonLogOut);
+            this.panelNavigation.Controls.Add(this.buttonExitApp);
+            this.panelNavigation.Controls.Add(this.buttonMenu);
+            this.panelNavigation.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panelNavigation.Location = new System.Drawing.Point(0, 0);
+            this.panelNavigation.Name = "panelNavigation";
+            this.panelNavigation.Size = new System.Drawing.Size(52, 486);
+            this.panelNavigation.TabIndex = 1;
             // 
             // buttonToMianForm
             // 
@@ -1722,18 +1723,19 @@ namespace GardenAndOgorodShop
             this.buttonExitApp.UseVisualStyleBackColor = false;
             this.buttonExitApp.Visible = false;
             // 
-            // button5
+            // buttonMenu
             // 
-            this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button5.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.burger_menu;
-            this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button5.FlatAppearance.BorderSize = 0;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Location = new System.Drawing.Point(6, 3);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(40, 40);
-            this.button5.TabIndex = 20;
-            this.button5.UseVisualStyleBackColor = true;
+            this.buttonMenu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonMenu.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.burger_menu;
+            this.buttonMenu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonMenu.FlatAppearance.BorderSize = 0;
+            this.buttonMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonMenu.Location = new System.Drawing.Point(4, 3);
+            this.buttonMenu.Name = "buttonMenu";
+            this.buttonMenu.Size = new System.Drawing.Size(40, 40);
+            this.buttonMenu.TabIndex = 20;
+            this.buttonMenu.UseVisualStyleBackColor = true;
+            this.buttonMenu.Click += new System.EventHandler(this.buttonMenu_Click);
             // 
             // openFileDialog1
             // 
@@ -1744,7 +1746,7 @@ namespace GardenAndOgorodShop
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(801, 486);
-            this.Controls.Add(this.panelMenu);
+            this.Controls.Add(this.panelNavigation);
             this.Controls.Add(this.tabControlRecords);
             this.Name = "HandleRecordForm";
             this.Text = "AddRecordForm";
@@ -1780,7 +1782,7 @@ namespace GardenAndOgorodShop
             this.tabPage7.PerformLayout();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
-            this.panelMenu.ResumeLayout(false);
+            this.panelNavigation.ResumeLayout(false);
             this.panelEmployeeData.ResumeLayout(false);
             this.panelEmployeeData.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUser)).EndInit();
@@ -1798,13 +1800,13 @@ namespace GardenAndOgorodShop
         private System.Windows.Forms.TabPage tabPageBrand;
         private System.Windows.Forms.TabPage tabPage6;
         private System.Windows.Forms.TabPage tabPage7;
-        private System.Windows.Forms.Panel panelMenu;
+        private System.Windows.Forms.Panel panelNavigation;
         private System.Windows.Forms.Panel panelEmployeeData;
         private System.Windows.Forms.Label labelEmployeeName;
         private System.Windows.Forms.PictureBox pictureBoxUser;
         private System.Windows.Forms.Button buttonLogOut;
         private System.Windows.Forms.Button buttonExitApp;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button buttonMenu;
         private System.Windows.Forms.Button buttonToMianForm;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label labelTitleProduct;
@@ -1825,7 +1827,7 @@ namespace GardenAndOgorodShop
         private System.Windows.Forms.ComboBox comboBoxCategories;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button buttonAddEditProduct;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button buttonAddEditCategory;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox textBoxCategoryDesc;
