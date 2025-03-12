@@ -261,10 +261,6 @@ namespace GardenAndOgorodShop
                 }
                 catch
                 {
-                    employeeName = "none";
-                    employeeName = "none";
-                    employeeName = "none";
-                    employeePhoto = Properties.Resources.none_employee;
                 }
                 dataGridViewEmployees.Rows.Add(employeePhoto, employeeName, employeePhone, employeePosition);
             }
@@ -518,7 +514,7 @@ namespace GardenAndOgorodShop
         {
             EnabledUsingHandleEmployees(false);
             // определяем метод
-            method_employee = $"employees INNER JOIN users ON employees.users_id = users.users_id WHERE {method_filter_employee} AND (last_name LIKE '%{method_search_employee}%') ORDER BY {method_sort_name_employee}";
+            method_employee = $"employees INNER JOIN users ON employees.employees_id = users.employees_id WHERE {method_filter_employee} AND (last_name LIKE '%{method_search_employee}%') ORDER BY {method_sort_name_employee}";
             // Загружаем новые данные таблицы
             employees_table = await DBHandler.LoadData(method_employee);
             dataGridViewEmployees.Rows.Clear();
@@ -820,6 +816,13 @@ namespace GardenAndOgorodShop
             DataRow selected_row = DBHandler.LoadDataSync("categories").Rows[index_row];
             int _id = Convert.ToInt32(selected_row[0]);
             HandleRecordForm form = new HandleRecordForm(1, "edit", _id);
+            form.Show();
+            this.Hide();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            HandleRecordForm form = new HandleRecordForm(2, "add", 0);
             form.Show();
             this.Hide();
         }

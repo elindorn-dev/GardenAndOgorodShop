@@ -162,8 +162,6 @@ namespace GardenAndOgorodShop
             this.panelEmployeeData = new System.Windows.Forms.Panel();
             this.labelEmployeeName = new System.Windows.Forms.Label();
             this.pictureBoxUser = new System.Windows.Forms.PictureBox();
-            this.buttonLogOut = new System.Windows.Forms.Button();
-            this.buttonExitApp = new System.Windows.Forms.Button();
             this.buttonMenu = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.tabControlRecords.SuspendLayout();
@@ -758,6 +756,7 @@ namespace GardenAndOgorodShop
             this.dateTimePickerAge.Size = new System.Drawing.Size(206, 33);
             this.dateTimePickerAge.TabIndex = 77;
             this.dateTimePickerAge.Value = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
+            this.dateTimePickerAge.ValueChanged += new System.EventHandler(this.dateTimePickerAge_ValueChanged);
             // 
             // label13
             // 
@@ -1644,8 +1643,6 @@ namespace GardenAndOgorodShop
             this.panelNavigation.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelNavigation.Controls.Add(this.buttonToMianForm);
             this.panelNavigation.Controls.Add(this.panelEmployeeData);
-            this.panelNavigation.Controls.Add(this.buttonLogOut);
-            this.panelNavigation.Controls.Add(this.buttonExitApp);
             this.panelNavigation.Controls.Add(this.buttonMenu);
             this.panelNavigation.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelNavigation.Location = new System.Drawing.Point(0, 0);
@@ -1696,32 +1693,6 @@ namespace GardenAndOgorodShop
             this.pictureBoxUser.Size = new System.Drawing.Size(40, 40);
             this.pictureBoxUser.TabIndex = 0;
             this.pictureBoxUser.TabStop = false;
-            // 
-            // buttonLogOut
-            // 
-            this.buttonLogOut.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(120)))), ((int)(((byte)(56)))));
-            this.buttonLogOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonLogOut.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonLogOut.Location = new System.Drawing.Point(12, 338);
-            this.buttonLogOut.Name = "buttonLogOut";
-            this.buttonLogOut.Size = new System.Drawing.Size(175, 63);
-            this.buttonLogOut.TabIndex = 22;
-            this.buttonLogOut.Text = "Сменить аккаунт";
-            this.buttonLogOut.UseVisualStyleBackColor = false;
-            this.buttonLogOut.Visible = false;
-            // 
-            // buttonExitApp
-            // 
-            this.buttonExitApp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(52)))), ((int)(((byte)(52)))));
-            this.buttonExitApp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonExitApp.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonExitApp.Location = new System.Drawing.Point(12, 418);
-            this.buttonExitApp.Name = "buttonExitApp";
-            this.buttonExitApp.Size = new System.Drawing.Size(175, 40);
-            this.buttonExitApp.TabIndex = 21;
-            this.buttonExitApp.Text = "Выйти";
-            this.buttonExitApp.UseVisualStyleBackColor = false;
-            this.buttonExitApp.Visible = false;
             // 
             // buttonMenu
             // 
@@ -1804,8 +1775,6 @@ namespace GardenAndOgorodShop
         private System.Windows.Forms.Panel panelEmployeeData;
         private System.Windows.Forms.Label labelEmployeeName;
         private System.Windows.Forms.PictureBox pictureBoxUser;
-        private System.Windows.Forms.Button buttonLogOut;
-        private System.Windows.Forms.Button buttonExitApp;
         private System.Windows.Forms.Button buttonMenu;
         private System.Windows.Forms.Button buttonToMianForm;
         private System.Windows.Forms.Panel panel1;

@@ -347,19 +347,30 @@ namespace GardenAndOgorodShop
                 return false;
             }
         }
-        public static bool InsertEmployee(string title, string descript)
+        public static bool InsertEmployee(string lastName, string firstName, string fathersName, string birth_date, string gender, string phone, string email, string address, string posotion, string salary, string descript)
         {
             try
             {
                 MySqlConnection con = new MySqlConnection(connect_string);
                 con.Open();
 
-                string query = "INSERT INTO `garden_and_ogorod_shop`.`categories` (`category_name`, `descript`) VALUES ('@title', '@description');";
+                string query = "INSERT INTO `garden_and_ogorod_shop`.`employees` (`first_name`, `last_name`, `fathers_name`, `birth_day`, `gender`, `phone_number`, `email`, `address`, `position`, `hire_date`, `salary`, `notes`) " +
+                "VALUES (@firstName, @lastName, @fathersName, @birth_day, @gender, @phone_number, @email, @address, @position, NOW(), @salary, @notes);";
 
                 using (MySqlCommand cmd = new MySqlCommand(query, con))
                 {
-                    cmd.Parameters.AddWithValue("@title", title);
-                    cmd.Parameters.AddWithValue("@descript", descript);
+                    cmd.Parameters.AddWithValue("@firstName", firstName);
+                    cmd.Parameters.AddWithValue("@lastName", lastName);
+                    cmd.Parameters.AddWithValue("@fathersName", fathersName);
+                    cmd.Parameters.AddWithValue("@birth_day", birth_date);
+                    cmd.Parameters.AddWithValue("@gender", gender);
+                    cmd.Parameters.AddWithValue("@phone_number", phone);
+                    cmd.Parameters.AddWithValue("@email", email);
+                    cmd.Parameters.AddWithValue("@address", address);
+                    cmd.Parameters.AddWithValue("@position", posotion);
+                    cmd.Parameters.AddWithValue("@salary", salary);
+                    cmd.Parameters.AddWithValue("@notes", descript);
+
                     cmd.ExecuteNonQuery();
                 }
 

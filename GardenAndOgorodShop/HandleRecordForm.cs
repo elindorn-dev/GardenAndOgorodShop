@@ -114,7 +114,9 @@ namespace GardenAndOgorodShop
         }
         private void buttonToMianForm_Click(object sender, EventArgs e)
         {
-
+            Main form = new Main();
+            form.Show();
+            this.Hide();
         }
         /// <summary>
         /// 
@@ -232,7 +234,22 @@ namespace GardenAndOgorodShop
             {
                 MessageBox.Show("Необходимо заполнить все обязательные поля", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
+            switch (tabPage.Name)
+            {
+                case "tabPageEmployee":
+                    if (!maskedTextBoxEmployeePhone.MaskCompleted)
+                    {
+                        MessageBox.Show("Пожалуйста, введите полный номер телефона.");
+                        isValid = false;
+                    }
+                    if (labelAge.Text == "00")
+                    {
+                        MessageBox.Show("Пожалуйста, укажите возраст.");
+                        isValid = false;
+                    }
+                    ; break;
+            }
+            
             return isValid;
         }
         private void ClearFieldsOnForm_product()
@@ -249,7 +266,22 @@ namespace GardenAndOgorodShop
         }
         private void ClearFieldsOnForm_category()
         {
-            
+            textBoxCategoryTitle.Text = "";
+            textBoxCategoryDesc.Text = "";
+        }
+        private void ClearFieldsOnForm_employee()
+        {
+            textBoxLastName.Text = "";
+            textBoxFirstName.Text = "";
+            textBoxFathersName.Text = "";
+            dateTimePickerAge.Value = new DateTime(2000, 1, 1);
+            comboBoxGender.SelectedIndex = -1;
+            maskedTextBoxEmployeePhone.Text = "";
+            textBoxEmployeeEmail.Text = "";
+            textBoxEmployeeAddress.Text = "";
+            textBoxPosition.Text = "";
+            textBoxEmployeePrice.Text = "";
+            textBoxEmployeeDesc.Text = "";
         }
         private string[] SuccessAddRecordResult(string elem, string form)
         {
@@ -257,6 +289,7 @@ namespace GardenAndOgorodShop
             {
                 case "product": ClearFieldsOnForm_product(); break;
                 case "category": ClearFieldsOnForm_category(); break;
+                case "employee": ClearFieldsOnForm_employee(); break;
                 default:;break;
             }
             return new string[] { $"{elem} добавлен.", "Успех" };
@@ -355,22 +388,31 @@ namespace GardenAndOgorodShop
                 string elem_table = "Сотрудник";
                 if (selected_mode == "add")
                 {
-                    string[] result = DBHandler.InsertCategory(
-                        textBoxCategoryTitle.Text,
-                        textBoxCategoryDesc.Text
+                    string[] result = DBHandler.InsertEmployee(
+                        textBoxLastName.Text,
+                        textBoxFirstName.Text,
+                        textBoxFathersName.Text,
+                        dateTimePickerAge.Value.ToString("yyyy-MM-dd"),
+                        comboBoxGender.Text,
+                        maskedTextBoxEmployeePhone.Text,
+                        textBoxEmployeeEmail.Text,
+                        textBoxEmployeeAddress.Text,
+                        textBoxPosition.Text,
+                        textBoxEmployeePrice.Text,
+                        textBoxEmployeeDesc.Text
                 )
                 ? SuccessAddRecordResult(elem_table, "employee") : new string[] { $"{elem_table} НЕ добавлен!", "Провал" };
                     MessageBox.Show(result[0], result[1], MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
-                    string[] result = DBHandler.EditCategory(
-                       textBoxCategoryTitle.Text,
-                       textBoxCategoryDesc.Text,
-                       id_record
-               )
-               ? new string[] { $"{elem_table} изменена.", "Успех" } : new string[] { $"{elem_table} НЕ был изменен!", "Провал" };
-                    MessageBox.Show(result[0], result[1], MessageBoxButtons.OK, MessageBoxIcon.Information);
+               //     string[] result = DBHandler.EditCategory(
+               //        textBoxCategoryTitle.Text,
+               //        textBoxCategoryDesc.Text,
+               //        id_record
+               //)
+               //? new string[] { $"{elem_table} изменена.", "Успех" } : new string[] { $"{elem_table} НЕ был изменен!", "Провал" };
+               //     MessageBox.Show(result[0], result[1], MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
         }
@@ -470,6 +512,18 @@ namespace GardenAndOgorodShop
             {
                 DisactiveSetting();
             }
+        }
+
+        private void dateTimePickerAge_ValueChanged(object sender, EventArgs e)
+        {
+            int years = DateTime.Now.Year - dateTimePickerAge.Value.Year;
+            if (dateTimePickerAge.Value.AddYears(years) > DateTime.Now) years--;
+            labelAge.Text = years.ToString();
+        }
+
+        private void buttonLogOut_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
