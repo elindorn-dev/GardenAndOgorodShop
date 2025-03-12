@@ -52,12 +52,13 @@ namespace GardenAndOgorodShop
                 MessageBox.Show($"Ошибка при загрузке {table_name}: " + ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        System.Data.DataTable employees;
         private void LoadComboBoxSourceEmployee()
         {
             try
             {
-                System.Data.DataTable dataTable = DBHandler.LoadDataSync("employees");
-                foreach(DataRow row in dataTable.Rows)
+                employees = DBHandler.LoadDataSync("employees");
+                foreach(DataRow row in employees.Rows)
                 {
                     comboBoxEmployeeUser.Items.Add($"{row[2]} {row[1].ToString().Substring(0, 1)}. {row[3].ToString().Substring(0, 1)}.\t{row[6]}");
                 }
@@ -136,11 +137,15 @@ namespace GardenAndOgorodShop
         }
         private void loadEditData_user()
         {
-            DataTable table = DBHandler.LoadDataSync($"employees WHERE employees_id = {id_record}");
+            DataTable table = DBHandler.LoadDataSync($"users WHERE users_id = {id_record}");
             DataRow selected_row = table.Rows[0];
             if (selected_row != null)
             {
-                
+                textBoxLogin.Text = $"{selected_row[1]}";
+                textBoxPwd.Text = $"{selected_row[2]}";
+                comboBoxEmployeeUser.SelectedIndex = Convert.ToInt32(selected_row[3])-1;
+                comboBoxRole.SelectedIndex = Convert.ToInt32(selected_row[4])-1;
+                textBoxUserDesc.Text = $"{selected_row[6]}";
                 buttonAddEditUser.Text = "Изменить";
             }
         }
@@ -342,6 +347,10 @@ namespace GardenAndOgorodShop
             textBoxEmployeePrice.Text = "";
             textBoxEmployeeDesc.Text = "";
         }
+        private void ClearFieldsOnForm_user()
+        {
+            
+        }
         private string[] SuccessAddRecordResult(string elem, string form)
         {
             switch (form)
@@ -349,6 +358,7 @@ namespace GardenAndOgorodShop
                 case "product": ClearFieldsOnForm_product(); break;
                 case "category": ClearFieldsOnForm_category(); break;
                 case "employee": ClearFieldsOnForm_employee(); break;
+                case "user": ClearFieldsOnForm_user(); break;
                 default:;break;
             }
             return new string[] { $"{elem} добавлен.", "Успех" };
@@ -516,27 +526,20 @@ namespace GardenAndOgorodShop
                         comboBoxRole.SelectedIndex+1,
                         textBoxUserDesc.Text
                 )
-                ? SuccessAddRecordResult(elem_table, "employee") : new string[] { $"{elem_table} НЕ добавлен!", "Провал" };
+                ? SuccessAddRecordResult(elem_table, "user") : new string[] { $"{elem_table} НЕ добавлен!", "Провал" };
                     MessageBox.Show(result[0], result[1], MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
-                    string[] result = DBHandler.EditEmployee(
-                        textBoxLastName.Text,
-                        textBoxFirstName.Text,
-                        textBoxFathersName.Text,
-                        dateTimePickerAge.Value.ToString("yyyy-MM-dd"),
-                        comboBoxGender.Text,
-                        maskedTextBoxEmployeePhone.Text,
-                        textBoxEmployeeEmail.Text,
-                        textBoxEmployeeAddress.Text,
-                        textBoxPosition.Text,
-                        textBoxEmployeePrice.Text,
-                        textBoxEmployeeDesc.Text,
-                        pictureBoxEmployee.BackgroundImage,
-                        id_record
-               )
-               ? new string[] { $"{elem_table} изменен.", "Успех" } : new string[] { $"{elem_table} НЕ был изменен!", "Провал" };
+                    string[] result = DBHandler.EditUser(
+                         textBoxLogin.Text,
+                         textBoxPwd.Text,
+                         comboBoxEmployeeUser.SelectedIndex + 1,
+                         comboBoxRole.SelectedIndex + 1,
+                         textBoxUserDesc.Text,
+                         id_record
+                 )
+                ? new string[] { $"{elem_table} изменен.", "Успех" } : new string[] { $"{elem_table} НЕ был изменен!", "Провал" };
                     MessageBox.Show(result[0], result[1], MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }

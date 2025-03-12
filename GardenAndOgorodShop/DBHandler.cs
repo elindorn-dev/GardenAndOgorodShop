@@ -11,6 +11,7 @@ using System.Data;
 using MySqlX.XDevAPI.Relational;
 using System.Data.SqlClient;
 using System.Net;
+using System.Security.Cryptography;
 
 namespace GardenAndOgorodShop
 {
@@ -100,6 +101,23 @@ namespace GardenAndOgorodShop
                 MySqlConnection connect = new MySqlConnection(connect_string);
                 connect.Open();
                 string query = $@"SELECT 1 FROM products_orders WHERE products_id = {product_id} AND orders_id = {UserConfiguration.Current_order_id}";
+                MySqlCommand command_sql = new MySqlCommand(query, connect);
+                int exist = Convert.ToInt32(command_sql.ExecuteScalar());
+                connect.Close();
+                return exist == 1 ? true : false;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        public static bool checkChangedHash(string hash)
+        {
+            try
+            {
+                MySqlConnection connect = new MySqlConnection(connect_string);
+                connect.Open();
+                string query = $@"SELECT 1 FROM garden_and_ogorod_shop.users WHERE password_hash = '{hash}';";
                 MySqlCommand command_sql = new MySqlCommand(query, connect);
                 int exist = Convert.ToInt32(command_sql.ExecuteScalar());
                 connect.Close();
@@ -568,6 +586,52 @@ namespace GardenAndOgorodShop
             catch (Exception e)
             {
                 MessageBox.Show("Ошибка добавления категории (db):\n" + e.Message);
+                return false;
+            }
+        }
+        static string ComputeSha256Hash(string rawData)
+        {
+            // Создаем новый экземпляр SHA256
+            using (SHA256 sha256Hash = SHA256.Create())
+            {
+                // Вычисляем хэш
+                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(rawData));
+
+                // Преобразуем байты в строку
+                StringBuilder builder = new StringBuilder();
+                for (int i = 0; i < bytes.Length; i++)
+                {
+                    builder.Append(bytes[i].ToString("x2")); // Преобразуем в шестнадцатеричный формат
+                }
+                return builder.ToString();
+            }
+        }
+        public static bool EditUser(string username, string hash, int employee_id, int role_id, string descript, int id)
+        {
+            try
+            {
+                MySqlConnection con = new MySqlConnection(connect_string);
+                con.Open();
+
+                string query = $"UPDATE `garden_and_ogorod_shop`.`users` SET `username` = @username, `password_hash` = @hash, `employees_id` = @employee_id, `role_id` = @role_id, `notes` = @notes WHERE (`users_id` = '{id}');";
+                hash = checkChangedHash(hash) ? hash : ComputeSha256Hash(hash);
+                using (MySqlCommand cmd = new MySqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@username", username);
+                    cmd.Parameters.AddWithValue("@hash", hash);
+                    cmd.Parameters.AddWithValue("@employee_id", employee_id);
+                    cmd.Parameters.AddWithValue("@role_id", role_id);
+                    cmd.Parameters.AddWithValue("@notes", descript);
+
+                    cmd.ExecuteNonQuery();
+                }
+
+                con.Close();
+                return true;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Ошибка добавления пользователя (db):\n" + e.Message);
                 return false;
             }
         }

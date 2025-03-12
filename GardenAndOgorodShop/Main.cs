@@ -838,5 +838,15 @@ namespace GardenAndOgorodShop
             form.Show();
             this.Hide();
         }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            int index_row = dataGridViewUsers.SelectedCells[0].RowIndex;
+            DataRow selected_row = DBHandler.LoadDataSync("users").Rows[index_row];
+            int _id = Convert.ToInt32(selected_row[0]);
+            HandleRecordForm form = new HandleRecordForm(3, "edit", _id);
+            form.Show();
+            this.Hide();
+        }
     }
 }
