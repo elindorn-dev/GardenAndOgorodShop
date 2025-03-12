@@ -86,13 +86,45 @@ namespace GardenAndOgorodShop
                 buttonAddEditCategory.Text = "Изменить";
             }
         }
+        private void loadEditData_employee()
+        {
+            DataTable table = DBHandler.LoadDataSync($"employees WHERE employees_id = {id_record}");
+            DataRow selected_row = table.Rows[0];
+            if (selected_row != null)
+            {
+                textBoxLastName.Text = $"{selected_row[2]}";
+                textBoxFirstName.Text = $"{selected_row[1]}";
+                textBoxFathersName.Text = $"{selected_row[3]}";
+                dateTimePickerAge.Value = DateTime.Parse($"{selected_row[4]}");
+                comboBoxGender.SelectedIndex = $"{selected_row[5]}" == "мужской" ? 0 : 1;
+                maskedTextBoxEmployeePhone.Text = $"{selected_row[6]}";
+                textBoxEmployeeEmail.Text = $"{selected_row[7]}";
+                textBoxEmployeeAddress.Text = $"{selected_row[8]}";
+                textBoxPosition.Text = $"{selected_row[9]}";
+                textBoxEmployeePrice.Text = $"{selected_row[11]}";
+                textBoxEmployeeDesc.Text = $"{selected_row[12]}";
+                if (DBNull.Value != selected_row[13])
+                {
+                    imageData = (byte[])selected_row[13];
+                    using (MemoryStream ms = new MemoryStream(imageData))
+                    {
+                        pictureBoxEmployee.BackgroundImage = Image.FromStream(ms);
+                    }
+                }
+                else
+                {
+                    pictureBoxEmployee.BackgroundImage = Properties.Resources.none_employee;
+                }
+                buttonAddEditEmployee.Text = "Изменить";
+            }
+        }
         private void loadEditData()
         {
             switch (tabControlRecords.SelectedIndex)
             {
                 case 0: loadEditDataProduct(); break;
                 case 1: loadEditDataCategory(); break;
-                case 2: ; break;
+                case 2: loadEditData_employee(); break;
                 case 3: ; break;
                 case 4: ; break;
                 case 5: ; break;
@@ -406,13 +438,23 @@ namespace GardenAndOgorodShop
                 }
                 else
                 {
-               //     string[] result = DBHandler.EditCategory(
-               //        textBoxCategoryTitle.Text,
-               //        textBoxCategoryDesc.Text,
-               //        id_record
-               //)
-               //? new string[] { $"{elem_table} изменена.", "Успех" } : new string[] { $"{elem_table} НЕ был изменен!", "Провал" };
-               //     MessageBox.Show(result[0], result[1], MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    string[] result = DBHandler.EditEmployee(
+                        textBoxLastName.Text,
+                        textBoxFirstName.Text,
+                        textBoxFathersName.Text,
+                        dateTimePickerAge.Value.ToString("yyyy-MM-dd"),
+                        comboBoxGender.Text,
+                        maskedTextBoxEmployeePhone.Text,
+                        textBoxEmployeeEmail.Text,
+                        textBoxEmployeeAddress.Text,
+                        textBoxPosition.Text,
+                        textBoxEmployeePrice.Text,
+                        textBoxEmployeeDesc.Text,
+                        pictureBoxEmployee.BackgroundImage,
+                        id_record
+               )
+               ? new string[] { $"{elem_table} изменен.", "Успех" } : new string[] { $"{elem_table} НЕ был изменен!", "Провал" };
+                    MessageBox.Show(result[0], result[1], MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
         }

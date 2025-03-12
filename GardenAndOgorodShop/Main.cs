@@ -26,8 +26,6 @@ namespace GardenAndOgorodShop
 
         string[] categories_strings;
 
-        private string save_search_text = "";
-
         private DataTable products_table;
         private DataTable employees_table;
         public Main()
@@ -151,14 +149,11 @@ namespace GardenAndOgorodShop
                 try
                 {
                     loginUser = $"{row[1]}";
-                    roleUser = $"{roles[Convert.ToInt32(row[3])-1]}";
-                    lastLoginUser = $"{row[4]}";
+                    roleUser = $"{roles[Convert.ToInt32(row[4])-1]}";
+                    lastLoginUser = $"{row[5]}";
                 }
                 catch
                 {
-                    loginUser = "none";
-                    roleUser = "none";
-                    lastLoginUser = "none";
                 }
                 dataGridViewUsers.Rows.Add(loginUser, roleUser, lastLoginUser);
             }
@@ -249,9 +244,9 @@ namespace GardenAndOgorodShop
                     employeeName = $"{row[2]}" + " " + $"{row[1]}".Substring(0, 1) + "." + $"{row[3]}".Substring(0, 1) + ".";
                     employeePhone = $"{row[6]}";
                     employeePosition = $"{row[9]}";
-                    if (row[14] != DBNull.Value)
+                    if (row[13] != DBNull.Value)
                     {
-                        byte[] imageData = (byte[])row[14];
+                        byte[] imageData = (byte[])row[13];
 
                         using (MemoryStream ms = new MemoryStream(imageData))
                         {
@@ -823,6 +818,16 @@ namespace GardenAndOgorodShop
         private void button3_Click(object sender, EventArgs e)
         {
             HandleRecordForm form = new HandleRecordForm(2, "add", 0);
+            form.Show();
+            this.Hide();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            int index_row = dataGridViewEmployees.SelectedCells[0].RowIndex;
+            DataRow selected_row = DBHandler.LoadDataSync("categories").Rows[index_row];
+            int _id = Convert.ToInt32(selected_row[0]);
+            HandleRecordForm form = new HandleRecordForm(2, "edit", _id);
             form.Show();
             this.Hide();
         }

@@ -10,6 +10,7 @@ using System.Drawing;
 using System.Data;
 using MySqlX.XDevAPI.Relational;
 using System.Data.SqlClient;
+using Microsoft.Office.Interop.Excel;
 
 namespace GardenAndOgorodShop
 {
@@ -21,9 +22,9 @@ namespace GardenAndOgorodShop
         public static string database = "garden_and_ogorod_shop";
         public static string connect_string = $"host={host};uid={username};pwd={pwd};database={database}";
 
-        public static async Task<DataTable> getProductsOrder_forBill()
+        public static async Task<System.Data.DataTable> getProductsOrder_forBill()
         {
-            DataTable products = new DataTable();
+            System.Data.DataTable products = new System.Data.DataTable();
             try
             {
                 string query = $"SELECT products.products_name, products_orders.product_amount, products.price FROM garden_and_ogorod_shop.products_orders INNER JOIN products ON products_orders.products_id = products.products_id WHERE orders_id  = '{UserConfiguration.Current_order_id}';";
@@ -49,7 +50,7 @@ namespace GardenAndOgorodShop
             try
             {
                 string query_current_order = "`products_orders` WHERE `products_orders`.orders_id = (SELECT MAX(orders.orders_id) FROM orders);";
-                DataTable korzina = new DataTable();
+                System.Data.DataTable korzina = new System.Data.DataTable();
                 MySqlConnection con = new MySqlConnection(connect_string);
                 con.Open();
                 MySqlCommand cmd = new MySqlCommand($"SELECT * FROM {query_current_order};", con);
@@ -213,9 +214,9 @@ namespace GardenAndOgorodShop
                 return (null, null, null, null);  
             }
         }
-        public static DataTable LoadDataSync(string table)
+        public static System.Data.DataTable LoadDataSync(string table)
         {
-            DataTable dt = new DataTable();
+            System.Data.DataTable dt = new System.Data.DataTable();
             try
             {
                 MySqlConnection con = new MySqlConnection(connect_string);
@@ -234,9 +235,9 @@ namespace GardenAndOgorodShop
             }
             return dt;
         }
-        public static async Task<DataTable> LoadData(string table)
+        public static async Task<System.Data.DataTable> LoadData(string table)
         {
-            DataTable dt = new DataTable();
+            System.Data.DataTable dt = new System.Data.DataTable();
             try
             {
                 MySqlConnection con = new MySqlConnection(connect_string);
@@ -480,6 +481,63 @@ namespace GardenAndOgorodShop
             catch (Exception e)
             {
                 MessageBox.Show("Ошибка изменения категории (db):\n" + e.Message);
+                return false;
+            }
+        }
+        public static bool EditEmployee(string lastName, string firstName, string fathersName, string birth_date, string gender, string phone, string email, string address, string posotion, string salary, string descript, Image image, int id)
+        {
+            try
+            {
+                MySqlConnection con = new MySqlConnection(connect_string);
+                con.Open();
+
+                byte[] blobData;
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                    blobData = ms.ToArray();
+                }
+
+                string query = "UPDATE `garden_and_ogorod_shop`.`employees` SET " +
+                "`first_name` = @firstName, " +
+                "`last_name` = @lastName, " +
+                "`fathers_name` = @fathersName, " +
+                "`birth_day` = @birth_day, " +
+                "`gender` = @gender, " +
+                "`phone_number` = @phone_number, " +
+                "`email` = @email, " +
+                "`address` = @address, " +
+                "`position` = @position, " +
+                "`salary` = @salary, " +
+                "`notes` = @notes, " +
+                "`photo` = @photo " +
+                "WHERE (`employees_id` = @id);";
+
+                using (MySqlCommand cmd = new MySqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@id", id);
+                    cmd.Parameters.AddWithValue("@firstName", firstName);
+                    cmd.Parameters.AddWithValue("@lastName", lastName);
+                    cmd.Parameters.AddWithValue("@fathersName", fathersName);
+                    cmd.Parameters.AddWithValue("@birth_day", birth_date);
+                    cmd.Parameters.AddWithValue("@gender", gender);
+                    cmd.Parameters.AddWithValue("@phone_number", phone);
+                    cmd.Parameters.AddWithValue("@email", email);
+                    cmd.Parameters.AddWithValue("@address", address);
+                    cmd.Parameters.AddWithValue("@position", posotion);
+                    cmd.Parameters.AddWithValue("@salary", salary);
+                    cmd.Parameters.AddWithValue("@notes", descript);
+                    cmd.Parameters.Add("@photo", MySqlDbType.MediumBlob).Value = blobData;
+
+                    cmd.ExecuteNonQuery();
+                }
+
+                con.Close();
+                return true;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Ошибка добавления категории (db):\n" + e.Message);
                 return false;
             }
         }

@@ -89,7 +89,7 @@ namespace GardenAndOgorodShop
             this.textBoxEmployeeDesc = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.textBoxLastName = new System.Windows.Forms.TextBox();
-            this.button4 = new System.Windows.Forms.Button();
+            this.buttonAddEditEmployee = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label11 = new System.Windows.Forms.Label();
@@ -614,7 +614,7 @@ namespace GardenAndOgorodShop
             this.tabPageEmployee.Controls.Add(this.textBoxEmployeeDesc);
             this.tabPageEmployee.Controls.Add(this.label20);
             this.tabPageEmployee.Controls.Add(this.textBoxLastName);
-            this.tabPageEmployee.Controls.Add(this.button4);
+            this.tabPageEmployee.Controls.Add(this.buttonAddEditEmployee);
             this.tabPageEmployee.Controls.Add(this.button6);
             this.tabPageEmployee.Controls.Add(this.panel3);
             this.tabPageEmployee.Location = new System.Drawing.Point(4, 22);
@@ -865,18 +865,18 @@ namespace GardenAndOgorodShop
             this.textBoxLastName.Size = new System.Drawing.Size(321, 33);
             this.textBoxLastName.TabIndex = 56;
             // 
-            // button4
+            // buttonAddEditEmployee
             // 
-            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(186)))), ((int)(((byte)(93)))));
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button4.Location = new System.Drawing.Point(551, 415);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(182, 40);
-            this.button4.TabIndex = 55;
-            this.button4.Text = "Добавить";
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.buttonAddEditEmployee.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(186)))), ((int)(((byte)(93)))));
+            this.buttonAddEditEmployee.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonAddEditEmployee.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonAddEditEmployee.Location = new System.Drawing.Point(551, 415);
+            this.buttonAddEditEmployee.Name = "buttonAddEditEmployee";
+            this.buttonAddEditEmployee.Size = new System.Drawing.Size(182, 40);
+            this.buttonAddEditEmployee.TabIndex = 55;
+            this.buttonAddEditEmployee.Text = "Добавить";
+            this.buttonAddEditEmployee.UseVisualStyleBackColor = false;
+            this.buttonAddEditEmployee.Click += new System.EventHandler(this.button4_Click);
             // 
             // button6
             // 
@@ -1828,7 +1828,7 @@ namespace GardenAndOgorodShop
         private System.Windows.Forms.TextBox textBoxEmployeeDesc;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.TextBox textBoxLastName;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button buttonAddEditEmployee;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label11;
