@@ -30,7 +30,8 @@ namespace GardenAndOgorodShop
                 try
                 {
                     productTitle = $"{row[4]}";
-                    productPrice = $"{row[6]} ₽";
+                    double cost = Convert.ToDouble(row[6]);
+                    productPrice = $"{cost - cost * (Convert.ToDouble(row[12]) / 100)} ₽";
                     productAmount = $"{row[2]}";
                     if (row[10] != DBNull.Value)
                     {
@@ -41,7 +42,7 @@ namespace GardenAndOgorodShop
                             productImage = Image.FromStream(ms);
                         }
                     }
-                    totalCost += Convert.ToDouble(row[6]) * Convert.ToDouble(row[2]);
+                    totalCost += Convert.ToDouble(cost - cost * (Convert.ToDouble(row[12]) / 100)) * Convert.ToDouble(row[2]);
                 }
                 catch
                 {
@@ -113,19 +114,20 @@ namespace GardenAndOgorodShop
                     DBHandler.randomSQLCommand($"UPDATE `garden_and_ogorod_shop`.`products` SET `is_available` = `is_available` {edit_product} 1 WHERE (`products_id` = '{product_id}');");
 
                     double cost = Convert.ToDouble(labelTotalCost.Text);
+                    double cost_ = Convert.ToDouble(selected_row[6]);
                     if (new_amount == 1)
                     {
                         if (edit_backet == "-")
                         {
                             dataGridViewProducts.Rows[index_row].Cells[3].Value = $"{new_amount - 1}";
-                            cost -= Convert.ToDouble(selected_row[6]);
+                            cost -= cost_ - cost_ * (Convert.ToDouble(selected_row[12]) / 100);
                             DBHandler.randomSQLCommand($"DELETE FROM `garden_and_ogorod_shop`.`products_orders` WHERE (`products_id` = '{product_id}') and (`orders_id` = '{UserConfiguration.Current_order_id}');");
                             await reloadBacket();
                         }
                         else
                         {
                             dataGridViewProducts.Rows[index_row].Cells[3].Value = $"{new_amount + 1}";
-                            cost += Convert.ToDouble(selected_row[6]);
+                            cost += cost_ - cost_ * (Convert.ToDouble(selected_row[12]) / 100);
                         }
                     }
                     else
@@ -133,12 +135,12 @@ namespace GardenAndOgorodShop
                         if (edit_backet == "+")
                         {
                             dataGridViewProducts.Rows[index_row].Cells[3].Value = $"{new_amount + 1}";
-                            cost += Convert.ToDouble(selected_row[6]);
+                            cost += cost_ - cost_ * (Convert.ToDouble(selected_row[12]) / 100);
                         }
                         else
                         {
                             dataGridViewProducts.Rows[index_row].Cells[3].Value = $"{new_amount - 1}";
-                            cost -= Convert.ToDouble(selected_row[6]);
+                            cost -= cost_ - cost_ * (Convert.ToDouble(selected_row[12]) / 100);
                         }
                     }
                     labelTotalCost.Text = Convert.ToString(cost);

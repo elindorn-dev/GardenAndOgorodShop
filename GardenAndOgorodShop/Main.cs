@@ -97,7 +97,8 @@ namespace GardenAndOgorodShop
                 try
                 {
                     productTitle = $"{row[1]}";
-                    productPrice = $"{row[3]} ₽";
+                    double cost = Convert.ToDouble(row[3]);
+                    productPrice = $"{cost - cost * (Convert.ToDouble(row[9])/100)} ₽";
                     productCategory = $"{categories_strings[Convert.ToInt32(row[4])-1]}";
                     productAmount = $"{row[6]} шт.";
                     if (row[7] != DBNull.Value) 
@@ -847,6 +848,16 @@ namespace GardenAndOgorodShop
             HandleRecordForm form = new HandleRecordForm(3, "edit", _id);
             form.Show();
             this.Hide();
+        }
+
+        private async void buttonProductsControl_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Продолжить создание отчёта \"Контроль остатков\"?", "Подтверждение", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                await Reports.ReportBalanceСontrol();
+            }
         }
     }
 }
