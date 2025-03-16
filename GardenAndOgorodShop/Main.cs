@@ -285,10 +285,14 @@ namespace GardenAndOgorodShop
         private async void FormViewProduct_Load(object sender, EventArgs e)
         {
             //MessageBox.Show($"{UserConfiguration.UserRole}");
-            
+            dateTimePickerFrom.MaxDate = DateTime.Now;
+            dateTimePickerTo.MaxDate = DateTime.Now;
+
+
             getCategories();
             products_table = await DBHandler.LoadData("products WHERE is_available > 0");
-            employees_table = await DBHandler.LoadData("employees INNER JOIN users ON employees.employees_id = users.employees_id");
+            employees_table = await DBHandler.LoadData("employees;");
+            //employees_table = await DBHandler.LoadData("employees INNER JOIN users ON employees.employees_id = users.employees_id");
 
             comboBoxCategories.Items.Add("без фильтрации");
             for (int i = 0; i< categories_strings.Length;i++)
@@ -510,7 +514,8 @@ namespace GardenAndOgorodShop
         {
             EnabledUsingHandleEmployees(false);
             // определяем метод
-            method_employee = $"employees INNER JOIN users ON employees.employees_id = users.employees_id WHERE {method_filter_employee} AND (last_name LIKE '%{method_search_employee}%') ORDER BY {method_sort_name_employee}";
+            method_employee = comboBoxRoles.SelectedIndex != 0 ? $"employees INNER JOIN users ON employees.employees_id = users.employees_id WHERE {method_filter_employee} AND (last_name LIKE '%{method_search_employee}%') ORDER BY {method_sort_name_employee}" : $"employees WHERE" +
+                $" last_name LIKE '%{method_search_employee}%' ORDER BY {method_sort_name_employee}";
             // Загружаем новые данные таблицы
             employees_table = await DBHandler.LoadData(method_employee);
             dataGridViewEmployees.Rows.Clear();
@@ -826,7 +831,7 @@ namespace GardenAndOgorodShop
         private void button4_Click(object sender, EventArgs e)
         {
             int index_row = dataGridViewEmployees.SelectedCells[0].RowIndex;
-            DataRow selected_row = DBHandler.LoadDataSync("categories").Rows[index_row];
+            DataRow selected_row = DBHandler.LoadDataSync("employees").Rows[index_row];
             int _id = Convert.ToInt32(selected_row[0]);
             HandleRecordForm form = new HandleRecordForm(2, "edit", _id);
             form.Show();
@@ -858,6 +863,23 @@ namespace GardenAndOgorodShop
             {
                 await Reports.ReportBalanceСontrol();
             }
+        }
+
+        private async void buttonReportOrders_Click(object sender, EventArgs e)
+        {
+            string date_from = dateTimePickerFrom.Value.ToString("yyyy-MM-dd HH:mm:ss");
+            string date_to = dateTimePickerTo.Value.ToString("yyyy-MM-dd HH:mm:ss");
+            DialogResult result = MessageBox.Show("Продолжить создание отчёта \"Анализ продаж\"?", "Подтверждение", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                await Reports.ReportAnalyzOrders(date_from, date_to);
+            }
+        }
+
+        private void dateTimePickerFrom_ValueChanged(object sender, EventArgs e)
+        {
+            dateTimePickerTo.MinDate = dateTimePickerFrom.Value;
         }
     }
 }

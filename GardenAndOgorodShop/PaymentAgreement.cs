@@ -58,15 +58,19 @@ namespace GardenAndOgorodShop
                     MessageBox.Show($"Excel-чек создан, проверьте его по пути {path_name}");
                     string filePath = $"{Directory.GetCurrentDirectory()}\\{path_name}";
 
-                    // Создаем экземпляр Excel
-                    Excel.Application excelApp = new Excel.Application();
-                    excelApp.Visible = true; // Делаем Excel видимым
+                    xlApp = new Excel.Application();
+                    xlWorkbook = xlApp.Workbooks.Open(filePath);
+                    xlWorksheet = (Worksheet)xlWorkbook.Sheets[1];
 
-                    // Открываем документ
-                    Excel.Workbook workbook = excelApp.Workbooks.Open(filePath);
+                    // Настраиваем параметры страницы (необязательно, но может помочь)
+                    xlWorksheet.PageSetup.Orientation = XlPageOrientation.xlPortrait;
+                    xlWorksheet.PageSetup.Zoom = false;
+                    xlWorksheet.PageSetup.FitToPagesWide = 1;
+                    xlWorksheet.PageSetup.FitToPagesTall = 1;
 
-                    // Устанавливаем режим просмотра на печать
-                    excelApp.ActiveWindow.View = Excel.XlWindowView.xlPageLayoutView;
+                    // Отображаем предварительный просмотр
+                    xlApp.Visible = true; // Сначала делаем Excel видимым
+                    xlWorksheet.PrintPreview(true);  // Затем открываем просмотр
                 });
 
             }

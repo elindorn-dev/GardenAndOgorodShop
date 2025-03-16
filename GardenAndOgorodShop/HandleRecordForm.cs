@@ -113,6 +113,9 @@ namespace GardenAndOgorodShop
                 textBoxFirstName.Text = $"{selected_row[1]}";
                 textBoxFathersName.Text = $"{selected_row[3]}";
                 dateTimePickerAge.Value = DateTime.Parse($"{selected_row[4]}");
+                int years = DateTime.Now.Year - dateTimePickerAge.Value.Year;
+                if (dateTimePickerAge.Value.AddYears(years) > DateTime.Now) years--;
+                labelAge.Text = years.ToString();
                 comboBoxGender.SelectedIndex = $"{selected_row[5]}" == "мужской" ? 0 : 1;
                 maskedTextBoxEmployeePhone.Text = $"{selected_row[6]}";
                 textBoxEmployeeEmail.Text = $"{selected_row[7]}";
@@ -122,8 +125,8 @@ namespace GardenAndOgorodShop
                 textBoxEmployeeDesc.Text = $"{selected_row[12]}";
                 if (DBNull.Value != selected_row[13])
                 {
-                    imageData = (byte[])selected_row[13];
-                    using (MemoryStream ms = new MemoryStream(imageData))
+                    blobData_employee = (byte[])selected_row[13];
+                    using (MemoryStream ms = new MemoryStream(blobData_employee))
                     {
                         pictureBoxEmployee.BackgroundImage = Image.FromStream(ms);
                     }
@@ -468,7 +471,8 @@ namespace GardenAndOgorodShop
                         textBoxEmployeeAddress.Text,
                         textBoxPosition.Text,
                         textBoxEmployeePrice.Text,
-                        textBoxEmployeeDesc.Text
+                        textBoxEmployeeDesc.Text,
+                        pictureBoxEmployee.BackgroundImage
                 )
                 ? SuccessAddRecordResult(elem_table, "employee") : new string[] { $"{elem_table} НЕ добавлен!", "Провал" };
                     MessageBox.Show(result[0], result[1], MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -487,7 +491,7 @@ namespace GardenAndOgorodShop
                         textBoxPosition.Text,
                         textBoxEmployeePrice.Text,
                         textBoxEmployeeDesc.Text,
-                        pictureBoxEmployee.BackgroundImage,
+                        blobData_employee,
                         id_record
                )
                ? new string[] { $"{elem_table} изменен.", "Успех" } : new string[] { $"{elem_table} НЕ был изменен!", "Провал" };
@@ -644,6 +648,15 @@ namespace GardenAndOgorodShop
         private void buttonLogOut_Click(object sender, EventArgs e)
         {
 
+        }
+        byte[] blobData_employee;
+        private void pictureBoxEmployee_BackgroundImageChanged(object sender, EventArgs e)
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                pictureBoxEmployee.BackgroundImage.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+                blobData_employee = ms.ToArray();
+            }
         }
     }
 }

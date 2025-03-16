@@ -366,15 +366,22 @@ namespace GardenAndOgorodShop
                 return false;
             }
         }
-        public static bool InsertEmployee(string lastName, string firstName, string fathersName, string birth_date, string gender, string phone, string email, string address, string posotion, string salary, string descript)
+        public static bool InsertEmployee(string lastName, string firstName, string fathersName, string birth_date, string gender, string phone, string email, string address, string posotion, string salary, string descript, Image image)
         {
             try
             {
                 MySqlConnection con = new MySqlConnection(connect_string);
                 con.Open();
 
-                string query = "INSERT INTO `garden_and_ogorod_shop`.`employees` (`first_name`, `last_name`, `fathers_name`, `birth_day`, `gender`, `phone_number`, `email`, `address`, `position`, `hire_date`, `salary`, `notes`) " +
-                "VALUES (@firstName, @lastName, @fathersName, @birth_day, @gender, @phone_number, @email, @address, @position, NOW(), @salary, @notes);";
+                byte[] blobData;
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                    blobData = ms.ToArray();
+                }
+
+                string query = "INSERT INTO `garden_and_ogorod_shop`.`employees` (`first_name`, `last_name`, `fathers_name`, `birth_day`, `gender`, `phone_number`, `email`, `address`, `position`, `hire_date`, `salary`, `notes`, `photo`) " +
+                "VALUES (@firstName, @lastName, @fathersName, @birth_day, @gender, @phone_number, @email, @address, @position, NOW(), @salary, @notes, @photo);";
 
                 using (MySqlCommand cmd = new MySqlCommand(query, con))
                 {
@@ -389,6 +396,7 @@ namespace GardenAndOgorodShop
                     cmd.Parameters.AddWithValue("@position", posotion);
                     cmd.Parameters.AddWithValue("@salary", salary);
                     cmd.Parameters.AddWithValue("@notes", descript);
+                    cmd.Parameters.Add("@photo", MySqlDbType.MediumBlob).Value = blobData;
 
                     cmd.ExecuteNonQuery();
                 }
@@ -532,19 +540,12 @@ namespace GardenAndOgorodShop
                 return false;
             }
         }
-        public static bool EditEmployee(string lastName, string firstName, string fathersName, string birth_date, string gender, string phone, string email, string address, string posotion, string salary, string descript, Image image, int id)
+        public static bool EditEmployee(string lastName, string firstName, string fathersName, string birth_date, string gender, string phone, string email, string address, string posotion, string salary, string descript, byte[] blobData, int id)
         {
             try
             {
                 MySqlConnection con = new MySqlConnection(connect_string);
                 con.Open();
-
-                byte[] blobData;
-                using (MemoryStream ms = new MemoryStream())
-                {
-                    image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
-                    blobData = ms.ToArray();
-                }
 
                 string query = "UPDATE `garden_and_ogorod_shop`.`employees` SET " +
                 "`first_name` = @firstName, " +
@@ -636,5 +637,27 @@ namespace GardenAndOgorodShop
             }
         }
         #endregion
+        public static async Task<System.Data.DataTable> LoadDataReportOrders(string date_from, string date_to)
+        {
+            System.Data.DataTable dt = new System.Data.DataTable();
+            try
+            {
+                MySqlConnection con = new MySqlConnection(connect_string);
+                await con.OpenAsync();
+                MySqlCommand cmd = new MySqlCommand($"SELECT orders.*, last_name, first_name, fathers_name FROM garden_and_ogorod_shop.orders INNER JOIN employees ON orders.employees_id = employees.employees_id WHERE order_date BETWEEN '{date_from}' AND '{date_to}';", con);
+                cmd.ExecuteNonQuery();
+
+                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+
+                await Task.Run(() => da.Fill(dt));
+                con.Close();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                //MessageBox.Show(connect_string);
+            }
+            return dt;
+        }
     }
 }

@@ -68,7 +68,7 @@ namespace GardenAndOgorodShop
                     }
 
                     ChartObjects xlCharts = (ChartObjects)xlWorksheet.ChartObjects(Type.Missing);
-                    ChartObject myChart = (ChartObject)xlCharts.Add(25, 100, 350, 180);
+                    ChartObject myChart = (ChartObject)xlCharts.Add(40, 110, 350, 180);
                     Chart chart = myChart.Chart;
                     SeriesCollection seriesCollection = (SeriesCollection)chart.SeriesCollection(Type.Missing);
                     Series series = seriesCollection.NewSeries();
@@ -82,7 +82,7 @@ namespace GardenAndOgorodShop
                     series.XValues = categories;
 
                     chart.HasTitle = true;
-                    chart.ChartTitle.Text = "Распределение данных";
+                    chart.ChartTitle.Text = "Анализ ведения скидок";
                     chart.ChartType = XlChartType.xlPie;
                     chart.ApplyDataLabels(XlDataLabelsType.xlDataLabelsShowPercent,
                                            Missing.Value,
@@ -103,15 +103,20 @@ namespace GardenAndOgorodShop
                     MessageBox.Show($"Excel-отчёт создан, проверьте его по пути {path_name}");
                     string filePath = $"{Directory.GetCurrentDirectory()}\\{path_name}";
 
-                    // Создаем экземпляр Excel
-                    Excel.Application excelApp = new Excel.Application();
-                    excelApp.Visible = true; // Делаем Excel видимым
+                    xlApp = new Excel.Application();
+                    xlWorkbook = xlApp.Workbooks.Open(filePath);
+                    xlWorksheet = (Worksheet)xlWorkbook.Sheets[1];
 
-                    // Открываем документ
-                    Excel.Workbook workbook = excelApp.Workbooks.Open(filePath);
+                    // Настраиваем параметры страницы (необязательно, но может помочь)
+                    xlWorksheet.PageSetup.Orientation = XlPageOrientation.xlPortrait;
+                    xlWorksheet.PageSetup.Zoom = false;
+                    xlWorksheet.PageSetup.FitToPagesWide = 1;
+                    xlWorksheet.PageSetup.FitToPagesTall = 1;
 
-                    // Устанавливаем режим просмотра на печать
-                    excelApp.ActiveWindow.View = Excel.XlWindowView.xlPageLayoutView;
+                    // Отображаем предварительный просмотр
+                    xlApp.Visible = true; // Сначала делаем Excel видимым
+                    xlWorksheet.PrintPreview(true);  // Затем открываем просмотр
+
                 });
 
             }
@@ -126,40 +131,116 @@ namespace GardenAndOgorodShop
                 if (xlWorkbook != null) Marshal.ReleaseComObject(xlWorkbook);
                 if (xlApp != null) Marshal.ReleaseComObject(xlApp);
             }
+        }
+        static public async Task ReportAnalyzOrders(string date_from, string date_to)
+        {
+            Excel.Application xlApp = null;
+            Workbook xlWorkbook = null;
+            Worksheet xlWorksheet = null;
+
+            try
+            {
+                System.Data.DataTable orders = await DBHandler.LoadDataReportOrders(date_from, date_to);
+                await Task.Run(() => // Выполняем в отдельном потоке
+                {
+                    xlApp = new Excel.Application();
+                    xlWorkbook = xlApp.Workbooks.Open($"{Directory.GetCurrentDirectory()}\\templatesAgreements\\templateReportOrders.xlsx");
+                    xlWorksheet = (Excel.Worksheet)xlWorkbook.Sheets[1];
+
+                    int counter_row = 7;
+                    double itogo = 0.0;
+                    if (orders.Rows.Count > 0)
+                    {
+                        foreach (System.Data.DataRow product in orders.Rows)
+                        {
+                            xlWorksheet.Range[$"A{counter_row}"].Value2 = $"{product[0]}";
+                            ApplyBorderToCell(xlWorksheet, counter_row, "A");
+                            xlWorksheet.Range[$"B{counter_row}"].Value2 = $"{product[2]}";
+                            ApplyBorderToCell(xlWorksheet, counter_row, "B");
+                            xlWorksheet.Range[$"C{counter_row}"].Value2 = $"{product[8]} {product[9].ToString().Substring(0,1)}. {product[10].ToString().Substring(0, 1)}.";
+                            ApplyBorderToCell(xlWorksheet, counter_row, "C");
+                            xlWorksheet.Range[$"D{counter_row}"].Value2 = $"{product[3]}";
+                            ApplyBorderToCell(xlWorksheet, counter_row, "D");
+                            xlWorksheet.Range[$"E{counter_row}"].Value2 = $"{product[4]}";
+                            ApplyBorderToCell(xlWorksheet, counter_row, "E");
+
+                            double cost = Convert.ToDouble(product[5]);
+                            itogo += cost;
+
+                            xlWorksheet.Range[$"F{counter_row}"].Value2 = $"{cost.ToString().Replace(',', '.')}";
+                            ApplyBorderToCell(xlWorksheet, counter_row, "F");
+                            counter_row++;
+                        }
+                        string formula = $"=SUM(F20:F{counter_row--})";
+                        counter_row += 2;
+                        xlWorksheet.Range[$"E{counter_row}"].Value2 = $"ИТОГО:";
+                        xlWorksheet.Range[$"F{counter_row}"].Value2 = $"{itogo}";
+                    }
+
+                    //ChartObjects xlCharts = (ChartObjects)xlWorksheet.ChartObjects(Type.Missing);
+                    //ChartObject myChart = (ChartObject)xlCharts.Add(40, 110, 350, 180);
+                    //Chart chart = myChart.Chart;
+                    //SeriesCollection seriesCollection = (SeriesCollection)chart.SeriesCollection(Type.Missing);
+                    //Series series = seriesCollection.NewSeries();
+                    //Array values = new object[] {
+                    //    xlWorksheet.Range[$"D{counter_row}"].Value2,
+                    //    xlWorksheet.Range[$"E{counter_row}"].Value2,
+                    //    xlWorksheet.Range[$"F{counter_row}"].Value2
+                    //};
+                    //series.Values = values;
+                    //Array categories = new object[] { "Валовая прибыль (без скидки)", "Валовая прибыль (со скидкой)", "Потеря" };
+                    //series.XValues = categories;
+
+                    //chart.HasTitle = true;
+                    //chart.ChartTitle.Text = "Распределение данных";
+                    //chart.ChartType = XlChartType.xlPie;
+                    //chart.ApplyDataLabels(XlDataLabelsType.xlDataLabelsShowPercent,
+                    //                       Missing.Value,
+                    //                       Missing.Value,
+                    //                       Missing.Value,
+                    //                       Missing.Value,
+                    //                       Missing.Value,
+                    //                       Missing.Value,
+                    //                       Missing.Value,
+                    //                       Missing.Value,
+                    //                       Missing.Value);
 
 
+                    string path_name = $"ReportsAnalyzOrders\\Анализ продажи от {date_from.Replace(':', '.')} до {date_to.Replace(':', '.')}.xlsx";
+                    xlWorkbook.SaveAs($"{Directory.GetCurrentDirectory()}\\{path_name}");
+                    xlWorkbook.Close();
+                    xlApp.Quit();
+                    MessageBox.Show($"Excel-отчёт создан, проверьте его по пути {path_name}");
+                    string filePath = $"{Directory.GetCurrentDirectory()}\\{path_name}";
 
+                    xlApp = new Excel.Application();
+                    xlWorkbook = xlApp.Workbooks.Open(filePath);
+                    xlWorksheet = (Worksheet)xlWorkbook.Sheets[1];
 
-            //try
-            //{
-            //    Excel.Application application = new Excel.Application();
-            //    application.Workbooks.Add(Type.Missing);
-            //    Worksheet sheet = (Worksheet)application.Sheets[1];
+                    // Настраиваем параметры страницы (необязательно, но может помочь)
+                    xlWorksheet.PageSetup.Orientation = XlPageOrientation.xlPortrait;
+                    xlWorksheet.PageSetup.Zoom = false;
+                    xlWorksheet.PageSetup.FitToPagesWide = 1;
+                    xlWorksheet.PageSetup.FitToPagesTall = 1;
 
-            //    await Task.Run(() =>
-            //    {
-            //        for (int i = 1; i <= 10; i++)
-            //        {
-            //            sheet.Cells[i, 1] = i;
-            //            sheet.Cells[i, 2] = Math.Sin(i);
-            //        }
+                    // Отображаем предварительный просмотр
+                    xlApp.Visible = true; // Сначала делаем Excel видимым
+                    xlWorksheet.PrintPreview(true);  // Затем открываем просмотр
 
-            //        ChartObjects xlCharts = (ChartObjects)sheet.ChartObjects(Type.Missing);
-            //        ChartObject myChart = (ChartObject)xlCharts.Add(110, 0, 500, 300);
-            //        Chart chart = myChart.Chart;
-            //        SeriesCollection seriesCollection = (SeriesCollection)chart.SeriesCollection(Type.Missing);
-            //        Series series = seriesCollection.NewSeries();
-            //        series.XValues = sheet.get_Range("A1", "A10");
-            //        series.Values = sheet.get_Range("B1", "B10");
-            //        chart.ChartType = XlChartType.xlXYScatterSmooth;
-            //        application.Visible = true;
-            //    });
-            //}
-            //catch (Exception e)
-            //{
-            //    MessageBox.Show("Ошибка в формировании отчёта \"Контроль остатков\"\n"+e.Message);
-            //}
+                });
 
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при заполнении шаблона Excel: {ex.Message}");
+            }
+            finally
+            {
+                // Освобождаем COM-объекты (ОЧЕНЬ ВАЖНО!)
+                if (xlWorksheet != null) Marshal.ReleaseComObject(xlWorksheet);
+                if (xlWorkbook != null) Marshal.ReleaseComObject(xlWorkbook);
+                if (xlApp != null) Marshal.ReleaseComObject(xlApp);
+            }
         }
     }
 }

@@ -805,6 +805,7 @@ namespace GardenAndOgorodShop
             this.pictureBoxEmployee.Size = new System.Drawing.Size(287, 265);
             this.pictureBoxEmployee.TabIndex = 72;
             this.pictureBoxEmployee.TabStop = false;
+            this.pictureBoxEmployee.BackgroundImageChanged += new System.EventHandler(this.pictureBoxEmployee_BackgroundImageChanged);
             this.pictureBoxEmployee.Click += new System.EventHandler(this.pictureBoxEmployee_Click);
             // 
             // maskedTextBoxEmployeePhone
