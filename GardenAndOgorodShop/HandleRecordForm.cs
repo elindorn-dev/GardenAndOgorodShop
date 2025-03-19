@@ -352,7 +352,11 @@ namespace GardenAndOgorodShop
         }
         private void ClearFieldsOnForm_user()
         {
-            
+            textBoxLogin.Text = "";
+            textBoxPwd.Text = "";
+            comboBoxRole.SelectedIndex = -1;
+            comboBoxEmployeeUser.SelectedIndex = -1;
+            textBoxUserDesc.Text = "";
         }
         private string[] SuccessAddRecordResult(string elem, string form)
         {
@@ -523,10 +527,12 @@ namespace GardenAndOgorodShop
                 string elem_table = "Пользователь";
                 if (selected_mode == "add")
                 {
+                    DataRow row = employees.Rows[comboBoxEmployeeUser.SelectedIndex];
+
                     string[] result = DBHandler.InsertUser(
                         textBoxLogin.Text,
                         ComputeSha256Hash(textBoxPwd.Text),
-                        comboBoxEmployeeUser.SelectedIndex+1,
+                        Convert.ToInt32(row[0]),
                         comboBoxRole.SelectedIndex+1,
                         textBoxUserDesc.Text
                 )

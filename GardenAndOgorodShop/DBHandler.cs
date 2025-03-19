@@ -158,7 +158,7 @@ namespace GardenAndOgorodShop
                 var reader = command_sql.ExecuteReader();
                 reader.Read();
                 UserConfiguration.UserID = reader.GetInt32(0);
-                int id_role = reader.GetInt32(3);
+                int id_role = reader.GetInt32(4);
                 UserConfiguration.UserRole = id_role == 1 ? "admin" : "seller";
                 //UserConfiguration.UserFIO = reader.GetString(1) + " " + reader.GetString(2) + "." + reader.GetString(3) + ".";
                 connect.Close();
