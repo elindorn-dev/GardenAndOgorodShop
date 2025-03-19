@@ -152,6 +152,20 @@ namespace GardenAndOgorodShop
                 buttonAddEditUser.Text = "Изменить";
             }
         }
+        private void loadEditData_brand()
+        {
+            DataTable table = DBHandler.LoadDataSync($"brands WHERE brands_id = {id_record}");
+            DataRow selected_row = table.Rows[0];
+            if (selected_row != null)
+            {
+                textBoxManName.Text = $"{selected_row[1]}";
+                textBoxManEmail.Text = $"{selected_row[3]}";
+                maskedTextBoxManPhone.Text = $"{selected_row[4]}";
+                textBoxManAddress.Text = $"{selected_row[5]}";
+                textBoxManDesc.Text = $"{selected_row[2]}";
+                button9.Text = "Изменить";
+            }
+        }
         private void loadEditData()
         {
             switch (tabControlRecords.SelectedIndex)
@@ -160,7 +174,7 @@ namespace GardenAndOgorodShop
                 case 1: loadEditDataCategory(); break;
                 case 2: loadEditData_employee(); break;
                 case 3: loadEditData_user(); break;
-                case 4: ; break;
+                case 4: loadEditData_brand(); break;
                 case 5: ; break;
                 case 6: ; break;
                 default: MessageBox.Show("Не найдена нужная таблица\n(selected index -> table)"); Main form = new Main(); form.Show(); this.Hide(); break;
@@ -587,13 +601,13 @@ namespace GardenAndOgorodShop
                 }
                 else
                 {
-                    string[] result = DBHandler.EditUser(
-                         textBoxLogin.Text,
-                         textBoxPwd.Text,
-                         comboBoxEmployeeUser.SelectedIndex + 1,
-                         comboBoxRole.SelectedIndex + 1,
-                         textBoxUserDesc.Text,
-                         id_record
+                    string[] result = DBHandler.EditBrand(
+                        textBoxManName.Text,
+                        textBoxManEmail.Text,
+                        maskedTextBoxManPhone.Text,
+                        textBoxManAddress.Text,
+                        textBoxManDesc.Text,
+                        id_record
                  )
                 ? new string[] { $"{elem_table} изменен.", "Успех" } : new string[] { $"{elem_table} НЕ был изменен!", "Провал" };
                     MessageBox.Show(result[0], result[1], MessageBoxButtons.OK, MessageBoxIcon.Information);

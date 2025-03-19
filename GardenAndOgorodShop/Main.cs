@@ -891,7 +891,7 @@ namespace GardenAndOgorodShop
 
         private void button20_Click(object sender, EventArgs e)
         {
-            int index_row = dataGridViewUsers.SelectedCells[0].RowIndex;
+            int index_row = dataGridViewBrands.SelectedCells[0].RowIndex;
             DataRow selected_row = DBHandler.LoadDataSync("brands").Rows[index_row];
             int _id = Convert.ToInt32(selected_row[0]);
             HandleRecordForm form = new HandleRecordForm(4, "edit", _id);
