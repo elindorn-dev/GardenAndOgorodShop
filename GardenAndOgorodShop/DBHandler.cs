@@ -440,6 +440,35 @@ namespace GardenAndOgorodShop
                 return false;
             }
         }
+        public static bool InsertBrand(string title, string email, string phone, string addr, string desc)
+        {
+            try
+            {
+                MySqlConnection con = new MySqlConnection(connect_string);
+                con.Open();
+
+                string query = "INSERT INTO `garden_and_ogorod_shop`.`brands` (`brand_name`, `descript`, `email`, `phone_number`, `legal_address`) VALUES (@title, @email, @phone, @addr, @desc);";
+
+                using (MySqlCommand cmd = new MySqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@title", title);
+                    cmd.Parameters.AddWithValue("@email", email);
+                    cmd.Parameters.AddWithValue("@phone", phone);
+                    cmd.Parameters.AddWithValue("@addr", addr);
+                    cmd.Parameters.AddWithValue("@desc", desc);
+
+                    cmd.ExecuteNonQuery();
+                }
+
+                con.Close();
+                return true;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Ошибка добавления пользователя (db):\n" + e.Message);
+                return false;
+            }
+        }
         #endregion
         #region Edit records
         /// <summary>

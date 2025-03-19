@@ -316,7 +316,11 @@ namespace GardenAndOgorodShop
                     }
                     ; break;
             }
-            
+            if (!maskedTextBoxManPhone.MaskCompleted)
+            {
+                MessageBox.Show("Пожалуйста, введите полный номер телефона.");
+                isValid = false;
+            }
             return isValid;
         }
         private void ClearFieldsOnForm_product()
@@ -358,6 +362,14 @@ namespace GardenAndOgorodShop
             comboBoxEmployeeUser.SelectedIndex = -1;
             textBoxUserDesc.Text = "";
         }
+        private void ClearFieldsOnForm_brand()
+        {
+            textBoxManName.Text = "";
+            textBoxManEmail.Text = "";
+            maskedTextBoxManPhone.Text = "";
+            textBoxManAddress.Text = "";
+            textBoxManDesc.Text = "";
+        }
         private string[] SuccessAddRecordResult(string elem, string form)
         {
             switch (form)
@@ -366,6 +378,7 @@ namespace GardenAndOgorodShop
                 case "category": ClearFieldsOnForm_category(); break;
                 case "employee": ClearFieldsOnForm_employee(); break;
                 case "user": ClearFieldsOnForm_user(); break;
+                case "brand": ClearFieldsOnForm_brand(); break;
                 default:;break;
             }
             return new string[] { $"{elem} добавлен.", "Успех" };
@@ -559,7 +572,32 @@ namespace GardenAndOgorodShop
         {
             if (ValidateTabPage(tabControlRecords.SelectedTab))
             {
-                MessageBox.Show("Все поля заполнены!", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                string elem_table = "Производитель";
+                if (selected_mode == "add")
+                {
+                    string[] result = DBHandler.InsertBrand(
+                        textBoxManName.Text,
+                        textBoxManEmail.Text,
+                        maskedTextBoxManPhone.Text,
+                        textBoxManAddress.Text,
+                        textBoxManDesc.Text
+                )
+                ? SuccessAddRecordResult(elem_table, "brand") : new string[] { $"{elem_table} НЕ добавлен!", "Провал" };
+                    MessageBox.Show(result[0], result[1], MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    string[] result = DBHandler.EditUser(
+                         textBoxLogin.Text,
+                         textBoxPwd.Text,
+                         comboBoxEmployeeUser.SelectedIndex + 1,
+                         comboBoxRole.SelectedIndex + 1,
+                         textBoxUserDesc.Text,
+                         id_record
+                 )
+                ? new string[] { $"{elem_table} изменен.", "Успех" } : new string[] { $"{elem_table} НЕ был изменен!", "Провал" };
+                    MessageBox.Show(result[0], result[1], MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
         }
 
