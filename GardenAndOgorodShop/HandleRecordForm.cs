@@ -166,6 +166,21 @@ namespace GardenAndOgorodShop
                 button9.Text = "Изменить";
             }
         }
+        private void loadEditData_supplier()
+        {
+            DataTable table = DBHandler.LoadDataSync($"suppliers WHERE suppliers_id = {id_record}");
+            DataRow selected_row = table.Rows[0];
+            if (selected_row != null)
+            {
+                textBoxSupName.Text = $"{selected_row[1]}";
+                textBoxSupEmail.Text = $"{selected_row[3]}";
+                maskedTextBoxSupPhone.Text = $"{selected_row[4]}";
+                textBoxSupAddress.Text = $"{selected_row[5]}";
+                textBoxSupDesc.Text = $"{selected_row[2]}";
+                textBoxSupINN.Text = $"{selected_row[6]}";
+                button9.Text = "Изменить";
+            }
+        }
         private void loadEditData()
         {
             switch (tabControlRecords.SelectedIndex)
@@ -175,13 +190,25 @@ namespace GardenAndOgorodShop
                 case 2: loadEditData_employee(); break;
                 case 3: loadEditData_user(); break;
                 case 4: loadEditData_brand(); break;
-                case 5: ; break;
+                case 5: loadEditData_supplier(); break;
                 case 6: ; break;
                 default: MessageBox.Show("Не найдена нужная таблица\n(selected index -> table)"); Main form = new Main(); form.Show(); this.Hide(); break;
             }
         }
         private void HandleRecordForm_Load(object sender, EventArgs e)
         {
+            #region EmployeeDataLoad
+            try
+            {
+                (string firstName, string lastName, string fathersName, Image photo) employeeData = DBHandler.LoadEmployeeData();
+                labelEmployeeName.Text = employeeData.lastName + " " + employeeData.firstName.Substring(0, 1) + "." + employeeData.fathersName.Substring(0, 1) + ".";
+                pictureBoxUser.BackgroundImage = employeeData.photo;
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show("Ошибка загрузки пользователя");
+            }
+            #endregion
             tabControlRecords.SelectedIndex = selected_page;
             LoadComboBoxSource(comboBoxBrands, "brands", "brand_name", "brands_id");
             LoadComboBoxSource(comboBoxCategories, "categories", "category_name", "categories_id");
@@ -329,12 +356,22 @@ namespace GardenAndOgorodShop
                         isValid = false;
                     }
                     ; break;
+                case "tabPageBrand":
+                    if (!maskedTextBoxManPhone.MaskCompleted)
+                    {
+                        MessageBox.Show("Пожалуйста, введите полный номер телефона.");
+                        isValid = false;
+                    }
+                    ; break;
+                case "tabPageSupplier":
+                    if (!maskedTextBoxSupPhone.MaskCompleted)
+                    {
+                        MessageBox.Show("Пожалуйста, введите полный номер телефона.");
+                        isValid = false;
+                    }
+                    ; break;
             }
-            if (!maskedTextBoxManPhone.MaskCompleted)
-            {
-                MessageBox.Show("Пожалуйста, введите полный номер телефона.");
-                isValid = false;
-            }
+           
             return isValid;
         }
         private void ClearFieldsOnForm_product()
@@ -384,6 +421,15 @@ namespace GardenAndOgorodShop
             textBoxManAddress.Text = "";
             textBoxManDesc.Text = "";
         }
+        private void ClearFieldsOnForm_supplier()
+        {
+            textBoxSupName.Text = "";
+            textBoxSupEmail.Text = "";
+            maskedTextBoxSupPhone.Text = "";
+            textBoxSupAddress.Text = "";
+            textBoxSupINN.Text = "";
+            textBoxSupDesc.Text = "";
+        }
         private string[] SuccessAddRecordResult(string elem, string form)
         {
             switch (form)
@@ -393,6 +439,7 @@ namespace GardenAndOgorodShop
                 case "employee": ClearFieldsOnForm_employee(); break;
                 case "user": ClearFieldsOnForm_user(); break;
                 case "brand": ClearFieldsOnForm_brand(); break;
+                case "supplier": ClearFieldsOnForm_supplier(); break;
                 default:;break;
             }
             return new string[] { $"{elem} добавлен.", "Успех" };
@@ -619,7 +666,34 @@ namespace GardenAndOgorodShop
         {
             if (ValidateTabPage(tabControlRecords.SelectedTab))
             {
-                MessageBox.Show("Все поля заполнены!", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                string elem_table = "Поставщик";
+                if (selected_mode == "add")
+                {
+                    string[] result = DBHandler.InsertSup(
+                        textBoxSupName.Text,
+                        textBoxSupEmail.Text,
+                        maskedTextBoxSupPhone.Text,
+                        textBoxSupAddress.Text,
+                        textBoxSupINN.Text,
+                        textBoxSupDesc.Text
+                )
+                ? SuccessAddRecordResult(elem_table, "supplier") : new string[] { $"{elem_table} НЕ добавлен!", "Провал" };
+                    MessageBox.Show(result[0], result[1], MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    string[] result = DBHandler.EditSup(
+                        textBoxSupName.Text,
+                        textBoxSupEmail.Text,
+                        maskedTextBoxSupPhone.Text,
+                        textBoxSupAddress.Text,
+                        textBoxSupINN.Text,
+                        textBoxSupDesc.Text,
+                        id_record
+                 )
+                ? new string[] { $"{elem_table} изменен.", "Успех" } : new string[] { $"{elem_table} НЕ был изменен!", "Провал" };
+                    MessageBox.Show(result[0], result[1], MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
         }
 

@@ -452,11 +452,10 @@ namespace GardenAndOgorodShop
                 using (MySqlCommand cmd = new MySqlCommand(query, con))
                 {
                     cmd.Parameters.AddWithValue("@title", title);
+                    cmd.Parameters.AddWithValue("@desc", desc);
                     cmd.Parameters.AddWithValue("@email", email);
                     cmd.Parameters.AddWithValue("@phone", phone);
                     cmd.Parameters.AddWithValue("@addr", addr);
-                    cmd.Parameters.AddWithValue("@desc", desc);
-
                     cmd.ExecuteNonQuery();
                 }
 
@@ -476,15 +475,15 @@ namespace GardenAndOgorodShop
                 MySqlConnection con = new MySqlConnection(connect_string);
                 con.Open();
 
-                string query = "INSERT INTO `garden_and_ogorod_shop`.`suppliers` (`brand_name`, `descript`, `email`, `phone_number`, `legal_address`, `registration_number_inn`) VALUES (@title, @desc, @email, @phone, @addr, @inn);";
+                string query = "INSERT INTO `garden_and_ogorod_shop`.`suppliers` (`supplier_name`, `descript`, `email`, `phone_number`, `legal_address`, `registration_number_inn`) VALUES (@title, @desc, @email, @phone, @addr, @inn);";
 
                 using (MySqlCommand cmd = new MySqlCommand(query, con))
                 {
                     cmd.Parameters.AddWithValue("@title", title);
+                    cmd.Parameters.AddWithValue("@desc", desc);
                     cmd.Parameters.AddWithValue("@email", email);
                     cmd.Parameters.AddWithValue("@phone", phone);
                     cmd.Parameters.AddWithValue("@addr", addr);
-                    cmd.Parameters.AddWithValue("@desc", desc);
                     cmd.Parameters.AddWithValue("@inn", inn);
 
                     cmd.ExecuteNonQuery();
@@ -717,6 +716,44 @@ namespace GardenAndOgorodShop
                     cmd.Parameters.AddWithValue("@phone", phone);
                     cmd.Parameters.AddWithValue("@addr", addr);
                     cmd.Parameters.AddWithValue("@desc", desc);
+                    cmd.Parameters.AddWithValue("@id", id);
+
+                    cmd.ExecuteNonQuery();
+                }
+
+                con.Close();
+                return true;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Ошибка добавления производителя (db):\n" + e.Message);
+                return false;
+            }
+        }
+        public static bool EditSup(string title, string email, string phone, string addr, string inn, string desc, int id)
+        {
+            try
+            {
+                MySqlConnection con = new MySqlConnection(connect_string);
+                con.Open();
+
+                string query = "UPDATE `garden_and_ogorod_shop`.`suppliers` SET " +
+                    "`supplier_name` = @title, " +
+                    "`descript` = @desc, " +
+                    "`email` = @email, " +
+                    "`phone_number` = @phone, " +
+                    "`registration_number_inn` = @inn, " +
+                    "`legal_address` = @addr " +
+                    "WHERE (`brands_id` = @id);";
+
+                using (MySqlCommand cmd = new MySqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@title", title);
+                    cmd.Parameters.AddWithValue("@email", email);
+                    cmd.Parameters.AddWithValue("@phone", phone);
+                    cmd.Parameters.AddWithValue("@addr", addr);
+                    cmd.Parameters.AddWithValue("@desc", desc);
+                    cmd.Parameters.AddWithValue("@inn", inn);
                     cmd.Parameters.AddWithValue("@id", id);
 
                     cmd.ExecuteNonQuery();

@@ -1287,7 +1287,7 @@ namespace GardenAndOgorodShop
             // 
             this.textBoxSupINN.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxSupINN.Location = new System.Drawing.Point(141, 266);
-            this.textBoxSupINN.MaxLength = 50;
+            this.textBoxSupINN.MaxLength = 20;
             this.textBoxSupINN.Name = "textBoxSupINN";
             this.textBoxSupINN.Size = new System.Drawing.Size(297, 33);
             this.textBoxSupINN.TabIndex = 141;
