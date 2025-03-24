@@ -253,6 +253,27 @@ namespace GardenAndOgorodShop
             }
             return dt;
         }
+        public static System.Data.DataTable LoadEmployeesComboBox()
+        {
+            System.Data.DataTable dt = new System.Data.DataTable();
+            try
+            {
+                MySqlConnection con = new MySqlConnection(connect_string);
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand($"SELECT employees_id AS 'ids', concat(last_name, \" \", SUBSTRING(first_name, 1, 1), \". \", SUBSTRING(fathers_name, 1, 1), \".\") AS 'names' FROM garden_and_ogorod_shop.employees;", con);
+                cmd.ExecuteNonQuery();
+
+                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+
+                da.Fill(dt);
+                con.Close();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+            return dt;
+        }
         public static async Task<System.Data.DataTable> LoadData(string table)
         {
             System.Data.DataTable dt = new System.Data.DataTable();

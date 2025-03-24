@@ -57,11 +57,10 @@ namespace GardenAndOgorodShop
         {
             try
             {
-                employees = DBHandler.LoadDataSync("employees");
-                foreach(DataRow row in employees.Rows)
-                {
-                    comboBoxEmployeeUser.Items.Add($"{row[2]} {row[1].ToString().Substring(0, 1)}. {row[3].ToString().Substring(0, 1)}.\t{row[6]}");
-                }
+                DataTable employees_ = DBHandler.LoadEmployeesComboBox();
+                comboBoxEmployeeUser.DataSource = employees_;
+                comboBoxEmployeeUser.DisplayMember = "names";
+                comboBoxEmployeeUser.ValueMember = "ids";
             }
             catch (Exception ex)
             {
@@ -146,7 +145,7 @@ namespace GardenAndOgorodShop
             {
                 textBoxLogin.Text = $"{selected_row[1]}";
                 textBoxPwd.Text = $"{selected_row[2]}";
-                comboBoxEmployeeUser.SelectedIndex = Convert.ToInt32(selected_row[3])-1;
+                comboBoxEmployeeUser.SelectedValue = Convert.ToInt32(selected_row[3]);
                 comboBoxRole.SelectedIndex = Convert.ToInt32(selected_row[4])-1;
                 textBoxUserDesc.Text = $"{selected_row[6]}";
                 buttonAddEditUser.Text = "Изменить";
@@ -181,6 +180,32 @@ namespace GardenAndOgorodShop
                 button9.Text = "Изменить";
             }
         }
+        private void loadEditData_order()
+        {
+            DataTable table = DBHandler.LoadDataSync($"garden_and_ogorod_shop.orders INNER JOIN employees ON employees.employees_id = orders.employees_id WHERE orders_id = {id_record};");
+            DataRow row = table.Rows[0];
+            if (row != null)
+            {
+                try
+                {
+                    comboBoxEmployeeOrder.SelectedValue = Convert.ToInt32(row[1]);
+
+                    dateTimePickerOrder.Value = DateTime.Parse($"{row[2]}");
+
+                    comboBoxStatus.Text = $"{row[3]}";
+                    comboBoxPayMethod.Text = $"{row[4]}";
+                    textBoxTotalCost.Text = $"{row[5]}";
+                    textBoxOrderDesc.Text = $"{row[7]}";
+                }
+                catch (Exception er)
+                {
+                    MessageBox.Show("Ошибка загрузки данных о продаже", "Заполнение", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    this.Close();
+                }
+
+                button13.Text = "Изменить";
+            }
+        }
         private void loadEditData()
         {
             switch (tabControlRecords.SelectedIndex)
@@ -191,12 +216,13 @@ namespace GardenAndOgorodShop
                 case 3: loadEditData_user(); break;
                 case 4: loadEditData_brand(); break;
                 case 5: loadEditData_supplier(); break;
-                case 6: ; break;
+                case 6: loadEditData_order(); break;
                 default: MessageBox.Show("Не найдена нужная таблица\n(selected index -> table)"); Main form = new Main(); form.Show(); this.Hide(); break;
             }
         }
         private void HandleRecordForm_Load(object sender, EventArgs e)
         {
+            dateTimePickerOrder.MaxDate = DateTime.Today;
             #region EmployeeDataLoad
             try
             {
@@ -217,8 +243,24 @@ namespace GardenAndOgorodShop
             LoadComboBoxSourceEmployee();
             if (this.selected_mode == "edit")
             {
+                try
+                {
+                    employees = DBHandler.LoadEmployeesComboBox();
+                    comboBoxEmployeeOrder.DataSource = employees;
+                    comboBoxEmployeeOrder.DisplayMember = "names";
+                    comboBoxEmployeeOrder.ValueMember = "ids";
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Ошибка при загрузке сотрудника: " + ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
                 loadEditData();
             }
+            else
+            {
+                comboBoxEmployeeUser.SelectedIndex = -1;
+            }
+            
         }
         private void buttonToMianForm_Click(object sender, EventArgs e)
         {

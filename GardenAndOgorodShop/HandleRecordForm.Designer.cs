@@ -195,11 +195,11 @@ namespace GardenAndOgorodShop
             this.tabControlRecords.Controls.Add(this.tabPageBrand);
             this.tabControlRecords.Controls.Add(this.tabPage6);
             this.tabControlRecords.Controls.Add(this.tabPage7);
-            this.tabControlRecords.Dock = System.Windows.Forms.DockStyle.Right;
-            this.tabControlRecords.Location = new System.Drawing.Point(50, 0);
+            this.tabControlRecords.ItemSize = new System.Drawing.Size(1, 1);
+            this.tabControlRecords.Location = new System.Drawing.Point(51, -10);
             this.tabControlRecords.Name = "tabControlRecords";
             this.tabControlRecords.SelectedIndex = 0;
-            this.tabControlRecords.Size = new System.Drawing.Size(751, 486);
+            this.tabControlRecords.Size = new System.Drawing.Size(748, 484);
             this.tabControlRecords.TabIndex = 0;
             // 
             // tabPageProduct
@@ -228,9 +228,9 @@ namespace GardenAndOgorodShop
             this.tabPageProduct.Controls.Add(this.label2);
             this.tabPageProduct.Controls.Add(this.textBoxProductName);
             this.tabPageProduct.Controls.Add(this.panel1);
-            this.tabPageProduct.Location = new System.Drawing.Point(4, 22);
+            this.tabPageProduct.Location = new System.Drawing.Point(4, 5);
             this.tabPageProduct.Name = "tabPageProduct";
-            this.tabPageProduct.Size = new System.Drawing.Size(743, 460);
+            this.tabPageProduct.Size = new System.Drawing.Size(740, 475);
             this.tabPageProduct.TabIndex = 0;
             this.tabPageProduct.Text = "tabPageProduct";
             // 
@@ -496,9 +496,9 @@ namespace GardenAndOgorodShop
             this.tabPageCategory.Controls.Add(this.label16);
             this.tabPageCategory.Controls.Add(this.textBoxCategoryTitle);
             this.tabPageCategory.Controls.Add(this.panel2);
-            this.tabPageCategory.Location = new System.Drawing.Point(4, 22);
+            this.tabPageCategory.Location = new System.Drawing.Point(4, 5);
             this.tabPageCategory.Name = "tabPageCategory";
-            this.tabPageCategory.Size = new System.Drawing.Size(743, 460);
+            this.tabPageCategory.Size = new System.Drawing.Size(740, 475);
             this.tabPageCategory.TabIndex = 1;
             this.tabPageCategory.Text = "tabPageCategory";
             this.tabPageCategory.UseVisualStyleBackColor = true;
@@ -1452,9 +1452,9 @@ namespace GardenAndOgorodShop
             this.tabPage7.Controls.Add(this.button13);
             this.tabPage7.Controls.Add(this.button14);
             this.tabPage7.Controls.Add(this.panel7);
-            this.tabPage7.Location = new System.Drawing.Point(4, 22);
+            this.tabPage7.Location = new System.Drawing.Point(4, 5);
             this.tabPage7.Name = "tabPage7";
-            this.tabPage7.Size = new System.Drawing.Size(743, 460);
+            this.tabPage7.Size = new System.Drawing.Size(740, 475);
             this.tabPage7.TabIndex = 6;
             this.tabPage7.Text = "tabPageOrder";
             this.tabPage7.UseVisualStyleBackColor = true;
@@ -1522,14 +1522,16 @@ namespace GardenAndOgorodShop
             // 
             // dateTimePickerOrder
             // 
+            this.dateTimePickerOrder.CustomFormat = "yyyy-MM-dd HH:mm:ss";
             this.dateTimePickerOrder.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.dateTimePickerOrder.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePickerOrder.Location = new System.Drawing.Point(118, 134);
             this.dateTimePickerOrder.MaxDate = new System.DateTime(2010, 1, 1, 0, 0, 0, 0);
-            this.dateTimePickerOrder.MinDate = new System.DateTime(1970, 1, 1, 0, 0, 0, 0);
+            this.dateTimePickerOrder.MinDate = new System.DateTime(2010, 1, 1, 0, 0, 0, 0);
             this.dateTimePickerOrder.Name = "dateTimePickerOrder";
             this.dateTimePickerOrder.Size = new System.Drawing.Size(206, 33);
             this.dateTimePickerOrder.TabIndex = 160;
-            this.dateTimePickerOrder.Value = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
+            this.dateTimePickerOrder.Value = new System.DateTime(2010, 1, 1, 0, 0, 0, 0);
             // 
             // comboBoxEmployeeOrder
             // 
@@ -1648,7 +1650,7 @@ namespace GardenAndOgorodShop
             this.panelNavigation.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelNavigation.Location = new System.Drawing.Point(0, 0);
             this.panelNavigation.Name = "panelNavigation";
-            this.panelNavigation.Size = new System.Drawing.Size(52, 486);
+            this.panelNavigation.Size = new System.Drawing.Size(52, 484);
             this.panelNavigation.TabIndex = 1;
             // 
             // buttonToMianForm
@@ -1717,7 +1719,7 @@ namespace GardenAndOgorodShop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(801, 486);
+            this.ClientSize = new System.Drawing.Size(799, 484);
             this.Controls.Add(this.panelNavigation);
             this.Controls.Add(this.tabControlRecords);
             this.Name = "HandleRecordForm";
