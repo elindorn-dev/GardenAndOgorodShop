@@ -159,9 +159,10 @@ namespace GardenAndOgorodShop
                 dataGridViewUsers.Rows.Add(loginUser, roleUser, lastLoginUser);
             }
         }
-        private async void LoadOrdersDataGridView()
+        private async void LoadOrdersDataGridView(string method)
         {
-            DataTable table = await DBHandler.LoadData("orders");
+            dataGridViewOrders.Rows.Clear();
+            DataTable table = await DBHandler.LoadData(method);
             foreach (DataRow row in table.Rows)
             {
                 string orderId = "none";
@@ -315,7 +316,7 @@ namespace GardenAndOgorodShop
             LoadCategoriesDataGridView();
             LoadEmployeesDataGridView();
             LoadUsersDataGridView();
-            LoadOrdersDataGridView();
+            LoadOrdersDataGridView("orders ORDER BY order_date ASC");
             LoadBrandsDataGridView();
             LoadSuppliersDataGridView();
             if (UserConfiguration.UserRole == "seller") { HideForCommonUser(); } else { buttonCurrentOrder.Visible = false; buttonBacket.Visible = false; }
@@ -929,6 +930,22 @@ namespace GardenAndOgorodShop
         private void buttonToStockForm_Click(object sender, EventArgs e)
         {
             tabControl1.SelectedIndex = 7;
+        }
+        bool flag_order_sort = true;
+        private void button18_Click(object sender, EventArgs e)
+        {
+            if (flag_order_sort)
+            {
+                LoadOrdersDataGridView("orders ORDER BY order_date DESC");
+                button18.Text = "дате ↓";
+                flag_order_sort = false;
+            }
+            else
+            {
+                LoadOrdersDataGridView("orders ORDER BY order_date ASC");
+                button18.Text = "дате ↑";
+                flag_order_sort = true;
+            }
         }
     }
 }

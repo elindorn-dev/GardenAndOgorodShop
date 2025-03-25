@@ -306,10 +306,13 @@ namespace GardenAndOgorodShop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(186)))), ((int)(((byte)(93)))));
             this.ClientSize = new System.Drawing.Size(865, 650);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dataGridViewProducts);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "CurrentOrder";
             this.Text = "CurrentOrder";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CurrentOrder_FormClosed);

@@ -154,7 +154,6 @@ namespace GardenAndOgorodShop
             this.label47 = new System.Windows.Forms.Label();
             this.textBoxOrderDesc = new System.Windows.Forms.TextBox();
             this.button13 = new System.Windows.Forms.Button();
-            this.button14 = new System.Windows.Forms.Button();
             this.panel7 = new System.Windows.Forms.Panel();
             this.label49 = new System.Windows.Forms.Label();
             this.panelNavigation = new System.Windows.Forms.Panel();
@@ -309,6 +308,7 @@ namespace GardenAndOgorodShop
             this.button1.TabIndex = 27;
             this.button1.Text = "Очистить";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // pictureBoxProduct
             // 
@@ -319,6 +319,7 @@ namespace GardenAndOgorodShop
             this.pictureBoxProduct.Size = new System.Drawing.Size(287, 265);
             this.pictureBoxProduct.TabIndex = 26;
             this.pictureBoxProduct.TabStop = false;
+            this.pictureBoxProduct.BackgroundImageChanged += new System.EventHandler(this.pictureBoxProduct_BackgroundImageChanged);
             this.pictureBoxProduct.Click += new System.EventHandler(this.pictureBoxProduct_Click);
             // 
             // comboBoxSuppliers
@@ -527,6 +528,7 @@ namespace GardenAndOgorodShop
             this.button3.TabIndex = 47;
             this.button3.Text = "Очистить";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // label15
             // 
@@ -617,9 +619,9 @@ namespace GardenAndOgorodShop
             this.tabPageEmployee.Controls.Add(this.buttonAddEditEmployee);
             this.tabPageEmployee.Controls.Add(this.button6);
             this.tabPageEmployee.Controls.Add(this.panel3);
-            this.tabPageEmployee.Location = new System.Drawing.Point(4, 22);
+            this.tabPageEmployee.Location = new System.Drawing.Point(4, 5);
             this.tabPageEmployee.Name = "tabPageEmployee";
-            this.tabPageEmployee.Size = new System.Drawing.Size(743, 460);
+            this.tabPageEmployee.Size = new System.Drawing.Size(740, 475);
             this.tabPageEmployee.TabIndex = 2;
             this.tabPageEmployee.Text = "tabPageEmployee";
             this.tabPageEmployee.UseVisualStyleBackColor = true;
@@ -890,6 +892,7 @@ namespace GardenAndOgorodShop
             this.button6.TabIndex = 54;
             this.button6.Text = "Очистить";
             this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // panel3
             // 
@@ -927,9 +930,9 @@ namespace GardenAndOgorodShop
             this.tabPageUser.Controls.Add(this.buttonAddEditUser);
             this.tabPageUser.Controls.Add(this.button8);
             this.tabPageUser.Controls.Add(this.panel4);
-            this.tabPageUser.Location = new System.Drawing.Point(4, 22);
+            this.tabPageUser.Location = new System.Drawing.Point(4, 5);
             this.tabPageUser.Name = "tabPageUser";
-            this.tabPageUser.Size = new System.Drawing.Size(743, 460);
+            this.tabPageUser.Size = new System.Drawing.Size(740, 475);
             this.tabPageUser.TabIndex = 3;
             this.tabPageUser.Text = "tabPageUser";
             this.tabPageUser.UseVisualStyleBackColor = true;
@@ -1063,6 +1066,7 @@ namespace GardenAndOgorodShop
             this.button8.TabIndex = 91;
             this.button8.Text = "Очистить";
             this.button8.UseVisualStyleBackColor = false;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // panel4
             // 
@@ -1100,9 +1104,9 @@ namespace GardenAndOgorodShop
             this.tabPageBrand.Controls.Add(this.button9);
             this.tabPageBrand.Controls.Add(this.button10);
             this.tabPageBrand.Controls.Add(this.panel5);
-            this.tabPageBrand.Location = new System.Drawing.Point(4, 22);
+            this.tabPageBrand.Location = new System.Drawing.Point(4, 5);
             this.tabPageBrand.Name = "tabPageBrand";
-            this.tabPageBrand.Size = new System.Drawing.Size(743, 460);
+            this.tabPageBrand.Size = new System.Drawing.Size(740, 475);
             this.tabPageBrand.TabIndex = 4;
             this.tabPageBrand.Text = "tabPageBrand";
             this.tabPageBrand.UseVisualStyleBackColor = true;
@@ -1227,6 +1231,7 @@ namespace GardenAndOgorodShop
             this.button10.TabIndex = 112;
             this.button10.Text = "Очистить";
             this.button10.UseVisualStyleBackColor = false;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
             // panel5
             // 
@@ -1266,9 +1271,9 @@ namespace GardenAndOgorodShop
             this.tabPage6.Controls.Add(this.button11);
             this.tabPage6.Controls.Add(this.button12);
             this.tabPage6.Controls.Add(this.panel6);
-            this.tabPage6.Location = new System.Drawing.Point(4, 22);
+            this.tabPage6.Location = new System.Drawing.Point(4, 5);
             this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Size = new System.Drawing.Size(743, 460);
+            this.tabPage6.Size = new System.Drawing.Size(740, 475);
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "tabPageSupplier";
             this.tabPage6.UseVisualStyleBackColor = true;
@@ -1413,6 +1418,7 @@ namespace GardenAndOgorodShop
             this.button12.TabIndex = 129;
             this.button12.Text = "Очистить";
             this.button12.UseVisualStyleBackColor = false;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
             // 
             // panel6
             // 
@@ -1450,7 +1456,6 @@ namespace GardenAndOgorodShop
             this.tabPage7.Controls.Add(this.label47);
             this.tabPage7.Controls.Add(this.textBoxOrderDesc);
             this.tabPage7.Controls.Add(this.button13);
-            this.tabPage7.Controls.Add(this.button14);
             this.tabPage7.Controls.Add(this.panel7);
             this.tabPage7.Location = new System.Drawing.Point(4, 5);
             this.tabPage7.Name = "tabPage7";
@@ -1607,18 +1612,6 @@ namespace GardenAndOgorodShop
             this.button13.UseVisualStyleBackColor = false;
             this.button13.Click += new System.EventHandler(this.button13_Click);
             // 
-            // button14
-            // 
-            this.button14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(52)))), ((int)(((byte)(52)))));
-            this.button14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button14.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button14.Location = new System.Drawing.Point(141, 406);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(111, 40);
-            this.button14.TabIndex = 144;
-            this.button14.Text = "Очистить";
-            this.button14.UseVisualStyleBackColor = false;
-            // 
             // panel7
             // 
             this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(120)))), ((int)(((byte)(56)))));
@@ -1719,9 +1712,12 @@ namespace GardenAndOgorodShop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(799, 484);
             this.Controls.Add(this.panelNavigation);
             this.Controls.Add(this.tabControlRecords);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "HandleRecordForm";
             this.Text = "AddRecordForm";
             this.Load += new System.EventHandler(this.HandleRecordForm_Load);
@@ -1892,7 +1888,6 @@ namespace GardenAndOgorodShop
         private System.Windows.Forms.Label label47;
         private System.Windows.Forms.TextBox textBoxOrderDesc;
         private System.Windows.Forms.Button button13;
-        private System.Windows.Forms.Button button14;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Label label49;
         private System.Windows.Forms.Label label52;

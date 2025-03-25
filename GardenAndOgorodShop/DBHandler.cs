@@ -535,18 +535,12 @@ namespace GardenAndOgorodShop
         /// <param name="discount"></param>
         /// <param name="id"></param>
         /// <returns></returns>
-        public static bool EditProduct(string title, string descript, double price, int category, int brand, int is_avaible, Image image, int supplier, double discount, int id)
+        public static bool EditProduct(string title, string descript, double price, int category, int brand, int is_avaible, byte[] blobData, int supplier, double discount, int id)
         {
             try
             {
                 MySqlConnection con = new MySqlConnection(connect_string);
                 con.Open();
-                byte[] blobData;
-                using (MemoryStream ms = new MemoryStream())
-                {
-                    image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
-                    blobData = ms.ToArray();
-                }
                 string query = $"UPDATE `garden_and_ogorod_shop`.`products` SET " +
                     "`products_name` = @title, " +
                     "`descript` = @descript, " +

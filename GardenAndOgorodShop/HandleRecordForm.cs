@@ -78,16 +78,16 @@ namespace GardenAndOgorodShop
                 textBoxProductDesc.Text = Convert.ToString(selected_product[2]);
                 textBoxProductCost.Text = Convert.ToString(selected_product[3]);
                 int count = comboBoxCategories.Items.Count;
-                comboBoxCategories.SelectedIndex = Convert.ToInt32(selected_product[4]);
-                comboBoxBrands.SelectedIndex = Convert.ToInt32(selected_product[5]);
+                comboBoxCategories.SelectedIndex = Convert.ToInt32(selected_product[4])-1;
+                comboBoxBrands.SelectedIndex = Convert.ToInt32(selected_product[5])-1;
                 textBoxProductIsAvaible.Text = Convert.ToString(selected_product[6]);
                 imageData = (byte[])selected_product[7];
                 using (MemoryStream ms = new MemoryStream(imageData))
                 {
                     pictureBoxProduct.BackgroundImage = Image.FromStream(ms);
                 }
-                comboBoxSuppliers.SelectedIndex = Convert.ToInt32(selected_product[8]);
-                textBoxProductSeasonalDiscount.Text = Convert.ToString(selected_product[9]);
+                comboBoxSuppliers.SelectedIndex = Convert.ToInt32(selected_product[8])-1;
+                textBoxProductSeasonalDiscount.Text = Convert.ToInt32(selected_product[9]).ToString();
                 buttonAddEditProduct.Text = "Изменить";
             }
         }
@@ -503,11 +503,11 @@ namespace GardenAndOgorodShop
                             textBoxProductName.Text,
                             textBoxProductDesc.Text,
                             Convert.ToDecimal(textBoxProductCost.Text),
-                            comboBoxCategories.SelectedIndex,
-                            comboBoxBrands.SelectedIndex,
+                            comboBoxCategories.SelectedIndex+1,
+                            comboBoxBrands.SelectedIndex+1,
                             Convert.ToInt32(textBoxProductIsAvaible.Text),
                             pictureBoxProduct.BackgroundImage,
-                            comboBoxSuppliers.SelectedIndex,
+                            comboBoxSuppliers.SelectedIndex+1,
                             Convert.ToDecimal(textBoxProductSeasonalDiscount.Text)
                     ) ? SuccessAddRecordResult("Товар", "product") : new string[] { "Товар НЕ добавлен!", "Провал" };
                         MessageBox.Show(result[0], result[1], MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -524,11 +524,11 @@ namespace GardenAndOgorodShop
                             title,
                             textBoxProductDesc.Text,
                             cost,
-                            comboBoxCategories.SelectedIndex,
-                            comboBoxBrands.SelectedIndex,
+                            comboBoxCategories.SelectedIndex+1,
+                            comboBoxBrands.SelectedIndex+1,
                             amount,
-                            pictureBoxProduct.BackgroundImage,
-                            comboBoxSuppliers.SelectedIndex,
+                            blobData_product,
+                            comboBoxSuppliers.SelectedIndex+1,
                             discount,
                             id_record
                     ) ? new string[] { "Товар изменен.", "Успех" } : new string[] { "Товар НЕ был изменен!", "Провал" };
@@ -824,6 +824,7 @@ namespace GardenAndOgorodShop
 
         }
         byte[] blobData_employee;
+        byte[] blobData_product;
         private void pictureBoxEmployee_BackgroundImageChanged(object sender, EventArgs e)
         {
             using (MemoryStream ms = new MemoryStream())
@@ -832,5 +833,45 @@ namespace GardenAndOgorodShop
                 blobData_employee = ms.ToArray();
             }
         }
+        private void pictureBoxProduct_BackgroundImageChanged(object sender, EventArgs e)
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                pictureBoxProduct.BackgroundImage.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+                blobData_product = ms.ToArray();
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ClearFieldsOnForm_product();
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            ClearFieldsOnForm_brand();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            ClearFieldsOnForm_category();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            ClearFieldsOnForm_employee();
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            ClearFieldsOnForm_user();
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            ClearFieldsOnForm_supplier();
+        }
+
+        
     }
 }
