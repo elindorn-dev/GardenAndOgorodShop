@@ -78,15 +78,15 @@ namespace GardenAndOgorodShop
                 textBoxProductDesc.Text = Convert.ToString(selected_product[2]);
                 textBoxProductCost.Text = Convert.ToString(selected_product[3]);
                 int count = comboBoxCategories.Items.Count;
-                comboBoxCategories.SelectedIndex = Convert.ToInt32(selected_product[4])-1;
-                comboBoxBrands.SelectedIndex = Convert.ToInt32(selected_product[5])-1;
+                comboBoxCategories.SelectedValue = Convert.ToInt32(selected_product[4]);
+                comboBoxBrands.SelectedValue = Convert.ToInt32(selected_product[5]);
                 textBoxProductIsAvaible.Text = Convert.ToString(selected_product[6]);
                 imageData = (byte[])selected_product[7];
                 using (MemoryStream ms = new MemoryStream(imageData))
                 {
                     pictureBoxProduct.BackgroundImage = Image.FromStream(ms);
                 }
-                comboBoxSuppliers.SelectedIndex = Convert.ToInt32(selected_product[8])-1;
+                comboBoxSuppliers.SelectedValue = Convert.ToInt32(selected_product[8]);
                 textBoxProductSeasonalDiscount.Text = Convert.ToInt32(selected_product[9]).ToString();
                 buttonAddEditProduct.Text = "Изменить";
             }
@@ -177,7 +177,7 @@ namespace GardenAndOgorodShop
                 textBoxSupAddress.Text = $"{selected_row[5]}";
                 textBoxSupDesc.Text = $"{selected_row[2]}";
                 textBoxSupINN.Text = $"{selected_row[6]}";
-                button9.Text = "Изменить";
+                button11.Text = "Изменить";
             }
         }
         private void loadEditData_order()
@@ -446,6 +446,7 @@ namespace GardenAndOgorodShop
             textBoxPosition.Text = "";
             textBoxEmployeePrice.Text = "";
             textBoxEmployeeDesc.Text = "";
+            pictureBoxEmployee.BackgroundImage = Properties.Resources.none_employee;
         }
         private void ClearFieldsOnForm_user()
         {
@@ -503,11 +504,11 @@ namespace GardenAndOgorodShop
                             textBoxProductName.Text,
                             textBoxProductDesc.Text,
                             Convert.ToDecimal(textBoxProductCost.Text),
-                            comboBoxCategories.SelectedIndex+1,
-                            comboBoxBrands.SelectedIndex+1,
+                            (int)comboBoxCategories.SelectedValue,
+                            (int)comboBoxBrands.SelectedValue,
                             Convert.ToInt32(textBoxProductIsAvaible.Text),
                             pictureBoxProduct.BackgroundImage,
-                            comboBoxSuppliers.SelectedIndex+1,
+                            (int)comboBoxSuppliers.SelectedValue,
                             Convert.ToDecimal(textBoxProductSeasonalDiscount.Text)
                     ) ? SuccessAddRecordResult("Товар", "product") : new string[] { "Товар НЕ добавлен!", "Провал" };
                         MessageBox.Show(result[0], result[1], MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -524,11 +525,11 @@ namespace GardenAndOgorodShop
                             title,
                             textBoxProductDesc.Text,
                             cost,
-                            comboBoxCategories.SelectedIndex+1,
-                            comboBoxBrands.SelectedIndex+1,
+                            (int)comboBoxCategories.SelectedValue,
+                            (int)comboBoxBrands.SelectedValue,
                             amount,
                             blobData_product,
-                            comboBoxSuppliers.SelectedIndex+1,
+                            (int)comboBoxSuppliers.SelectedValue,
                             discount,
                             id_record
                     ) ? new string[] { "Товар изменен.", "Успех" } : new string[] { "Товар НЕ был изменен!", "Провал" };
@@ -643,12 +644,10 @@ namespace GardenAndOgorodShop
                 string elem_table = "Пользователь";
                 if (selected_mode == "add")
                 {
-                    DataRow row = employees.Rows[comboBoxEmployeeUser.SelectedIndex];
-
                     string[] result = DBHandler.InsertUser(
                         textBoxLogin.Text,
                         ComputeSha256Hash(textBoxPwd.Text),
-                        Convert.ToInt32(row[0]),
+                        Convert.ToInt32(comboBoxEmployeeUser.SelectedValue),
                         comboBoxRole.SelectedIndex+1,
                         textBoxUserDesc.Text
                 )
@@ -660,7 +659,7 @@ namespace GardenAndOgorodShop
                     string[] result = DBHandler.EditUser(
                          textBoxLogin.Text,
                          textBoxPwd.Text,
-                         comboBoxEmployeeUser.SelectedIndex + 1,
+                         Convert.ToInt32(comboBoxEmployeeUser.SelectedValue),
                          comboBoxRole.SelectedIndex + 1,
                          textBoxUserDesc.Text,
                          id_record

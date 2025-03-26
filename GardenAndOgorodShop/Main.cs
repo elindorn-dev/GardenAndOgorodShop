@@ -24,7 +24,7 @@ namespace GardenAndOgorodShop
         // переменная-флаг активации по нажатию кнопки
         bool setting_active_status = false;
 
-        string[] categories_strings;
+        Dictionary<int, string> categories_strings = new Dictionary<int, string>();
 
         private DataTable products_table;
         private DataTable employees_table;
@@ -87,6 +87,7 @@ namespace GardenAndOgorodShop
         #region Loading table's data to dataGridView
         private void LoadProductDataGridView()
         {
+            dataGridViewProducts.Rows.Clear();
             foreach (DataRow row in products_table.Rows)
             {
                 Image productImage = Properties.Resources.none_image;
@@ -99,7 +100,7 @@ namespace GardenAndOgorodShop
                     productTitle = $"{row[1]}";
                     double cost = Convert.ToDouble(row[3]);
                     productPrice = $"{cost - cost * (Convert.ToDouble(row[9])/100)} ₽";
-                    productCategory = $"{categories_strings[Convert.ToInt32(row[4])-1]}";
+                    productCategory = $"{categories_strings[Convert.ToInt32(row[4])]}";
                     productAmount = $"{row[6]} шт.";
                     if (row[7] != DBNull.Value) 
                     {
@@ -140,6 +141,7 @@ namespace GardenAndOgorodShop
         }
         private async void LoadUsersDataGridView()
         {
+            dataGridViewUsers.Rows.Clear();
             string[] roles = { "Администратор", "Продавец" };
             DataTable table = await DBHandler.LoadData("users");
             foreach (DataRow row in table.Rows)
@@ -159,11 +161,12 @@ namespace GardenAndOgorodShop
                 dataGridViewUsers.Rows.Add(loginUser, roleUser, lastLoginUser);
             }
         }
+        private DataTable table_orders;
         private async void LoadOrdersDataGridView(string method)
         {
             dataGridViewOrders.Rows.Clear();
-            DataTable table = await DBHandler.LoadData(method);
-            foreach (DataRow row in table.Rows)
+            table_orders = await DBHandler.LoadData(method);
+            foreach (DataRow row in table_orders.Rows)
             {
                 string orderId = "none";
                 string orderDate = "none";
@@ -211,6 +214,7 @@ namespace GardenAndOgorodShop
         }
         private async void LoadSuppliersDataGridView()
         {
+            dataGridViewSuppliers.Rows.Clear();
             DataTable table = await DBHandler.LoadData("suppliers");
             foreach (DataRow row in table.Rows)
             {
@@ -266,11 +270,10 @@ namespace GardenAndOgorodShop
         private async void getCategories()
         {
             DataTable categories_table = await DBHandler.LoadData("categories");
-            categories_strings = new string[categories_table.Rows.Count];
             for(int i = 0; i < categories_table.Rows.Count; i++)
             {
                 DataRow row = categories_table.Rows[i];
-                categories_strings[i] = $"{row[1]}";
+                categories_strings.Add((int)row[0], $"{row[1]}");
             }
         }
         private void HideForCommonUser()
@@ -296,9 +299,9 @@ namespace GardenAndOgorodShop
             //employees_table = await DBHandler.LoadData("employees INNER JOIN users ON employees.employees_id = users.employees_id");
 
             comboBoxCategories.Items.Add("без фильтрации");
-            for (int i = 0; i< categories_strings.Length;i++)
+            foreach (KeyValuePair<int, string> pair in categories_strings)
             {
-                comboBoxCategories.Items.Add(categories_strings[i]);
+                comboBoxCategories.Items.Add(pair.Value);
             }
             #region EmployeeDataLoad
             try
@@ -515,7 +518,7 @@ namespace GardenAndOgorodShop
         {
             EnabledUsingHandleEmployees(false);
             // определяем метод
-            method_employee = comboBoxRoles.SelectedIndex != 0 ? $"employees INNER JOIN users ON employees.employees_id = users.employees_id WHERE {method_filter_employee} AND (last_name LIKE '%{method_search_employee}%') ORDER BY {method_sort_name_employee}" : $"employees WHERE" +
+            method_employee = comboBoxRoles.SelectedIndex != 0 ? $"employees LEFT JOIN users ON employees.employees_id = users.employees_id WHERE {method_filter_employee} AND (last_name LIKE '%{method_search_employee}%') ORDER BY {method_sort_name_employee}" : $"employees WHERE" +
                 $" last_name LIKE '%{method_search_employee}%' ORDER BY {method_sort_name_employee}";
             // Загружаем новые данные таблицы
             employees_table = await DBHandler.LoadData(method_employee);
@@ -832,7 +835,7 @@ namespace GardenAndOgorodShop
         private void button4_Click(object sender, EventArgs e)
         {
             int index_row = dataGridViewEmployees.SelectedCells[0].RowIndex;
-            DataRow selected_row = DBHandler.LoadDataSync("employees").Rows[index_row];
+            DataRow selected_row = employees_table.Rows[index_row];
             int _id = Convert.ToInt32(selected_row[0]);
             HandleRecordForm form = new HandleRecordForm(2, "edit", _id);
             form.Show();
@@ -920,7 +923,7 @@ namespace GardenAndOgorodShop
         private void button17_Click(object sender, EventArgs e)
         {
             int index_row = dataGridViewOrders.SelectedCells[0].RowIndex;
-            DataRow selected_row = DBHandler.LoadDataSync("orders").Rows[index_row];
+            DataRow selected_row = table_orders.Rows[index_row];
             int _id = Convert.ToInt32(selected_row[0]);
             HandleRecordForm form = new HandleRecordForm(6, "edit", _id);
             form.Show();
@@ -932,19 +935,255 @@ namespace GardenAndOgorodShop
             tabControl1.SelectedIndex = 7;
         }
         bool flag_order_sort = true;
+        string method_orders = "orders ORDER BY order_date ASC";
         private void button18_Click(object sender, EventArgs e)
         {
             if (flag_order_sort)
             {
-                LoadOrdersDataGridView("orders ORDER BY order_date DESC");
+                method_orders = "orders ORDER BY order_date DESC";
                 button18.Text = "дате ↓";
                 flag_order_sort = false;
             }
             else
             {
-                LoadOrdersDataGridView("orders ORDER BY order_date ASC");
+                method_orders = "orders ORDER BY order_date ASC";
                 button18.Text = "дате ↑";
                 flag_order_sort = true;
+            }
+            LoadOrdersDataGridView(method_orders);
+        }
+        // Удаление производителя
+        private void button2_Click(object sender, EventArgs e)
+        {
+            int index_row = dataGridViewBrands.SelectedCells[0].RowIndex;
+            DataRow selected_row = DBHandler.LoadDataSync("brands").Rows[index_row];
+            int _id = Convert.ToInt32(selected_row[0]);
+            DialogResult dr = MessageBox.Show($"Вы уверены что хотите удалить производителя '{selected_row[1]}'?",
+                "Подтверждение",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+                );
+            if (dr == DialogResult.Yes)
+            {
+                if (DBHandler.DeleteHandler("brands", "brands_id", _id))
+                {
+                    MessageBox.Show($"Производитель удалён",
+                    "Результат",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information
+                    );
+                    dataGridViewBrands.Rows.Clear();
+                    LoadBrandsDataGridView();
+                    dataGridViewProducts.Rows.Clear();
+                    LoadProductDataGridView();
+                }
+                else
+                {
+                    MessageBox.Show($"Производитель не был удалён!",
+                    "Результат",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                    );
+                }
+            }
+        }
+        // Удаление категории
+        private void button6_Click(object sender, EventArgs e)
+        {
+            int index_row = dataGridViewCategories.SelectedCells[0].RowIndex;
+            DataRow selected_row = DBHandler.LoadDataSync("categories").Rows[index_row];
+            int _id = Convert.ToInt32(selected_row[0]);
+            DialogResult dr = MessageBox.Show($"Вы уверены что хотите удалить категорию '{selected_row[1]}'?",
+                "Подтверждение",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+                );
+            if (dr == DialogResult.Yes)
+            {
+                if (DBHandler.DeleteHandler("categories", "categories_id", _id))
+                {
+                    MessageBox.Show($"Категория удалёна",
+                    "Результат",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information
+                    );
+                    dataGridViewCategories.Rows.Clear();
+                    LoadCategoriesDataGridView();
+                    dataGridViewProducts.Rows.Clear();
+                    LoadProductDataGridView();
+                }
+                else
+                {
+                    MessageBox.Show($"Категория не был удалёна!",
+                    "Результат",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                    );
+                }
+            }
+        }
+        // Удаление сотрудника
+        private async void button7_Click(object sender, EventArgs e)
+        {
+            int index_row = dataGridViewEmployees.SelectedCells[0].RowIndex;
+            DataRow selected_row = employees_table.Rows[index_row];
+            int _id = Convert.ToInt32(selected_row[0]);
+            DialogResult dr = MessageBox.Show($"Вы уверены что хотите удалить сотрудника '{selected_row[2]}'?",
+                "Подтверждение",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+                );
+            if (dr == DialogResult.Yes)
+            {
+                if (DBHandler.DeleteHandler("employees", "employees_id", _id))
+                {
+                    MessageBox.Show($"Сотрудник удалён",
+                    "Результат",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information
+                    );
+                    await reloadEmployeeData();
+                    LoadUsersDataGridView();
+                }
+                else
+                {
+                    MessageBox.Show($"Сотрудник не был удалён!",
+                    "Результат",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                    );
+                }
+            }
+        }
+        // Удаление продажи
+        private void button8_Click(object sender, EventArgs e)
+        {
+            int index_row = dataGridViewOrders.SelectedCells[0].RowIndex;
+            DataRow selected_row = table_orders.Rows[index_row];
+            int _id = Convert.ToInt32(selected_row[0]);
+            DialogResult dr = MessageBox.Show($"Вы уверены что хотите удалить продажу '{selected_row[0]}'?",
+                "Подтверждение",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+                );
+            if (dr == DialogResult.Yes)
+            {
+                if (DBHandler.DeleteHandler("orders", "orders_id", _id))
+                {
+                    MessageBox.Show($"Продажа удалёна",
+                    "Результат",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information
+                    );
+                    dataGridViewOrders.Rows.Clear();
+                    LoadOrdersDataGridView(method_orders);
+                }
+                else
+                {
+                    MessageBox.Show($"Продажа не был удалёна!",
+                    "Результат",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                    );
+                }
+            }
+        }
+        // Удаление продукта
+        private async void button1_Click_1(object sender, EventArgs e)
+        {
+            int index_row = dataGridViewProducts.SelectedCells[0].RowIndex;
+            DataRow selected_row = products_table.Rows[index_row];
+            int _id = Convert.ToInt32(selected_row[0]);
+            DialogResult dr = MessageBox.Show($"Вы уверены что хотите удалить продукт '{selected_row[1]}'?",
+                "Подтверждение",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+                );
+            if (dr == DialogResult.Yes)
+            {
+                if (DBHandler.DeleteHandler("products", "products_id", _id))
+                {
+                    MessageBox.Show($"Продукт удалён",
+                    "Результат",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information
+                    );
+                    await reloadProductData();
+                }
+                else
+                {
+                    MessageBox.Show($"Продукт не был удалён!",
+                    "Результат",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                    );
+                }
+            }
+        }
+        // Удаление поставщика
+        private void button10_Click(object sender, EventArgs e)
+        {
+            int index_row = dataGridViewSuppliers.SelectedCells[0].RowIndex;
+            DataRow selected_row = DBHandler.LoadDataSync("suppliers").Rows[index_row];
+            int _id = Convert.ToInt32(selected_row[0]);
+            DialogResult dr = MessageBox.Show($"Вы уверены что хотите удалить поставщика '{selected_row[1]}'?",
+                "Подтверждение",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+                );
+            if (dr == DialogResult.Yes)
+            {
+                if (DBHandler.DeleteHandler("suppliers", "suppliers_id", _id))
+                {
+                    MessageBox.Show($"Поставщик удалён",
+                    "Результат",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information
+                    );
+                    LoadSuppliersDataGridView();
+                    dataGridViewProducts.Rows.Clear();
+                    LoadProductDataGridView();
+                }
+                else
+                {
+                    MessageBox.Show($"Поставщик не был удалён!",
+                    "Результат",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                    );
+                }
+            }
+        }
+        // Удаление пользователя
+        private void button12_Click(object sender, EventArgs e)
+        {
+            int index_row = dataGridViewUsers.SelectedCells[0].RowIndex;
+            DataRow selected_row = DBHandler.LoadDataSync("users").Rows[index_row];
+            int _id = Convert.ToInt32(selected_row[0]);
+            DialogResult dr = MessageBox.Show($"Вы уверены что хотите удалить пользователя '{selected_row[1]}'?",
+                "Подтверждение",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+                );
+            if (dr == DialogResult.Yes)
+            {
+                if (DBHandler.DeleteHandler("users", "users_id", _id))
+                {
+                    MessageBox.Show($"Пользователь удалён",
+                    "Результат",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information
+                    );
+                    LoadUsersDataGridView();
+                }
+                else
+                {
+                    MessageBox.Show($"Пользователь не был удалён!",
+                    "Результат",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                    );
+                }
             }
         }
     }

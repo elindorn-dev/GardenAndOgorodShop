@@ -369,12 +369,10 @@ namespace GardenAndOgorodShop
                 MySqlConnection con = new MySqlConnection(connect_string);
                 con.Open();
 
-                string query = "INSERT INTO `garden_and_ogorod_shop`.`categories` (`category_name`, `descript`) VALUES ('@title', '@description');";
+                string query = $"INSERT INTO `garden_and_ogorod_shop`.`categories` (`category_name`, `descript`) VALUES ('{title}', '{descript}');";
 
                 using (MySqlCommand cmd = new MySqlCommand(query, con))
                 {
-                    cmd.Parameters.AddWithValue("@title", title);
-                    cmd.Parameters.AddWithValue("@descript", descript);
                     cmd.ExecuteNonQuery();
                 }
 
@@ -759,7 +757,7 @@ namespace GardenAndOgorodShop
                     "`phone_number` = @phone, " +
                     "`registration_number_inn` = @inn, " +
                     "`legal_address` = @addr " +
-                    "WHERE (`brands_id` = @id);";
+                    "WHERE (`suppliers_id` = @id);";
 
                 using (MySqlCommand cmd = new MySqlCommand(query, con))
                 {
@@ -805,6 +803,28 @@ namespace GardenAndOgorodShop
                 //MessageBox.Show(connect_string);
             }
             return dt;
+        }
+        public static bool DeleteHandler(string table, string id_name, int id)
+        {
+            try
+            {
+                MySqlConnection con = new MySqlConnection(connect_string);
+                con.Open();
+
+                string query = $"DELETE FROM `{table}` WHERE (`{id_name}` = '{id}');";
+
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                
+                cmd.ExecuteNonQuery();
+                
+                con.Close();
+                return true;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Ошибка удаления записи (db):\n" + e.Message);
+                return false;
+            }
         }
     }
 }

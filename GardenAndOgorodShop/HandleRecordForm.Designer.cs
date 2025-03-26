@@ -123,7 +123,7 @@ namespace GardenAndOgorodShop
             this.button10 = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
             this.label31 = new System.Windows.Forms.Label();
-            this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.tabPageSupplier = new System.Windows.Forms.TabPage();
             this.label42 = new System.Windows.Forms.Label();
             this.textBoxSupINN = new System.Windows.Forms.TextBox();
             this.label33 = new System.Windows.Forms.Label();
@@ -176,7 +176,7 @@ namespace GardenAndOgorodShop
             this.panel4.SuspendLayout();
             this.tabPageBrand.SuspendLayout();
             this.panel5.SuspendLayout();
-            this.tabPage6.SuspendLayout();
+            this.tabPageSupplier.SuspendLayout();
             this.panel6.SuspendLayout();
             this.tabPage7.SuspendLayout();
             this.panel7.SuspendLayout();
@@ -192,7 +192,7 @@ namespace GardenAndOgorodShop
             this.tabControlRecords.Controls.Add(this.tabPageEmployee);
             this.tabControlRecords.Controls.Add(this.tabPageUser);
             this.tabControlRecords.Controls.Add(this.tabPageBrand);
-            this.tabControlRecords.Controls.Add(this.tabPage6);
+            this.tabControlRecords.Controls.Add(this.tabPageSupplier);
             this.tabControlRecords.Controls.Add(this.tabPage7);
             this.tabControlRecords.ItemSize = new System.Drawing.Size(1, 1);
             this.tabControlRecords.Location = new System.Drawing.Point(51, -10);
@@ -1254,29 +1254,29 @@ namespace GardenAndOgorodShop
             this.label31.TabIndex = 2;
             this.label31.Text = "Производитель";
             // 
-            // tabPage6
+            // tabPageSupplier
             // 
-            this.tabPage6.Controls.Add(this.label42);
-            this.tabPage6.Controls.Add(this.textBoxSupINN);
-            this.tabPage6.Controls.Add(this.label33);
-            this.tabPage6.Controls.Add(this.textBoxSupAddress);
-            this.tabPage6.Controls.Add(this.maskedTextBoxSupPhone);
-            this.tabPage6.Controls.Add(this.label37);
-            this.tabPage6.Controls.Add(this.label38);
-            this.tabPage6.Controls.Add(this.textBoxSupEmail);
-            this.tabPage6.Controls.Add(this.label39);
-            this.tabPage6.Controls.Add(this.textBoxSupDesc);
-            this.tabPage6.Controls.Add(this.label40);
-            this.tabPage6.Controls.Add(this.textBoxSupName);
-            this.tabPage6.Controls.Add(this.button11);
-            this.tabPage6.Controls.Add(this.button12);
-            this.tabPage6.Controls.Add(this.panel6);
-            this.tabPage6.Location = new System.Drawing.Point(4, 5);
-            this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Size = new System.Drawing.Size(740, 475);
-            this.tabPage6.TabIndex = 5;
-            this.tabPage6.Text = "tabPageSupplier";
-            this.tabPage6.UseVisualStyleBackColor = true;
+            this.tabPageSupplier.Controls.Add(this.label42);
+            this.tabPageSupplier.Controls.Add(this.textBoxSupINN);
+            this.tabPageSupplier.Controls.Add(this.label33);
+            this.tabPageSupplier.Controls.Add(this.textBoxSupAddress);
+            this.tabPageSupplier.Controls.Add(this.maskedTextBoxSupPhone);
+            this.tabPageSupplier.Controls.Add(this.label37);
+            this.tabPageSupplier.Controls.Add(this.label38);
+            this.tabPageSupplier.Controls.Add(this.textBoxSupEmail);
+            this.tabPageSupplier.Controls.Add(this.label39);
+            this.tabPageSupplier.Controls.Add(this.textBoxSupDesc);
+            this.tabPageSupplier.Controls.Add(this.label40);
+            this.tabPageSupplier.Controls.Add(this.textBoxSupName);
+            this.tabPageSupplier.Controls.Add(this.button11);
+            this.tabPageSupplier.Controls.Add(this.button12);
+            this.tabPageSupplier.Controls.Add(this.panel6);
+            this.tabPageSupplier.Location = new System.Drawing.Point(4, 5);
+            this.tabPageSupplier.Name = "tabPageSupplier";
+            this.tabPageSupplier.Size = new System.Drawing.Size(740, 475);
+            this.tabPageSupplier.TabIndex = 5;
+            this.tabPageSupplier.Text = "tabPageSupplier";
+            this.tabPageSupplier.UseVisualStyleBackColor = true;
             // 
             // label42
             // 
@@ -1744,8 +1744,8 @@ namespace GardenAndOgorodShop
             this.tabPageBrand.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
-            this.tabPage6.ResumeLayout(false);
-            this.tabPage6.PerformLayout();
+            this.tabPageSupplier.ResumeLayout(false);
+            this.tabPageSupplier.PerformLayout();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
             this.tabPage7.ResumeLayout(false);
@@ -1768,7 +1768,7 @@ namespace GardenAndOgorodShop
         private System.Windows.Forms.TabPage tabPageEmployee;
         private System.Windows.Forms.TabPage tabPageUser;
         private System.Windows.Forms.TabPage tabPageBrand;
-        private System.Windows.Forms.TabPage tabPage6;
+        private System.Windows.Forms.TabPage tabPageSupplier;
         private System.Windows.Forms.TabPage tabPage7;
         private System.Windows.Forms.Panel panelNavigation;
         private System.Windows.Forms.Panel panelEmployeeData;

@@ -28,17 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewProducts = new System.Windows.Forms.DataGridView();
+            this.ImageHeader = new System.Windows.Forms.DataGridViewImageColumn();
+            this.TitleHeader = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PriceHeader = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.buttonBacket = new System.Windows.Forms.Button();
@@ -103,13 +108,6 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.button9 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.button14 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.button15 = new System.Windows.Forms.Button();
-            this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.dataGridViewUsers = new System.Windows.Forms.DataGridView();
             this.userLogin = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -152,11 +150,13 @@
             this.dateTimePickerFrom = new System.Windows.Forms.DateTimePicker();
             this.label19 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
-            this.ImageHeader = new System.Windows.Forms.DataGridViewImageColumn();
-            this.TitleHeader = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PriceHeader = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
+            this.button10 = new System.Windows.Forms.Button();
+            this.button12 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProducts)).BeginInit();
             this.panel1.SuspendLayout();
             this.panelNavigation.SuspendLayout();
@@ -207,11 +207,56 @@
             this.dataGridViewProducts.Name = "dataGridViewProducts";
             this.dataGridViewProducts.ReadOnly = true;
             this.dataGridViewProducts.RowHeadersVisible = false;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.dataGridViewProducts.RowsDefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.dataGridViewProducts.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewProducts.RowTemplate.Height = 150;
             this.dataGridViewProducts.Size = new System.Drawing.Size(855, 485);
             this.dataGridViewProducts.TabIndex = 0;
+            // 
+            // ImageHeader
+            // 
+            this.ImageHeader.HeaderText = "ImageHeader";
+            this.ImageHeader.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.ImageHeader.Name = "ImageHeader";
+            this.ImageHeader.ReadOnly = true;
+            this.ImageHeader.Width = 150;
+            // 
+            // TitleHeader
+            // 
+            this.TitleHeader.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.TitleHeader.DefaultCellStyle = dataGridViewCellStyle1;
+            this.TitleHeader.HeaderText = "TitleHeader";
+            this.TitleHeader.Name = "TitleHeader";
+            this.TitleHeader.ReadOnly = true;
+            // 
+            // PriceHeader
+            // 
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            this.PriceHeader.DefaultCellStyle = dataGridViewCellStyle2;
+            this.PriceHeader.HeaderText = "PriceHeader";
+            this.PriceHeader.Name = "PriceHeader";
+            this.PriceHeader.ReadOnly = true;
+            this.PriceHeader.Width = 80;
+            // 
+            // Amount
+            // 
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            this.Amount.DefaultCellStyle = dataGridViewCellStyle3;
+            this.Amount.HeaderText = "Amount";
+            this.Amount.Name = "Amount";
+            this.Amount.ReadOnly = true;
+            // 
+            // Category
+            // 
+            this.Category.HeaderText = "category";
+            this.Category.Name = "Category";
+            this.Category.ReadOnly = true;
+            this.Category.Width = 200;
             // 
             // label1
             // 
@@ -227,6 +272,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.buttonBacket);
             this.panel1.Controls.Add(this.buttonAddProduct);
             this.panel1.Controls.Add(this.buttonInfoProduct);
@@ -695,6 +741,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.Controls.Add(this.button6);
             this.panel2.Controls.Add(this.buttonAddCategory);
             this.panel2.Controls.Add(this.buttonEditCategory);
             this.panel2.Controls.Add(this.label8);
@@ -756,9 +803,9 @@
             this.dataGridViewCategories.Name = "dataGridViewCategories";
             this.dataGridViewCategories.ReadOnly = true;
             this.dataGridViewCategories.RowHeadersVisible = false;
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle16.ForeColor = System.Drawing.Color.Black;
-            this.dataGridViewCategories.RowsDefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
+            this.dataGridViewCategories.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridViewCategories.RowTemplate.Height = 60;
             this.dataGridViewCategories.Size = new System.Drawing.Size(813, 575);
             this.dataGridViewCategories.TabIndex = 3;
@@ -791,6 +838,7 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.White;
+            this.panel3.Controls.Add(this.button7);
             this.panel3.Controls.Add(this.button3);
             this.panel3.Controls.Add(this.button4);
             this.panel3.Controls.Add(this.textBoxSearchEmployee);
@@ -873,7 +921,7 @@
             "без фильтрации",
             "Администратор",
             "Продавец"});
-            this.comboBoxRoles.Location = new System.Drawing.Point(515, 137);
+            this.comboBoxRoles.Location = new System.Drawing.Point(461, 133);
             this.comboBoxRoles.Name = "comboBoxRoles";
             this.comboBoxRoles.Size = new System.Drawing.Size(192, 29);
             this.comboBoxRoles.TabIndex = 9;
@@ -884,7 +932,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label6.Location = new System.Drawing.Point(526, 137);
+            this.label6.Location = new System.Drawing.Point(472, 133);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(122, 25);
             this.label6.TabIndex = 8;
@@ -896,7 +944,7 @@
             this.buttonFilterEmployee.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.buttonFilterEmployee.FlatAppearance.BorderSize = 0;
             this.buttonFilterEmployee.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonFilterEmployee.Location = new System.Drawing.Point(654, 130);
+            this.buttonFilterEmployee.Location = new System.Drawing.Point(600, 126);
             this.buttonFilterEmployee.Name = "buttonFilterEmployee";
             this.buttonFilterEmployee.Size = new System.Drawing.Size(40, 40);
             this.buttonFilterEmployee.TabIndex = 5;
@@ -942,9 +990,9 @@
             this.dataGridViewEmployees.Name = "dataGridViewEmployees";
             this.dataGridViewEmployees.ReadOnly = true;
             this.dataGridViewEmployees.RowHeadersVisible = false;
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.Black;
-            this.dataGridViewEmployees.RowsDefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
+            this.dataGridViewEmployees.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridViewEmployees.RowTemplate.Height = 60;
             this.dataGridViewEmployees.Size = new System.Drawing.Size(813, 472);
             this.dataGridViewEmployees.TabIndex = 3;
@@ -992,19 +1040,13 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.White;
+            this.panel4.Controls.Add(this.button12);
             this.panel4.Controls.Add(this.button9);
             this.panel4.Controls.Add(this.button11);
-            this.panel4.Controls.Add(this.textBox3);
-            this.panel4.Controls.Add(this.label10);
-            this.panel4.Controls.Add(this.button14);
-            this.panel4.Controls.Add(this.comboBox1);
-            this.panel4.Controls.Add(this.label11);
-            this.panel4.Controls.Add(this.button15);
-            this.panel4.Controls.Add(this.label12);
             this.panel4.Controls.Add(this.label13);
             this.panel4.Location = new System.Drawing.Point(13, 4);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(817, 172);
+            this.panel4.Size = new System.Drawing.Size(817, 115);
             this.panel4.TabIndex = 6;
             // 
             // button9
@@ -1013,7 +1055,7 @@
             this.button9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button9.FlatAppearance.BorderSize = 0;
             this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button9.Location = new System.Drawing.Point(727, 129);
+            this.button9.Location = new System.Drawing.Point(724, 57);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(40, 40);
             this.button9.TabIndex = 19;
@@ -1026,88 +1068,12 @@
             this.button11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button11.FlatAppearance.BorderSize = 0;
             this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button11.Location = new System.Drawing.Point(773, 129);
+            this.button11.Location = new System.Drawing.Point(770, 57);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(40, 40);
             this.button11.TabIndex = 18;
             this.button11.UseVisualStyleBackColor = true;
             this.button11.Click += new System.EventHandler(this.button11_Click);
-            // 
-            // textBox3
-            // 
-            this.textBox3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBox3.Location = new System.Drawing.Point(80, 81);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(372, 29);
-            this.textBox3.TabIndex = 15;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label10.Location = new System.Drawing.Point(7, 81);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(67, 25);
-            this.label10.TabIndex = 14;
-            this.label10.Text = "поиск:";
-            // 
-            // button14
-            // 
-            this.button14.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button14.FlatAppearance.BorderSize = 0;
-            this.button14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button14.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button14.Location = new System.Drawing.Point(167, 129);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(137, 40);
-            this.button14.TabIndex = 11;
-            this.button14.Text = "фамилии ↑";
-            this.button14.UseVisualStyleBackColor = true;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "АГРОХИМИЯ, БИОСЕПТИКИ, ПРЕМИКСЫ",
-            "ДЛЯ КОМПОСТА, ДАЧНОГО ТУАЛЕТА, БИОТУАЛЕТОВ, ВОДОЕМОВ"});
-            this.comboBox1.Location = new System.Drawing.Point(515, 137);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(192, 29);
-            this.comboBox1.TabIndex = 9;
-            this.comboBox1.Visible = false;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label11.Location = new System.Drawing.Point(526, 137);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(122, 25);
-            this.label11.TabIndex = 8;
-            this.label11.Text = "Фильтрация:";
-            // 
-            // button15
-            // 
-            this.button15.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.disactive_filter_icon;
-            this.button15.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button15.FlatAppearance.BorderSize = 0;
-            this.button15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button15.Location = new System.Drawing.Point(654, 130);
-            this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(40, 40);
-            this.button15.TabIndex = 5;
-            this.button15.UseVisualStyleBackColor = true;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label12.Location = new System.Drawing.Point(5, 137);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(156, 25);
-            this.label12.TabIndex = 2;
-            this.label12.Text = "Сортировать по:";
             // 
             // label13
             // 
@@ -1132,16 +1098,16 @@
             this.userLogin,
             this.userRole,
             this.userLastLogIn});
-            this.dataGridViewUsers.Location = new System.Drawing.Point(13, 193);
+            this.dataGridViewUsers.Location = new System.Drawing.Point(13, 125);
             this.dataGridViewUsers.MultiSelect = false;
             this.dataGridViewUsers.Name = "dataGridViewUsers";
             this.dataGridViewUsers.ReadOnly = true;
             this.dataGridViewUsers.RowHeadersVisible = false;
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle18.ForeColor = System.Drawing.Color.Black;
-            this.dataGridViewUsers.RowsDefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
+            this.dataGridViewUsers.RowsDefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridViewUsers.RowTemplate.Height = 60;
-            this.dataGridViewUsers.Size = new System.Drawing.Size(813, 472);
+            this.dataGridViewUsers.Size = new System.Drawing.Size(813, 540);
             this.dataGridViewUsers.TabIndex = 5;
             // 
             // userLogin
@@ -1179,6 +1145,7 @@
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.White;
+            this.panel5.Controls.Add(this.button8);
             this.panel5.Controls.Add(this.button17);
             this.panel5.Controls.Add(this.button18);
             this.panel5.Controls.Add(this.label16);
@@ -1254,9 +1221,9 @@
             this.dataGridViewOrders.Name = "dataGridViewOrders";
             this.dataGridViewOrders.ReadOnly = true;
             this.dataGridViewOrders.RowHeadersVisible = false;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.Black;
-            this.dataGridViewOrders.RowsDefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
+            this.dataGridViewOrders.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.dataGridViewOrders.RowTemplate.Height = 60;
             this.dataGridViewOrders.Size = new System.Drawing.Size(813, 528);
             this.dataGridViewOrders.TabIndex = 5;
@@ -1301,6 +1268,7 @@
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.White;
+            this.panel6.Controls.Add(this.button2);
             this.panel6.Controls.Add(this.button19);
             this.panel6.Controls.Add(this.button20);
             this.panel6.Controls.Add(this.label15);
@@ -1363,9 +1331,9 @@
             this.dataGridViewBrands.Name = "dataGridViewBrands";
             this.dataGridViewBrands.ReadOnly = true;
             this.dataGridViewBrands.RowHeadersVisible = false;
-            dataGridViewCellStyle19.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle19.ForeColor = System.Drawing.Color.Black;
-            this.dataGridViewBrands.RowsDefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.Black;
+            this.dataGridViewBrands.RowsDefaultCellStyle = dataGridViewCellStyle9;
             this.dataGridViewBrands.RowTemplate.Height = 60;
             this.dataGridViewBrands.Size = new System.Drawing.Size(813, 557);
             this.dataGridViewBrands.TabIndex = 7;
@@ -1405,6 +1373,7 @@
             // panel7
             // 
             this.panel7.BackColor = System.Drawing.Color.White;
+            this.panel7.Controls.Add(this.button10);
             this.panel7.Controls.Add(this.button21);
             this.panel7.Controls.Add(this.button22);
             this.panel7.Controls.Add(this.label14);
@@ -1467,9 +1436,9 @@
             this.dataGridViewSuppliers.Name = "dataGridViewSuppliers";
             this.dataGridViewSuppliers.ReadOnly = true;
             this.dataGridViewSuppliers.RowHeadersVisible = false;
-            dataGridViewCellStyle20.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle20.ForeColor = System.Drawing.Color.Black;
-            this.dataGridViewSuppliers.RowsDefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.Black;
+            this.dataGridViewSuppliers.RowsDefaultCellStyle = dataGridViewCellStyle10;
             this.dataGridViewSuppliers.RowTemplate.Height = 60;
             this.dataGridViewSuppliers.Size = new System.Drawing.Size(813, 557);
             this.dataGridViewSuppliers.TabIndex = 9;
@@ -1588,50 +1557,96 @@
             this.label18.TabIndex = 80;
             this.label18.Text = "от";
             // 
-            // ImageHeader
+            // button1
             // 
-            this.ImageHeader.HeaderText = "ImageHeader";
-            this.ImageHeader.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.ImageHeader.Name = "ImageHeader";
-            this.ImageHeader.ReadOnly = true;
-            this.ImageHeader.Width = 150;
+            this.button1.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.delete;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button1.Location = new System.Drawing.Point(720, 126);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(40, 40);
+            this.button1.TabIndex = 19;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
-            // TitleHeader
+            // button2
             // 
-            this.TitleHeader.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.TitleHeader.DefaultCellStyle = dataGridViewCellStyle11;
-            this.TitleHeader.HeaderText = "TitleHeader";
-            this.TitleHeader.Name = "TitleHeader";
-            this.TitleHeader.ReadOnly = true;
+            this.button2.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.delete;
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button2.Location = new System.Drawing.Point(681, 55);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(40, 40);
+            this.button2.TabIndex = 20;
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // PriceHeader
+            // button6
             // 
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.Black;
-            this.PriceHeader.DefaultCellStyle = dataGridViewCellStyle12;
-            this.PriceHeader.HeaderText = "PriceHeader";
-            this.PriceHeader.Name = "PriceHeader";
-            this.PriceHeader.ReadOnly = true;
-            this.PriceHeader.Width = 80;
+            this.button6.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.delete;
+            this.button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button6.FlatAppearance.BorderSize = 0;
+            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button6.Location = new System.Drawing.Point(681, 37);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(40, 40);
+            this.button6.TabIndex = 20;
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
-            // Amount
+            // button7
             // 
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.Black;
-            this.Amount.DefaultCellStyle = dataGridViewCellStyle13;
-            this.Amount.HeaderText = "Amount";
-            this.Amount.Name = "Amount";
-            this.Amount.ReadOnly = true;
+            this.button7.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.delete;
+            this.button7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button7.FlatAppearance.BorderSize = 0;
+            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button7.Location = new System.Drawing.Point(681, 125);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(40, 40);
+            this.button7.TabIndex = 20;
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
-            // Category
+            // button8
             // 
-            this.Category.HeaderText = "category";
-            this.Category.Name = "Category";
-            this.Category.ReadOnly = true;
-            this.Category.Width = 200;
+            this.button8.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.delete;
+            this.button8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button8.FlatAppearance.BorderSize = 0;
+            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button8.Location = new System.Drawing.Point(727, 85);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(40, 40);
+            this.button8.TabIndex = 20;
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
+            // button10
+            // 
+            this.button10.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.delete;
+            this.button10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button10.FlatAppearance.BorderSize = 0;
+            this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button10.Location = new System.Drawing.Point(681, 53);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(40, 40);
+            this.button10.TabIndex = 20;
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
+            // 
+            // button12
+            // 
+            this.button12.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.delete;
+            this.button12.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button12.FlatAppearance.BorderSize = 0;
+            this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button12.Location = new System.Drawing.Point(678, 57);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(40, 40);
+            this.button12.TabIndex = 20;
+            this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
             // 
             // Main
             // 
@@ -1751,13 +1766,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn EmployeePhone;
         private System.Windows.Forms.DataGridViewTextBoxColumn EmployeePosition;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Button button14;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Button button15;
-        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.DataGridView dataGridViewUsers;
         private System.Windows.Forms.DataGridViewTextBoxColumn userLogin;
@@ -1814,5 +1822,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn PriceHeader;
         private System.Windows.Forms.DataGridViewTextBoxColumn Amount;
         private System.Windows.Forms.DataGridViewTextBoxColumn Category;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button10;
     }
 }
