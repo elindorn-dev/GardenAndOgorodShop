@@ -210,6 +210,7 @@ namespace GardenAndOgorodShop
                         await PaymentAgreement.createExcelAgreement();
                         //
                         UserConfiguration.Current_order_id = 0;
+                        comboBoxPayMethod.SelectedIndex = -1;
                     }
                     else
                     {

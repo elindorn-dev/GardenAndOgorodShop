@@ -11,6 +11,7 @@ using Microsoft.Office.Interop.Excel;
 
 namespace GardenAndOgorodShop
 {
+
     public static class PaymentAgreement
     {
         public static async Task createExcelAgreement()
@@ -41,7 +42,7 @@ namespace GardenAndOgorodShop
                             xlWorksheet.Range[$"B{counter_row}"].Value2 = $"{product[1]} x {product[2]}";
                             counter_row++;
                             summ += Convert.ToDouble(product[1]) * Convert.ToDouble(product[2]);
-                            xlWorksheet.Range[$"B{counter_row}"].Value2 = $"{summ}";
+                            xlWorksheet.Range[$"B{counter_row}"].Value2 = $"{Convert.ToDouble(product[1]) * Convert.ToDouble(product[2])}";
                             counter_row++;
                         }
                     }
@@ -49,9 +50,20 @@ namespace GardenAndOgorodShop
                     xlWorksheet.Range[$"A{counter_row}"].Value2 = $"ИТОГ";
                     xlWorksheet.Range[$"B{counter_row}"].Value2 = $"{summ}";
                     xlWorksheet.Range[$"A{counter_row+=2}"].Value2 = $"НДС";
-                    xlWorksheet.Range[$"B{counter_row+=2}"].Value2 = $"{nds}";
-
+                    xlWorksheet.Range[$"B{counter_row+=2}"].Value2 = $"{Math.Round(nds, 2)}";
+                    if (!Directory.Exists("PaymentAgreements"))
+                    {
+                        try
+                        {
+                            Directory.CreateDirectory("PaymentAgreements");
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show($"Ошибка при создании папки '{"PaymentAgreements"}': {ex.Message}", "Создание папки", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
                     string path_name = $"PaymentAgreements\\Продажа {UserConfiguration.Current_order_id}.xlsx";
+
                     xlWorkbook.SaveAs($"{Directory.GetCurrentDirectory()}\\{path_name}");
                     xlWorkbook.Close();
                     xlApp.Quit();
@@ -85,14 +97,6 @@ namespace GardenAndOgorodShop
                 if (xlWorkbook != null) Marshal.ReleaseComObject(xlWorkbook);
                 if (xlApp != null) Marshal.ReleaseComObject(xlApp);
             }
-        }
-        public static async Task createTxtAgreement()
-        {
-
-        }
-        public static async Task createPdfAgreement()
-        {
-
         }
     }
 }

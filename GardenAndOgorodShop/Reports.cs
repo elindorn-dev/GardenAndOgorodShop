@@ -94,8 +94,18 @@ namespace GardenAndOgorodShop
                                            Missing.Value,
                                            Missing.Value,
                                            Missing.Value);
-                    
 
+                    if (!Directory.Exists("ReportsControlProducts"))
+                    {
+                        try
+                        {
+                            Directory.CreateDirectory("ReportsControlProducts");
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show($"Ошибка при создании папки '{"ReportsControlProducts"}': {ex.Message}", "Создание папки", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
                     string path_name = $"ReportsControlProducts\\Контроль остатков {DateTime.Now.ToString("dd.MM.yyyy h.mm.ss")}.xlsx";
                     xlWorkbook.SaveAs($"{Directory.GetCurrentDirectory()}\\{path_name}");
                     xlWorkbook.Close();
@@ -176,36 +186,17 @@ namespace GardenAndOgorodShop
                         xlWorksheet.Range[$"E{counter_row}"].Value2 = $"ИТОГО:";
                         xlWorksheet.Range[$"F{counter_row}"].Value2 = $"{itogo}";
                     }
-
-                    //ChartObjects xlCharts = (ChartObjects)xlWorksheet.ChartObjects(Type.Missing);
-                    //ChartObject myChart = (ChartObject)xlCharts.Add(40, 110, 350, 180);
-                    //Chart chart = myChart.Chart;
-                    //SeriesCollection seriesCollection = (SeriesCollection)chart.SeriesCollection(Type.Missing);
-                    //Series series = seriesCollection.NewSeries();
-                    //Array values = new object[] {
-                    //    xlWorksheet.Range[$"D{counter_row}"].Value2,
-                    //    xlWorksheet.Range[$"E{counter_row}"].Value2,
-                    //    xlWorksheet.Range[$"F{counter_row}"].Value2
-                    //};
-                    //series.Values = values;
-                    //Array categories = new object[] { "Валовая прибыль (без скидки)", "Валовая прибыль (со скидкой)", "Потеря" };
-                    //series.XValues = categories;
-
-                    //chart.HasTitle = true;
-                    //chart.ChartTitle.Text = "Распределение данных";
-                    //chart.ChartType = XlChartType.xlPie;
-                    //chart.ApplyDataLabels(XlDataLabelsType.xlDataLabelsShowPercent,
-                    //                       Missing.Value,
-                    //                       Missing.Value,
-                    //                       Missing.Value,
-                    //                       Missing.Value,
-                    //                       Missing.Value,
-                    //                       Missing.Value,
-                    //                       Missing.Value,
-                    //                       Missing.Value,
-                    //                       Missing.Value);
-
-
+                    if (!Directory.Exists("ReportsAnalyzOrders"))
+                    {
+                        try
+                        {
+                            Directory.CreateDirectory("ReportsAnalyzOrders");
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show($"Ошибка при создании папки '{"ReportsAnalyzOrders"}': {ex.Message}", "Создание папки", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
                     string path_name = $"ReportsAnalyzOrders\\Анализ продажи от {date_from.Replace(':', '.')} до {date_to.Replace(':', '.')}.xlsx";
                     xlWorkbook.SaveAs($"{Directory.GetCurrentDirectory()}\\{path_name}");
                     xlWorkbook.Close();

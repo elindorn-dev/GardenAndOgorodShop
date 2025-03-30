@@ -428,14 +428,6 @@ namespace GardenAndOgorodShop
             {
                 MessageBox.Show("Необходимо заполнить все обязательные поля", "Проверка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            else
-            {
-                if (Convert.ToDouble(textBoxProductCost.Text) == 0)
-                {
-                    isValid = false;
-                    MessageBox.Show("Цена не может быть 0", "Проверка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-            }
             switch (tabPage.Name)
             {
                 case "tabPageEmployee":
@@ -462,6 +454,13 @@ namespace GardenAndOgorodShop
                     {
                         MessageBox.Show("Пожалуйста, введите полный номер телефона.");
                         isValid = false;
+                    }
+                    ; break;
+                case "tabPageProduct":
+                    if (Convert.ToDouble(textBoxProductCost.Text) == 0)
+                    {
+                        isValid = false;
+                        MessageBox.Show("Цена не может быть 0", "Проверка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                     ; break;
             }
