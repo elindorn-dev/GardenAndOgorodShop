@@ -111,8 +111,11 @@ namespace GardenAndOgorodShop
                     SET `product_amount` = `product_amount` {edit_backet} 1 
                     WHERE products_id = {product_id} AND orders_id = {UserConfiguration.Current_order_id};");
                     int new_amount = Convert.ToInt32(dataGridViewProducts.Rows[index_row].Cells[3].Value);
-                    DBHandler.randomSQLCommand($"UPDATE `garden_and_ogorod_shop`.`products` SET `is_available` = `is_available` {edit_product} 1 WHERE (`products_id` = '{product_id}');");
-
+                    int amount_avaible = DBHandler.GetAmount(product_id);
+                    if (amount_avaible != 0 || edit_backet == "-")
+                    {
+                        DBHandler.randomSQLCommand($"UPDATE `garden_and_ogorod_shop`.`products` SET `is_available` = `is_available` {edit_product} 1 WHERE (`products_id` = '{product_id}');");
+                    }
                     double cost = Convert.ToDouble(labelTotalCost.Text);
                     double cost_ = Convert.ToDouble(selected_row[6]);
                     if (new_amount == 1)
@@ -123,24 +126,40 @@ namespace GardenAndOgorodShop
                             cost -= cost_ - cost_ * (Convert.ToDouble(selected_row[12]) / 100);
                             DBHandler.randomSQLCommand($"DELETE FROM `garden_and_ogorod_shop`.`products_orders` WHERE (`products_id` = '{product_id}') and (`orders_id` = '{UserConfiguration.Current_order_id}');");
                             await reloadBacket();
+                            buttonAddProduct.Enabled = true;
                         }
                         else
                         {
-                            dataGridViewProducts.Rows[index_row].Cells[3].Value = $"{new_amount + 1}";
-                            cost += cost_ - cost_ * (Convert.ToDouble(selected_row[12]) / 100);
+                            if (amount_avaible > 0)
+                            {
+                                dataGridViewProducts.Rows[index_row].Cells[3].Value = $"{new_amount + 1}";
+                                cost += cost_ - cost_ * (Convert.ToDouble(selected_row[12]) / 100);
+                            }
+                            else
+                            {
+                                buttonAddProduct.Enabled = false;
+                            }
                         }
                     }
                     else
                     {
                         if (edit_backet == "+")
                         {
-                            dataGridViewProducts.Rows[index_row].Cells[3].Value = $"{new_amount + 1}";
-                            cost += cost_ - cost_ * (Convert.ToDouble(selected_row[12]) / 100);
+                            if (amount_avaible > 0)
+                            {
+                                dataGridViewProducts.Rows[index_row].Cells[3].Value = $"{new_amount + 1}";
+                                cost += cost_ - cost_ * (Convert.ToDouble(selected_row[12]) / 100);
+                            }
+                            else
+                            {
+                                buttonAddProduct.Enabled = false;
+                            }
                         }
                         else
                         {
                             dataGridViewProducts.Rows[index_row].Cells[3].Value = $"{new_amount - 1}";
                             cost -= cost_ - cost_ * (Convert.ToDouble(selected_row[12]) / 100);
+                            buttonAddProduct.Enabled = true;
                         }
                     }
                     labelTotalCost.Text = Convert.ToString(cost);
@@ -163,49 +182,52 @@ namespace GardenAndOgorodShop
 
         private async void buttonDoneOrder_Click(object sender, EventArgs e)
         {
-            if (comboBoxPayMethod.Text == "") {
+            if (comboBoxPayMethod.Text != "") {
+                try
+                {
+                    if (dataGridViewProducts.Rows.Count != 0)
+                    {
+                        DBHandler.randomSQLCommand($"UPDATE `garden_and_ogorod_shop`.`orders` SET" +
+                            $" `employees_id` = '{UserConfiguration.UserID}'," +
+                            $" `order_date` = NOW()," +
+                            $" `order_status` = 'Успешно'," +
+                            $" `payment_method` = '{comboBoxPayMethod.Text}'," +
+                            $" `total_cost` = '{labelTotalCost.Text.Replace(',', '.')}'," +
+                            $" `tax_amount` = '{Convert.ToString(Convert.ToDouble(labelTotalCost.Text) / 13.0).Replace(',', '.')}'," +
+                            $" `notes` = '{textBoxOrderNotes.Text}' " +
+                            $"WHERE (`orders_id` = '{UserConfiguration.Current_order_id}');");
+                        dataGridViewProducts.Rows.Clear();
+                        MessageBox.Show(
+                           $"Продажа проведена успешно",
+                           "Статус продажи",
+                           MessageBoxButtons.OK,
+                           MessageBoxIcon.Information);
+                        buttonDoneOrder.Enabled = false;
+                        labelTotalCost.Text = "0.0";
+                        comboBoxPayMethod.Text = "";
+                        buttonWarning.Visible = true;
+                        //
+                        await PaymentAgreement.createExcelAgreement();
+                        //
+                        UserConfiguration.Current_order_id = 0;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Корзина пуста", "Проверка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+                catch (Exception err)
+                {
+                    MessageBox.Show($"Ошибка\n{err}");
+                }
+            }
+            else
+            {
                 MessageBox.Show(
                     $"Проверьте заполнения способа оплаты!",
                     "Проверка заполнения полей",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Warning);
-            }
-            try
-            {
-                if (dataGridViewProducts.Rows.Count != 0 && comboBoxPayMethod.Text != "")
-                {
-                    DBHandler.randomSQLCommand($"UPDATE `garden_and_ogorod_shop`.`orders` SET" +
-                        $" `employees_id` = '{UserConfiguration.UserID}'," +
-                        $" `order_date` = NOW()," +
-                        $" `order_status` = 'Успешно'," +
-                        $" `payment_method` = '{comboBoxPayMethod.Text}'," +
-                        $" `total_cost` = '{labelTotalCost.Text.Replace(',', '.')}'," +
-                        $" `tax_amount` = '{Convert.ToString(Convert.ToDouble(labelTotalCost.Text) / 13.0).Replace(',', '.')}'," +
-                        $" `notes` = '{textBoxOrderNotes.Text}' " +
-                        $"WHERE (`orders_id` = '{UserConfiguration.Current_order_id}');");
-                    dataGridViewProducts.Rows.Clear();
-                    MessageBox.Show(
-                       $"Продажа проведена успешно",
-                       "Статус продажи",
-                       MessageBoxButtons.OK,
-                       MessageBoxIcon.Information);
-                    buttonDoneOrder.Enabled = false;
-                    labelTotalCost.Text = "0.0";
-                    comboBoxPayMethod.Text = "";
-                    buttonWarning.Visible = true;
-                    //
-                    await PaymentAgreement.createExcelAgreement();
-                    //
-                    UserConfiguration.Current_order_id = 0;
-                }
-                else
-                {
-                    MessageBox.Show("Корзина пуста");
-                }
-            }
-            catch (Exception err)
-            {
-                MessageBox.Show($"Ошибка\n{err}");
             }
         }
 

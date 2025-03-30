@@ -255,6 +255,36 @@ namespace GardenAndOgorodShop
                     MessageBox.Show($"Ошибка при загрузке сотрудника: " + ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 loadEditData();
+                if (UserConfiguration.UserRole == "seller")
+                {
+                    foreach (Control control in tabControlRecords.SelectedTab.Controls)
+                    {
+                        if (control is Button)
+                        {
+                            control.Visible = false;
+                        }
+                        else if (control is Label)
+                        {
+                            control.Enabled = true;
+                        }
+                        else if (control is TextBox textBox)
+                        {
+                            textBox.ReadOnly = true;
+                        }
+                        else if (control is MaskedTextBox maskedTextBox)
+                        {
+                            maskedTextBox.ReadOnly = true;
+                        }
+                        else if (control is NumericUpDown numericUpDown)
+                        {
+                            numericUpDown.ReadOnly = true;
+                        }
+                        else
+                        {
+                            control.Enabled = false;
+                        }
+                    }
+                }
             }
             else
             {
@@ -281,7 +311,22 @@ namespace GardenAndOgorodShop
         }
         private void textBoxProductCost_KeyPress(object sender, KeyPressEventArgs e)
         {
-            RestrictToDigitsAndBackspace(e);
+            if (char.IsDigit(e.KeyChar))
+            {
+                return;
+            }
+
+            if (char.IsControl(e.KeyChar))
+            {
+                return;
+            }
+
+            if (e.KeyChar == ',' && !textBoxProductCost.Text.Contains(","))
+            {
+                return;
+            }
+
+            e.Handled = true;
         }
 
         private void textBoxProductSeasonalDiscount_KeyPress(object sender, KeyPressEventArgs e)
@@ -379,10 +424,17 @@ namespace GardenAndOgorodShop
                     }
                 }
             }
-
             if (!isValid)
             {
-                MessageBox.Show("Необходимо заполнить все обязательные поля", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Необходимо заполнить все обязательные поля", "Проверка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                if (Convert.ToDouble(textBoxProductCost.Text) == 0)
+                {
+                    isValid = false;
+                    MessageBox.Show("Цена не может быть 0", "Проверка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
             switch (tabPage.Name)
             {
@@ -871,6 +923,11 @@ namespace GardenAndOgorodShop
             ClearFieldsOnForm_supplier();
         }
 
-        
+        private void HandleRecordForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Main form = new Main();
+            form.Show();
+            this.Hide();
+        }
     }
 }

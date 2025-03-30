@@ -87,6 +87,7 @@ namespace GardenAndOgorodShop
         #region Loading table's data to dataGridView
         private void LoadProductDataGridView()
         {
+            dataGridViewProducts.Visible = false;
             dataGridViewProducts.Rows.Clear();
             foreach (DataRow row in products_table.Rows)
             {
@@ -118,6 +119,7 @@ namespace GardenAndOgorodShop
                 }
                 dataGridViewProducts.Rows.Add(productImage, productTitle, productPrice, productAmount, productCategory);
             }
+            dataGridViewProducts.Visible = true;
         }
         private async void LoadCategoriesDataGridView()
         {
@@ -285,6 +287,8 @@ namespace GardenAndOgorodShop
             buttonToSupplierForm.Visible = false;
             buttonToStockForm.Visible = false;
             buttonAddProduct.Visible = false;
+            button1.Visible = false;
+            button8.Visible = false;
         }
         private async void FormViewProduct_Load(object sender, EventArgs e)
         {
@@ -438,10 +442,14 @@ namespace GardenAndOgorodShop
         
         private void textBoxSearchProduct_KeyPress(object sender, KeyPressEventArgs e)
         {
-            char c = e.KeyChar;
-            if (!((c >= 'а' && c <= 'я') || (c >= 'А' && c <= 'Я') || c == 'ё' || c == 'Ё' || char.IsControl(c)) && e.KeyChar != (char)Keys.Back)
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar))
             {
                 e.Handled = true;
+            }
+
+            if (e.KeyChar == ' ')
+            {
+                e.Handled = false;
             }
         }
         

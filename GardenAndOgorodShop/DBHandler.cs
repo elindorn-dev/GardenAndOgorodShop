@@ -826,5 +826,39 @@ namespace GardenAndOgorodShop
                 return false;
             }
         }
+        public static int GetAmount(int id)
+        {
+            try
+            {
+                using (MySqlConnection con = new MySqlConnection(connect_string))
+                {
+                    con.Open();
+
+                    string selectQuery = "SELECT `is_available` FROM `products` WHERE `products_id` = @id;";
+
+                    using (MySqlCommand selectCmd = new MySqlCommand(selectQuery, con))
+                    {
+                        selectCmd.Parameters.AddWithValue("@id", id);
+
+                        using (MySqlDataReader reader = selectCmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                return reader.GetInt32("is_available");
+                            }
+                            else
+                            {
+                                return -1;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Ошибка получения is_available (db):\n" + e.Message);
+                return -1;
+            }
+        }
     }
 }

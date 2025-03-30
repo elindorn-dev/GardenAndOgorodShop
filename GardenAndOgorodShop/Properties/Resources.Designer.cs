@@ -173,6 +173,16 @@ namespace GardenAndOgorodShop.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap logo {
+            get {
+                object obj = ResourceManager.GetObject("logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap minus {
             get {
                 object obj = ResourceManager.GetObject("minus", resourceCulture);
@@ -226,6 +236,26 @@ namespace GardenAndOgorodShop.Properties {
         internal static System.Drawing.Bitmap seo_social_web_network_internet_276_icon_icons_com_61503 {
             get {
                 object obj = ResourceManager.GetObject("seo-social-web-network-internet_276_icon-icons.com_61503", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap show_1 {
+            get {
+                object obj = ResourceManager.GetObject("show_1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap show_2 {
+            get {
+                object obj = ResourceManager.GetObject("show_2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

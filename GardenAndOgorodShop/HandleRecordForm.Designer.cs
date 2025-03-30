@@ -1720,6 +1720,7 @@ namespace GardenAndOgorodShop
             this.MinimizeBox = false;
             this.Name = "HandleRecordForm";
             this.Text = "AddRecordForm";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.HandleRecordForm_FormClosed);
             this.Load += new System.EventHandler(this.HandleRecordForm_Load);
             this.tabControlRecords.ResumeLayout(false);
             this.tabPageProduct.ResumeLayout(false);

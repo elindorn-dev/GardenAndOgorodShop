@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AuthForm));
             this.panelAuth = new System.Windows.Forms.Panel();
-            this.hideshowpwd = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.textBoxLogin = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -40,16 +39,20 @@
             this.panelSettings = new System.Windows.Forms.Panel();
             this.buttonExitApp = new System.Windows.Forms.Button();
             this.buttonMenu = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.hideshowpwd = new System.Windows.Forms.Button();
             this.panelAuth.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panelSettings.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.buttonMenu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panelAuth
             // 
             this.panelAuth.BackColor = System.Drawing.Color.White;
+            this.panelAuth.Controls.Add(this.pictureBox1);
             this.panelAuth.Controls.Add(this.hideshowpwd);
             this.panelAuth.Controls.Add(this.panel3);
             this.panelAuth.Controls.Add(this.panel2);
@@ -57,28 +60,15 @@
             this.panelAuth.Controls.Add(this.buttonAuth);
             this.panelAuth.Location = new System.Drawing.Point(55, 12);
             this.panelAuth.Name = "panelAuth";
-            this.panelAuth.Size = new System.Drawing.Size(400, 362);
+            this.panelAuth.Size = new System.Drawing.Size(400, 423);
             this.panelAuth.TabIndex = 0;
             this.panelAuth.Click += new System.EventHandler(this.panelAuth_Click);
-            // 
-            // hideshowpwd
-            // 
-            this.hideshowpwd.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.show_password;
-            this.hideshowpwd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.hideshowpwd.FlatAppearance.BorderSize = 0;
-            this.hideshowpwd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.hideshowpwd.Location = new System.Drawing.Point(345, 197);
-            this.hideshowpwd.Name = "hideshowpwd";
-            this.hideshowpwd.Size = new System.Drawing.Size(40, 40);
-            this.hideshowpwd.TabIndex = 17;
-            this.hideshowpwd.UseVisualStyleBackColor = true;
-            this.hideshowpwd.Click += new System.EventHandler(this.hideshowpwd_Click);
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.panel3.Controls.Add(this.textBoxLogin);
-            this.panel3.Location = new System.Drawing.Point(23, 127);
+            this.panel3.Location = new System.Drawing.Point(23, 195);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(350, 50);
             this.panel3.TabIndex = 4;
@@ -103,7 +93,7 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.panel2.Controls.Add(this.textBoxPassword);
-            this.panel2.Location = new System.Drawing.Point(23, 192);
+            this.panel2.Location = new System.Drawing.Point(23, 260);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(316, 50);
             this.panel2.TabIndex = 3;
@@ -142,7 +132,7 @@
             this.buttonAuth.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAuth.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonAuth.ForeColor = System.Drawing.Color.White;
-            this.buttonAuth.Location = new System.Drawing.Point(23, 280);
+            this.buttonAuth.Location = new System.Drawing.Point(23, 348);
             this.buttonAuth.Name = "buttonAuth";
             this.buttonAuth.Size = new System.Drawing.Size(350, 50);
             this.buttonAuth.TabIndex = 1;
@@ -187,13 +177,36 @@
             this.buttonMenu.TabStop = false;
             this.buttonMenu.Click += new System.EventHandler(this.buttonMenu_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.logo;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Location = new System.Drawing.Point(153, 88);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(80, 80);
+            this.pictureBox1.TabIndex = 18;
+            this.pictureBox1.TabStop = false;
+            // 
+            // hideshowpwd
+            // 
+            this.hideshowpwd.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.show_password;
+            this.hideshowpwd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.hideshowpwd.FlatAppearance.BorderSize = 0;
+            this.hideshowpwd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.hideshowpwd.Location = new System.Drawing.Point(345, 265);
+            this.hideshowpwd.Name = "hideshowpwd";
+            this.hideshowpwd.Size = new System.Drawing.Size(40, 40);
+            this.hideshowpwd.TabIndex = 17;
+            this.hideshowpwd.UseVisualStyleBackColor = true;
+            this.hideshowpwd.Click += new System.EventHandler(this.hideshowpwd_Click);
+            // 
             // AuthForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(186)))), ((int)(((byte)(93)))));
-            this.ClientSize = new System.Drawing.Size(511, 398);
+            this.ClientSize = new System.Drawing.Size(511, 447);
             this.Controls.Add(this.panelSettings);
             this.Controls.Add(this.buttonMenu);
             this.Controls.Add(this.panelAuth);
@@ -213,6 +226,7 @@
             this.panel2.PerformLayout();
             this.panelSettings.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.buttonMenu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -230,6 +244,7 @@
         private System.Windows.Forms.Button buttonExitApp;
         private System.Windows.Forms.TextBox textBoxLogin;
         private System.Windows.Forms.Button hideshowpwd;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 
