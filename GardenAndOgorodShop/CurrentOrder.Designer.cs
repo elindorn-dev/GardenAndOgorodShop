@@ -34,6 +34,7 @@ namespace GardenAndOgorodShop
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CurrentOrder));
             this.panel1 = new System.Windows.Forms.Panel();
             this.buttonWarning = new System.Windows.Forms.Button();
             this.buttonMinus = new System.Windows.Forms.Button();
@@ -311,6 +312,7 @@ namespace GardenAndOgorodShop
             this.ClientSize = new System.Drawing.Size(865, 650);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dataGridViewProducts);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "CurrentOrder";

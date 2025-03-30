@@ -29,6 +29,7 @@ namespace GardenAndOgorodShop
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HandleRecordForm));
             this.tabControlRecords = new System.Windows.Forms.TabControl();
             this.tabPageProduct = new System.Windows.Forms.TabPage();
             this.label52 = new System.Windows.Forms.Label();
@@ -1716,6 +1717,7 @@ namespace GardenAndOgorodShop
             this.ClientSize = new System.Drawing.Size(799, 484);
             this.Controls.Add(this.panelNavigation);
             this.Controls.Add(this.tabControlRecords);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "HandleRecordForm";

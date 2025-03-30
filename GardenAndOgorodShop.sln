@@ -5,6 +5,8 @@ VisualStudioVersion = 17.3.32922.545
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GardenAndOgorodShop", "GardenAndOgorodShop\GardenAndOgorodShop.csproj", "{2C8FEA40-C37D-4BCC-AAE4-9B336B602358}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SetupGOshop", "SetupGOshop\SetupGOshop.vdproj", "{E7D5F37B-822F-4D90-8970-4D91AFA81DEA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,8 @@ Global
 		{2C8FEA40-C37D-4BCC-AAE4-9B336B602358}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2C8FEA40-C37D-4BCC-AAE4-9B336B602358}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2C8FEA40-C37D-4BCC-AAE4-9B336B602358}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7D5F37B-822F-4D90-8970-4D91AFA81DEA}.Debug|Any CPU.ActiveCfg = Debug
+		{E7D5F37B-822F-4D90-8970-4D91AFA81DEA}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
