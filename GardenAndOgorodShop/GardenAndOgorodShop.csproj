@@ -47,6 +47,7 @@
       <HintPath>C:\Program Files (x86)\MySQL\MySQL Connector NET 9.2\MySql.Data.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -64,6 +65,12 @@
     </Compile>
     <Compile Include="CurrentOrder.Designer.cs">
       <DependentUpon>CurrentOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dbSettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dbSettingsForm.Designer.cs">
+      <DependentUpon>dbSettingsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="HandleRecordForm.cs">
       <SubType>Form</SubType>
@@ -91,6 +98,9 @@
     <Compile Include="UserConfiguration.cs" />
     <EmbeddedResource Include="CurrentOrder.resx">
       <DependentUpon>CurrentOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dbSettingsForm.resx">
+      <DependentUpon>dbSettingsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HandleRecordForm.resx">
       <DependentUpon>HandleRecordForm.cs</DependentUpon>
