@@ -210,6 +210,7 @@ namespace GardenAndOgorodShop
             this.buttonRecovery.TabIndex = 27;
             this.buttonRecovery.Text = "Восстановить структуру";
             this.buttonRecovery.UseVisualStyleBackColor = false;
+            this.buttonRecovery.Click += new System.EventHandler(this.buttonRecovery_Click);
             // 
             // buttonImport
             // 
@@ -224,6 +225,7 @@ namespace GardenAndOgorodShop
             this.buttonImport.TabIndex = 28;
             this.buttonImport.Text = "Импорт данных";
             this.buttonImport.UseVisualStyleBackColor = false;
+            this.buttonImport.Click += new System.EventHandler(this.buttonImport_Click);
             // 
             // comboBoxTables
             // 
@@ -231,6 +233,15 @@ namespace GardenAndOgorodShop
             this.comboBoxTables.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxTables.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.comboBoxTables.FormattingEnabled = true;
+            this.comboBoxTables.Items.AddRange(new object[] {
+            "brands",
+            "categories",
+            "employees",
+            "orders",
+            "products",
+            "products_orders",
+            "roles",
+            "suppliers users"});
             this.comboBoxTables.Location = new System.Drawing.Point(327, 258);
             this.comboBoxTables.Name = "comboBoxTables";
             this.comboBoxTables.Size = new System.Drawing.Size(256, 32);

@@ -24,10 +24,11 @@ namespace GardenAndOgorodShop
         public static string pwd = ConfigurationManager.AppSettings["pwd"];
         public static string database = ConfigurationManager.AppSettings["db"];
         public static string connect_string = $"host={host};uid={username};pwd={pwd};database={database}";
+        public static string connect_string_recovery = $"host={host};uid={username};pwd={pwd}";
 
         public static bool checkConnection()
         {
-            MySqlConnection mySQLCon = new MySqlConnection(connect_string);
+            MySqlConnection mySQLCon = new MySqlConnection(connect_string_recovery);
             try
             {
                 mySQLCon.Open();
@@ -41,6 +42,39 @@ namespace GardenAndOgorodShop
             catch (Exception err)
             {
                 return false;
+            }
+        }
+
+        public static bool RecoveryStructure()
+        {
+            MySqlConnection connect = new MySqlConnection(connect_string_recovery);
+
+            try
+            {
+            connect.Open();
+            string path = "structure.sql";
+            string text_script = "";
+            if (File.Exists(path))
+            {
+                text_script = File.ReadAllText(path);
+            }
+            string[] sql_commands = text_script.Split(';');
+            
+                for (int i = 0; i < sql_commands.Length; i++)
+                {
+                    sql_commands[i] += ";";
+                    MySqlCommand cmd = new MySqlCommand(sql_commands[i], connect);
+                    cmd.ExecuteNonQuery();
+                }
+                return true;
+            }
+            catch (Exception err)
+            {
+                return false;
+            }
+            finally
+            {
+                connect.Close();
             }
         }
 

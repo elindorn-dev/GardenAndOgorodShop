@@ -70,5 +70,22 @@ namespace GardenAndOgorodShop
             form.Show();
             this.Hide();
         }
+
+        private void buttonRecovery_Click(object sender, EventArgs e)
+        {
+            if (DBHandler.RecoveryStructure())
+            {
+                MessageBox.Show("Структура восстановлена без данных", "Восстановление", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Структура не была восстановлена", "Восстановление", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void buttonImport_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
