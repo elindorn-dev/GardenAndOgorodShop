@@ -59,7 +59,11 @@ namespace GardenAndOgorodShop
 
         private void AuthForm_Load(object sender, EventArgs e)
         {
-
+            if (!DBHandler.checkConnection())
+            {
+                MessageBox.Show("Ошибка подключения к серверу.\nВызовите системного администратора", "Проверка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                buttonAuth.Enabled = false;
+            }
         }
         // ФУНКЦИЯ ОБРАБОТКИ placeholder для логина при фокусе textbox
         private void textBoxLogin_Enter(object sender, EventArgs e)
@@ -216,6 +220,13 @@ namespace GardenAndOgorodShop
         private void AuthForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.ExitThread();
+        }
+
+        private void buttonSettingsDB_Click(object sender, EventArgs e)
+        {
+            dbSettingsForm form = new dbSettingsForm();
+            form.Show();
+            this.Hide();
         }
     }
 }

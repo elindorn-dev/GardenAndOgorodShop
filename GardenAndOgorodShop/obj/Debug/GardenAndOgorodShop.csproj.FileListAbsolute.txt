@@ -182,3 +182,5 @@ D:\Smirnov\GardenAndOgorodShop\GardenAndOgorodShop\GardenAndOgorodShop\obj\Debug
 D:\Smirnov\GardenAndOgorodShop\GardenAndOgorodShop\GardenAndOgorodShop\obj\Debug\Interop.VBIDE.dll
 D:\Smirnov\GardenAndOgorodShop\GardenAndOgorodShop\GardenAndOgorodShop\obj\Debug\GardenAndOgorodShop.csproj.ResolveComReference.cache
 D:\Smirnov\GardenAndOgorodShop\GardenAndOgorodShop\GardenAndOgorodShop\obj\Debug\GardenAndOgorodShop.csproj.CopyComplete
+D:\Smirnov\GardenAndOgorodShop\GardenAndOgorodShop\GardenAndOgorodShop\obj\Debug\GardenAndOgorodShop.csproj.AssemblyReference.cache
+D:\Smirnov\GardenAndOgorodShop\GardenAndOgorodShop\GardenAndOgorodShop\obj\Debug\GardenAndOgorodShop.dbSettingsForm.resources

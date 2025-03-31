@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AuthForm));
             this.panelAuth = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.hideshowpwd = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.textBoxLogin = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -39,14 +41,13 @@
             this.panelSettings = new System.Windows.Forms.Panel();
             this.buttonExitApp = new System.Windows.Forms.Button();
             this.buttonMenu = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.hideshowpwd = new System.Windows.Forms.Button();
+            this.buttonSettingsDB = new System.Windows.Forms.Button();
             this.panelAuth.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panelSettings.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.buttonMenu)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panelAuth
@@ -63,6 +64,29 @@
             this.panelAuth.Size = new System.Drawing.Size(400, 423);
             this.panelAuth.TabIndex = 0;
             this.panelAuth.Click += new System.EventHandler(this.panelAuth_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.logo;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Location = new System.Drawing.Point(153, 88);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(80, 80);
+            this.pictureBox1.TabIndex = 18;
+            this.pictureBox1.TabStop = false;
+            // 
+            // hideshowpwd
+            // 
+            this.hideshowpwd.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.show_password;
+            this.hideshowpwd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.hideshowpwd.FlatAppearance.BorderSize = 0;
+            this.hideshowpwd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.hideshowpwd.Location = new System.Drawing.Point(345, 265);
+            this.hideshowpwd.Name = "hideshowpwd";
+            this.hideshowpwd.Size = new System.Drawing.Size(40, 40);
+            this.hideshowpwd.TabIndex = 17;
+            this.hideshowpwd.UseVisualStyleBackColor = true;
+            this.hideshowpwd.Click += new System.EventHandler(this.hideshowpwd_Click);
             // 
             // panel3
             // 
@@ -144,10 +168,11 @@
             // 
             this.panelSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panelSettings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(120)))), ((int)(((byte)(56)))));
+            this.panelSettings.Controls.Add(this.buttonSettingsDB);
             this.panelSettings.Controls.Add(this.buttonExitApp);
             this.panelSettings.Location = new System.Drawing.Point(511, 61);
             this.panelSettings.Name = "panelSettings";
-            this.panelSettings.Size = new System.Drawing.Size(200, 75);
+            this.panelSettings.Size = new System.Drawing.Size(210, 161);
             this.panelSettings.TabIndex = 2;
             // 
             // buttonExitApp
@@ -177,28 +202,20 @@
             this.buttonMenu.TabStop = false;
             this.buttonMenu.Click += new System.EventHandler(this.buttonMenu_Click);
             // 
-            // pictureBox1
+            // buttonSettingsDB
             // 
-            this.pictureBox1.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.logo;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(153, 88);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(80, 80);
-            this.pictureBox1.TabIndex = 18;
-            this.pictureBox1.TabStop = false;
-            // 
-            // hideshowpwd
-            // 
-            this.hideshowpwd.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.show_password;
-            this.hideshowpwd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.hideshowpwd.FlatAppearance.BorderSize = 0;
-            this.hideshowpwd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.hideshowpwd.Location = new System.Drawing.Point(345, 265);
-            this.hideshowpwd.Name = "hideshowpwd";
-            this.hideshowpwd.Size = new System.Drawing.Size(40, 40);
-            this.hideshowpwd.TabIndex = 17;
-            this.hideshowpwd.UseVisualStyleBackColor = true;
-            this.hideshowpwd.Click += new System.EventHandler(this.hideshowpwd_Click);
+            this.buttonSettingsDB.BackColor = System.Drawing.Color.DarkGray;
+            this.buttonSettingsDB.FlatAppearance.BorderSize = 0;
+            this.buttonSettingsDB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSettingsDB.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonSettingsDB.ForeColor = System.Drawing.Color.White;
+            this.buttonSettingsDB.Location = new System.Drawing.Point(17, 77);
+            this.buttonSettingsDB.Name = "buttonSettingsDB";
+            this.buttonSettingsDB.Size = new System.Drawing.Size(167, 73);
+            this.buttonSettingsDB.TabIndex = 6;
+            this.buttonSettingsDB.Text = "Настройки подключения";
+            this.buttonSettingsDB.UseVisualStyleBackColor = false;
+            this.buttonSettingsDB.Click += new System.EventHandler(this.buttonSettingsDB_Click);
             // 
             // AuthForm
             // 
@@ -220,13 +237,13 @@
             this.Load += new System.EventHandler(this.AuthForm_Load);
             this.panelAuth.ResumeLayout(false);
             this.panelAuth.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panelSettings.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.buttonMenu)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -245,6 +262,7 @@
         private System.Windows.Forms.TextBox textBoxLogin;
         private System.Windows.Forms.Button hideshowpwd;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button buttonSettingsDB;
     }
 }
 

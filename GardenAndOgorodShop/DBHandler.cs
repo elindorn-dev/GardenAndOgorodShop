@@ -12,16 +12,37 @@ using MySqlX.XDevAPI.Relational;
 using System.Data.SqlClient;
 using System.Net;
 using System.Security.Cryptography;
+using System.Configuration;
+using System.Reflection;
 
 namespace GardenAndOgorodShop
 {
     public static class DBHandler
     {
-        public static string host = "localhost";
-        public static string username = "root";
-        public static string pwd = "root";
-        public static string database = "garden_and_ogorod_shop";
+        public static string host = ConfigurationManager.AppSettings["host"];
+        public static string username = ConfigurationManager.AppSettings["uid"];
+        public static string pwd = ConfigurationManager.AppSettings["pwd"];
+        public static string database = ConfigurationManager.AppSettings["db"];
         public static string connect_string = $"host={host};uid={username};pwd={pwd};database={database}";
+
+        public static bool checkConnection()
+        {
+            MySqlConnection mySQLCon = new MySqlConnection(connect_string);
+            try
+            {
+                mySQLCon.Open();
+                var temp = mySQLCon.State.ToString();
+                return mySQLCon.State == ConnectionState.Open && temp == "Open" ? true : false;
+            }
+            catch(MySqlException err)
+            {
+                return false;
+            }
+            catch (Exception err)
+            {
+                return false;
+            }
+        }
 
         public static async Task<System.Data.DataTable> getProductsOrder_forBill()
         {

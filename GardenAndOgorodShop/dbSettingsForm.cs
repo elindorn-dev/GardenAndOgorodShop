@@ -21,20 +21,54 @@ namespace GardenAndOgorodShop
 
         private void dbSettingsForm_Load(object sender, EventArgs e)
         {
-            Configuration config = ConfigurationManager.OpenExeConfiguration(Assembly.GetExecutingAssembly().Location);
-
-            config.AppSettings.Settings["host"].Value = host;
-            config.AppSettings.Settings["db"].Value = database;
-            config.AppSettings.Settings["uid"].Value = username;
-            config.AppSettings.Settings["pwd"].Value = pwd;
-
-            config.Save(ConfigurationSaveMode.Modified);
-            ConfigurationManager.RefreshSection("appSettings");
+            if (!DBHandler.checkConnection())
+            {
+                buttonRecovery.Enabled = false;
+                buttonImport.Enabled = false;
+            }
+            serverTextBox.Text = ConfigurationManager.AppSettings["host"];
+            dbTextBox.Text = ConfigurationManager.AppSettings["db"];
+            usernameTextBox.Text = ConfigurationManager.AppSettings["uid"];
+            userpasswordTextBox.Text = ConfigurationManager.AppSettings["pwd"];
         }
 
-        private void guest_button_Click(object sender, EventArgs e)
+        private void buttonConnect_Click(object sender, EventArgs e)
         {
+            try
+            {
+                Configuration config = ConfigurationManager.OpenExeConfiguration(Assembly.GetExecutingAssembly().Location);
 
+                string host = serverTextBox.Text;
+                string database = dbTextBox.Text;
+                string username = usernameTextBox.Text;
+                string pwd = userpasswordTextBox.Text;
+
+                config.AppSettings.Settings["host"].Value = host;
+                config.AppSettings.Settings["db"].Value = database;
+                config.AppSettings.Settings["uid"].Value = username;
+                config.AppSettings.Settings["pwd"].Value = pwd;
+
+                config.Save(ConfigurationSaveMode.Modified);
+                ConfigurationManager.RefreshSection("appSettings");
+
+                MessageBox.Show($"Настройки изменены", "Изменение настроек", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Application.Restart();
+                Environment.Exit(0);
+
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show($"Настройки не изменены\n{err.Message}", "Изменение настроек", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            
+        }
+
+        private void dbSettingsForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            AuthForm form = new AuthForm();
+            form.Show();
+            this.Hide();
         }
     }
 }

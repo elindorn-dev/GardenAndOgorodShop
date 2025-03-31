@@ -95,7 +95,7 @@ namespace GardenAndOgorodShop
             this.buttonConnect.TabIndex = 24;
             this.buttonConnect.Text = "Установить соединение";
             this.buttonConnect.UseVisualStyleBackColor = false;
-            this.buttonConnect.Click += new System.EventHandler(this.guest_button_Click);
+            this.buttonConnect.Click += new System.EventHandler(this.buttonConnect_Click);
             // 
             // label6
             // 
@@ -292,8 +292,12 @@ namespace GardenAndOgorodShop
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "dbSettingsForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "dbSettingsForm";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.dbSettingsForm_FormClosed);
             this.Load += new System.EventHandler(this.dbSettingsForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
