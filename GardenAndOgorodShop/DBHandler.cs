@@ -19,7 +19,7 @@ namespace GardenAndOgorodShop
     {
         public static string host = "localhost";
         public static string username = "root";
-        public static string pwd = "";
+        public static string pwd = "root";
         public static string database = "garden_and_ogorod_shop";
         public static string connect_string = $"host={host};uid={username};pwd={pwd};database={database}";
 
