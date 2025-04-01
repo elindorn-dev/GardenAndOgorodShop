@@ -222,5 +222,21 @@ namespace GardenAndOgorodShop
                 save_password_textbox = textBoxPassword.Text;
             }
         }
+        bool show_password = false;
+        private void hideshowpwd_Click(object sender, EventArgs e)
+        {
+            if (show_password)
+            {
+                hideshowpwd.BackgroundImage = GardenAndOgorodShop.Properties.Resources.show_password;
+                textBoxPassword.PasswordChar = '\0';
+                show_password = false;
+            }
+            else
+            {
+                hideshowpwd.BackgroundImage = GardenAndOgorodShop.Properties.Resources.hide_password;
+                textBoxPassword.PasswordChar = '●';
+                show_password = true;
+            }
+        }
     }
 }

@@ -300,6 +300,7 @@ namespace GardenAndOgorodShop
             this.hideshowpwd.Size = new System.Drawing.Size(40, 40);
             this.hideshowpwd.TabIndex = 21;
             this.hideshowpwd.UseVisualStyleBackColor = true;
+            this.hideshowpwd.Click += new System.EventHandler(this.hideshowpwd_Click);
             // 
             // panel5
             // 
@@ -409,7 +410,7 @@ namespace GardenAndOgorodShop
             this.MinimizeBox = false;
             this.Name = "dbSettingsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "dbSettingsForm";
+            this.Text = "Настройки бд";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.dbSettingsForm_FormClosed);
             this.Load += new System.EventHandler(this.dbSettingsForm_Load);
             this.panelBlock.ResumeLayout(false);
