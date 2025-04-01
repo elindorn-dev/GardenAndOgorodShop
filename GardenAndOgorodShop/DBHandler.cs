@@ -44,6 +44,110 @@ namespace GardenAndOgorodShop
                 return false;
             }
         }
+        public static bool checkConnectionDB()
+        {
+            MySqlConnection mySQLCon = new MySqlConnection(connect_string);
+            try
+            {
+                mySQLCon.Open();
+                var temp = mySQLCon.State.ToString();
+                return mySQLCon.State == ConnectionState.Open && temp == "Open" ? true : false;
+            }
+            catch (MySqlException err)
+            {
+                return false;
+            }
+            catch (Exception err)
+            {
+                return false;
+            }
+        }
+        public static int[] ImportCsv(string table, string query, string path, int count_properties)
+        {
+            MySqlConnection connect = new MySqlConnection(connect_string);
+            connect.Open();
+            StreamReader f = new StreamReader(path);
+            if (!f.EndOfStream)
+            {
+                f.ReadLine();
+            }
+            int bad_count = 0;
+            int main_count = 0;
+            while (!f.EndOfStream)
+            {
+                string[] arr = new string[count_properties];
+
+                string s = f.ReadLine();
+
+                int arr_counter = 0;
+                bool enclose_elem = false;
+
+                foreach (char c in s)
+                {
+                    if (enclose_elem)
+                    {
+                        if (c == '"')
+                        {
+                            enclose_elem = false;
+                        }
+                        else
+                        {
+                            arr[arr_counter] += c;
+                        }
+                    }
+                    else
+                    {
+                        if (c == '"')
+                        {
+                            enclose_elem = true;
+                        }
+                        else
+                        {
+                            if (c == ',')
+                            {
+                                arr_counter++;
+                            }
+                            else
+                            {
+                                arr[arr_counter] += c;
+                            }
+                        }
+                    }
+                }
+                //
+                //string[] arr = s.Split(',');
+                //
+
+                string query_custom = query;
+                for (int i = 0; i < arr.Length - 1; i++)
+                {
+                    if (arr[i] == "...")
+                    {
+                        query += "NULL, ";
+                    }
+                    else
+                    {
+                        query += "'" + arr[i].Replace("'", "") + "', ";
+                    }
+                }
+                query += "'" + arr[arr.Length - 1] + "');";
+                try
+                {
+                    MySqlCommand cmd = new MySqlCommand(query, connect);
+                    cmd.ExecuteNonQuery();
+                }
+                catch (Exception err)
+                {
+                    bad_count++;
+                }
+                query = query_custom;
+                main_count++;
+            }
+            f.Close();
+            connect.Close();
+            int[] output = { main_count, bad_count };
+            return output;
+        }
 
         public static bool RecoveryStructure()
         {
@@ -77,6 +181,8 @@ namespace GardenAndOgorodShop
                 connect.Close();
             }
         }
+
+
 
         public static async Task<System.Data.DataTable> getProductsOrder_forBill()
         {
@@ -238,6 +344,36 @@ namespace GardenAndOgorodShop
                 return false;
             }
         }
+        public static bool checkAutorizationAdmin(string login, string pwd)
+        {
+            try
+            {
+                MySqlConnection connect = new MySqlConnection(connect_string);
+                connect.Open();
+                string query = $"SELECT * FROM users WHERE username = @login AND password_hash = @pwd;";
+                MySqlCommand command_sql = new MySqlCommand(query, connect);
+                command_sql.Parameters.AddWithValue("@login", login);
+                command_sql.Parameters.AddWithValue("@pwd", pwd);
+                var reader = command_sql.ExecuteReader();
+                reader.Read();
+                if (reader.GetInt32(4) == 1)
+                {
+                    return true;
+                }
+                connect.Close();
+                return false;
+            }
+            catch (NullReferenceException err)
+            {
+                
+                return false;
+            }
+            catch (Exception err)
+            {
+                
+                return false;
+            }
+        }
         public static void updateLastLogInUser()
         {
             string query = $"UPDATE users SET last_login_date = NOW() WHERE users_id = '{UserConfiguration.UserID}';";
@@ -284,7 +420,7 @@ namespace GardenAndOgorodShop
             }
             catch (Exception err)
             {
-                return (null, null, null, null);  
+                return (firstName, lastName, fathersName, photo);  
             }
         }
         public static System.Data.DataTable LoadDataSync(string table)

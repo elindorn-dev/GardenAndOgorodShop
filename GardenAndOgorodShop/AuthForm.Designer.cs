@@ -39,9 +39,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.buttonAuth = new System.Windows.Forms.Button();
             this.panelSettings = new System.Windows.Forms.Panel();
+            this.buttonSettingsDB = new System.Windows.Forms.Button();
             this.buttonExitApp = new System.Windows.Forms.Button();
             this.buttonMenu = new System.Windows.Forms.PictureBox();
-            this.buttonSettingsDB = new System.Windows.Forms.Button();
             this.panelAuth.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
@@ -175,6 +175,21 @@
             this.panelSettings.Size = new System.Drawing.Size(210, 161);
             this.panelSettings.TabIndex = 2;
             // 
+            // buttonSettingsDB
+            // 
+            this.buttonSettingsDB.BackColor = System.Drawing.Color.DarkGray;
+            this.buttonSettingsDB.FlatAppearance.BorderSize = 0;
+            this.buttonSettingsDB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSettingsDB.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonSettingsDB.ForeColor = System.Drawing.Color.White;
+            this.buttonSettingsDB.Location = new System.Drawing.Point(17, 77);
+            this.buttonSettingsDB.Name = "buttonSettingsDB";
+            this.buttonSettingsDB.Size = new System.Drawing.Size(167, 73);
+            this.buttonSettingsDB.TabIndex = 6;
+            this.buttonSettingsDB.Text = "Настройки\r\nбазы даных";
+            this.buttonSettingsDB.UseVisualStyleBackColor = false;
+            this.buttonSettingsDB.Click += new System.EventHandler(this.buttonSettingsDB_Click);
+            // 
             // buttonExitApp
             // 
             this.buttonExitApp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(52)))), ((int)(((byte)(52)))));
@@ -201,21 +216,6 @@
             this.buttonMenu.TabIndex = 1;
             this.buttonMenu.TabStop = false;
             this.buttonMenu.Click += new System.EventHandler(this.buttonMenu_Click);
-            // 
-            // buttonSettingsDB
-            // 
-            this.buttonSettingsDB.BackColor = System.Drawing.Color.DarkGray;
-            this.buttonSettingsDB.FlatAppearance.BorderSize = 0;
-            this.buttonSettingsDB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSettingsDB.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonSettingsDB.ForeColor = System.Drawing.Color.White;
-            this.buttonSettingsDB.Location = new System.Drawing.Point(17, 77);
-            this.buttonSettingsDB.Name = "buttonSettingsDB";
-            this.buttonSettingsDB.Size = new System.Drawing.Size(167, 73);
-            this.buttonSettingsDB.TabIndex = 6;
-            this.buttonSettingsDB.Text = "Настройки подключения";
-            this.buttonSettingsDB.UseVisualStyleBackColor = false;
-            this.buttonSettingsDB.Click += new System.EventHandler(this.buttonSettingsDB_Click);
             // 
             // AuthForm
             // 

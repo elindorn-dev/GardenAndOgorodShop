@@ -30,7 +30,6 @@ namespace GardenAndOgorodShop
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.buttonConnect = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
@@ -49,6 +48,17 @@ namespace GardenAndOgorodShop
             this.label7 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
+            this.panelBlock = new System.Windows.Forms.Panel();
+            this.hideshowpwd = new System.Windows.Forms.Button();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.textBoxLogin = new System.Windows.Forms.TextBox();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.textBoxPassword = new System.Windows.Forms.TextBox();
+            this.buttonAuth = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.panelBlock.SuspendLayout();
+            this.panel5.SuspendLayout();
+            this.panel6.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -61,18 +71,6 @@ namespace GardenAndOgorodShop
             this.label1.Size = new System.Drawing.Size(114, 25);
             this.label1.TabIndex = 9;
             this.label1.Text = "Настройки";
-            // 
-            // panel1
-            // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(120)))), ((int)(((byte)(56)))));
-            this.panel1.CausesValidation = false;
-            this.panel1.Location = new System.Drawing.Point(303, -12);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(3, 414);
-            this.panel1.TabIndex = 11;
             // 
             // panel2
             // 
@@ -232,6 +230,7 @@ namespace GardenAndOgorodShop
             this.comboBoxTables.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(120)))), ((int)(((byte)(56)))));
             this.comboBoxTables.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxTables.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.comboBoxTables.ForeColor = System.Drawing.Color.White;
             this.comboBoxTables.FormattingEnabled = true;
             this.comboBoxTables.Items.AddRange(new object[] {
             "brands",
@@ -241,7 +240,8 @@ namespace GardenAndOgorodShop
             "products",
             "products_orders",
             "roles",
-            "suppliers users"});
+            "suppliers",
+            "users"});
             this.comboBoxTables.Location = new System.Drawing.Point(327, 258);
             this.comboBoxTables.Name = "comboBoxTables";
             this.comboBoxTables.Size = new System.Drawing.Size(256, 32);
@@ -277,12 +277,115 @@ namespace GardenAndOgorodShop
             this.label8.TabIndex = 31;
             this.label8.Text = "Импорт";
             // 
+            // panelBlock
+            // 
+            this.panelBlock.Controls.Add(this.label9);
+            this.panelBlock.Controls.Add(this.hideshowpwd);
+            this.panelBlock.Controls.Add(this.panel5);
+            this.panelBlock.Controls.Add(this.panel6);
+            this.panelBlock.Controls.Add(this.buttonAuth);
+            this.panelBlock.Location = new System.Drawing.Point(-4, -4);
+            this.panelBlock.Name = "panelBlock";
+            this.panelBlock.Size = new System.Drawing.Size(609, 411);
+            this.panelBlock.TabIndex = 33;
+            // 
+            // hideshowpwd
+            // 
+            this.hideshowpwd.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.show_password;
+            this.hideshowpwd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.hideshowpwd.FlatAppearance.BorderSize = 0;
+            this.hideshowpwd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.hideshowpwd.Location = new System.Drawing.Point(387, 183);
+            this.hideshowpwd.Name = "hideshowpwd";
+            this.hideshowpwd.Size = new System.Drawing.Size(40, 40);
+            this.hideshowpwd.TabIndex = 21;
+            this.hideshowpwd.UseVisualStyleBackColor = true;
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.White;
+            this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel5.Controls.Add(this.textBoxLogin);
+            this.panel5.Location = new System.Drawing.Point(65, 100);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(350, 50);
+            this.panel5.TabIndex = 20;
+            // 
+            // textBoxLogin
+            // 
+            this.textBoxLogin.BackColor = System.Drawing.Color.White;
+            this.textBoxLogin.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxLogin.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxLogin.ForeColor = System.Drawing.Color.Gray;
+            this.textBoxLogin.Location = new System.Drawing.Point(17, 15);
+            this.textBoxLogin.MaxLength = 100;
+            this.textBoxLogin.Name = "textBoxLogin";
+            this.textBoxLogin.Size = new System.Drawing.Size(330, 22);
+            this.textBoxLogin.TabIndex = 0;
+            this.textBoxLogin.Text = "Логин";
+            this.textBoxLogin.TextChanged += new System.EventHandler(this.textBoxLogin_TextChanged);
+            this.textBoxLogin.Enter += new System.EventHandler(this.textBoxLogin_Enter);
+            this.textBoxLogin.Leave += new System.EventHandler(this.textBoxLogin_Leave);
+            // 
+            // panel6
+            // 
+            this.panel6.BackColor = System.Drawing.Color.White;
+            this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel6.Controls.Add(this.textBoxPassword);
+            this.panel6.Location = new System.Drawing.Point(65, 176);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(316, 50);
+            this.panel6.TabIndex = 19;
+            // 
+            // textBoxPassword
+            // 
+            this.textBoxPassword.BackColor = System.Drawing.Color.White;
+            this.textBoxPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxPassword.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxPassword.ForeColor = System.Drawing.Color.Gray;
+            this.textBoxPassword.Location = new System.Drawing.Point(17, 15);
+            this.textBoxPassword.MaxLength = 100;
+            this.textBoxPassword.Name = "textBoxPassword";
+            this.textBoxPassword.Size = new System.Drawing.Size(296, 22);
+            this.textBoxPassword.TabIndex = 0;
+            this.textBoxPassword.Text = "Пароль";
+            this.textBoxPassword.Enter += new System.EventHandler(this.textBoxPassword_Enter);
+            this.textBoxPassword.Leave += new System.EventHandler(this.textBoxPassword_Leave);
+            // 
+            // buttonAuth
+            // 
+            this.buttonAuth.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(120)))), ((int)(((byte)(56)))));
+            this.buttonAuth.FlatAppearance.BorderSize = 0;
+            this.buttonAuth.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonAuth.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonAuth.ForeColor = System.Drawing.Color.White;
+            this.buttonAuth.Location = new System.Drawing.Point(65, 283);
+            this.buttonAuth.Name = "buttonAuth";
+            this.buttonAuth.Size = new System.Drawing.Size(350, 50);
+            this.buttonAuth.TabIndex = 18;
+            this.buttonAuth.Text = "Авторизоваться";
+            this.buttonAuth.UseVisualStyleBackColor = false;
+            this.buttonAuth.Click += new System.EventHandler(this.buttonAuth_Click);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(175)))), ((int)(((byte)(80)))));
+            this.label9.Location = new System.Drawing.Point(13, 18);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(472, 37);
+            this.label9.TabIndex = 22;
+            this.label9.Text = "Подтвердите права администратора";
+            // 
             // dbSettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(606, 400);
+            this.ClientSize = new System.Drawing.Size(487, 381);
+            this.Controls.Add(this.panelBlock);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
@@ -301,7 +404,6 @@ namespace GardenAndOgorodShop
             this.Controls.Add(this.label2);
             this.Controls.Add(this.serverTextBox);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -310,6 +412,12 @@ namespace GardenAndOgorodShop
             this.Text = "dbSettingsForm";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.dbSettingsForm_FormClosed);
             this.Load += new System.EventHandler(this.dbSettingsForm_Load);
+            this.panelBlock.ResumeLayout(false);
+            this.panelBlock.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -317,7 +425,6 @@ namespace GardenAndOgorodShop
 
         #endregion
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button buttonConnect;
         private System.Windows.Forms.Label label6;
@@ -336,5 +443,13 @@ namespace GardenAndOgorodShop
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Panel panelBlock;
+        private System.Windows.Forms.Button hideshowpwd;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.TextBox textBoxLogin;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.TextBox textBoxPassword;
+        private System.Windows.Forms.Button buttonAuth;
+        private System.Windows.Forms.Label label9;
     }
 }
