@@ -112,9 +112,9 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.panel1.Controls.Add(this.textBoxCaptcha);
-            this.panel1.Location = new System.Drawing.Point(26, 133);
+            this.panel1.Location = new System.Drawing.Point(91, 136);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(350, 50);
+            this.panel1.Size = new System.Drawing.Size(230, 50);
             this.panel1.TabIndex = 5;
             // 
             // textBoxCaptcha
@@ -124,9 +124,9 @@
             this.textBoxCaptcha.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxCaptcha.ForeColor = System.Drawing.Color.Gray;
             this.textBoxCaptcha.Location = new System.Drawing.Point(17, 15);
-            this.textBoxCaptcha.MaxLength = 100;
+            this.textBoxCaptcha.MaxLength = 4;
             this.textBoxCaptcha.Name = "textBoxCaptcha";
-            this.textBoxCaptcha.Size = new System.Drawing.Size(330, 22);
+            this.textBoxCaptcha.Size = new System.Drawing.Size(210, 22);
             this.textBoxCaptcha.TabIndex = 0;
             this.textBoxCaptcha.Text = "Введите каптчу...";
             this.textBoxCaptcha.Enter += new System.EventHandler(this.textBoxCaptcha_Enter);

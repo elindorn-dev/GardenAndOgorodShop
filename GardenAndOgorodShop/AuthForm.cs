@@ -184,7 +184,6 @@ namespace GardenAndOgorodShop
                 return builder.ToString();
             }
         }
-        bool was_tried = false;
         private void buttonAuth_Click(object sender, EventArgs e)
         {
             string login = textBoxLogin.Text;
@@ -202,12 +201,7 @@ namespace GardenAndOgorodShop
             }
             else
             {
-                if (was_tried)
-                {
-                    was_tried = false;
-                    panelCaptcha.Visible = true;
-                }
-                was_tried = true;
+                panelCaptcha.Visible = true;
             }
         }
 
@@ -291,6 +285,8 @@ namespace GardenAndOgorodShop
                 timer1.Start();
                 RefreshCaptcha();
             }
+            textBoxCaptcha.Text = "";
+            save_captcha_textbox = "";
         }
 
         private void button2_Click(object sender, EventArgs e)
