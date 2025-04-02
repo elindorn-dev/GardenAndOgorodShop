@@ -11,10 +11,12 @@ using System.Security.Cryptography;
 
 namespace GardenAndOgorodShop
 {
+    
     public partial class AuthForm : Form
     {
         // переменные для сохранения текста textbox при обработке placeholder
         private string save_login_textbox;
+        private string save_captcha_textbox;
         private string save_password_textbox;
         // переменная для обработки перемещения панели настроек
         bool moving;
@@ -56,9 +58,40 @@ namespace GardenAndOgorodShop
             }
             setting_active_status = false;
         }
+        private string TextGenerate()
+        {
+            Random random = new Random();
+            string chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            string result = "";
+            for (int i = 0; i < 4; i++)
+            {
+                result += Convert.ToString(chars[random.Next(0, chars.Length - 1)]);
+            }
+            return result;
+        }
+        private void RefreshCaptcha()
+        {
+            Random random = new Random();
+            int count = 3;
+            string captcha = TextGenerate();
 
+            foreach (Control control in panelShoom.Controls)
+            {
+                if (control is newLabel newLabel)
+                {
+                    newLabel.Width = 80;
+                    newLabel.Height = 80;
+                    newLabel.Text = captcha[count].ToString();
+                    newLabel.AutoSize = false;
+                    newLabel.NewText = captcha[count].ToString();
+                    newLabel.RotateAngle = random.Next(-40, 40);
+                    count--;
+                }
+            }
+        }
         private void AuthForm_Load(object sender, EventArgs e)
         {
+            RefreshCaptcha();
             if (!DBHandler.checkConnection())
             {
                 MessageBox.Show("Ошибка подключения к серверу.\nВызовите системного администратора", "Проверка", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -151,6 +184,7 @@ namespace GardenAndOgorodShop
                 return builder.ToString();
             }
         }
+        bool was_tried = false;
         private void buttonAuth_Click(object sender, EventArgs e)
         {
             string login = textBoxLogin.Text;
@@ -165,6 +199,15 @@ namespace GardenAndOgorodShop
                     form.Show();
                     this.Hide();
                 }
+            }
+            else
+            {
+                if (was_tried)
+                {
+                    was_tried = false;
+                    panelCaptcha.Visible = true;
+                }
+                was_tried = true;
             }
         }
 
@@ -227,6 +270,86 @@ namespace GardenAndOgorodShop
             dbSettingsForm form = new dbSettingsForm();
             form.Show();
             this.Hide();
+        }
+        private void EnabledCaptchaItems(bool enabled)
+        {
+            button1.Enabled = enabled;
+            button2.Enabled = enabled;
+            textBoxCaptcha.Enabled = enabled;
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string captcha = $"{newLabel1.NewText}{newLabel2.NewText}{newLabel3.NewText}{newLabel4.NewText}";
+            if (captcha == textBoxCaptcha.Text)
+            {
+                panelCaptcha.Visible = false;
+                RefreshCaptcha();
+            }
+            else
+            {
+                EnabledCaptchaItems(false);
+                timer1.Start();
+                RefreshCaptcha();
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            RefreshCaptcha();
+        }
+
+        private void textBoxCaptcha_Enter(object sender, EventArgs e)
+        {
+            textBoxCaptcha.ForeColor = Color.Black;
+            if (save_captcha_textbox != "")
+            {
+                textBoxCaptcha.Text = save_captcha_textbox;
+            }
+            else
+            {
+                textBoxCaptcha.Text = "";
+            }
+        }
+
+        private void textBoxCaptcha_Leave(object sender, EventArgs e)
+        {
+            if (textBoxCaptcha.Text == "")
+            {
+                textBoxCaptcha.Text = "Введите каптчу...";
+                textBoxCaptcha.ForeColor = Color.Gray;
+                save_captcha_textbox = "";
+            }
+            else
+            {
+                save_captcha_textbox = textBoxCaptcha.Text;
+            }
+        }
+        int counter_timer = 0;
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (counter_timer > 10)
+            {
+                timer1.Stop();
+                counter_timer = 0;
+                EnabledCaptchaItems(true);
+            }
+            else
+            {
+                counter_timer++;
+            }
+        }
+    }
+    class newLabel : System.Windows.Forms.Label
+    {
+        public int RotateAngle { get; set; }
+        public string NewText { get; set; }
+        protected override void OnPaint(System.Windows.Forms.PaintEventArgs e)
+        {
+            Brush b = new SolidBrush(Color.FromArgb(192, 64, 0));
+            e.Graphics.TranslateTransform(this.Width / 2, this.Height / 2);
+            e.Graphics.RotateTransform(this.RotateAngle);
+            e.Graphics.DrawString(this.NewText, this.Font, b, 0f, 0f);
+            base.OnPaint(e);
         }
     }
 }

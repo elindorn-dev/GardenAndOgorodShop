@@ -28,10 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AuthForm));
             this.panelAuth = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.hideshowpwd = new System.Windows.Forms.Button();
+            this.panelCaptcha = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.textBoxCaptcha = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.textBoxLogin = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -42,17 +45,30 @@
             this.buttonSettingsDB = new System.Windows.Forms.Button();
             this.buttonExitApp = new System.Windows.Forms.Button();
             this.buttonMenu = new System.Windows.Forms.PictureBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.panelShoom = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.hideshowpwd = new System.Windows.Forms.Button();
+            this.newLabel4 = new GardenAndOgorodShop.newLabel();
+            this.newLabel3 = new GardenAndOgorodShop.newLabel();
+            this.newLabel2 = new GardenAndOgorodShop.newLabel();
+            this.newLabel1 = new GardenAndOgorodShop.newLabel();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panelAuth.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panelCaptcha.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panelSettings.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.buttonMenu)).BeginInit();
+            this.panelShoom.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panelAuth
             // 
             this.panelAuth.BackColor = System.Drawing.Color.White;
+            this.panelAuth.Controls.Add(this.panelCaptcha);
             this.panelAuth.Controls.Add(this.pictureBox1);
             this.panelAuth.Controls.Add(this.hideshowpwd);
             this.panelAuth.Controls.Add(this.panel3);
@@ -65,28 +81,56 @@
             this.panelAuth.TabIndex = 0;
             this.panelAuth.Click += new System.EventHandler(this.panelAuth_Click);
             // 
-            // pictureBox1
+            // panelCaptcha
             // 
-            this.pictureBox1.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.logo;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(153, 88);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(80, 80);
-            this.pictureBox1.TabIndex = 18;
-            this.pictureBox1.TabStop = false;
+            this.panelCaptcha.Controls.Add(this.button2);
+            this.panelCaptcha.Controls.Add(this.panelShoom);
+            this.panelCaptcha.Controls.Add(this.button1);
+            this.panelCaptcha.Controls.Add(this.panel1);
+            this.panelCaptcha.Location = new System.Drawing.Point(0, 74);
+            this.panelCaptcha.Name = "panelCaptcha";
+            this.panelCaptcha.Size = new System.Drawing.Size(400, 346);
+            this.panelCaptcha.TabIndex = 19;
+            this.panelCaptcha.Visible = false;
             // 
-            // hideshowpwd
+            // button1
             // 
-            this.hideshowpwd.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.show_password;
-            this.hideshowpwd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.hideshowpwd.FlatAppearance.BorderSize = 0;
-            this.hideshowpwd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.hideshowpwd.Location = new System.Drawing.Point(345, 265);
-            this.hideshowpwd.Name = "hideshowpwd";
-            this.hideshowpwd.Size = new System.Drawing.Size(40, 40);
-            this.hideshowpwd.TabIndex = 17;
-            this.hideshowpwd.UseVisualStyleBackColor = true;
-            this.hideshowpwd.Click += new System.EventHandler(this.hideshowpwd_Click);
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(76, 229);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(300, 50);
+            this.button1.TabIndex = 11;
+            this.button1.Text = "Проверить";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.panel1.Controls.Add(this.textBoxCaptcha);
+            this.panel1.Location = new System.Drawing.Point(26, 133);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(350, 50);
+            this.panel1.TabIndex = 5;
+            // 
+            // textBoxCaptcha
+            // 
+            this.textBoxCaptcha.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.textBoxCaptcha.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxCaptcha.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxCaptcha.ForeColor = System.Drawing.Color.Gray;
+            this.textBoxCaptcha.Location = new System.Drawing.Point(17, 15);
+            this.textBoxCaptcha.MaxLength = 100;
+            this.textBoxCaptcha.Name = "textBoxCaptcha";
+            this.textBoxCaptcha.Size = new System.Drawing.Size(330, 22);
+            this.textBoxCaptcha.TabIndex = 0;
+            this.textBoxCaptcha.Text = "Введите каптчу...";
+            this.textBoxCaptcha.Enter += new System.EventHandler(this.textBoxCaptcha_Enter);
+            this.textBoxCaptcha.Leave += new System.EventHandler(this.textBoxCaptcha_Leave);
             // 
             // panel3
             // 
@@ -217,6 +261,119 @@
             this.buttonMenu.TabStop = false;
             this.buttonMenu.Click += new System.EventHandler(this.buttonMenu_Click);
             // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.Transparent;
+            this.button2.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.refresh;
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button2.ForeColor = System.Drawing.Color.White;
+            this.button2.Location = new System.Drawing.Point(23, 229);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(50, 50);
+            this.button2.TabIndex = 17;
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // panelShoom
+            // 
+            this.panelShoom.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.shoom;
+            this.panelShoom.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panelShoom.Controls.Add(this.newLabel4);
+            this.panelShoom.Controls.Add(this.newLabel3);
+            this.panelShoom.Controls.Add(this.newLabel2);
+            this.panelShoom.Controls.Add(this.newLabel1);
+            this.panelShoom.Location = new System.Drawing.Point(26, 31);
+            this.panelShoom.Name = "panelShoom";
+            this.panelShoom.Size = new System.Drawing.Size(350, 63);
+            this.panelShoom.TabIndex = 16;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.logo;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Location = new System.Drawing.Point(153, 88);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(80, 80);
+            this.pictureBox1.TabIndex = 18;
+            this.pictureBox1.TabStop = false;
+            // 
+            // hideshowpwd
+            // 
+            this.hideshowpwd.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.show_password;
+            this.hideshowpwd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.hideshowpwd.FlatAppearance.BorderSize = 0;
+            this.hideshowpwd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.hideshowpwd.Location = new System.Drawing.Point(345, 265);
+            this.hideshowpwd.Name = "hideshowpwd";
+            this.hideshowpwd.Size = new System.Drawing.Size(40, 40);
+            this.hideshowpwd.TabIndex = 17;
+            this.hideshowpwd.UseVisualStyleBackColor = true;
+            this.hideshowpwd.Click += new System.EventHandler(this.hideshowpwd_Click);
+            // 
+            // newLabel4
+            // 
+            this.newLabel4.AutoSize = true;
+            this.newLabel4.BackColor = System.Drawing.Color.Transparent;
+            this.newLabel4.Font = new System.Drawing.Font("Impact", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.newLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.newLabel4.Location = new System.Drawing.Point(260, -33);
+            this.newLabel4.Name = "newLabel4";
+            this.newLabel4.NewText = null;
+            this.newLabel4.RotateAngle = 0;
+            this.newLabel4.Size = new System.Drawing.Size(35, 39);
+            this.newLabel4.TabIndex = 25;
+            this.newLabel4.Text = "n";
+            // 
+            // newLabel3
+            // 
+            this.newLabel3.AutoSize = true;
+            this.newLabel3.BackColor = System.Drawing.Color.Transparent;
+            this.newLabel3.Font = new System.Drawing.Font("Impact", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.newLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.newLabel3.Location = new System.Drawing.Point(172, -33);
+            this.newLabel3.Name = "newLabel3";
+            this.newLabel3.NewText = null;
+            this.newLabel3.RotateAngle = 0;
+            this.newLabel3.Size = new System.Drawing.Size(35, 39);
+            this.newLabel3.TabIndex = 24;
+            this.newLabel3.Text = "n";
+            // 
+            // newLabel2
+            // 
+            this.newLabel2.AutoSize = true;
+            this.newLabel2.BackColor = System.Drawing.Color.Transparent;
+            this.newLabel2.Font = new System.Drawing.Font("Impact", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.newLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.newLabel2.Location = new System.Drawing.Point(80, -33);
+            this.newLabel2.Name = "newLabel2";
+            this.newLabel2.NewText = null;
+            this.newLabel2.RotateAngle = 0;
+            this.newLabel2.Size = new System.Drawing.Size(35, 39);
+            this.newLabel2.TabIndex = 22;
+            this.newLabel2.Text = "n";
+            // 
+            // newLabel1
+            // 
+            this.newLabel1.AutoSize = true;
+            this.newLabel1.BackColor = System.Drawing.Color.Transparent;
+            this.newLabel1.Font = new System.Drawing.Font("Impact", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.newLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.newLabel1.Location = new System.Drawing.Point(-5, -33);
+            this.newLabel1.Name = "newLabel1";
+            this.newLabel1.NewText = null;
+            this.newLabel1.RotateAngle = 0;
+            this.newLabel1.Size = new System.Drawing.Size(35, 39);
+            this.newLabel1.TabIndex = 20;
+            this.newLabel1.Text = "n";
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // AuthForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -237,13 +394,18 @@
             this.Load += new System.EventHandler(this.AuthForm_Load);
             this.panelAuth.ResumeLayout(false);
             this.panelAuth.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panelCaptcha.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panelSettings.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.buttonMenu)).EndInit();
+            this.panelShoom.ResumeLayout(false);
+            this.panelShoom.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -263,6 +425,17 @@
         private System.Windows.Forms.Button hideshowpwd;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button buttonSettingsDB;
+        private System.Windows.Forms.Panel panelCaptcha;
+        private System.Windows.Forms.Panel panelShoom;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.TextBox textBoxCaptcha;
+        private newLabel newLabel1;
+        private newLabel newLabel2;
+        private newLabel newLabel4;
+        private newLabel newLabel3;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 

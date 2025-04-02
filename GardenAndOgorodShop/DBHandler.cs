@@ -62,23 +62,11 @@ namespace GardenAndOgorodShop
                 return false;
             }
         }
-        public static int[] ImportCsv(string table, string query, string path, int count_properties)
+        private static string[] MakeArray(int count_properties, string s)
         {
-            MySqlConnection connect = new MySqlConnection(connect_string);
-            connect.Open();
-            StreamReader f = new StreamReader(path);
-            if (!f.EndOfStream)
+            string[] arr = new string[count_properties];
+            try
             {
-                f.ReadLine();
-            }
-            int bad_count = 0;
-            int main_count = 0;
-            while (!f.EndOfStream)
-            {
-                string[] arr = new string[count_properties];
-
-                string s = f.ReadLine();
-
                 int arr_counter = 0;
                 bool enclose_elem = false;
 
@@ -114,9 +102,30 @@ namespace GardenAndOgorodShop
                         }
                     }
                 }
-                //
-                //string[] arr = s.Split(',');
-                //
+            }
+            catch (Exception e)
+            {
+                ;
+            }
+            return arr;
+        }
+        public static int[] ImportCsv(string table, string query, string path, int count_properties)
+        {
+            MySqlConnection connect = new MySqlConnection(connect_string);
+            connect.Open();
+            StreamReader f = new StreamReader(path);
+            if (!f.EndOfStream)
+            {
+                string s = f.ReadLine();
+                string[] arr = MakeArray(count_properties, s);
+            }
+            int bad_count = 0;
+            int main_count = 0;
+            while (!f.EndOfStream)
+            {
+                string s = f.ReadLine();
+
+                string[] arr = MakeArray(count_properties, s);
 
                 string query_custom = query;
                 for (int i = 0; i < arr.Length - 1; i++)
