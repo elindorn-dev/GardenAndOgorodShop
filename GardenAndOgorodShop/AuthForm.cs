@@ -27,6 +27,32 @@ namespace GardenAndOgorodShop
         public AuthForm()
         {
             InitializeComponent();
+
+            flowLayoutPanel1.ControlAdded += FlowLayoutPanel_ControlAdded;
+
+            List<blockRecord> blockRecords = new List<blockRecord>();
+            for(int i = 0; i < 10; i++)
+            {
+                blockRecords.Add(new blockRecord());
+                blockRecords[i].Header = "sldjflskdjf";
+                blockRecords[i].Description = "dдлвоаыдваоывдлаоыдвла";
+                blockRecords[i].Amount = 5;
+                blockRecords[i].Discount = 10;
+                blockRecords[i].DefaultPrice = 20;
+                blockRecords[i].ProductImage = Properties.Resources.minus;
+
+                flowLayoutPanel1.Controls.Add(blockRecords[i]);
+                FlowLayoutPanel_ControlAdded(flowLayoutPanel1, new ControlEventArgs(blockRecords[i]));
+            }
+        }
+        private void FlowLayoutPanel_ControlAdded(object sender, ControlEventArgs e)
+        {
+            if (flowLayoutPanel1.Controls.Count > 1)
+            {
+                Control addedControl = e.Control;
+
+                addedControl.Margin = new Padding(0, 10, 0, 0);
+            }
         }
         // ФУНКЦИЯ ПОЯВЛЕНИЯ ПАНЕЛИ НАСТРОЕК
         private async void ActiveSetting()
@@ -348,4 +374,5 @@ namespace GardenAndOgorodShop
             base.OnPaint(e);
         }
     }
+    
 }

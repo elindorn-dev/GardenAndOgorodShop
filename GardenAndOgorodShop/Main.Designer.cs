@@ -724,7 +724,7 @@
             this.labelReadyOrNot.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelReadyOrNot.Location = new System.Drawing.Point(3, 13);
             this.labelReadyOrNot.Name = "labelReadyOrNot";
-            this.labelReadyOrNot.Size = new System.Drawing.Size(212, 32);
+            this.labelReadyOrNot.Size = new System.Drawing.Size(211, 32);
             this.labelReadyOrNot.TabIndex = 19;
             this.labelReadyOrNot.Text = "Товар добавлен.";
             // 
