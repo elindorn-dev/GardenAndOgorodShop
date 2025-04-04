@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Security.Cryptography;
+using System.IO;
 
 namespace GardenAndOgorodShop
 {
@@ -30,28 +31,48 @@ namespace GardenAndOgorodShop
 
             flowLayoutPanel1.ControlAdded += FlowLayoutPanel_ControlAdded;
 
+            DataTable products_table = DBHandler.LoadDataSync("products");
             List<blockRecord> blockRecords = new List<blockRecord>();
-            for(int i = 0; i < 10; i++)
+            if (products_table.Rows.Count <= 0) return;
+
+            int i = 0;
+            foreach (DataRow record in products_table.Rows)
             {
                 blockRecords.Add(new blockRecord());
-                blockRecords[i].Header = "sldjflskdjf";
-                blockRecords[i].Description = "dдлвоаыдваоывдлаоыдвла";
-                blockRecords[i].Amount = 5;
-                blockRecords[i].Discount = 10;
-                blockRecords[i].DefaultPrice = 20;
-                blockRecords[i].ProductImage = Properties.Resources.minus;
-
+                blockRecords[i].IDrecord = (int)record[0];
+                blockRecords[i].Header = record["products_name"].ToString();
+                blockRecords[i].Description = record["descript"].ToString();
+                blockRecords[i].Amount = (int)record["is_available"];
+                blockRecords[i].Discount = Convert.ToInt32(record["seasonal_discount"]);
+                blockRecords[i].DefaultPrice = Convert.ToInt32(record["price"]);
+                if (record["image"] != DBNull.Value)
+                {
+                    byte[] imageData = (byte[])record["image"];
+                    using (MemoryStream ms = new MemoryStream(imageData))
+                    {
+                        blockRecords[i].ProductImage = Image.FromStream(ms);
+                    }
+                }
+                blockRecords[i].VisibleButtons = UserConfiguration.UserRole != "seller";
+                blockRecords[i].ProductDeleted += Product_ProductDeleted;
                 flowLayoutPanel1.Controls.Add(blockRecords[i]);
                 FlowLayoutPanel_ControlAdded(flowLayoutPanel1, new ControlEventArgs(blockRecords[i]));
+                i++;
             }
         }
         private void FlowLayoutPanel_ControlAdded(object sender, ControlEventArgs e)
         {
-            if (flowLayoutPanel1.Controls.Count > 1)
-            {
-                Control addedControl = e.Control;
+            Control addedControl = e.Control;
 
-                addedControl.Margin = new Padding(0, 10, 0, 0);
+            addedControl.Margin = new Padding(10, 20, 0, 0);
+        }
+        private void Product_ProductDeleted(object sender, EventArgs e)
+        {
+            blockRecord productToDelete = sender as blockRecord;
+            if (productToDelete != null)
+            {
+                flowLayoutPanel1.Controls.Remove(productToDelete);
+                productToDelete.Dispose();
             }
         }
         // ФУНКЦИЯ ПОЯВЛЕНИЯ ПАНЕЛИ НАСТРОЕК
