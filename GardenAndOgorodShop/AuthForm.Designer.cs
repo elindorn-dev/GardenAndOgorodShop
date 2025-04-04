@@ -54,7 +54,6 @@
             this.buttonExitApp = new System.Windows.Forms.Button();
             this.buttonMenu = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panelAuth.SuspendLayout();
             this.panelCaptcha.SuspendLayout();
             this.panelShoom.SuspendLayout();
@@ -323,7 +322,7 @@
             this.panelSettings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(120)))), ((int)(((byte)(56)))));
             this.panelSettings.Controls.Add(this.buttonSettingsDB);
             this.panelSettings.Controls.Add(this.buttonExitApp);
-            this.panelSettings.Location = new System.Drawing.Point(1167, 61);
+            this.panelSettings.Location = new System.Drawing.Point(510, 61);
             this.panelSettings.Name = "panelSettings";
             this.panelSettings.Size = new System.Drawing.Size(210, 161);
             this.panelSettings.TabIndex = 2;
@@ -363,7 +362,7 @@
             this.buttonMenu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonMenu.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.burger_menu;
             this.buttonMenu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonMenu.Location = new System.Drawing.Point(1114, 2);
+            this.buttonMenu.Location = new System.Drawing.Point(457, 2);
             this.buttonMenu.Name = "buttonMenu";
             this.buttonMenu.Size = new System.Drawing.Size(50, 50);
             this.buttonMenu.TabIndex = 1;
@@ -375,24 +374,13 @@
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.AutoScroll = true;
-            this.flowLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.flowLayoutPanel1.BackColor = System.Drawing.Color.White;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 42);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(830, 483);
-            this.flowLayoutPanel1.TabIndex = 5;
-            // 
             // AuthForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(186)))), ((int)(((byte)(93)))));
-            this.ClientSize = new System.Drawing.Size(1167, 525);
-            this.Controls.Add(this.flowLayoutPanel1);
+            this.ClientSize = new System.Drawing.Size(510, 448);
             this.Controls.Add(this.panelSettings);
             this.Controls.Add(this.buttonMenu);
             this.Controls.Add(this.panelAuth);
@@ -448,7 +436,6 @@
         private newLabel newLabel3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     }
 }
 

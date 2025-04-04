@@ -72,6 +72,12 @@
     <Compile Include="CurrentOrder.Designer.cs">
       <DependentUpon>CurrentOrder.cs</DependentUpon>
     </Compile>
+    <Compile Include="CustomSlider.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomSlider.Designer.cs">
+      <DependentUpon>CustomSlider.cs</DependentUpon>
+    </Compile>
     <Compile Include="dbSettingsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,6 +113,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CurrentOrder.resx">
       <DependentUpon>CurrentOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomSlider.resx">
+      <DependentUpon>CustomSlider.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="dbSettingsForm.resx">
       <DependentUpon>dbSettingsForm.cs</DependentUpon>

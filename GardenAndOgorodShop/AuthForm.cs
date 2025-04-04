@@ -28,52 +28,6 @@ namespace GardenAndOgorodShop
         public AuthForm()
         {
             InitializeComponent();
-
-            flowLayoutPanel1.ControlAdded += FlowLayoutPanel_ControlAdded;
-
-            DataTable products_table = DBHandler.LoadDataSync("products");
-            List<blockRecord> blockRecords = new List<blockRecord>();
-            if (products_table.Rows.Count <= 0) return;
-
-            int i = 0;
-            foreach (DataRow record in products_table.Rows)
-            {
-                blockRecords.Add(new blockRecord());
-                blockRecords[i].IDrecord = (int)record[0];
-                blockRecords[i].Header = record["products_name"].ToString();
-                blockRecords[i].Description = record["descript"].ToString();
-                blockRecords[i].Amount = (int)record["is_available"];
-                blockRecords[i].Discount = Convert.ToInt32(record["seasonal_discount"]);
-                blockRecords[i].DefaultPrice = Convert.ToInt32(record["price"]);
-                if (record["image"] != DBNull.Value)
-                {
-                    byte[] imageData = (byte[])record["image"];
-                    using (MemoryStream ms = new MemoryStream(imageData))
-                    {
-                        blockRecords[i].ProductImage = Image.FromStream(ms);
-                    }
-                }
-                blockRecords[i].VisibleButtons = UserConfiguration.UserRole != "seller";
-                blockRecords[i].ProductDeleted += Product_ProductDeleted;
-                flowLayoutPanel1.Controls.Add(blockRecords[i]);
-                FlowLayoutPanel_ControlAdded(flowLayoutPanel1, new ControlEventArgs(blockRecords[i]));
-                i++;
-            }
-        }
-        private void FlowLayoutPanel_ControlAdded(object sender, ControlEventArgs e)
-        {
-            Control addedControl = e.Control;
-
-            addedControl.Margin = new Padding(10, 20, 0, 0);
-        }
-        private void Product_ProductDeleted(object sender, EventArgs e)
-        {
-            blockRecord productToDelete = sender as blockRecord;
-            if (productToDelete != null)
-            {
-                flowLayoutPanel1.Controls.Remove(productToDelete);
-                productToDelete.Dispose();
-            }
         }
         // ФУНКЦИЯ ПОЯВЛЕНИЯ ПАНЕЛИ НАСТРОЕК
         private async void ActiveSetting()

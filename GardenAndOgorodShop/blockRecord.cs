@@ -87,6 +87,7 @@ namespace GardenAndOgorodShop
                 if (_discount != 0)
                 {
                     labelDiscount.Text = value.ToString() + "%";
+                    labelDiscount.ForeColor = Color.YellowGreen;
                 }
                 else
                 {
@@ -101,7 +102,8 @@ namespace GardenAndOgorodShop
             private set 
             {
                 _priceWithDiscount = value;
-                labelPrice1.Text = value.ToString("N2");  
+                labelPrice1.Text = value.ToString("N2");
+                labelPrice1.ForeColor = _discount != 0 ? Color.Red : Color.Black;
             }
         }
         public double DefaultPrice
@@ -111,7 +113,7 @@ namespace GardenAndOgorodShop
             {
                 _defaultPrice = value;
                 UpdatePriceWithDiscount();
-                labelPrice2.Text = value.ToString("N2"); 
+                labelPrice2.Text = _discount != 0 ? value.ToString() : "";
             }
         }
         private void UpdatePriceWithDiscount()

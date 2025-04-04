@@ -178,6 +178,7 @@ C:\Users\Dmitry\Desktop\kursovaya\GardenAndOgorodShop\GardenAndOgorodShop\obj\De
 C:\Users\Dmitry\Desktop\kursovaya\GardenAndOgorodShop\GardenAndOgorodShop\obj\Debug\GardenAndOgorodShop.csproj.ResolveComReference.cache
 C:\Users\Dmitry\Desktop\kursovaya\GardenAndOgorodShop\GardenAndOgorodShop\obj\Debug\GardenAndOgorodShop.blockRecord.resources
 C:\Users\Dmitry\Desktop\kursovaya\GardenAndOgorodShop\GardenAndOgorodShop\obj\Debug\GardenAndOgorodShop.CurrentOrder.resources
+C:\Users\Dmitry\Desktop\kursovaya\GardenAndOgorodShop\GardenAndOgorodShop\obj\Debug\GardenAndOgorodShop.CustomSlider.resources
 C:\Users\Dmitry\Desktop\kursovaya\GardenAndOgorodShop\GardenAndOgorodShop\obj\Debug\GardenAndOgorodShop.dbSettingsForm.resources
 C:\Users\Dmitry\Desktop\kursovaya\GardenAndOgorodShop\GardenAndOgorodShop\obj\Debug\GardenAndOgorodShop.HandleRecordForm.resources
 C:\Users\Dmitry\Desktop\kursovaya\GardenAndOgorodShop\GardenAndOgorodShop\obj\Debug\GardenAndOgorodShop.AuthForm.resources

@@ -43,13 +43,11 @@
             this.buttonSortProductByName = new System.Windows.Forms.Button();
             this.comboBoxCategories = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.buttonFilterProduct = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.buttonProductsControl = new System.Windows.Forms.Button();
             this.panelNavigation = new System.Windows.Forms.Panel();
             this.panelEmployeeData = new System.Windows.Forms.Panel();
             this.labelEmployeeName = new System.Windows.Forms.Label();
-            this.pictureBoxUser = new System.Windows.Forms.PictureBox();
             this.buttonLogOut = new System.Windows.Forms.Button();
             this.buttonExitApp = new System.Windows.Forms.Button();
             this.buttonToStockForm = new System.Windows.Forms.Button();
@@ -60,33 +58,25 @@
             this.buttonToEmployeeForm = new System.Windows.Forms.Button();
             this.buttonToCategoryForm = new System.Windows.Forms.Button();
             this.buttonToProductForm = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
             this.buttonCurrentOrder = new System.Windows.Forms.Button();
             this.ViewProductPage = new System.Windows.Forms.TabPage();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panelResult = new System.Windows.Forms.Panel();
-            this.pictureBoxReadyOrNot = new System.Windows.Forms.PictureBox();
             this.labelReadyOrNot = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.ViewCategories = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.button6 = new System.Windows.Forms.Button();
-            this.buttonAddCategory = new System.Windows.Forms.Button();
-            this.buttonEditCategory = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.dataGridViewCategories = new System.Windows.Forms.DataGridView();
             this.TitleCategory = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DescCategory = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ViewEmployeesPage = new System.Windows.Forms.TabPage();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
             this.textBoxSearchEmployee = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.buttonSortEmployeeByName = new System.Windows.Forms.Button();
             this.comboBoxRoles = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.buttonFilterEmployee = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.dataGridViewEmployees = new System.Windows.Forms.DataGridView();
@@ -96,9 +86,6 @@
             this.EmployeePosition = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ViewUsersPage = new System.Windows.Forms.TabPage();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.button12 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
             this.dataGridViewUsers = new System.Windows.Forms.DataGridView();
             this.userLogin = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -106,8 +93,6 @@
             this.userLastLogIn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ViewOrdersPage = new System.Windows.Forms.TabPage();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button17 = new System.Windows.Forms.Button();
             this.button18 = new System.Windows.Forms.Button();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
@@ -118,9 +103,6 @@
             this.totalCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ViewBrandsPage = new System.Windows.Forms.TabPage();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button19 = new System.Windows.Forms.Button();
-            this.button20 = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
             this.dataGridViewBrands = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -128,9 +110,6 @@
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ViewSuppliersPage = new System.Windows.Forms.TabPage();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button21 = new System.Windows.Forms.Button();
-            this.button22 = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
             this.dataGridViewSuppliers = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -139,8 +118,6 @@
             this.ViewDocsPage = new System.Windows.Forms.TabPage();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel9 = new System.Windows.Forms.Panel();
             this.buttonReportOrders = new System.Windows.Forms.Button();
             this.dateTimePickerTo = new System.Windows.Forms.DateTimePicker();
@@ -149,15 +126,37 @@
             this.dateTimePickerFrom = new System.Windows.Forms.DateTimePicker();
             this.label19 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
+            this.pictureBoxUser = new System.Windows.Forms.PictureBox();
+            this.button5 = new System.Windows.Forms.Button();
+            this.pictureBoxReadyOrNot = new System.Windows.Forms.PictureBox();
             this.buttonAddProduct = new System.Windows.Forms.Button();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.buttonFilterProduct = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.buttonAddCategory = new System.Windows.Forms.Button();
+            this.buttonEditCategory = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.buttonFilterEmployee = new System.Windows.Forms.Button();
+            this.button12 = new System.Windows.Forms.Button();
+            this.button9 = new System.Windows.Forms.Button();
+            this.button11 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
+            this.button17 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button19 = new System.Windows.Forms.Button();
+            this.button20 = new System.Windows.Forms.Button();
+            this.button10 = new System.Windows.Forms.Button();
+            this.button21 = new System.Windows.Forms.Button();
+            this.button22 = new System.Windows.Forms.Button();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.customSlider1 = new GardenAndOgorodShop.CustomSlider();
             this.panel1.SuspendLayout();
             this.panelNavigation.SuspendLayout();
             this.panelEmployeeData.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUser)).BeginInit();
             this.ViewProductPage.SuspendLayout();
             this.panelResult.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxReadyOrNot)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.ViewCategories.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -178,9 +177,11 @@
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSuppliers)).BeginInit();
             this.ViewDocsPage.SuspendLayout();
+            this.panel8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUser)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxReadyOrNot)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.panel8.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -197,6 +198,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.customSlider1);
             this.panel1.Controls.Add(this.buttonAddProduct);
             this.panel1.Controls.Add(this.textBoxSearchProduct);
             this.panel1.Controls.Add(this.label3);
@@ -268,7 +270,7 @@
             this.comboBoxCategories.BackColor = System.Drawing.SystemColors.Window;
             this.comboBoxCategories.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.comboBoxCategories.FormattingEnabled = true;
-            this.comboBoxCategories.Location = new System.Drawing.Point(492, 137);
+            this.comboBoxCategories.Location = new System.Drawing.Point(458, 137);
             this.comboBoxCategories.Name = "comboBoxCategories";
             this.comboBoxCategories.Size = new System.Drawing.Size(192, 29);
             this.comboBoxCategories.TabIndex = 9;
@@ -279,24 +281,11 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.Location = new System.Drawing.Point(499, 137);
+            this.label5.Location = new System.Drawing.Point(465, 137);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(122, 25);
             this.label5.TabIndex = 8;
             this.label5.Text = "Фильтрация:";
-            // 
-            // buttonFilterProduct
-            // 
-            this.buttonFilterProduct.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.disactive_filter_icon;
-            this.buttonFilterProduct.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonFilterProduct.FlatAppearance.BorderSize = 0;
-            this.buttonFilterProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonFilterProduct.Location = new System.Drawing.Point(622, 129);
-            this.buttonFilterProduct.Name = "buttonFilterProduct";
-            this.buttonFilterProduct.Size = new System.Drawing.Size(40, 40);
-            this.buttonFilterProduct.TabIndex = 5;
-            this.buttonFilterProduct.UseVisualStyleBackColor = true;
-            this.buttonFilterProduct.Click += new System.EventHandler(this.button1_Click);
             // 
             // label2
             // 
@@ -364,16 +353,6 @@
             this.labelEmployeeName.Size = new System.Drawing.Size(79, 21);
             this.labelEmployeeName.TabIndex = 1;
             this.labelEmployeeName.Text = "none user";
-            // 
-            // pictureBoxUser
-            // 
-            this.pictureBoxUser.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.none_employee;
-            this.pictureBoxUser.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBoxUser.Location = new System.Drawing.Point(5, 5);
-            this.pictureBoxUser.Name = "pictureBoxUser";
-            this.pictureBoxUser.Size = new System.Drawing.Size(40, 40);
-            this.pictureBoxUser.TabIndex = 0;
-            this.pictureBoxUser.TabStop = false;
             // 
             // buttonLogOut
             // 
@@ -515,20 +494,6 @@
             this.buttonToProductForm.Visible = false;
             this.buttonToProductForm.Click += new System.EventHandler(this.buttonToProductForm_Click);
             // 
-            // button5
-            // 
-            this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button5.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.burger_menu;
-            this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button5.FlatAppearance.BorderSize = 0;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Location = new System.Drawing.Point(4, 3);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(40, 40);
-            this.button5.TabIndex = 8;
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
             // buttonCurrentOrder
             // 
             this.buttonCurrentOrder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(186)))), ((int)(((byte)(93)))));
@@ -557,6 +522,16 @@
             this.ViewProductPage.TabIndex = 1;
             this.ViewProductPage.Click += new System.EventHandler(this.ViewProductPage_Click);
             // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.AutoScroll = true;
+            this.flowLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.flowLayoutPanel1.BackColor = System.Drawing.Color.White;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(23, 181);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(830, 483);
+            this.flowLayoutPanel1.TabIndex = 6;
+            // 
             // panelResult
             // 
             this.panelResult.BackColor = System.Drawing.Color.White;
@@ -568,16 +543,6 @@
             this.panelResult.Size = new System.Drawing.Size(370, 59);
             this.panelResult.TabIndex = 3;
             this.panelResult.Visible = false;
-            // 
-            // pictureBoxReadyOrNot
-            // 
-            this.pictureBoxReadyOrNot.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.burger_menu;
-            this.pictureBoxReadyOrNot.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBoxReadyOrNot.Location = new System.Drawing.Point(313, 5);
-            this.pictureBoxReadyOrNot.Name = "pictureBoxReadyOrNot";
-            this.pictureBoxReadyOrNot.Size = new System.Drawing.Size(50, 50);
-            this.pictureBoxReadyOrNot.TabIndex = 20;
-            this.pictureBoxReadyOrNot.TabStop = false;
             // 
             // labelReadyOrNot
             // 
@@ -632,45 +597,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(817, 80);
             this.panel2.TabIndex = 4;
-            // 
-            // button6
-            // 
-            this.button6.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.delete;
-            this.button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button6.FlatAppearance.BorderSize = 0;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button6.Location = new System.Drawing.Point(681, 37);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(40, 40);
-            this.button6.TabIndex = 20;
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
-            // 
-            // buttonAddCategory
-            // 
-            this.buttonAddCategory.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.add_icon;
-            this.buttonAddCategory.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonAddCategory.FlatAppearance.BorderSize = 0;
-            this.buttonAddCategory.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonAddCategory.Location = new System.Drawing.Point(727, 37);
-            this.buttonAddCategory.Name = "buttonAddCategory";
-            this.buttonAddCategory.Size = new System.Drawing.Size(40, 40);
-            this.buttonAddCategory.TabIndex = 19;
-            this.buttonAddCategory.UseVisualStyleBackColor = true;
-            this.buttonAddCategory.Click += new System.EventHandler(this.buttonAddCategory_Click);
-            // 
-            // buttonEditCategory
-            // 
-            this.buttonEditCategory.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.more_info;
-            this.buttonEditCategory.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonEditCategory.FlatAppearance.BorderSize = 0;
-            this.buttonEditCategory.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonEditCategory.Location = new System.Drawing.Point(773, 37);
-            this.buttonEditCategory.Name = "buttonEditCategory";
-            this.buttonEditCategory.Size = new System.Drawing.Size(40, 40);
-            this.buttonEditCategory.TabIndex = 18;
-            this.buttonEditCategory.UseVisualStyleBackColor = true;
-            this.buttonEditCategory.Click += new System.EventHandler(this.buttonEditCategory_Click);
             // 
             // label8
             // 
@@ -750,45 +676,6 @@
             this.panel3.Size = new System.Drawing.Size(817, 172);
             this.panel3.TabIndex = 4;
             // 
-            // button7
-            // 
-            this.button7.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.delete;
-            this.button7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button7.FlatAppearance.BorderSize = 0;
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button7.Location = new System.Drawing.Point(681, 125);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(40, 40);
-            this.button7.TabIndex = 20;
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
-            // 
-            // button3
-            // 
-            this.button3.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.add_icon;
-            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button3.Location = new System.Drawing.Point(727, 125);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(40, 40);
-            this.button3.TabIndex = 19;
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // button4
-            // 
-            this.button4.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.more_info;
-            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button4.FlatAppearance.BorderSize = 0;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button4.Location = new System.Drawing.Point(773, 125);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(40, 40);
-            this.button4.TabIndex = 18;
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
             // textBoxSearchEmployee
             // 
             this.textBoxSearchEmployee.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
@@ -846,19 +733,6 @@
             this.label6.Size = new System.Drawing.Size(122, 25);
             this.label6.TabIndex = 8;
             this.label6.Text = "Фильтрация:";
-            // 
-            // buttonFilterEmployee
-            // 
-            this.buttonFilterEmployee.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.disactive_filter_icon;
-            this.buttonFilterEmployee.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonFilterEmployee.FlatAppearance.BorderSize = 0;
-            this.buttonFilterEmployee.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonFilterEmployee.Location = new System.Drawing.Point(600, 126);
-            this.buttonFilterEmployee.Name = "buttonFilterEmployee";
-            this.buttonFilterEmployee.Size = new System.Drawing.Size(40, 40);
-            this.buttonFilterEmployee.TabIndex = 5;
-            this.buttonFilterEmployee.UseVisualStyleBackColor = true;
-            this.buttonFilterEmployee.Click += new System.EventHandler(this.buttonFilterEmployee_Click);
             // 
             // label7
             // 
@@ -958,45 +832,6 @@
             this.panel4.Size = new System.Drawing.Size(817, 115);
             this.panel4.TabIndex = 6;
             // 
-            // button12
-            // 
-            this.button12.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.delete;
-            this.button12.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button12.FlatAppearance.BorderSize = 0;
-            this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button12.Location = new System.Drawing.Point(678, 57);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(40, 40);
-            this.button12.TabIndex = 20;
-            this.button12.UseVisualStyleBackColor = true;
-            this.button12.Click += new System.EventHandler(this.button12_Click);
-            // 
-            // button9
-            // 
-            this.button9.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.add_icon;
-            this.button9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button9.FlatAppearance.BorderSize = 0;
-            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button9.Location = new System.Drawing.Point(724, 57);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(40, 40);
-            this.button9.TabIndex = 19;
-            this.button9.UseVisualStyleBackColor = true;
-            this.button9.Click += new System.EventHandler(this.button9_Click);
-            // 
-            // button11
-            // 
-            this.button11.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.more_info;
-            this.button11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button11.FlatAppearance.BorderSize = 0;
-            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button11.Location = new System.Drawing.Point(770, 57);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(40, 40);
-            this.button11.TabIndex = 18;
-            this.button11.UseVisualStyleBackColor = true;
-            this.button11.Click += new System.EventHandler(this.button11_Click);
-            // 
             // label13
             // 
             this.label13.AutoSize = true;
@@ -1076,32 +911,6 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(817, 127);
             this.panel5.TabIndex = 6;
-            // 
-            // button8
-            // 
-            this.button8.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.delete;
-            this.button8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button8.FlatAppearance.BorderSize = 0;
-            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button8.Location = new System.Drawing.Point(727, 85);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(40, 40);
-            this.button8.TabIndex = 20;
-            this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
-            // 
-            // button17
-            // 
-            this.button17.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.more_info;
-            this.button17.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button17.FlatAppearance.BorderSize = 0;
-            this.button17.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button17.Location = new System.Drawing.Point(773, 85);
-            this.button17.Name = "button17";
-            this.button17.Size = new System.Drawing.Size(40, 40);
-            this.button17.TabIndex = 18;
-            this.button17.UseVisualStyleBackColor = true;
-            this.button17.Click += new System.EventHandler(this.button17_Click);
             // 
             // button18
             // 
@@ -1212,45 +1021,6 @@
             this.panel6.Size = new System.Drawing.Size(817, 98);
             this.panel6.TabIndex = 8;
             // 
-            // button2
-            // 
-            this.button2.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.delete;
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button2.Location = new System.Drawing.Point(681, 55);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(40, 40);
-            this.button2.TabIndex = 20;
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button19
-            // 
-            this.button19.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.add_icon;
-            this.button19.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button19.FlatAppearance.BorderSize = 0;
-            this.button19.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button19.Location = new System.Drawing.Point(727, 55);
-            this.button19.Name = "button19";
-            this.button19.Size = new System.Drawing.Size(40, 40);
-            this.button19.TabIndex = 19;
-            this.button19.UseVisualStyleBackColor = true;
-            this.button19.Click += new System.EventHandler(this.button19_Click);
-            // 
-            // button20
-            // 
-            this.button20.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.more_info;
-            this.button20.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button20.FlatAppearance.BorderSize = 0;
-            this.button20.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button20.Location = new System.Drawing.Point(773, 55);
-            this.button20.Name = "button20";
-            this.button20.Size = new System.Drawing.Size(40, 40);
-            this.button20.TabIndex = 18;
-            this.button20.UseVisualStyleBackColor = true;
-            this.button20.Click += new System.EventHandler(this.button20_Click);
-            // 
             // label15
             // 
             this.label15.AutoSize = true;
@@ -1330,45 +1100,6 @@
             this.panel7.Size = new System.Drawing.Size(817, 98);
             this.panel7.TabIndex = 10;
             // 
-            // button10
-            // 
-            this.button10.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.delete;
-            this.button10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button10.FlatAppearance.BorderSize = 0;
-            this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button10.Location = new System.Drawing.Point(681, 53);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(40, 40);
-            this.button10.TabIndex = 20;
-            this.button10.UseVisualStyleBackColor = true;
-            this.button10.Click += new System.EventHandler(this.button10_Click);
-            // 
-            // button21
-            // 
-            this.button21.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.add_icon;
-            this.button21.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button21.FlatAppearance.BorderSize = 0;
-            this.button21.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button21.Location = new System.Drawing.Point(727, 53);
-            this.button21.Name = "button21";
-            this.button21.Size = new System.Drawing.Size(40, 40);
-            this.button21.TabIndex = 19;
-            this.button21.UseVisualStyleBackColor = true;
-            this.button21.Click += new System.EventHandler(this.button21_Click);
-            // 
-            // button22
-            // 
-            this.button22.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.more_info;
-            this.button22.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button22.FlatAppearance.BorderSize = 0;
-            this.button22.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button22.Location = new System.Drawing.Point(773, 53);
-            this.button22.Name = "button22";
-            this.button22.Size = new System.Drawing.Size(40, 40);
-            this.button22.TabIndex = 18;
-            this.button22.UseVisualStyleBackColor = true;
-            this.button22.Click += new System.EventHandler(this.button22_Click);
-            // 
             // label14
             // 
             this.label14.AutoSize = true;
@@ -1430,8 +1161,6 @@
             this.ViewDocsPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(186)))), ((int)(((byte)(93)))));
             this.ViewDocsPage.Controls.Add(this.label11);
             this.ViewDocsPage.Controls.Add(this.label10);
-            this.ViewDocsPage.Controls.Add(this.pictureBox2);
-            this.ViewDocsPage.Controls.Add(this.pictureBox1);
             this.ViewDocsPage.Controls.Add(this.panel9);
             this.ViewDocsPage.Controls.Add(this.buttonReportOrders);
             this.ViewDocsPage.Controls.Add(this.buttonProductsControl);
@@ -1440,6 +1169,8 @@
             this.ViewDocsPage.Controls.Add(this.dateTimePickerFrom);
             this.ViewDocsPage.Controls.Add(this.label19);
             this.ViewDocsPage.Controls.Add(this.label18);
+            this.ViewDocsPage.Controls.Add(this.pictureBox2);
+            this.ViewDocsPage.Controls.Add(this.pictureBox1);
             this.ViewDocsPage.Location = new System.Drawing.Point(4, 5);
             this.ViewDocsPage.Name = "ViewDocsPage";
             this.ViewDocsPage.Size = new System.Drawing.Size(884, 682);
@@ -1465,26 +1196,6 @@
             this.label10.Size = new System.Drawing.Size(103, 25);
             this.label10.TabIndex = 85;
             this.label10.Text = "Пример:";
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.show_2;
-            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox2.Location = new System.Drawing.Point(441, 375);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(425, 289);
-            this.pictureBox2.TabIndex = 84;
-            this.pictureBox2.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.show_1;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Location = new System.Drawing.Point(25, 375);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(375, 289);
-            this.pictureBox1.TabIndex = 83;
-            this.pictureBox1.TabStop = false;
             // 
             // panel9
             // 
@@ -1571,6 +1282,40 @@
             this.label18.TabIndex = 80;
             this.label18.Text = "от";
             // 
+            // pictureBoxUser
+            // 
+            this.pictureBoxUser.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.none_employee;
+            this.pictureBoxUser.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBoxUser.Location = new System.Drawing.Point(5, 5);
+            this.pictureBoxUser.Name = "pictureBoxUser";
+            this.pictureBoxUser.Size = new System.Drawing.Size(40, 40);
+            this.pictureBoxUser.TabIndex = 0;
+            this.pictureBoxUser.TabStop = false;
+            // 
+            // button5
+            // 
+            this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button5.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.burger_menu;
+            this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button5.FlatAppearance.BorderSize = 0;
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button5.Location = new System.Drawing.Point(4, 3);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(40, 40);
+            this.button5.TabIndex = 8;
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // pictureBoxReadyOrNot
+            // 
+            this.pictureBoxReadyOrNot.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.burger_menu;
+            this.pictureBoxReadyOrNot.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBoxReadyOrNot.Location = new System.Drawing.Point(313, 5);
+            this.pictureBoxReadyOrNot.Name = "pictureBoxReadyOrNot";
+            this.pictureBoxReadyOrNot.Size = new System.Drawing.Size(50, 50);
+            this.pictureBoxReadyOrNot.TabIndex = 20;
+            this.pictureBoxReadyOrNot.TabStop = false;
+            // 
             // buttonAddProduct
             // 
             this.buttonAddProduct.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.add_icon;
@@ -1584,15 +1329,281 @@
             this.buttonAddProduct.UseVisualStyleBackColor = true;
             this.buttonAddProduct.Click += new System.EventHandler(this.buttonAddProduct_Click);
             // 
-            // flowLayoutPanel1
+            // buttonFilterProduct
             // 
-            this.flowLayoutPanel1.AutoScroll = true;
-            this.flowLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.flowLayoutPanel1.BackColor = System.Drawing.Color.White;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(23, 181);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(830, 483);
-            this.flowLayoutPanel1.TabIndex = 6;
+            this.buttonFilterProduct.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.disactive_filter_icon;
+            this.buttonFilterProduct.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonFilterProduct.FlatAppearance.BorderSize = 0;
+            this.buttonFilterProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonFilterProduct.Location = new System.Drawing.Point(588, 129);
+            this.buttonFilterProduct.Name = "buttonFilterProduct";
+            this.buttonFilterProduct.Size = new System.Drawing.Size(40, 40);
+            this.buttonFilterProduct.TabIndex = 5;
+            this.buttonFilterProduct.UseVisualStyleBackColor = true;
+            this.buttonFilterProduct.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button6
+            // 
+            this.button6.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.delete;
+            this.button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button6.FlatAppearance.BorderSize = 0;
+            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button6.Location = new System.Drawing.Point(681, 37);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(40, 40);
+            this.button6.TabIndex = 20;
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // buttonAddCategory
+            // 
+            this.buttonAddCategory.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.add_icon;
+            this.buttonAddCategory.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonAddCategory.FlatAppearance.BorderSize = 0;
+            this.buttonAddCategory.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonAddCategory.Location = new System.Drawing.Point(727, 37);
+            this.buttonAddCategory.Name = "buttonAddCategory";
+            this.buttonAddCategory.Size = new System.Drawing.Size(40, 40);
+            this.buttonAddCategory.TabIndex = 19;
+            this.buttonAddCategory.UseVisualStyleBackColor = true;
+            this.buttonAddCategory.Click += new System.EventHandler(this.buttonAddCategory_Click);
+            // 
+            // buttonEditCategory
+            // 
+            this.buttonEditCategory.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.more_info;
+            this.buttonEditCategory.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonEditCategory.FlatAppearance.BorderSize = 0;
+            this.buttonEditCategory.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonEditCategory.Location = new System.Drawing.Point(773, 37);
+            this.buttonEditCategory.Name = "buttonEditCategory";
+            this.buttonEditCategory.Size = new System.Drawing.Size(40, 40);
+            this.buttonEditCategory.TabIndex = 18;
+            this.buttonEditCategory.UseVisualStyleBackColor = true;
+            this.buttonEditCategory.Click += new System.EventHandler(this.buttonEditCategory_Click);
+            // 
+            // button7
+            // 
+            this.button7.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.delete;
+            this.button7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button7.FlatAppearance.BorderSize = 0;
+            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button7.Location = new System.Drawing.Point(681, 125);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(40, 40);
+            this.button7.TabIndex = 20;
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // button3
+            // 
+            this.button3.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.add_icon;
+            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button3.FlatAppearance.BorderSize = 0;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button3.Location = new System.Drawing.Point(727, 125);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(40, 40);
+            this.button3.TabIndex = 19;
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // button4
+            // 
+            this.button4.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.more_info;
+            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button4.FlatAppearance.BorderSize = 0;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button4.Location = new System.Drawing.Point(773, 125);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(40, 40);
+            this.button4.TabIndex = 18;
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // buttonFilterEmployee
+            // 
+            this.buttonFilterEmployee.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.disactive_filter_icon;
+            this.buttonFilterEmployee.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonFilterEmployee.FlatAppearance.BorderSize = 0;
+            this.buttonFilterEmployee.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonFilterEmployee.Location = new System.Drawing.Point(600, 126);
+            this.buttonFilterEmployee.Name = "buttonFilterEmployee";
+            this.buttonFilterEmployee.Size = new System.Drawing.Size(40, 40);
+            this.buttonFilterEmployee.TabIndex = 5;
+            this.buttonFilterEmployee.UseVisualStyleBackColor = true;
+            this.buttonFilterEmployee.Click += new System.EventHandler(this.buttonFilterEmployee_Click);
+            // 
+            // button12
+            // 
+            this.button12.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.delete;
+            this.button12.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button12.FlatAppearance.BorderSize = 0;
+            this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button12.Location = new System.Drawing.Point(678, 57);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(40, 40);
+            this.button12.TabIndex = 20;
+            this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
+            // 
+            // button9
+            // 
+            this.button9.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.add_icon;
+            this.button9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button9.FlatAppearance.BorderSize = 0;
+            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button9.Location = new System.Drawing.Point(724, 57);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(40, 40);
+            this.button9.TabIndex = 19;
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
+            // 
+            // button11
+            // 
+            this.button11.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.more_info;
+            this.button11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button11.FlatAppearance.BorderSize = 0;
+            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button11.Location = new System.Drawing.Point(770, 57);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(40, 40);
+            this.button11.TabIndex = 18;
+            this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
+            // 
+            // button8
+            // 
+            this.button8.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.delete;
+            this.button8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button8.FlatAppearance.BorderSize = 0;
+            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button8.Location = new System.Drawing.Point(727, 85);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(40, 40);
+            this.button8.TabIndex = 20;
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
+            // button17
+            // 
+            this.button17.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.more_info;
+            this.button17.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button17.FlatAppearance.BorderSize = 0;
+            this.button17.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button17.Location = new System.Drawing.Point(773, 85);
+            this.button17.Name = "button17";
+            this.button17.Size = new System.Drawing.Size(40, 40);
+            this.button17.TabIndex = 18;
+            this.button17.UseVisualStyleBackColor = true;
+            this.button17.Click += new System.EventHandler(this.button17_Click);
+            // 
+            // button2
+            // 
+            this.button2.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.delete;
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button2.Location = new System.Drawing.Point(681, 55);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(40, 40);
+            this.button2.TabIndex = 20;
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button19
+            // 
+            this.button19.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.add_icon;
+            this.button19.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button19.FlatAppearance.BorderSize = 0;
+            this.button19.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button19.Location = new System.Drawing.Point(727, 55);
+            this.button19.Name = "button19";
+            this.button19.Size = new System.Drawing.Size(40, 40);
+            this.button19.TabIndex = 19;
+            this.button19.UseVisualStyleBackColor = true;
+            this.button19.Click += new System.EventHandler(this.button19_Click);
+            // 
+            // button20
+            // 
+            this.button20.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.more_info;
+            this.button20.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button20.FlatAppearance.BorderSize = 0;
+            this.button20.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button20.Location = new System.Drawing.Point(773, 55);
+            this.button20.Name = "button20";
+            this.button20.Size = new System.Drawing.Size(40, 40);
+            this.button20.TabIndex = 18;
+            this.button20.UseVisualStyleBackColor = true;
+            this.button20.Click += new System.EventHandler(this.button20_Click);
+            // 
+            // button10
+            // 
+            this.button10.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.delete;
+            this.button10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button10.FlatAppearance.BorderSize = 0;
+            this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button10.Location = new System.Drawing.Point(681, 53);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(40, 40);
+            this.button10.TabIndex = 20;
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
+            // 
+            // button21
+            // 
+            this.button21.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.add_icon;
+            this.button21.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button21.FlatAppearance.BorderSize = 0;
+            this.button21.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button21.Location = new System.Drawing.Point(727, 53);
+            this.button21.Name = "button21";
+            this.button21.Size = new System.Drawing.Size(40, 40);
+            this.button21.TabIndex = 19;
+            this.button21.UseVisualStyleBackColor = true;
+            this.button21.Click += new System.EventHandler(this.button21_Click);
+            // 
+            // button22
+            // 
+            this.button22.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.more_info;
+            this.button22.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button22.FlatAppearance.BorderSize = 0;
+            this.button22.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button22.Location = new System.Drawing.Point(773, 53);
+            this.button22.Name = "button22";
+            this.button22.Size = new System.Drawing.Size(40, 40);
+            this.button22.TabIndex = 18;
+            this.button22.UseVisualStyleBackColor = true;
+            this.button22.Click += new System.EventHandler(this.button22_Click);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.show_2;
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox2.Location = new System.Drawing.Point(441, 375);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(425, 289);
+            this.pictureBox2.TabIndex = 84;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.show_1;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox1.Location = new System.Drawing.Point(25, 375);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(375, 289);
+            this.pictureBox1.TabIndex = 83;
+            this.pictureBox1.TabStop = false;
+            // 
+            // customSlider1
+            // 
+            this.customSlider1.Count = 1;
+            this.customSlider1.CountPages = 0;
+            this.customSlider1.Location = new System.Drawing.Point(674, 3);
+            this.customSlider1.Name = "customSlider1";
+            this.customSlider1.Size = new System.Drawing.Size(178, 69);
+            this.customSlider1.TabIndex = 18;
             // 
             // Main
             // 
@@ -1600,7 +1611,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(186)))), ((int)(((byte)(93)))));
-            this.ClientSize = new System.Drawing.Size(926, 676);
+            this.ClientSize = new System.Drawing.Size(1108, 676);
             this.Controls.Add(this.panelNavigation);
             this.Controls.Add(this.tabControl1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -1616,11 +1627,9 @@
             this.panelNavigation.ResumeLayout(false);
             this.panelEmployeeData.ResumeLayout(false);
             this.panelEmployeeData.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUser)).EndInit();
             this.ViewProductPage.ResumeLayout(false);
             this.panelResult.ResumeLayout(false);
             this.panelResult.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxReadyOrNot)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.ViewCategories.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
@@ -1648,10 +1657,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSuppliers)).EndInit();
             this.ViewDocsPage.ResumeLayout(false);
             this.ViewDocsPage.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUser)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxReadyOrNot)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1773,5 +1784,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button buttonAddProduct;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private CustomSlider customSlider1;
     }
 }

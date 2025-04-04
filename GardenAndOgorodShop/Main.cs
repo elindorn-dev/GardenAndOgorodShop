@@ -28,40 +28,60 @@ namespace GardenAndOgorodShop
 
         private DataTable products_table;
         private DataTable employees_table;
+
+        private int lastPageCount = 0;
         public Main()
         {
             InitializeComponent();
 
             flowLayoutPanel1.ControlAdded += FlowLayoutPanel_ControlAdded;
 
-            DataTable products_table = DBHandler.LoadDataSync("products");
-            List<blockRecord> blockRecords = new List<blockRecord>();
-            if (products_table.Rows.Count <= 0) return;
-
-            int i = 0;
-            foreach (DataRow record in products_table.Rows)
+            products_table = DBHandler.LoadDataSync("products");
+            if (products_table.Rows.Count > 0)
             {
+                if (products_table.Rows.Count % 10 != 0)
+                {
+                    customSlider1.CountPages = products_table.Rows.Count / 10 + 1;
+                    lastPageCount = products_table.Rows.Count % 10;
+                }
+                else 
+                {
+                    customSlider1.CountPages = products_table.Rows.Count / 10;
+                    lastPageCount = 0;
+                }
+                LoadProducts(0, 10);
+            }
+            customSlider1.RefreshProducts += Products_RefreshProducts;
+        }
+        private void LoadProducts(int start, int end)
+        {
+            flowLayoutPanel1.Controls.Clear();
+            List<blockRecord> blockRecords = new List<blockRecord>();
+            int itemsCount = 0;
+            for (int i = start; i < end; i++)
+            {
+                DataRow record = products_table.Rows[i];
+
                 blockRecords.Add(new blockRecord());
-                blockRecords[i].IDrecord = (int)record[0];
-                blockRecords[i].Header = record["products_name"].ToString();
-                blockRecords[i].Description = record["descript"].ToString();
-                blockRecords[i].Amount = (int)record["is_available"];
-                blockRecords[i].Discount = Convert.ToInt32(record["seasonal_discount"]);
-                blockRecords[i].DefaultPrice = Convert.ToInt32(record["price"]);
+                blockRecords[itemsCount].IDrecord = (int)record[0];
+                blockRecords[itemsCount].Header = record["products_name"].ToString();
+                blockRecords[itemsCount].Description = record["descript"].ToString();
+                blockRecords[itemsCount].Amount = (int)record["is_available"];
+                blockRecords[itemsCount].Discount = Convert.ToInt32(record["seasonal_discount"]);
+                blockRecords[itemsCount].DefaultPrice = Convert.ToInt32(record["price"]);
                 if (record["image"] != DBNull.Value)
                 {
                     byte[] imageData = (byte[])record["image"];
                     using (MemoryStream ms = new MemoryStream(imageData))
                     {
-                        blockRecords[i].ProductImage = Image.FromStream(ms);
+                        blockRecords[itemsCount].ProductImage = Image.FromStream(ms);
                     }
                 }
-                blockRecords[i].VisibleButtons = UserConfiguration.UserRole != "seller";
-                blockRecords[i].ProductDeleted += Product_ProductDeleted;
-                flowLayoutPanel1.Controls.Add(blockRecords[i]);
-                FlowLayoutPanel_ControlAdded(flowLayoutPanel1, new ControlEventArgs(blockRecords[i]));
-
-                i++;
+                blockRecords[itemsCount].VisibleButtons = UserConfiguration.UserRole != "seller";
+                blockRecords[itemsCount].ProductDeleted += Product_ProductDeleted;
+                flowLayoutPanel1.Controls.Add(blockRecords[itemsCount]);
+                FlowLayoutPanel_ControlAdded(flowLayoutPanel1, new ControlEventArgs(blockRecords[itemsCount]));
+                itemsCount++;
             }
         }
         private void FlowLayoutPanel_ControlAdded(object sender, ControlEventArgs e)
@@ -77,6 +97,22 @@ namespace GardenAndOgorodShop
             {
                 flowLayoutPanel1.Controls.Remove(productToDelete);
                 productToDelete.Dispose();
+            }
+        }
+        
+        private void Products_RefreshProducts(object sender, EventArgs e)
+        {
+            if (customSlider1.CurrentPage == customSlider1.CountPages && lastPageCount != 0)
+            {
+                LoadProducts(products_table.Rows.Count-lastPageCount, products_table.Rows.Count);
+            }
+            else if (customSlider1.CurrentPage == 1)
+            {
+                LoadProducts(0, 10);
+            }
+            else
+            {
+                LoadProducts(customSlider1.CurrentPage*10-10, customSlider1.CurrentPage * 10);
             }
         }
         #region Handle panel menu

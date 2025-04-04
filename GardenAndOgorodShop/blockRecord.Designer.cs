@@ -69,7 +69,7 @@
             // 
             this.labelPrice1.AutoSize = true;
             this.labelPrice1.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelPrice1.Location = new System.Drawing.Point(397, 119);
+            this.labelPrice1.Location = new System.Drawing.Point(351, 121);
             this.labelPrice1.Name = "labelPrice1";
             this.labelPrice1.Size = new System.Drawing.Size(62, 25);
             this.labelPrice1.TabIndex = 3;
@@ -80,7 +80,7 @@
             this.labelPrice2.AutoSize = true;
             this.labelPrice2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Strikeout, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelPrice2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.labelPrice2.Location = new System.Drawing.Point(329, 114);
+            this.labelPrice2.Location = new System.Drawing.Point(407, 100);
             this.labelPrice2.Name = "labelPrice2";
             this.labelPrice2.Size = new System.Drawing.Size(53, 21);
             this.labelPrice2.TabIndex = 4;
@@ -140,7 +140,6 @@
             // 
             this.buttonEdit.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.more_info;
             this.buttonEdit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonEdit.FlatAppearance.BorderSize = 0;
             this.buttonEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonEdit.Location = new System.Drawing.Point(544, 114);
             this.buttonEdit.Name = "buttonEdit";
@@ -154,7 +153,6 @@
             // 
             this.buttonDelete.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.delete;
             this.buttonDelete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonDelete.FlatAppearance.BorderSize = 0;
             this.buttonDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonDelete.Location = new System.Drawing.Point(590, 114);
             this.buttonDelete.Name = "buttonDelete";
