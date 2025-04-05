@@ -66,7 +66,7 @@
             // textBoxCounter
             // 
             this.textBoxCounter.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxCounter.Location = new System.Drawing.Point(47, 2);
+            this.textBoxCounter.Location = new System.Drawing.Point(48, 0);
             this.textBoxCounter.MaxLength = 5;
             this.textBoxCounter.Name = "textBoxCounter";
             this.textBoxCounter.Size = new System.Drawing.Size(80, 33);

@@ -14,6 +14,7 @@ using System.Xml.Linq;
 //using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 //using Excel = Microsoft.Office.Interop.Excel;
 using System.Runtime.InteropServices;
+using System.Configuration;
 
 namespace GardenAndOgorodShop
 {
@@ -36,7 +37,7 @@ namespace GardenAndOgorodShop
 
             flowLayoutPanel1.ControlAdded += FlowLayoutPanel_ControlAdded;
 
-            products_table = DBHandler.LoadDataSync("products");
+            products_table = DBHandler.LoadDataSync("products WHERE is_available > 0");
             if (products_table.Rows.Count > 0)
             {
                 if (products_table.Rows.Count % 10 != 0)
@@ -60,29 +61,41 @@ namespace GardenAndOgorodShop
             int itemsCount = 0;
             for (int i = start; i < end; i++)
             {
-                DataRow record = products_table.Rows[i];
-
-                blockRecords.Add(new blockRecord());
-                blockRecords[itemsCount].IDrecord = (int)record[0];
-                blockRecords[itemsCount].Header = record["products_name"].ToString();
-                blockRecords[itemsCount].Description = record["descript"].ToString();
-                blockRecords[itemsCount].Amount = (int)record["is_available"];
-                blockRecords[itemsCount].Discount = Convert.ToInt32(record["seasonal_discount"]);
-                blockRecords[itemsCount].DefaultPrice = Convert.ToInt32(record["price"]);
-                if (record["image"] != DBNull.Value)
+                try
                 {
-                    byte[] imageData = (byte[])record["image"];
-                    using (MemoryStream ms = new MemoryStream(imageData))
+                    DataRow record = products_table.Rows[i];
+
+                    blockRecords.Add(new blockRecord());
+                    blockRecords[itemsCount].IDrecord = (int)record[0];
+                    blockRecords[itemsCount].Header = record["products_name"].ToString();
+                    blockRecords[itemsCount].Description = record["descript"].ToString();
+                    blockRecords[itemsCount].Amount = (int)record["is_available"];
+                    blockRecords[itemsCount].Discount = Convert.ToInt32(record["seasonal_discount"]);
+                    blockRecords[itemsCount].DefaultPrice = Convert.ToInt32(record["price"]);
+                    if (record["image"] != DBNull.Value)
                     {
-                        blockRecords[itemsCount].ProductImage = Image.FromStream(ms);
+                        byte[] imageData = (byte[])record["image"];
+                        using (MemoryStream ms = new MemoryStream(imageData))
+                        {
+                            blockRecords[itemsCount].ProductImage = Image.FromStream(ms);
+                        }
                     }
+                    blockRecords[itemsCount].VisibleButtons = UserConfiguration.UserRole != "seller";
+                    blockRecords[itemsCount].ProductDeleted += Product_ProductDeleted;
+                    blockRecords[itemsCount].FormClose += Form_FormClose;
+                    flowLayoutPanel1.Controls.Add(blockRecords[itemsCount]);
+                    FlowLayoutPanel_ControlAdded(flowLayoutPanel1, new ControlEventArgs(blockRecords[itemsCount]));
+                    itemsCount++;
                 }
-                blockRecords[itemsCount].VisibleButtons = UserConfiguration.UserRole != "seller";
-                blockRecords[itemsCount].ProductDeleted += Product_ProductDeleted;
-                flowLayoutPanel1.Controls.Add(blockRecords[itemsCount]);
-                FlowLayoutPanel_ControlAdded(flowLayoutPanel1, new ControlEventArgs(blockRecords[itemsCount]));
-                itemsCount++;
+                catch(Exception e)
+                {
+                    ;
+                }
             }
+        }
+        private void Form_FormClose(object sender, EventArgs e)
+        {
+            this.Hide();
         }
         private void FlowLayoutPanel_ControlAdded(object sender, ControlEventArgs e)
         {
@@ -336,8 +349,28 @@ namespace GardenAndOgorodShop
             buttonAddProduct.Visible = false;
             button8.Visible = false;
         }
+        private void Loop(Control.ControlCollection controls)
+        {
+            foreach (Control control in controls)
+            {
+                if (control.HasChildren)
+                {
+                    Loop(control.Controls);
+                }
+                else
+                {
+                    control.MouseMove += Main_MouseMove;
+                    control.KeyPress += Main_KeyPress;
+                }
+            }
+        }
         private async void FormViewProduct_Load(object sender, EventArgs e)
         {
+            Loop(this.Controls);
+            if(Convert.ToBoolean(ConfigurationManager.AppSettings["sleep"]))
+            {
+                timer1.Start();
+            }
             //MessageBox.Show($"{UserConfiguration.UserRole}");
             dateTimePickerFrom.MaxDate = DateTime.Now;
             dateTimePickerTo.MaxDate = DateTime.Now;
@@ -1115,6 +1148,28 @@ namespace GardenAndOgorodShop
                     );
                 }
             }
+        }
+        private int disactive_user_time = 0;
+        private void timer1_Tick(object sender, EventArgs e)
+        {            
+            disactive_user_time++;
+            if (disactive_user_time == 30)
+            {
+                DBHandler.returnProduct();
+                AuthForm form = new AuthForm();
+                this.Hide();
+                form.Show();
+            }
+        }
+
+        private void Main_MouseMove(object sender, MouseEventArgs e)
+        {
+            disactive_user_time = 0;
+        }
+
+        private void Main_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            disactive_user_time = 0;
         }
     }
 }

@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Security.Cryptography;
 using System.IO;
+using System.Configuration;
+using System.Reflection;
 
 namespace GardenAndOgorodShop
 {
@@ -92,6 +94,7 @@ namespace GardenAndOgorodShop
         }
         private void AuthForm_Load(object sender, EventArgs e)
         {
+            checkBox1.Checked = Convert.ToBoolean(ConfigurationManager.AppSettings["sleep"]);
             RefreshCaptcha();
             if (!DBHandler.checkConnection())
             {
@@ -334,6 +337,26 @@ namespace GardenAndOgorodShop
             {
                 counter_timer++;
             }
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            Configuration config = ConfigurationManager.OpenExeConfiguration(Assembly.GetExecutingAssembly().Location);
+
+            if (checkBox1.Checked)
+            {
+                checkBox1.BackColor = Color.Teal;
+                checkBox1.Text = "ВКЛ ";
+                config.AppSettings.Settings["sleep"].Value = "true";
+            }
+            else
+            {
+                checkBox1.BackColor = Color.White;
+                checkBox1.Text = "ВЫКЛ";
+                config.AppSettings.Settings["sleep"].Value = "false";
+            }
+            config.Save(ConfigurationSaveMode.Modified);
+            ConfigurationManager.RefreshSection("appSettings");
         }
     }
     class newLabel : System.Windows.Forms.Label

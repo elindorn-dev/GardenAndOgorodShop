@@ -152,12 +152,12 @@ namespace GardenAndOgorodShop
                 labelID.Text = value.ToString();
             }
         }
-
+        public event EventHandler FormClose;
         private void buttonEdit_Click(object sender, EventArgs e)
         {
+            FormClose?.Invoke(this, EventArgs.Empty);
             HandleRecordForm form = new HandleRecordForm(0, "edit", Convert.ToInt32(labelID.Text));
             form.Show();
-            this.Hide();
         }
         public event EventHandler ProductDeleted;
         private void buttonDelete_Click(object sender, EventArgs e)
