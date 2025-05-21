@@ -41,6 +41,12 @@ namespace GardenAndOgorodShop
             flowLayoutPanel1.ControlAdded += FlowLayoutPanel_ControlAdded;
 
             products_table = DBHandler.LoadDataSync("products WHERE is_available > 0");
+            CalculatePagesCount();
+            LoadProducts(start_page_count, end_page_count);
+            customSlider1.RefreshProducts += Products_RefreshProducts;
+        }
+        private void CalculatePagesCount()
+        {
             if (products_table.Rows.Count > 0)
             {
                 if (products_table.Rows.Count % 10 != 0)
@@ -48,14 +54,12 @@ namespace GardenAndOgorodShop
                     customSlider1.CountPages = products_table.Rows.Count / 10 + 1;
                     lastPageCount = products_table.Rows.Count % 10;
                 }
-                else 
+                else
                 {
                     customSlider1.CountPages = products_table.Rows.Count / 10;
                     lastPageCount = 0;
                 }
-                LoadProducts(start_page_count, end_page_count);
             }
-            customSlider1.RefreshProducts += Products_RefreshProducts;
         }
         private void LoadProducts(int start, int end)
         {
@@ -605,6 +609,7 @@ namespace GardenAndOgorodShop
             // Загружаем новые данные таблицы
             products_table = await DBHandler.LoadData(method_product);
             LoadProducts(start_page_count, end_page_count);
+            CalculatePagesCount();
             EnabledUsingHandleProducts(true);
         }
         private async Task reloadEmployeeData()
