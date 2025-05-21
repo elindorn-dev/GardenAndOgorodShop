@@ -31,6 +31,9 @@ namespace GardenAndOgorodShop
         private DataTable employees_table;
 
         private int lastPageCount = 0;
+
+        private int start_page_count = 0;
+        private int end_page_count = 10;
         public Main()
         {
             InitializeComponent();
@@ -50,7 +53,7 @@ namespace GardenAndOgorodShop
                     customSlider1.CountPages = products_table.Rows.Count / 10;
                     lastPageCount = 0;
                 }
-                LoadProducts(0, 10);
+                LoadProducts(start_page_count, end_page_count);
             }
             customSlider1.RefreshProducts += Products_RefreshProducts;
         }
@@ -117,15 +120,21 @@ namespace GardenAndOgorodShop
         {
             if (customSlider1.CurrentPage == customSlider1.CountPages && lastPageCount != 0)
             {
-                LoadProducts(products_table.Rows.Count-lastPageCount, products_table.Rows.Count);
+                start_page_count = products_table.Rows.Count - lastPageCount;
+                end_page_count = products_table.Rows.Count;
+                LoadProducts(start_page_count, end_page_count);
             }
             else if (customSlider1.CurrentPage == 1)
             {
-                LoadProducts(0, 10);
+                start_page_count = 0;
+                end_page_count = 10;
+                LoadProducts(start_page_count, end_page_count);
             }
             else
             {
-                LoadProducts(customSlider1.CurrentPage*10-10, customSlider1.CurrentPage * 10);
+                start_page_count = customSlider1.CurrentPage * 10 - 10;
+                end_page_count = customSlider1.CurrentPage * 10;
+                LoadProducts(start_page_count, end_page_count);
             }
         }
         #region Handle panel menu
@@ -595,6 +604,7 @@ namespace GardenAndOgorodShop
             method_product = $"products WHERE {method_filter_product} AND (products_name LIKE '%{method_search_product}%') AND is_available > 0 ORDER BY {method_sort_product}";
             // Загружаем новые данные таблицы
             products_table = await DBHandler.LoadData(method_product);
+            LoadProducts(start_page_count, end_page_count);
             EnabledUsingHandleProducts(true);
         }
         private async Task reloadEmployeeData()
