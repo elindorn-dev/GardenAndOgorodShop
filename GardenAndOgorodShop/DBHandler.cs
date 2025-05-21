@@ -329,7 +329,12 @@ namespace GardenAndOgorodShop
                 reader.Read();
                 UserConfiguration.UserID = reader.GetInt32(0);
                 int id_role = reader.GetInt32(4);
-                UserConfiguration.UserRole = id_role == 1 ? "admin" : "seller";
+                switch (id_role)
+                {
+                    case 1: UserConfiguration.UserRole = "admin"; break;
+                    case 2: UserConfiguration.UserRole = "seller"; break;
+                    case 3: UserConfiguration.UserRole = "tovaroved"; break;
+                }
                 //UserConfiguration.UserFIO = reader.GetString(1) + " " + reader.GetString(2) + "." + reader.GetString(3) + ".";
                 connect.Close();
                 return true;

@@ -425,7 +425,7 @@
             this.buttonToStockForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(186)))), ((int)(((byte)(93)))));
             this.buttonToStockForm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonToStockForm.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonToStockForm.Location = new System.Drawing.Point(13, 474);
+            this.buttonToStockForm.Location = new System.Drawing.Point(13, 275);
             this.buttonToStockForm.Name = "buttonToStockForm";
             this.buttonToStockForm.Size = new System.Drawing.Size(175, 40);
             this.buttonToStockForm.TabIndex = 16;
@@ -439,7 +439,7 @@
             this.buttonToBrandForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(186)))), ((int)(((byte)(93)))));
             this.buttonToBrandForm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonToBrandForm.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonToBrandForm.Location = new System.Drawing.Point(13, 374);
+            this.buttonToBrandForm.Location = new System.Drawing.Point(13, 175);
             this.buttonToBrandForm.Name = "buttonToBrandForm";
             this.buttonToBrandForm.Size = new System.Drawing.Size(175, 40);
             this.buttonToBrandForm.TabIndex = 14;
@@ -453,7 +453,7 @@
             this.buttonToSupplierForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(186)))), ((int)(((byte)(93)))));
             this.buttonToSupplierForm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonToSupplierForm.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonToSupplierForm.Location = new System.Drawing.Point(13, 424);
+            this.buttonToSupplierForm.Location = new System.Drawing.Point(13, 225);
             this.buttonToSupplierForm.Name = "buttonToSupplierForm";
             this.buttonToSupplierForm.Size = new System.Drawing.Size(175, 40);
             this.buttonToSupplierForm.TabIndex = 15;
@@ -481,7 +481,7 @@
             this.buttonToUserForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(186)))), ((int)(((byte)(93)))));
             this.buttonToUserForm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonToUserForm.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonToUserForm.Location = new System.Drawing.Point(13, 274);
+            this.buttonToUserForm.Location = new System.Drawing.Point(13, 125);
             this.buttonToUserForm.Name = "buttonToUserForm";
             this.buttonToUserForm.Size = new System.Drawing.Size(175, 40);
             this.buttonToUserForm.TabIndex = 12;
@@ -495,7 +495,7 @@
             this.buttonToEmployeeForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(186)))), ((int)(((byte)(93)))));
             this.buttonToEmployeeForm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonToEmployeeForm.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonToEmployeeForm.Location = new System.Drawing.Point(13, 324);
+            this.buttonToEmployeeForm.Location = new System.Drawing.Point(13, 175);
             this.buttonToEmployeeForm.Name = "buttonToEmployeeForm";
             this.buttonToEmployeeForm.Size = new System.Drawing.Size(175, 40);
             this.buttonToEmployeeForm.TabIndex = 11;
@@ -613,7 +613,7 @@
             this.labelReadyOrNot.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelReadyOrNot.Location = new System.Drawing.Point(3, 13);
             this.labelReadyOrNot.Name = "labelReadyOrNot";
-            this.labelReadyOrNot.Size = new System.Drawing.Size(212, 32);
+            this.labelReadyOrNot.Size = new System.Drawing.Size(211, 32);
             this.labelReadyOrNot.TabIndex = 19;
             this.labelReadyOrNot.Text = "Товар добавлен.";
             // 

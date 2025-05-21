@@ -169,8 +169,7 @@ namespace GardenAndOgorodShop
             panelEmployeeData.Visible = true;
             button5.Visible = true;
             button5.BackgroundImage = GardenAndOgorodShop.Properties.Resources.closed_menu;
-            if (UserConfiguration.UserRole == "seller") { HideForCommonUser(); } else buttonCurrentOrder.Visible = false;
-
+            HideButtons_onNavigation_roles();
         }
         // ФУНКЦИЯ СКРЫТИЯ ПАНЕЛИ НАВИГАЦИИ
         private async void DisactiveSetting()
@@ -351,16 +350,45 @@ namespace GardenAndOgorodShop
                 categories_strings.Add((int)row[0], $"{row[1]}");
             }
         }
-        private void HideForCommonUser()
+        private void HideButtons_onNavigation_roles()
         {
-            buttonToCategoryForm.Visible = false;
-            buttonToUserForm.Visible = false;
-            buttonToEmployeeForm.Visible = false;
-            buttonToBrandForm.Visible = false;
-            buttonToSupplierForm.Visible = false;
-            buttonToStockForm.Visible = false;
-            buttonAddProduct.Visible = false;
-            button8.Visible = false;
+            foreach (Control control in panelNavigation.Controls)
+            {
+                if (control is Button button) button.Visible = false;
+            }
+            button5.Visible = true;
+            buttonLogOut.Visible = true;
+            buttonExitApp.Visible = true;
+            switch (UserConfiguration.UserRole)
+            {
+                case "seller":
+                    ShowForCommonUser();
+                    ; break;
+                case "admin":
+                    ShowForAdmin();
+                    ; break;
+                case "tovaroved":
+                    ShowForTovaroved();
+                    ; break;
+            }
+        }
+        private void ShowForCommonUser()
+        {
+            buttonCurrentOrder.Visible = true;
+            buttonToOrderForm.Visible = true;
+            buttonToProductForm.Visible = true;
+        }
+        private void ShowForAdmin()
+        {
+            buttonToUserForm.Visible = true;
+            buttonToEmployeeForm.Visible = true;
+        }
+        private void ShowForTovaroved()
+        {
+            buttonToProductForm.Visible = true;
+            buttonToBrandForm.Visible = true;
+            buttonToSupplierForm.Visible = true;
+            buttonToStockForm.Visible = true;
         }
         private void Loop(Control.ControlCollection controls)
         {
@@ -417,7 +445,6 @@ namespace GardenAndOgorodShop
             LoadOrdersDataGridView("orders ORDER BY order_date ASC");
             LoadBrandsDataGridView();
             LoadSuppliersDataGridView();
-            if (UserConfiguration.UserRole == "seller") { HideForCommonUser(); } else { buttonCurrentOrder.Visible = false;}
         }
 
         private void button5_Click(object sender, EventArgs e)
