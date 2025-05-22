@@ -8,9 +8,6 @@ using System.Windows.Forms;
 using System.IO;
 using System.Drawing;
 using System.Data;
-using MySqlX.XDevAPI.Relational;
-using System.Data.SqlClient;
-using System.Net;
 using System.Security.Cryptography;
 using System.Configuration;
 using System.Reflection;
@@ -25,6 +22,43 @@ namespace GardenAndOgorodShop
         public static string database = ConfigurationManager.AppSettings["db"];
         public static string connect_string = $"host={host};uid={username};pwd={pwd};database={database}";
         public static string connect_string_recovery = $"host={host};uid={username};pwd={pwd}";
+
+        public static bool Backup(string filePath)
+        {
+            if (!Directory.Exists("DBCopies"))
+            {
+                try
+                {
+                    Directory.CreateDirectory("DBCopies");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Ошибка при создании папки '{"DBCopies"}': {ex.Message}", "Создание папки", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            try
+            {
+                string file = filePath == "" ? $"DBCopies\\backup{DateTime.Now.ToString("dd.MM.yyyy hh.mm.ss")}.sql" : $"{filePath}\\backup{DateTime.Now.ToString("dd.MM.yyyy h.mm.ss")}.sql";
+                using (MySqlConnection conn = new MySqlConnection(connect_string))
+                {
+                    using (MySqlCommand cmd = new MySqlCommand())
+                    {
+                        using (MySqlBackup mb = new MySqlBackup(cmd))
+                        {
+                            cmd.Connection = conn;
+                            conn.Open();
+                            mb.ExportToFile(file);
+                            conn.Close();
+                        }
+                    }
+                }
+                return true;
+            }
+            catch (MySqlException err)
+            {
+                return false;
+            }
+        }
 
         public static bool checkConnection()
         {
@@ -157,22 +191,21 @@ namespace GardenAndOgorodShop
             int[] output = { main_count, bad_count };
             return output;
         }
-
-        public static bool RecoveryStructure()
+        public static bool RecoveryDB()
         {
             MySqlConnection connect = new MySqlConnection(connect_string_recovery);
 
             try
             {
-            connect.Open();
-            string path = "structure.sql";
-            string text_script = "";
-            if (File.Exists(path))
-            {
-                text_script = File.ReadAllText(path);
-            }
-            string[] sql_commands = text_script.Split(';');
-            
+                connect.Open();
+                string path = "DBCopies\\createDB.sql";
+                string text_script = "";
+                if (File.Exists(path))
+                {
+                    text_script = File.ReadAllText(path);
+                }
+                string[] sql_commands = text_script.Split(';');
+
                 for (int i = 0; i < sql_commands.Length; i++)
                 {
                     sql_commands[i] += ";";
@@ -188,6 +221,42 @@ namespace GardenAndOgorodShop
             finally
             {
                 connect.Close();
+            }
+        }
+        public static bool RecoveryBackup(string filePathSQL)
+        {
+            MySqlConnection connect = new MySqlConnection(connect_string_recovery);
+            if (RecoveryDB())
+            {
+                try
+                {
+                    using (MySqlConnection conn = new MySqlConnection(connect_string))
+                    {
+                        using (MySqlCommand cmd = new MySqlCommand())
+                        {
+                            using (MySqlBackup mb = new MySqlBackup(cmd))
+                            {
+                                cmd.Connection = conn;
+                                conn.Open();
+                                mb.ImportFromFile(filePathSQL);
+                                conn.Close();
+                            }
+                        }
+                    }
+                    return true;
+                }
+                catch (Exception err)
+                {
+                    return false;
+                }
+                finally
+                {
+                    connect.Close();
+                }
+            }
+            else
+            {
+                return false;
             }
         }
 

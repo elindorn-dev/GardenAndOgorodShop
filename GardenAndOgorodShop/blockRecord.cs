@@ -142,6 +142,16 @@ namespace GardenAndOgorodShop
             {
                 buttonEdit.Visible = value;
                 buttonDelete.Visible = value;
+                buttonAddProductToBacket.Visible = !value;
+            }
+        }
+        public bool EnabledButtons
+        {
+            set
+            {
+                buttonEdit.Enabled = value;
+                buttonDelete.Enabled = value;
+                buttonAddProductToBacket.Enabled = value;
             }
         }
         public int IDrecord
@@ -186,6 +196,106 @@ namespace GardenAndOgorodShop
                     MessageBoxIcon.Error
                     );
                 }
+            }
+        }
+        public event EventHandler ProductAddToBacket;
+        private void buttonAddProductToBacket_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (UserConfiguration.Current_order_id == 0)
+                {
+                    UserConfiguration.Current_order_id = DBHandler.getNewIdOrder();
+                    if (UserConfiguration.Current_order_id != 0)
+                    {
+                        resultAdd_inOrder(IDrecord);
+                    }
+                    else
+                    {
+                        //badResultView();
+                    }
+                }
+                else
+                {
+                    resultAdd_inOrder(IDrecord);
+                }
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show($"Ошибка\n{err}");
+            }
+            //resultAdd_inOrder(productToDelete.IDrecord, productToDelete);
+            ProductAddToBacket?.Invoke(this, EventArgs.Empty);
+        }
+        private async void resultAdd_inOrder(int product_id)
+        {
+            try
+            {
+                if (AddEditProduct_inOrder(product_id))
+                {
+                    //customSlider1.Enabled = false;
+                    //labelReadyOrNot.ForeColor = Color.Green;
+                    //labelReadyOrNot.Text = "Товар добавлен.";
+                    //pictureBoxReadyOrNot.BackgroundImage = Properties.Resources.ready;
+                    //panelResult.Visible = true;
+                    //await Task.Delay(1000);
+                    //panelResult.Visible = false;
+                    //customSlider1.Enabled = true;
+
+                    //int new_amount = Convert.ToInt32(Convert.ToString(dataGridViewProducts.Rows[index_row].Cells[3].Value).Replace(" шт.", ""));
+                    int new_amount = Amount;
+                    DBHandler.randomSQLCommand($"UPDATE `garden_and_ogorod_shop`.`products` SET `is_available` = '{new_amount - 1}' WHERE (`products_id` = '{product_id}');");
+                    //if (new_amount == 1)
+                    //{
+                    //    await reloadProductData();
+                    //}
+                    //dataGridViewProducts.Rows[index_row].Cells[3].Value = $"{new_amount - 1} шт.";
+                    Amount -= 1;
+                }
+                else
+                {
+                    //badResultView();
+                }
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show($"Ошибка\n{err}");
+            }
+        }
+        //private async void badResultView()
+        //{
+        //    buttonAddProductToBacket.Enabled = false;
+        //    labelReadyOrNot.ForeColor = Color.Red;
+        //    labelReadyOrNot.Text = "Товар НЕ добавлен!";
+        //    pictureBoxReadyOrNot.BackgroundImage = Properties.Resources.cancel;
+        //    panelResult.Visible = true;
+        //    await Task.Delay(1000);
+        //    panelResult.Visible = false;
+        //    buttonAddProductToBacket.Enabled = true;
+        //}
+        private bool AddEditProduct_inOrder(int product_id)
+        {
+            try
+            {
+                if (DBHandler.checkExistProduct_inOrder(product_id))
+                {
+                    return DBHandler.randomSQLCommand($@"
+                    UPDATE `products_orders` 
+                    SET `product_amount` = `product_amount` + 1 
+                    WHERE products_id = {product_id} AND orders_id = {UserConfiguration.Current_order_id};");
+                }
+                else
+                {
+                    return DBHandler.randomSQLCommand($@"
+                    INSERT INTO `garden_and_ogorod_shop`.`products_orders` 
+                    (`products_id`, `orders_id`, `product_amount`) 
+                    VALUES ('{product_id}', '{UserConfiguration.Current_order_id}', '1');");
+                }
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show($"Ошибка\n{err}");
+                return false;
             }
         }
         //private async void resultAdd_inOrder(int product_id)

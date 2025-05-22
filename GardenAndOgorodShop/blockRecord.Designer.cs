@@ -41,6 +41,7 @@
             this.labelID = new System.Windows.Forms.Label();
             this.buttonEdit = new System.Windows.Forms.Button();
             this.buttonDelete = new System.Windows.Forms.Button();
+            this.buttonAddProductToBacket = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProduct)).BeginInit();
             this.SuspendLayout();
             // 
@@ -162,11 +163,25 @@
             this.buttonDelete.Visible = false;
             this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
+            // buttonAddProductToBacket
+            // 
+            this.buttonAddProductToBacket.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.seo_social_web_network_internet_276_icon_icons_com_61503;
+            this.buttonAddProductToBacket.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonAddProductToBacket.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonAddProductToBacket.Location = new System.Drawing.Point(498, 114);
+            this.buttonAddProductToBacket.Name = "buttonAddProductToBacket";
+            this.buttonAddProductToBacket.Size = new System.Drawing.Size(40, 40);
+            this.buttonAddProductToBacket.TabIndex = 12;
+            this.buttonAddProductToBacket.UseVisualStyleBackColor = true;
+            this.buttonAddProductToBacket.Visible = false;
+            this.buttonAddProductToBacket.Click += new System.EventHandler(this.buttonAddProductToBacket_Click);
+            // 
             // blockRecord
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Controls.Add(this.buttonAddProductToBacket);
             this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.buttonEdit);
             this.Controls.Add(this.labelID);
@@ -201,5 +216,6 @@
         private System.Windows.Forms.Label labelID;
         private System.Windows.Forms.Button buttonEdit;
         private System.Windows.Forms.Button buttonDelete;
+        private System.Windows.Forms.Button buttonAddProductToBacket;
     }
 }

@@ -563,8 +563,8 @@
             // ViewProductPage
             // 
             this.ViewProductPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(186)))), ((int)(((byte)(93)))));
-            this.ViewProductPage.Controls.Add(this.flowLayoutPanel1);
             this.ViewProductPage.Controls.Add(this.panelResult);
+            this.ViewProductPage.Controls.Add(this.flowLayoutPanel1);
             this.ViewProductPage.Controls.Add(this.panel1);
             this.ViewProductPage.Font = new System.Drawing.Font("Microsoft Sans Serif", 1.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.ViewProductPage.Location = new System.Drawing.Point(4, 5);
@@ -588,9 +588,9 @@
             // 
             this.panelResult.BackColor = System.Drawing.Color.White;
             this.panelResult.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelResult.Controls.Add(this.pictureBoxReadyOrNot);
             this.panelResult.Controls.Add(this.labelReadyOrNot);
-            this.panelResult.Location = new System.Drawing.Point(240, 325);
+            this.panelResult.Controls.Add(this.pictureBoxReadyOrNot);
+            this.panelResult.Location = new System.Drawing.Point(248, 309);
             this.panelResult.Name = "panelResult";
             this.panelResult.Size = new System.Drawing.Size(370, 59);
             this.panelResult.TabIndex = 3;
@@ -611,7 +611,7 @@
             this.labelReadyOrNot.AutoSize = true;
             this.labelReadyOrNot.BackColor = System.Drawing.Color.White;
             this.labelReadyOrNot.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelReadyOrNot.Location = new System.Drawing.Point(3, 13);
+            this.labelReadyOrNot.Location = new System.Drawing.Point(26, 15);
             this.labelReadyOrNot.Name = "labelReadyOrNot";
             this.labelReadyOrNot.Size = new System.Drawing.Size(211, 32);
             this.labelReadyOrNot.TabIndex = 19;

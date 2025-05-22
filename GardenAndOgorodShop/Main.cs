@@ -15,6 +15,7 @@ using System.Xml.Linq;
 //using Excel = Microsoft.Office.Interop.Excel;
 using System.Runtime.InteropServices;
 using System.Configuration;
+using MySql.Data.MySqlClient;
 
 namespace GardenAndOgorodShop
 {
@@ -33,7 +34,7 @@ namespace GardenAndOgorodShop
         private int lastPageCount = 0;
 
         private int start_page_count = 0;
-        private int end_page_count = 10;
+        private int end_page_count = 20;
         public Main()
         {
             InitializeComponent();
@@ -49,14 +50,14 @@ namespace GardenAndOgorodShop
         {
             if (products_table.Rows.Count > 0)
             {
-                if (products_table.Rows.Count % 10 != 0)
+                if (products_table.Rows.Count % 20 != 0)
                 {
-                    customSlider1.CountPages = products_table.Rows.Count / 10 + 1;
-                    lastPageCount = products_table.Rows.Count % 10;
+                    customSlider1.CountPages = products_table.Rows.Count / 20 + 1;
+                    lastPageCount = products_table.Rows.Count % 20;
                 }
                 else
                 {
-                    customSlider1.CountPages = products_table.Rows.Count / 10;
+                    customSlider1.CountPages = products_table.Rows.Count / 20;
                     lastPageCount = 0;
                 }
             }
@@ -90,6 +91,7 @@ namespace GardenAndOgorodShop
                     blockRecords[itemsCount].VisibleButtons = UserConfiguration.UserRole != "seller";
                     blockRecords[itemsCount].ProductDeleted += Product_ProductDeleted;
                     blockRecords[itemsCount].FormClose += Form_FormClose;
+                    blockRecords[itemsCount].ProductAddToBacket += Product_ProductAddToBacket;
                     flowLayoutPanel1.Controls.Add(blockRecords[itemsCount]);
                     FlowLayoutPanel_ControlAdded(flowLayoutPanel1, new ControlEventArgs(blockRecords[itemsCount]));
                     itemsCount++;
@@ -119,7 +121,18 @@ namespace GardenAndOgorodShop
                 productToDelete.Dispose();
             }
         }
+        #region Добавление товара в корзину
+        private void Product_ProductAddToBacket(object sender, EventArgs e)
+        {
+            blockRecord productToDelete = sender as blockRecord;
+            if (productToDelete != null && productToDelete.Amount == 0)
+            {
+                flowLayoutPanel1.Controls.Remove(productToDelete);
+                productToDelete.Dispose();
+            }
+        }
         
+        #endregion
         private void Products_RefreshProducts(object sender, EventArgs e)
         {
             if (customSlider1.CurrentPage == customSlider1.CountPages && lastPageCount != 0)
@@ -131,13 +144,13 @@ namespace GardenAndOgorodShop
             else if (customSlider1.CurrentPage == 1)
             {
                 start_page_count = 0;
-                end_page_count = 10;
+                end_page_count = 20;
                 LoadProducts(start_page_count, end_page_count);
             }
             else
             {
-                start_page_count = customSlider1.CurrentPage * 10 - 10;
-                end_page_count = customSlider1.CurrentPage * 10;
+                start_page_count = customSlider1.CurrentPage * 20 - 20;
+                end_page_count = customSlider1.CurrentPage * 20;
                 LoadProducts(start_page_count, end_page_count);
             }
         }
@@ -407,6 +420,7 @@ namespace GardenAndOgorodShop
         }
         private async void FormViewProduct_Load(object sender, EventArgs e)
         {
+            tabControl1.SelectedIndex = UserConfiguration.UserRole == "admin" ? 2 : 0;
             Loop(this.Controls);
             if(Convert.ToBoolean(ConfigurationManager.AppSettings["sleep"]))
             {
@@ -445,6 +459,10 @@ namespace GardenAndOgorodShop
             LoadOrdersDataGridView("orders ORDER BY order_date ASC");
             LoadBrandsDataGridView();
             LoadSuppliersDataGridView();
+            if(!DBHandler.Backup(""))
+            {
+                MessageBox.Show("Ошибка резервного копирования при старте программы. Позовите администратора.", "Резервное копирование бд", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -806,31 +824,7 @@ namespace GardenAndOgorodShop
             this.Hide();
         }
         
-        private bool AddEditProduct_inOrder(int product_id)
-        {
-            try
-            {
-                if (DBHandler.checkExistProduct_inOrder(product_id))
-                {
-                    return DBHandler.randomSQLCommand($@"
-                    UPDATE `products_orders` 
-                    SET `product_amount` = `product_amount` + 1 
-                    WHERE products_id = {product_id} AND orders_id = {UserConfiguration.Current_order_id};");
-                }
-                else
-                {
-                    return DBHandler.randomSQLCommand($@"
-                    INSERT INTO `garden_and_ogorod_shop`.`products_orders` 
-                    (`products_id`, `orders_id`, `product_amount`) 
-                    VALUES ('{product_id}', '{UserConfiguration.Current_order_id}', '1');");
-                }
-            }
-            catch (Exception err)
-            {
-                MessageBox.Show($"Ошибка\n{err}");
-                return false;
-            }
-        }
+        
         
         
         private void saveProducts_delOrder()

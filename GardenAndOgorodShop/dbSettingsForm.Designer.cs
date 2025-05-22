@@ -42,20 +42,21 @@ namespace GardenAndOgorodShop
             this.serverTextBox = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
-            this.buttonRecovery = new System.Windows.Forms.Button();
             this.buttonImport = new System.Windows.Forms.Button();
             this.comboBoxTables = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
             this.panelBlock = new System.Windows.Forms.Panel();
+            this.label9 = new System.Windows.Forms.Label();
             this.hideshowpwd = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
             this.textBoxLogin = new System.Windows.Forms.TextBox();
             this.panel6 = new System.Windows.Forms.Panel();
             this.textBoxPassword = new System.Windows.Forms.TextBox();
             this.buttonAuth = new System.Windows.Forms.Button();
-            this.label9 = new System.Windows.Forms.Label();
+            this.buttonHandleBackup = new System.Windows.Forms.Button();
+            this.buttonRestoreBackup = new System.Windows.Forms.Button();
             this.panelBlock.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -179,9 +180,9 @@ namespace GardenAndOgorodShop
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(120)))), ((int)(((byte)(56)))));
-            this.panel3.Location = new System.Drawing.Point(469, 22);
+            this.panel3.Location = new System.Drawing.Point(516, 22);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(135, 3);
+            this.panel3.Size = new System.Drawing.Size(104, 3);
             this.panel3.TabIndex = 26;
             // 
             // label3
@@ -189,26 +190,11 @@ namespace GardenAndOgorodShop
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(120)))), ((int)(((byte)(56)))));
-            this.label3.Location = new System.Drawing.Point(306, 9);
+            this.label3.Location = new System.Drawing.Point(322, 9);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(163, 25);
+            this.label3.Size = new System.Drawing.Size(195, 25);
             this.label3.TabIndex = 25;
-            this.label3.Text = "Восстановление";
-            // 
-            // buttonRecovery
-            // 
-            this.buttonRecovery.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(120)))), ((int)(((byte)(56)))));
-            this.buttonRecovery.FlatAppearance.BorderSize = 2;
-            this.buttonRecovery.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonRecovery.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonRecovery.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(120)))), ((int)(((byte)(56)))));
-            this.buttonRecovery.Location = new System.Drawing.Point(315, 68);
-            this.buttonRecovery.Name = "buttonRecovery";
-            this.buttonRecovery.Size = new System.Drawing.Size(279, 50);
-            this.buttonRecovery.TabIndex = 27;
-            this.buttonRecovery.Text = "Восстановить структуру";
-            this.buttonRecovery.UseVisualStyleBackColor = false;
-            this.buttonRecovery.Click += new System.EventHandler(this.buttonRecovery_Click);
+            this.label3.Text = "Восстановление БД";
             // 
             // buttonImport
             // 
@@ -217,7 +203,7 @@ namespace GardenAndOgorodShop
             this.buttonImport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonImport.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonImport.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(120)))), ((int)(((byte)(56)))));
-            this.buttonImport.Location = new System.Drawing.Point(327, 317);
+            this.buttonImport.Location = new System.Drawing.Point(649, 217);
             this.buttonImport.Name = "buttonImport";
             this.buttonImport.Size = new System.Drawing.Size(256, 50);
             this.buttonImport.TabIndex = 28;
@@ -242,7 +228,7 @@ namespace GardenAndOgorodShop
             "roles",
             "suppliers",
             "users"});
-            this.comboBoxTables.Location = new System.Drawing.Point(327, 258);
+            this.comboBoxTables.Location = new System.Drawing.Point(649, 107);
             this.comboBoxTables.Name = "comboBoxTables";
             this.comboBoxTables.Size = new System.Drawing.Size(256, 32);
             this.comboBoxTables.TabIndex = 29;
@@ -252,7 +238,7 @@ namespace GardenAndOgorodShop
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(120)))), ((int)(((byte)(56)))));
-            this.label7.Location = new System.Drawing.Point(323, 231);
+            this.label7.Location = new System.Drawing.Point(645, 73);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(75, 21);
             this.label7.TabIndex = 30;
@@ -261,7 +247,7 @@ namespace GardenAndOgorodShop
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(120)))), ((int)(((byte)(56)))));
-            this.panel4.Location = new System.Drawing.Point(389, 180);
+            this.panel4.Location = new System.Drawing.Point(711, 22);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(215, 3);
             this.panel4.TabIndex = 32;
@@ -271,7 +257,7 @@ namespace GardenAndOgorodShop
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(120)))), ((int)(((byte)(56)))));
-            this.label8.Location = new System.Drawing.Point(306, 167);
+            this.label8.Location = new System.Drawing.Point(628, 9);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(87, 25);
             this.label8.TabIndex = 31;
@@ -284,10 +270,21 @@ namespace GardenAndOgorodShop
             this.panelBlock.Controls.Add(this.panel5);
             this.panelBlock.Controls.Add(this.panel6);
             this.panelBlock.Controls.Add(this.buttonAuth);
-            this.panelBlock.Location = new System.Drawing.Point(-4, -4);
+            this.panelBlock.Location = new System.Drawing.Point(-1, -1);
             this.panelBlock.Name = "panelBlock";
-            this.panelBlock.Size = new System.Drawing.Size(609, 411);
+            this.panelBlock.Size = new System.Drawing.Size(530, 410);
             this.panelBlock.TabIndex = 33;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(175)))), ((int)(((byte)(80)))));
+            this.label9.Location = new System.Drawing.Point(13, 18);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(472, 37);
+            this.label9.TabIndex = 22;
+            this.label9.Text = "Подтвердите права администратора";
             // 
             // hideshowpwd
             // 
@@ -368,16 +365,35 @@ namespace GardenAndOgorodShop
             this.buttonAuth.UseVisualStyleBackColor = false;
             this.buttonAuth.Click += new System.EventHandler(this.buttonAuth_Click);
             // 
-            // label9
+            // buttonHandleBackup
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(175)))), ((int)(((byte)(80)))));
-            this.label9.Location = new System.Drawing.Point(13, 18);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(472, 37);
-            this.label9.TabIndex = 22;
-            this.label9.Text = "Подтвердите права администратора";
+            this.buttonHandleBackup.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(120)))), ((int)(((byte)(56)))));
+            this.buttonHandleBackup.FlatAppearance.BorderSize = 2;
+            this.buttonHandleBackup.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonHandleBackup.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonHandleBackup.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(120)))), ((int)(((byte)(56)))));
+            this.buttonHandleBackup.Location = new System.Drawing.Point(331, 171);
+            this.buttonHandleBackup.Name = "buttonHandleBackup";
+            this.buttonHandleBackup.Size = new System.Drawing.Size(279, 50);
+            this.buttonHandleBackup.TabIndex = 34;
+            this.buttonHandleBackup.Text = "Резервное копирование";
+            this.buttonHandleBackup.UseVisualStyleBackColor = false;
+            this.buttonHandleBackup.Click += new System.EventHandler(this.buttonHandleBackup_Click);
+            // 
+            // buttonRestoreBackup
+            // 
+            this.buttonRestoreBackup.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(120)))), ((int)(((byte)(56)))));
+            this.buttonRestoreBackup.FlatAppearance.BorderSize = 2;
+            this.buttonRestoreBackup.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonRestoreBackup.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonRestoreBackup.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(120)))), ((int)(((byte)(56)))));
+            this.buttonRestoreBackup.Location = new System.Drawing.Point(331, 270);
+            this.buttonRestoreBackup.Name = "buttonRestoreBackup";
+            this.buttonRestoreBackup.Size = new System.Drawing.Size(279, 50);
+            this.buttonRestoreBackup.TabIndex = 35;
+            this.buttonRestoreBackup.Text = "Восстановить из копии";
+            this.buttonRestoreBackup.UseVisualStyleBackColor = false;
+            this.buttonRestoreBackup.Click += new System.EventHandler(this.buttonRestoreBackup_Click);
             // 
             // dbSettingsForm
             // 
@@ -385,14 +401,15 @@ namespace GardenAndOgorodShop
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(487, 381);
+            this.ClientSize = new System.Drawing.Size(527, 408);
             this.Controls.Add(this.panelBlock);
+            this.Controls.Add(this.buttonRestoreBackup);
+            this.Controls.Add(this.buttonHandleBackup);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.comboBoxTables);
             this.Controls.Add(this.buttonImport);
-            this.Controls.Add(this.buttonRecovery);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.buttonConnect);
@@ -438,7 +455,6 @@ namespace GardenAndOgorodShop
         private System.Windows.Forms.TextBox serverTextBox;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button buttonRecovery;
         private System.Windows.Forms.Button buttonImport;
         private System.Windows.Forms.ComboBox comboBoxTables;
         private System.Windows.Forms.Label label7;
@@ -452,5 +468,7 @@ namespace GardenAndOgorodShop
         private System.Windows.Forms.TextBox textBoxPassword;
         private System.Windows.Forms.Button buttonAuth;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button buttonHandleBackup;
+        private System.Windows.Forms.Button buttonRestoreBackup;
     }
 }
