@@ -14,6 +14,8 @@ using System.Xml.Linq;
 //using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 //using Excel = Microsoft.Office.Interop.Excel;
 using System.Runtime.InteropServices;
+using System.Configuration;
+using MySql.Data.MySqlClient;
 
 namespace GardenAndOgorodShop
 {
@@ -28,9 +30,129 @@ namespace GardenAndOgorodShop
 
         private DataTable products_table;
         private DataTable employees_table;
+
+        private int lastPageCount = 0;
+
+        private int start_page_count = 0;
+        private int end_page_count = 20;
         public Main()
         {
             InitializeComponent();
+
+            flowLayoutPanel1.ControlAdded += FlowLayoutPanel_ControlAdded;
+
+            products_table = DBHandler.LoadDataSync("products WHERE is_available > 0");
+            CalculatePagesCount();
+            LoadProducts(start_page_count, end_page_count);
+            customSlider1.RefreshProducts += Products_RefreshProducts;
+        }
+        private void CalculatePagesCount()
+        {
+            if (products_table.Rows.Count > 0)
+            {
+                if (products_table.Rows.Count % 20 != 0)
+                {
+                    customSlider1.CountPages = products_table.Rows.Count / 20 + 1;
+                    lastPageCount = products_table.Rows.Count % 20;
+                }
+                else
+                {
+                    customSlider1.CountPages = products_table.Rows.Count / 20;
+                    lastPageCount = 0;
+                }
+            }
+        }
+        private void LoadProducts(int start, int end)
+        {
+            flowLayoutPanel1.Controls.Clear();
+            List<blockRecord> blockRecords = new List<blockRecord>();
+            int itemsCount = 0;
+            for (int i = start; i < end; i++)
+            {
+                try
+                {
+                    DataRow record = products_table.Rows[i];
+
+                    blockRecords.Add(new blockRecord());
+                    blockRecords[itemsCount].IDrecord = (int)record[0];
+                    blockRecords[itemsCount].Header = record["products_name"].ToString();
+                    blockRecords[itemsCount].Description = record["descript"].ToString();
+                    blockRecords[itemsCount].Amount = (int)record["is_available"];
+                    blockRecords[itemsCount].Discount = Convert.ToInt32(record["seasonal_discount"]);
+                    blockRecords[itemsCount].DefaultPrice = Convert.ToInt32(record["price"]);
+                    if (record["image"] != DBNull.Value)
+                    {
+                        byte[] imageData = (byte[])record["image"];
+                        using (MemoryStream ms = new MemoryStream(imageData))
+                        {
+                            blockRecords[itemsCount].ProductImage = Image.FromStream(ms);
+                        }
+                    }
+                    blockRecords[itemsCount].VisibleButtons = UserConfiguration.UserRole != "seller";
+                    blockRecords[itemsCount].ProductDeleted += Product_ProductDeleted;
+                    blockRecords[itemsCount].FormClose += Form_FormClose;
+                    blockRecords[itemsCount].ProductAddToBacket += Product_ProductAddToBacket;
+                    flowLayoutPanel1.Controls.Add(blockRecords[itemsCount]);
+                    FlowLayoutPanel_ControlAdded(flowLayoutPanel1, new ControlEventArgs(blockRecords[itemsCount]));
+                    itemsCount++;
+                }
+                catch(Exception e)
+                {
+                    ;
+                }
+            }
+        }
+        private void Form_FormClose(object sender, EventArgs e)
+        {
+            this.Hide();
+        }
+        private void FlowLayoutPanel_ControlAdded(object sender, ControlEventArgs e)
+        {
+            Control addedControl = e.Control;
+
+            addedControl.Margin = new Padding(10, 20, 0, 0);
+        }
+        private void Product_ProductDeleted(object sender, EventArgs e)
+        {
+            blockRecord productToDelete = sender as blockRecord;
+            if (productToDelete != null)
+            {
+                flowLayoutPanel1.Controls.Remove(productToDelete);
+                productToDelete.Dispose();
+            }
+        }
+        #region Добавление товара в корзину
+        private void Product_ProductAddToBacket(object sender, EventArgs e)
+        {
+            blockRecord productToDelete = sender as blockRecord;
+            if (productToDelete != null && productToDelete.Amount == 0)
+            {
+                flowLayoutPanel1.Controls.Remove(productToDelete);
+                productToDelete.Dispose();
+            }
+        }
+        
+        #endregion
+        private void Products_RefreshProducts(object sender, EventArgs e)
+        {
+            if (customSlider1.CurrentPage == customSlider1.CountPages && lastPageCount != 0)
+            {
+                start_page_count = products_table.Rows.Count - lastPageCount;
+                end_page_count = products_table.Rows.Count;
+                LoadProducts(start_page_count, end_page_count);
+            }
+            else if (customSlider1.CurrentPage == 1)
+            {
+                start_page_count = 0;
+                end_page_count = 20;
+                LoadProducts(start_page_count, end_page_count);
+            }
+            else
+            {
+                start_page_count = customSlider1.CurrentPage * 20 - 20;
+                end_page_count = customSlider1.CurrentPage * 20;
+                LoadProducts(start_page_count, end_page_count);
+            }
         }
         #region Handle panel menu
         // ФУНКЦИЯ ВИДИМОСТИ ЭЛЕМЕНТОВ ПАНЕЛИ НАВИГАЦИИ
@@ -60,8 +182,7 @@ namespace GardenAndOgorodShop
             panelEmployeeData.Visible = true;
             button5.Visible = true;
             button5.BackgroundImage = GardenAndOgorodShop.Properties.Resources.closed_menu;
-            if (UserConfiguration.UserRole == "seller") { HideForCommonUser(); } else buttonCurrentOrder.Visible = false;
-
+            HideButtons_onNavigation_roles();
         }
         // ФУНКЦИЯ СКРЫТИЯ ПАНЕЛИ НАВИГАЦИИ
         private async void DisactiveSetting()
@@ -85,42 +206,6 @@ namespace GardenAndOgorodShop
         }
         #endregion
         #region Loading table's data to dataGridView
-        private void LoadProductDataGridView()
-        {
-            dataGridViewProducts.Visible = false;
-            dataGridViewProducts.Rows.Clear();
-            foreach (DataRow row in products_table.Rows)
-            {
-                Image productImage = Properties.Resources.none_image;
-                string productTitle = "none";
-                string productPrice = "none";
-                string productCategory = "none";
-                string productAmount = "none";
-                try
-                {
-                    productTitle = $"{row[1]}";
-                    double cost = Convert.ToDouble(row[3]);
-                    productPrice = $"{cost - cost * (Convert.ToDouble(row[9])/100)} ₽";
-                    productCategory = $"{categories_strings[Convert.ToInt32(row[4])]}";
-                    productAmount = $"{row[6]} шт.";
-                    if (row[7] != DBNull.Value) 
-                    {
-                        byte[] imageData = (byte[])row[7]; 
-
-                        using (MemoryStream ms = new MemoryStream(imageData))
-                        {
-                            productImage = Image.FromStream(ms);
-                        }
-                    }
-                }
-                catch
-                {
-                    productImage = Properties.Resources.none_image;
-                }
-                dataGridViewProducts.Rows.Add(productImage, productTitle, productPrice, productAmount, productCategory);
-            }
-            dataGridViewProducts.Visible = true;
-        }
         private async void LoadCategoriesDataGridView()
         {
             DataTable table = await DBHandler.LoadData("categories");
@@ -278,20 +363,69 @@ namespace GardenAndOgorodShop
                 categories_strings.Add((int)row[0], $"{row[1]}");
             }
         }
-        private void HideForCommonUser()
+        private void HideButtons_onNavigation_roles()
         {
-            buttonToCategoryForm.Visible = false;
-            buttonToUserForm.Visible = false;
-            buttonToEmployeeForm.Visible = false;
-            buttonToBrandForm.Visible = false;
-            buttonToSupplierForm.Visible = false;
-            buttonToStockForm.Visible = false;
-            buttonAddProduct.Visible = false;
-            button1.Visible = false;
-            button8.Visible = false;
+            foreach (Control control in panelNavigation.Controls)
+            {
+                if (control is Button button) button.Visible = false;
+            }
+            button5.Visible = true;
+            buttonLogOut.Visible = true;
+            buttonExitApp.Visible = true;
+            switch (UserConfiguration.UserRole)
+            {
+                case "seller":
+                    ShowForCommonUser();
+                    ; break;
+                case "admin":
+                    ShowForAdmin();
+                    ; break;
+                case "tovaroved":
+                    ShowForTovaroved();
+                    ; break;
+            }
+        }
+        private void ShowForCommonUser()
+        {
+            buttonCurrentOrder.Visible = true;
+            buttonToOrderForm.Visible = true;
+            buttonToProductForm.Visible = true;
+        }
+        private void ShowForAdmin()
+        {
+            buttonToUserForm.Visible = true;
+            buttonToEmployeeForm.Visible = true;
+        }
+        private void ShowForTovaroved()
+        {
+            buttonToProductForm.Visible = true;
+            buttonToBrandForm.Visible = true;
+            buttonToSupplierForm.Visible = true;
+            buttonToStockForm.Visible = true;
+        }
+        private void Loop(Control.ControlCollection controls)
+        {
+            foreach (Control control in controls)
+            {
+                if (control.HasChildren)
+                {
+                    Loop(control.Controls);
+                }
+                else
+                {
+                    control.MouseMove += Main_MouseMove;
+                    control.KeyPress += Main_KeyPress;
+                }
+            }
         }
         private async void FormViewProduct_Load(object sender, EventArgs e)
         {
+            tabControl1.SelectedIndex = UserConfiguration.UserRole == "admin" ? 2 : 0;
+            Loop(this.Controls);
+            if(Convert.ToBoolean(ConfigurationManager.AppSettings["sleep"]))
+            {
+                timer1.Start();
+            }
             //MessageBox.Show($"{UserConfiguration.UserRole}");
             dateTimePickerFrom.MaxDate = DateTime.Now;
             dateTimePickerTo.MaxDate = DateTime.Now;
@@ -319,14 +453,16 @@ namespace GardenAndOgorodShop
                 MessageBox.Show("Ошибка загрузки пользователя");
             }
             #endregion
-            LoadProductDataGridView();
             LoadCategoriesDataGridView();
             LoadEmployeesDataGridView();
             LoadUsersDataGridView();
             LoadOrdersDataGridView("orders ORDER BY order_date ASC");
             LoadBrandsDataGridView();
             LoadSuppliersDataGridView();
-            if (UserConfiguration.UserRole == "seller") { HideForCommonUser(); } else { buttonCurrentOrder.Visible = false; buttonBacket.Visible = false; }
+            if(!DBHandler.Backup(""))
+            {
+                MessageBox.Show("Ошибка резервного копирования при старте программы. Позовите администратора.", "Резервное копирование бд", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -502,7 +638,6 @@ namespace GardenAndOgorodShop
             buttonSortProductByPrice.Enabled = enabled;
             buttonSortProductByName.Enabled = enabled;
             comboBoxCategories.Enabled = enabled;
-            dataGridViewProducts.Enabled = enabled;
         }
         private void EnabledUsingHandleEmployees(bool enabled)
         {
@@ -518,8 +653,8 @@ namespace GardenAndOgorodShop
             method_product = $"products WHERE {method_filter_product} AND (products_name LIKE '%{method_search_product}%') AND is_available > 0 ORDER BY {method_sort_product}";
             // Загружаем новые данные таблицы
             products_table = await DBHandler.LoadData(method_product);
-            dataGridViewProducts.Rows.Clear();
-            LoadProductDataGridView();
+            LoadProducts(start_page_count, end_page_count);
+            CalculatePagesCount();
             EnabledUsingHandleProducts(true);
         }
         private async Task reloadEmployeeData()
@@ -688,107 +823,10 @@ namespace GardenAndOgorodShop
             form.Show();
             this.Hide();
         }
-        private async void badResultView()
-        {
-            buttonBacket.Enabled = false;
-            labelReadyOrNot.ForeColor = Color.Red;
-            labelReadyOrNot.Text = "Товар НЕ добавлен!";
-            pictureBoxReadyOrNot.BackgroundImage = Properties.Resources.cancel;
-            panelResult.Visible = true;
-            await Task.Delay(1000);
-            panelResult.Visible = false;
-            buttonBacket.Enabled = true;
-        }
-        private bool AddEditProduct_inOrder(int product_id)
-        {
-            try
-            {
-                if (DBHandler.checkExistProduct_inOrder(product_id))
-                {
-                    return DBHandler.randomSQLCommand($@"
-                    UPDATE `products_orders` 
-                    SET `product_amount` = `product_amount` + 1 
-                    WHERE products_id = {product_id} AND orders_id = {UserConfiguration.Current_order_id};");
-                }
-                else
-                {
-                    return DBHandler.randomSQLCommand($@"
-                    INSERT INTO `garden_and_ogorod_shop`.`products_orders` 
-                    (`products_id`, `orders_id`, `product_amount`) 
-                    VALUES ('{product_id}', '{UserConfiguration.Current_order_id}', '1');");
-                }
-            }
-            catch (Exception err)
-            {
-                MessageBox.Show($"Ошибка\n{err}");
-                return false;
-            }
-        }
-        private async void resultAdd_inOrder(int product_id)
-        {
-            try
-            {
-                if (AddEditProduct_inOrder(product_id))
-                {
-                    buttonBacket.Enabled = false;
-                    labelReadyOrNot.ForeColor = Color.Green;
-                    labelReadyOrNot.Text = "Товар добавлен.";
-                    pictureBoxReadyOrNot.BackgroundImage = Properties.Resources.ready;
-                    panelResult.Visible = true;
-                    await Task.Delay(1000);
-                    panelResult.Visible = false;
-                    buttonBacket.Enabled = true;
-                    int index_row = dataGridViewProducts.SelectedCells[0].RowIndex;
-                    int new_amount = Convert.ToInt32(Convert.ToString(dataGridViewProducts.Rows[index_row].Cells[3].Value).Replace(" шт.", ""));
-                    DBHandler.randomSQLCommand($"UPDATE `garden_and_ogorod_shop`.`products` SET `is_available` = '{new_amount - 1}' WHERE (`products_id` = '{product_id}');");
-                    if (new_amount == 1)
-                    {
-                        await reloadProductData();
-                    }
-                    else
-                    {
-                        dataGridViewProducts.Rows[index_row].Cells[3].Value = $"{new_amount - 1} шт.";
-                    }
-                }
-                else
-                {
-                    badResultView();
-                }
-            }
-            catch (Exception err)
-            {
-                MessageBox.Show($"Ошибка\n{err}");
-            }
-        }
-        private void buttonBacket_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                int index_row = dataGridViewProducts.SelectedCells[0].RowIndex;
-                DataRow selected_row = products_table.Rows[index_row];
-                int product_id = Convert.ToInt32(selected_row[0]);
-                if (UserConfiguration.Current_order_id == 0)
-                {
-                    UserConfiguration.Current_order_id = DBHandler.getNewIdOrder();
-                    if (UserConfiguration.Current_order_id != 0)
-                    {
-                        resultAdd_inOrder(product_id);
-                    }
-                    else
-                    {
-                        badResultView();
-                    }
-                }
-                else
-                {
-                    resultAdd_inOrder(product_id);
-                }
-            }
-            catch (Exception err)
-            {
-                MessageBox.Show($"Ошибка\n{err}");
-            }
-        }
+        
+        
+        
+        
         private void saveProducts_delOrder()
         {
             DialogResult dialogResult = MessageBox.Show("Вы действительно хотите выйти?", "Выход", MessageBoxButtons.YesNo);
@@ -806,15 +844,6 @@ namespace GardenAndOgorodShop
         }
         #endregion
 
-        private void buttonInfoProduct_Click(object sender, EventArgs e)
-        {
-            int index_row = dataGridViewProducts.SelectedCells[0].RowIndex;
-            DataRow selected_row = products_table.Rows[index_row];
-            int product_id = Convert.ToInt32(selected_row[0]);
-            HandleRecordForm form = new HandleRecordForm(0, "edit", product_id);
-            form.Show();
-            this.Hide();
-        }
 
         private void buttonAddCategory_Click(object sender, EventArgs e)
         {
@@ -982,8 +1011,6 @@ namespace GardenAndOgorodShop
                     );
                     dataGridViewBrands.Rows.Clear();
                     LoadBrandsDataGridView();
-                    dataGridViewProducts.Rows.Clear();
-                    LoadProductDataGridView();
                 }
                 else
                 {
@@ -1017,8 +1044,6 @@ namespace GardenAndOgorodShop
                     );
                     dataGridViewCategories.Rows.Clear();
                     LoadCategoriesDataGridView();
-                    dataGridViewProducts.Rows.Clear();
-                    LoadProductDataGridView();
                 }
                 else
                 {
@@ -1096,38 +1121,6 @@ namespace GardenAndOgorodShop
                 }
             }
         }
-        // Удаление продукта
-        private async void button1_Click_1(object sender, EventArgs e)
-        {
-            int index_row = dataGridViewProducts.SelectedCells[0].RowIndex;
-            DataRow selected_row = products_table.Rows[index_row];
-            int _id = Convert.ToInt32(selected_row[0]);
-            DialogResult dr = MessageBox.Show($"Вы уверены что хотите удалить продукт '{selected_row[1]}'?",
-                "Подтверждение",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Warning
-                );
-            if (dr == DialogResult.Yes)
-            {
-                if (DBHandler.DeleteHandler("products", "products_id", _id))
-                {
-                    MessageBox.Show($"Продукт удалён",
-                    "Результат",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information
-                    );
-                    await reloadProductData();
-                }
-                else
-                {
-                    MessageBox.Show($"Продукт не был удалён!",
-                    "Результат",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error
-                    );
-                }
-            }
-        }
         // Удаление поставщика
         private void button10_Click(object sender, EventArgs e)
         {
@@ -1149,8 +1142,6 @@ namespace GardenAndOgorodShop
                     MessageBoxIcon.Information
                     );
                     LoadSuppliersDataGridView();
-                    dataGridViewProducts.Rows.Clear();
-                    LoadProductDataGridView();
                 }
                 else
                 {
@@ -1193,6 +1184,28 @@ namespace GardenAndOgorodShop
                     );
                 }
             }
+        }
+        private int disactive_user_time = 0;
+        private void timer1_Tick(object sender, EventArgs e)
+        {            
+            disactive_user_time++;
+            if (disactive_user_time == 30)
+            {
+                DBHandler.returnProduct();
+                AuthForm form = new AuthForm();
+                this.Hide();
+                form.Show();
+            }
+        }
+
+        private void Main_MouseMove(object sender, MouseEventArgs e)
+        {
+            disactive_user_time = 0;
+        }
+
+        private void Main_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            disactive_user_time = 0;
         }
     }
 }

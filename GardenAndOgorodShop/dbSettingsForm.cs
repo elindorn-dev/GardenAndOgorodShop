@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Configuration;
 using System.Reflection;
 using System.Security.Cryptography;
+using System.IO;
 
 namespace GardenAndOgorodShop
 {
@@ -71,19 +72,6 @@ namespace GardenAndOgorodShop
             AuthForm form = new AuthForm();
             form.Show();
             this.Hide();
-        }
-
-        private void buttonRecovery_Click(object sender, EventArgs e)
-        {
-            if (DBHandler.RecoveryStructure())
-            {
-                MessageBox.Show("Структура восстановлена без данных", "Восстановление", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                buttonImport.Enabled = true;
-            }
-            else
-            {
-                MessageBox.Show("Структура не была восстановлена", "Восстановление", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
         }
 
         private void buttonImport_Click(object sender, EventArgs e)
@@ -155,8 +143,8 @@ namespace GardenAndOgorodShop
             if (DBHandler.checkAutorizationAdmin(login, ComputeSha256Hash(pwd)) || (login == ConfigurationManager.AppSettings["username"] && pwd == ConfigurationManager.AppSettings["password"]))
             {
                 panelBlock.Visible = false;
-                this.Width = 622;
-                this.Height = 439;
+                this.Width = 1000;
+                this.Height = 420;
             }
             else
             {
@@ -236,6 +224,58 @@ namespace GardenAndOgorodShop
                 hideshowpwd.BackgroundImage = GardenAndOgorodShop.Properties.Resources.hide_password;
                 textBoxPassword.PasswordChar = '●';
                 show_password = true;
+            }
+        }
+
+        private void buttonHandleBackup_Click(object sender, EventArgs e)
+        {
+            using (FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog())
+            {
+                folderBrowserDialog.Description = "Выберите папку:";
+                folderBrowserDialog.ShowNewFolderButton = true;
+                folderBrowserDialog.SelectedPath = Directory.GetCurrentDirectory();
+
+                DialogResult result = folderBrowserDialog.ShowDialog();
+
+                if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(folderBrowserDialog.SelectedPath))
+                {
+                    if (!DBHandler.Backup(folderBrowserDialog.SelectedPath))
+                    {
+                        MessageBox.Show("Ошибка резервного копирования при старте программы.", "Резервное копирование бд", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Резервное копирование в ручном режиме успешно завершено.", "Резервное копирование бд", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Действие отменено или папка не выбрана.");
+                }
+            }
+            
+        }
+
+        private void buttonRestoreBackup_Click(object sender, EventArgs e)
+        {
+            string path = "";
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+
+            openFileDialog.Filter = "Files|*.sql";
+            openFileDialog.Title = "Выберите файл для восстановления БД";
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                path = openFileDialog.FileName;
+            }
+            if (DBHandler.RecoveryBackup(path))
+            {
+                MessageBox.Show("Восстановление БД успешно.", "Восстановление", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                buttonImport.Enabled = true;
+            }
+            else
+            {
+                MessageBox.Show("БД не была восстановлена", "Восстановление", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

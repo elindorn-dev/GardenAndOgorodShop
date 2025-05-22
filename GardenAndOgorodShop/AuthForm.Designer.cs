@@ -32,9 +32,17 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AuthForm));
             this.panelAuth = new System.Windows.Forms.Panel();
             this.panelCaptcha = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
+            this.panelShoom = new System.Windows.Forms.Panel();
+            this.newLabel4 = new GardenAndOgorodShop.newLabel();
+            this.newLabel3 = new GardenAndOgorodShop.newLabel();
+            this.newLabel2 = new GardenAndOgorodShop.newLabel();
+            this.newLabel1 = new GardenAndOgorodShop.newLabel();
             this.button1 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.textBoxCaptcha = new System.Windows.Forms.TextBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.hideshowpwd = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.textBoxLogin = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -42,27 +50,21 @@
             this.label1 = new System.Windows.Forms.Label();
             this.buttonAuth = new System.Windows.Forms.Button();
             this.panelSettings = new System.Windows.Forms.Panel();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.buttonSettingsDB = new System.Windows.Forms.Button();
             this.buttonExitApp = new System.Windows.Forms.Button();
             this.buttonMenu = new System.Windows.Forms.PictureBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.panelShoom = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.hideshowpwd = new System.Windows.Forms.Button();
-            this.newLabel4 = new GardenAndOgorodShop.newLabel();
-            this.newLabel3 = new GardenAndOgorodShop.newLabel();
-            this.newLabel2 = new GardenAndOgorodShop.newLabel();
-            this.newLabel1 = new GardenAndOgorodShop.newLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panelAuth.SuspendLayout();
             this.panelCaptcha.SuspendLayout();
+            this.panelShoom.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panelSettings.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.buttonMenu)).BeginInit();
-            this.panelShoom.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panelAuth
@@ -92,6 +94,91 @@
             this.panelCaptcha.Size = new System.Drawing.Size(400, 346);
             this.panelCaptcha.TabIndex = 19;
             this.panelCaptcha.Visible = false;
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.Transparent;
+            this.button2.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.refresh;
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button2.ForeColor = System.Drawing.Color.White;
+            this.button2.Location = new System.Drawing.Point(23, 229);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(50, 50);
+            this.button2.TabIndex = 17;
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // panelShoom
+            // 
+            this.panelShoom.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.shoom;
+            this.panelShoom.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panelShoom.Controls.Add(this.newLabel4);
+            this.panelShoom.Controls.Add(this.newLabel3);
+            this.panelShoom.Controls.Add(this.newLabel2);
+            this.panelShoom.Controls.Add(this.newLabel1);
+            this.panelShoom.Location = new System.Drawing.Point(26, 31);
+            this.panelShoom.Name = "panelShoom";
+            this.panelShoom.Size = new System.Drawing.Size(350, 63);
+            this.panelShoom.TabIndex = 16;
+            // 
+            // newLabel4
+            // 
+            this.newLabel4.AutoSize = true;
+            this.newLabel4.BackColor = System.Drawing.Color.Transparent;
+            this.newLabel4.Font = new System.Drawing.Font("Impact", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.newLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.newLabel4.Location = new System.Drawing.Point(260, -33);
+            this.newLabel4.Name = "newLabel4";
+            this.newLabel4.NewText = null;
+            this.newLabel4.RotateAngle = 0;
+            this.newLabel4.Size = new System.Drawing.Size(35, 39);
+            this.newLabel4.TabIndex = 25;
+            this.newLabel4.Text = "n";
+            // 
+            // newLabel3
+            // 
+            this.newLabel3.AutoSize = true;
+            this.newLabel3.BackColor = System.Drawing.Color.Transparent;
+            this.newLabel3.Font = new System.Drawing.Font("Impact", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.newLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.newLabel3.Location = new System.Drawing.Point(172, -33);
+            this.newLabel3.Name = "newLabel3";
+            this.newLabel3.NewText = null;
+            this.newLabel3.RotateAngle = 0;
+            this.newLabel3.Size = new System.Drawing.Size(35, 39);
+            this.newLabel3.TabIndex = 24;
+            this.newLabel3.Text = "n";
+            // 
+            // newLabel2
+            // 
+            this.newLabel2.AutoSize = true;
+            this.newLabel2.BackColor = System.Drawing.Color.Transparent;
+            this.newLabel2.Font = new System.Drawing.Font("Impact", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.newLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.newLabel2.Location = new System.Drawing.Point(80, -33);
+            this.newLabel2.Name = "newLabel2";
+            this.newLabel2.NewText = null;
+            this.newLabel2.RotateAngle = 0;
+            this.newLabel2.Size = new System.Drawing.Size(35, 39);
+            this.newLabel2.TabIndex = 22;
+            this.newLabel2.Text = "n";
+            // 
+            // newLabel1
+            // 
+            this.newLabel1.AutoSize = true;
+            this.newLabel1.BackColor = System.Drawing.Color.Transparent;
+            this.newLabel1.Font = new System.Drawing.Font("Impact", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.newLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.newLabel1.Location = new System.Drawing.Point(-5, -33);
+            this.newLabel1.Name = "newLabel1";
+            this.newLabel1.NewText = null;
+            this.newLabel1.RotateAngle = 0;
+            this.newLabel1.Size = new System.Drawing.Size(35, 39);
+            this.newLabel1.TabIndex = 20;
+            this.newLabel1.Text = "n";
             // 
             // button1
             // 
@@ -131,6 +218,29 @@
             this.textBoxCaptcha.Text = "Введите каптчу...";
             this.textBoxCaptcha.Enter += new System.EventHandler(this.textBoxCaptcha_Enter);
             this.textBoxCaptcha.Leave += new System.EventHandler(this.textBoxCaptcha_Leave);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.logo;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Location = new System.Drawing.Point(153, 88);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(80, 80);
+            this.pictureBox1.TabIndex = 18;
+            this.pictureBox1.TabStop = false;
+            // 
+            // hideshowpwd
+            // 
+            this.hideshowpwd.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.show_password;
+            this.hideshowpwd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.hideshowpwd.FlatAppearance.BorderSize = 0;
+            this.hideshowpwd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.hideshowpwd.Location = new System.Drawing.Point(345, 265);
+            this.hideshowpwd.Name = "hideshowpwd";
+            this.hideshowpwd.Size = new System.Drawing.Size(40, 40);
+            this.hideshowpwd.TabIndex = 17;
+            this.hideshowpwd.UseVisualStyleBackColor = true;
+            this.hideshowpwd.Click += new System.EventHandler(this.hideshowpwd_Click);
             // 
             // panel3
             // 
@@ -212,12 +322,42 @@
             // 
             this.panelSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panelSettings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(120)))), ((int)(((byte)(56)))));
+            this.panelSettings.Controls.Add(this.checkBox1);
+            this.panelSettings.Controls.Add(this.label2);
             this.panelSettings.Controls.Add(this.buttonSettingsDB);
             this.panelSettings.Controls.Add(this.buttonExitApp);
-            this.panelSettings.Location = new System.Drawing.Point(511, 61);
+            this.panelSettings.Location = new System.Drawing.Point(527, 61);
             this.panelSettings.Name = "panelSettings";
-            this.panelSettings.Size = new System.Drawing.Size(210, 161);
+            this.panelSettings.Size = new System.Drawing.Size(210, 215);
             this.panelSettings.TabIndex = 2;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.Appearance = System.Windows.Forms.Appearance.Button;
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.BackColor = System.Drawing.Color.Teal;
+            this.checkBox1.Checked = true;
+            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.checkBox1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.checkBox1.Location = new System.Drawing.Point(122, 164);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(62, 35);
+            this.checkBox1.TabIndex = 8;
+            this.checkBox1.Text = "ВКЛ ";
+            this.checkBox1.UseVisualStyleBackColor = false;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(12, 169);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(110, 25);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Режим сна:";
             // 
             // buttonSettingsDB
             // 
@@ -254,120 +394,12 @@
             this.buttonMenu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonMenu.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.burger_menu;
             this.buttonMenu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonMenu.Location = new System.Drawing.Point(458, 2);
+            this.buttonMenu.Location = new System.Drawing.Point(467, 2);
             this.buttonMenu.Name = "buttonMenu";
             this.buttonMenu.Size = new System.Drawing.Size(50, 50);
             this.buttonMenu.TabIndex = 1;
             this.buttonMenu.TabStop = false;
             this.buttonMenu.Click += new System.EventHandler(this.buttonMenu_Click);
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.Transparent;
-            this.button2.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.refresh;
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(23, 229);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(50, 50);
-            this.button2.TabIndex = 17;
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // panelShoom
-            // 
-            this.panelShoom.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.shoom;
-            this.panelShoom.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panelShoom.Controls.Add(this.newLabel4);
-            this.panelShoom.Controls.Add(this.newLabel3);
-            this.panelShoom.Controls.Add(this.newLabel2);
-            this.panelShoom.Controls.Add(this.newLabel1);
-            this.panelShoom.Location = new System.Drawing.Point(26, 31);
-            this.panelShoom.Name = "panelShoom";
-            this.panelShoom.Size = new System.Drawing.Size(350, 63);
-            this.panelShoom.TabIndex = 16;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.logo;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(153, 88);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(80, 80);
-            this.pictureBox1.TabIndex = 18;
-            this.pictureBox1.TabStop = false;
-            // 
-            // hideshowpwd
-            // 
-            this.hideshowpwd.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.show_password;
-            this.hideshowpwd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.hideshowpwd.FlatAppearance.BorderSize = 0;
-            this.hideshowpwd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.hideshowpwd.Location = new System.Drawing.Point(345, 265);
-            this.hideshowpwd.Name = "hideshowpwd";
-            this.hideshowpwd.Size = new System.Drawing.Size(40, 40);
-            this.hideshowpwd.TabIndex = 17;
-            this.hideshowpwd.UseVisualStyleBackColor = true;
-            this.hideshowpwd.Click += new System.EventHandler(this.hideshowpwd_Click);
-            // 
-            // newLabel4
-            // 
-            this.newLabel4.AutoSize = true;
-            this.newLabel4.BackColor = System.Drawing.Color.Transparent;
-            this.newLabel4.Font = new System.Drawing.Font("Impact", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.newLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.newLabel4.Location = new System.Drawing.Point(260, -33);
-            this.newLabel4.Name = "newLabel4";
-            this.newLabel4.NewText = null;
-            this.newLabel4.RotateAngle = 0;
-            this.newLabel4.Size = new System.Drawing.Size(35, 39);
-            this.newLabel4.TabIndex = 25;
-            this.newLabel4.Text = "n";
-            // 
-            // newLabel3
-            // 
-            this.newLabel3.AutoSize = true;
-            this.newLabel3.BackColor = System.Drawing.Color.Transparent;
-            this.newLabel3.Font = new System.Drawing.Font("Impact", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.newLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.newLabel3.Location = new System.Drawing.Point(172, -33);
-            this.newLabel3.Name = "newLabel3";
-            this.newLabel3.NewText = null;
-            this.newLabel3.RotateAngle = 0;
-            this.newLabel3.Size = new System.Drawing.Size(35, 39);
-            this.newLabel3.TabIndex = 24;
-            this.newLabel3.Text = "n";
-            // 
-            // newLabel2
-            // 
-            this.newLabel2.AutoSize = true;
-            this.newLabel2.BackColor = System.Drawing.Color.Transparent;
-            this.newLabel2.Font = new System.Drawing.Font("Impact", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.newLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.newLabel2.Location = new System.Drawing.Point(80, -33);
-            this.newLabel2.Name = "newLabel2";
-            this.newLabel2.NewText = null;
-            this.newLabel2.RotateAngle = 0;
-            this.newLabel2.Size = new System.Drawing.Size(35, 39);
-            this.newLabel2.TabIndex = 22;
-            this.newLabel2.Text = "n";
-            // 
-            // newLabel1
-            // 
-            this.newLabel1.AutoSize = true;
-            this.newLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.newLabel1.Font = new System.Drawing.Font("Impact", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.newLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.newLabel1.Location = new System.Drawing.Point(-5, -33);
-            this.newLabel1.Name = "newLabel1";
-            this.newLabel1.NewText = null;
-            this.newLabel1.RotateAngle = 0;
-            this.newLabel1.Size = new System.Drawing.Size(35, 39);
-            this.newLabel1.TabIndex = 20;
-            this.newLabel1.Text = "n";
             // 
             // timer1
             // 
@@ -380,7 +412,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(186)))), ((int)(((byte)(93)))));
-            this.ClientSize = new System.Drawing.Size(511, 447);
+            this.ClientSize = new System.Drawing.Size(520, 448);
             this.Controls.Add(this.panelSettings);
             this.Controls.Add(this.buttonMenu);
             this.Controls.Add(this.panelAuth);
@@ -395,17 +427,18 @@
             this.panelAuth.ResumeLayout(false);
             this.panelAuth.PerformLayout();
             this.panelCaptcha.ResumeLayout(false);
+            this.panelShoom.ResumeLayout(false);
+            this.panelShoom.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panelSettings.ResumeLayout(false);
+            this.panelSettings.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.buttonMenu)).EndInit();
-            this.panelShoom.ResumeLayout(false);
-            this.panelShoom.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -436,6 +469,8 @@
         private newLabel newLabel3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Label label2;
     }
 }
 

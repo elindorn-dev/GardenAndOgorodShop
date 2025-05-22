@@ -1644,7 +1644,7 @@ namespace GardenAndOgorodShop
             this.panelNavigation.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelNavigation.Location = new System.Drawing.Point(0, 0);
             this.panelNavigation.Name = "panelNavigation";
-            this.panelNavigation.Size = new System.Drawing.Size(52, 484);
+            this.panelNavigation.Size = new System.Drawing.Size(52, 478);
             this.panelNavigation.TabIndex = 1;
             // 
             // buttonToMianForm
@@ -1714,7 +1714,7 @@ namespace GardenAndOgorodShop
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(799, 484);
+            this.ClientSize = new System.Drawing.Size(799, 478);
             this.Controls.Add(this.panelNavigation);
             this.Controls.Add(this.tabControlRecords);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
