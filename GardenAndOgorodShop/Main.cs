@@ -345,10 +345,11 @@ namespace GardenAndOgorodShop
                 {
                     string[] fio = $"{row[1]}".Split(' ');
                     clientsName = $"{fio[0]} {fio[1].Substring(0, 1)}. {fio[2].Substring(0, 1)}.";
-                    clientsBithday = $"{row[4]}";
+                    DateTime clientsBithdayDateTime = DateTime.Parse(row[3].ToString());
+                    clientsBithday = clientsBithdayDateTime.ToString("dd.MM.yyyy");
                     clientsPoints = $"{row[2]}";
                 }
-                catch
+                catch (Exception err)
                 {
                     clientsName = "none";
                     clientsBithday = "none";
@@ -421,6 +422,7 @@ namespace GardenAndOgorodShop
         }
         private void ShowForCommonUser()
         {
+            
             buttonCurrentOrder.Visible = true;
             buttonToOrderForm.Visible = true;
             buttonToProductForm.Visible = true;
@@ -456,8 +458,9 @@ namespace GardenAndOgorodShop
         private async void FormViewProduct_Load(object sender, EventArgs e)
         {
             tabControl1.SelectedIndex = UserConfiguration.UserRole == "admin" ? 2 : 0;
+            buttonAddProduct.Visible = !(UserConfiguration.UserRole == "seller");
             //Loop(this.Controls);
-            if(Convert.ToBoolean(ConfigurationManager.AppSettings["sleep"]))
+            if (Convert.ToBoolean(ConfigurationManager.AppSettings["sleep"]))
             {
                 timer1.Start();
             }
@@ -760,6 +763,10 @@ namespace GardenAndOgorodShop
         {
             try
             {
+                start_page_count = 0;
+                end_page_count = 20;
+                LoadProducts(start_page_count, end_page_count);
+                customSlider1.CurrentPage = 1;
                 // определяем выбрана ли категория
                 if (comboBoxCategories.SelectedIndex != 0)
                 {
@@ -1257,7 +1264,55 @@ namespace GardenAndOgorodShop
             disactive_user_time = 0;
         }
 
-        
+        private void buttonAddClient_Click(object sender, EventArgs e)
+        {
+            HandleRecordForm form = new HandleRecordForm(7, "add", 0);
+            form.Show();
+            this.Hide();
+        }
+
+        private void buttonEditClient_Click(object sender, EventArgs e)
+        {
+            int index_row = dataGridViewClients.SelectedCells[0].RowIndex;
+            DataRow selected_row = DBHandler.LoadDataSync("clients").Rows[index_row];
+            int _id = Convert.ToInt32(selected_row[0]);
+            HandleRecordForm form = new HandleRecordForm(7, "edit", _id);
+            form.Show();
+            this.Hide();
+        }
+
+        private void buttonDeleteClient_Click(object sender, EventArgs e)
+        {
+            int index_row = dataGridViewCategories.SelectedCells[0].RowIndex;
+            DataRow selected_row = DBHandler.LoadDataSync("clients").Rows[index_row];
+            int _id = Convert.ToInt32(selected_row[0]);
+            DialogResult dr = MessageBox.Show($"Вы уверены что хотите удалить клиента '{selected_row[1]}'?",
+                "Подтверждение",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+                );
+            if (dr == DialogResult.Yes)
+            {
+                if (DBHandler.DeleteHandler("clients", "clients_id", _id))
+                {
+                    MessageBox.Show($"Клиент удалён",
+                    "Результат",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information
+                    );
+                    dataGridViewCategories.Rows.Clear();
+                    LoadCategoriesDataGridView();
+                }
+                else
+                {
+                    MessageBox.Show($"Клиент не был удалён!",
+                    "Результат",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                    );
+                }
+            }
+        }
     }
     public delegate void MouseMovedEvent();
     public class GlobalMouseHandler : IMessageFilter

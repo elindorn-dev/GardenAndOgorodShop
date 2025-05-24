@@ -791,6 +791,34 @@ namespace GardenAndOgorodShop
                 return false;
             }
         }
+        public static bool InsertClient(string fio, string email, string phone, string bithday)
+        {
+            try
+            {
+                MySqlConnection con = new MySqlConnection(connect_string);
+                con.Open();
+
+                string query = "INSERT INTO `garden_and_ogorod_shop`.`clients` (`full_name`, `birth_date`, `email`, `phone_number`) VALUES (@fio, @birth, @email, @phone);";
+
+                using (MySqlCommand cmd = new MySqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@fio", fio);
+                    cmd.Parameters.AddWithValue("@email", email);
+                    cmd.Parameters.AddWithValue("@phone", phone);
+                    cmd.Parameters.AddWithValue("@birth", bithday);
+
+                    cmd.ExecuteNonQuery();
+                }
+
+                con.Close();
+                return true;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Ошибка добавления клиента (db):\n" + e.Message);
+                return false;
+            }
+        }
         #endregion
         #region Edit records
         /// <summary>
@@ -1052,6 +1080,36 @@ namespace GardenAndOgorodShop
             catch (Exception e)
             {
                 MessageBox.Show("Ошибка добавления производителя (db):\n" + e.Message);
+                return false;
+            }
+        }
+        public static bool EditClient(string fio, string email, string phone, string bithday, int points, int id)
+        {
+            try
+            {
+                MySqlConnection con = new MySqlConnection(connect_string);
+                con.Open();
+
+                string query = "UPDATE `garden_and_ogorod_shop`.`clients` SET `full_name` = @fio, `loyalty_points` = @points, `birth_date` = @birth, `email` = @email, `phone_number` = @phone WHERE (`clients_id` = @id);";
+
+                using (MySqlCommand cmd = new MySqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@fio", fio);
+                    cmd.Parameters.AddWithValue("@email", email);
+                    cmd.Parameters.AddWithValue("@phone", phone);
+                    cmd.Parameters.AddWithValue("@birth", bithday);
+                    cmd.Parameters.AddWithValue("@points", points);
+                    cmd.Parameters.AddWithValue("@id", id);
+
+                    cmd.ExecuteNonQuery();
+                }
+
+                con.Close();
+                return true;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Ошибка изменения клиента (db):\n" + e.Message);
                 return false;
             }
         }
