@@ -35,6 +35,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -65,10 +66,10 @@
             this.button5 = new System.Windows.Forms.Button();
             this.buttonCurrentOrder = new System.Windows.Forms.Button();
             this.ViewProductPage = new System.Windows.Forms.TabPage();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panelResult = new System.Windows.Forms.Panel();
-            this.pictureBoxReadyOrNot = new System.Windows.Forms.PictureBox();
             this.labelReadyOrNot = new System.Windows.Forms.Label();
+            this.pictureBoxReadyOrNot = new System.Windows.Forms.PictureBox();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.ViewCategories = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -153,7 +154,18 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.buttonToClientForm = new System.Windows.Forms.Button();
             this.customSlider1 = new GardenAndOgorodShop.CustomSlider();
+            this.ViewClientsPage = new System.Windows.Forms.TabPage();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.buttonDeleteClient = new System.Windows.Forms.Button();
+            this.buttonAddClient = new System.Windows.Forms.Button();
+            this.buttonEditClient = new System.Windows.Forms.Button();
+            this.label12 = new System.Windows.Forms.Label();
+            this.dataGridViewClients = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.panelNavigation.SuspendLayout();
             this.panelEmployeeData.SuspendLayout();
@@ -184,6 +196,9 @@
             this.panel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.ViewClientsPage.SuspendLayout();
+            this.panel10.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClients)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -343,6 +358,7 @@
             // 
             this.panelNavigation.BackColor = System.Drawing.Color.White;
             this.panelNavigation.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelNavigation.Controls.Add(this.buttonToClientForm);
             this.panelNavigation.Controls.Add(this.panelEmployeeData);
             this.panelNavigation.Controls.Add(this.buttonLogOut);
             this.panelNavigation.Controls.Add(this.buttonExitApp);
@@ -574,16 +590,6 @@
             this.ViewProductPage.TabIndex = 1;
             this.ViewProductPage.Click += new System.EventHandler(this.ViewProductPage_Click);
             // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.AutoScroll = true;
-            this.flowLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.flowLayoutPanel1.BackColor = System.Drawing.Color.White;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(23, 181);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(830, 483);
-            this.flowLayoutPanel1.TabIndex = 6;
-            // 
             // panelResult
             // 
             this.panelResult.BackColor = System.Drawing.Color.White;
@@ -596,16 +602,6 @@
             this.panelResult.TabIndex = 3;
             this.panelResult.Visible = false;
             // 
-            // pictureBoxReadyOrNot
-            // 
-            this.pictureBoxReadyOrNot.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.burger_menu;
-            this.pictureBoxReadyOrNot.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBoxReadyOrNot.Location = new System.Drawing.Point(313, 5);
-            this.pictureBoxReadyOrNot.Name = "pictureBoxReadyOrNot";
-            this.pictureBoxReadyOrNot.Size = new System.Drawing.Size(50, 50);
-            this.pictureBoxReadyOrNot.TabIndex = 20;
-            this.pictureBoxReadyOrNot.TabStop = false;
-            // 
             // labelReadyOrNot
             // 
             this.labelReadyOrNot.AutoSize = true;
@@ -617,6 +613,26 @@
             this.labelReadyOrNot.TabIndex = 19;
             this.labelReadyOrNot.Text = "Товар добавлен.";
             // 
+            // pictureBoxReadyOrNot
+            // 
+            this.pictureBoxReadyOrNot.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.burger_menu;
+            this.pictureBoxReadyOrNot.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBoxReadyOrNot.Location = new System.Drawing.Point(313, 5);
+            this.pictureBoxReadyOrNot.Name = "pictureBoxReadyOrNot";
+            this.pictureBoxReadyOrNot.Size = new System.Drawing.Size(50, 50);
+            this.pictureBoxReadyOrNot.TabIndex = 20;
+            this.pictureBoxReadyOrNot.TabStop = false;
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.AutoScroll = true;
+            this.flowLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.flowLayoutPanel1.BackColor = System.Drawing.Color.White;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(23, 181);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(830, 483);
+            this.flowLayoutPanel1.TabIndex = 6;
+            // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.ViewProductPage);
@@ -627,6 +643,7 @@
             this.tabControl1.Controls.Add(this.ViewBrandsPage);
             this.tabControl1.Controls.Add(this.ViewSuppliersPage);
             this.tabControl1.Controls.Add(this.ViewDocsPage);
+            this.tabControl1.Controls.Add(this.ViewClientsPage);
             this.tabControl1.ItemSize = new System.Drawing.Size(0, 1);
             this.tabControl1.Location = new System.Drawing.Point(44, -5);
             this.tabControl1.Name = "tabControl1";
@@ -1603,6 +1620,20 @@
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // buttonToClientForm
+            // 
+            this.buttonToClientForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(186)))), ((int)(((byte)(93)))));
+            this.buttonToClientForm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonToClientForm.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonToClientForm.Location = new System.Drawing.Point(13, 275);
+            this.buttonToClientForm.Name = "buttonToClientForm";
+            this.buttonToClientForm.Size = new System.Drawing.Size(175, 40);
+            this.buttonToClientForm.TabIndex = 21;
+            this.buttonToClientForm.Text = "Клиенты";
+            this.buttonToClientForm.UseVisualStyleBackColor = false;
+            this.buttonToClientForm.Visible = false;
+            this.buttonToClientForm.Click += new System.EventHandler(this.buttonToClientForm_Click);
+            // 
             // customSlider1
             // 
             this.customSlider1.Count = 1;
@@ -1612,6 +1643,122 @@
             this.customSlider1.Name = "customSlider1";
             this.customSlider1.Size = new System.Drawing.Size(178, 69);
             this.customSlider1.TabIndex = 18;
+            // 
+            // ViewClientsPage
+            // 
+            this.ViewClientsPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(186)))), ((int)(((byte)(93)))));
+            this.ViewClientsPage.Controls.Add(this.panel10);
+            this.ViewClientsPage.Controls.Add(this.dataGridViewClients);
+            this.ViewClientsPage.Location = new System.Drawing.Point(4, 5);
+            this.ViewClientsPage.Name = "ViewClientsPage";
+            this.ViewClientsPage.Size = new System.Drawing.Size(884, 682);
+            this.ViewClientsPage.TabIndex = 9;
+            this.ViewClientsPage.Text = "ViewClientsPage";
+            // 
+            // panel10
+            // 
+            this.panel10.BackColor = System.Drawing.Color.White;
+            this.panel10.Controls.Add(this.buttonDeleteClient);
+            this.panel10.Controls.Add(this.buttonAddClient);
+            this.panel10.Controls.Add(this.buttonEditClient);
+            this.panel10.Controls.Add(this.label12);
+            this.panel10.Location = new System.Drawing.Point(13, 4);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(853, 98);
+            this.panel10.TabIndex = 12;
+            // 
+            // buttonDeleteClient
+            // 
+            this.buttonDeleteClient.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.delete;
+            this.buttonDeleteClient.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonDeleteClient.FlatAppearance.BorderSize = 0;
+            this.buttonDeleteClient.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonDeleteClient.Location = new System.Drawing.Point(717, 54);
+            this.buttonDeleteClient.Name = "buttonDeleteClient";
+            this.buttonDeleteClient.Size = new System.Drawing.Size(40, 40);
+            this.buttonDeleteClient.TabIndex = 20;
+            this.buttonDeleteClient.UseVisualStyleBackColor = true;
+            // 
+            // buttonAddClient
+            // 
+            this.buttonAddClient.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.add_icon;
+            this.buttonAddClient.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonAddClient.FlatAppearance.BorderSize = 0;
+            this.buttonAddClient.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonAddClient.Location = new System.Drawing.Point(763, 54);
+            this.buttonAddClient.Name = "buttonAddClient";
+            this.buttonAddClient.Size = new System.Drawing.Size(40, 40);
+            this.buttonAddClient.TabIndex = 19;
+            this.buttonAddClient.UseVisualStyleBackColor = true;
+            // 
+            // buttonEditClient
+            // 
+            this.buttonEditClient.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.more_info;
+            this.buttonEditClient.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonEditClient.FlatAppearance.BorderSize = 0;
+            this.buttonEditClient.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonEditClient.Location = new System.Drawing.Point(809, 54);
+            this.buttonEditClient.Name = "buttonEditClient";
+            this.buttonEditClient.Size = new System.Drawing.Size(40, 40);
+            this.buttonEditClient.TabIndex = 18;
+            this.buttonEditClient.UseVisualStyleBackColor = true;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Segoe UI", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(120)))), ((int)(((byte)(56)))));
+            this.label12.Location = new System.Drawing.Point(3, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(182, 50);
+            this.label12.TabIndex = 1;
+            this.label12.Text = "Клиенты";
+            // 
+            // dataGridViewClients
+            // 
+            this.dataGridViewClients.AllowUserToAddRows = false;
+            this.dataGridViewClients.AllowUserToDeleteRows = false;
+            this.dataGridViewClients.AllowUserToResizeColumns = false;
+            this.dataGridViewClients.AllowUserToResizeRows = false;
+            this.dataGridViewClients.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewClients.ColumnHeadersVisible = false;
+            this.dataGridViewClients.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn7,
+            this.dataGridViewTextBoxColumn8,
+            this.dataGridViewTextBoxColumn9});
+            this.dataGridViewClients.Location = new System.Drawing.Point(13, 108);
+            this.dataGridViewClients.MultiSelect = false;
+            this.dataGridViewClients.Name = "dataGridViewClients";
+            this.dataGridViewClients.ReadOnly = true;
+            this.dataGridViewClients.RowHeadersVisible = false;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
+            this.dataGridViewClients.RowsDefaultCellStyle = dataGridViewCellStyle7;
+            this.dataGridViewClients.RowTemplate.Height = 60;
+            this.dataGridViewClients.Size = new System.Drawing.Size(849, 557);
+            this.dataGridViewClients.TabIndex = 11;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn7.FillWeight = 200F;
+            this.dataGridViewTextBoxColumn7.HeaderText = "Column1";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn8.HeaderText = "Column1";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.dataGridViewTextBoxColumn8.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn9.HeaderText = "Column1";
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            this.dataGridViewTextBoxColumn9.ReadOnly = true;
             // 
             // Main
             // 
@@ -1673,6 +1820,10 @@
             this.panel8.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.ViewClientsPage.ResumeLayout(false);
+            this.panel10.ResumeLayout(false);
+            this.panel10.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClients)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1796,5 +1947,16 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private CustomSlider customSlider1;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Button buttonToClientForm;
+        private System.Windows.Forms.TabPage ViewClientsPage;
+        private System.Windows.Forms.Panel panel10;
+        private System.Windows.Forms.Button buttonDeleteClient;
+        private System.Windows.Forms.Button buttonAddClient;
+        private System.Windows.Forms.Button buttonEditClient;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.DataGridView dataGridViewClients;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
     }
 }

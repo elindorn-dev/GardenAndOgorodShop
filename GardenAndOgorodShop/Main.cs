@@ -37,14 +37,23 @@ namespace GardenAndOgorodShop
         private int end_page_count = 20;
         public Main()
         {
+            GlobalMouseHandler gmh = new GlobalMouseHandler();
+            gmh.TheMouseMoved += new MouseMovedEvent(gmh_TheMouseMoved);
+            Application.AddMessageFilter(gmh);
+
             InitializeComponent();
 
+            //Loop(this.Controls);
             flowLayoutPanel1.ControlAdded += FlowLayoutPanel_ControlAdded;
 
             products_table = DBHandler.LoadDataSync("products WHERE is_available > 0");
             CalculatePagesCount();
             LoadProducts(start_page_count, end_page_count);
             customSlider1.RefreshProducts += Products_RefreshProducts;
+        }
+        void gmh_TheMouseMoved()
+        {
+            disactive_user_time = 0;
         }
         private void CalculatePagesCount()
         {
@@ -323,6 +332,31 @@ namespace GardenAndOgorodShop
                 dataGridViewSuppliers.Rows.Add(suppliersName, suppliersEmail, suppliersPhone);
             }
         }
+        private async void LoadClientsDataGridView()
+        {
+            dataGridViewClients.Rows.Clear();
+            DataTable table = await DBHandler.LoadData("clients");
+            foreach (DataRow row in table.Rows)
+            {
+                string clientsName = "none";
+                string clientsBithday = "none";
+                string clientsPoints = "none";
+                try
+                {
+                    string[] fio = $"{row[1]}".Split(' ');
+                    clientsName = $"{fio[0]} {fio[1].Substring(0, 1)}. {fio[2].Substring(0, 1)}.";
+                    clientsBithday = $"{row[4]}";
+                    clientsPoints = $"{row[2]}";
+                }
+                catch
+                {
+                    clientsName = "none";
+                    clientsBithday = "none";
+                    clientsPoints = "none";
+                }
+                dataGridViewClients.Rows.Add(clientsName, clientsBithday, clientsPoints);
+            }
+        }
         private async void LoadEmployeesDataGridView()
         {
             //employees_table = await DBHandler.LoadData("employees INNER JOIN users ON employees.users_id = users.users_id");
@@ -390,6 +424,7 @@ namespace GardenAndOgorodShop
             buttonCurrentOrder.Visible = true;
             buttonToOrderForm.Visible = true;
             buttonToProductForm.Visible = true;
+            buttonToClientForm.Visible = true;
         }
         private void ShowForAdmin()
         {
@@ -421,7 +456,7 @@ namespace GardenAndOgorodShop
         private async void FormViewProduct_Load(object sender, EventArgs e)
         {
             tabControl1.SelectedIndex = UserConfiguration.UserRole == "admin" ? 2 : 0;
-            Loop(this.Controls);
+            //Loop(this.Controls);
             if(Convert.ToBoolean(ConfigurationManager.AppSettings["sleep"]))
             {
                 timer1.Start();
@@ -459,6 +494,7 @@ namespace GardenAndOgorodShop
             LoadOrdersDataGridView("orders ORDER BY order_date ASC");
             LoadBrandsDataGridView();
             LoadSuppliersDataGridView();
+            LoadClientsDataGridView();
             if(!DBHandler.Backup(""))
             {
                 MessageBox.Show("Ошибка резервного копирования при старте программы. Позовите администратора.", "Резервное копирование бд", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -573,9 +609,13 @@ namespace GardenAndOgorodShop
         {
             tabControl1.SelectedIndex = 6;
         }
+        private void buttonToClientForm_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedIndex = 8;
+        }
         #endregion
-              
-        
+
+
         private void textBoxSearchProduct_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar))
@@ -1192,9 +1232,18 @@ namespace GardenAndOgorodShop
             if (disactive_user_time == 30)
             {
                 DBHandler.returnProduct();
-                AuthForm form = new AuthForm();
                 this.Hide();
-                form.Show();
+                if (!this.Visible)
+                {
+                    AuthForm form = new AuthForm();
+                    form.Show();
+                }
+                else
+                {
+                    this.Visible = false;
+                    AuthForm form = new AuthForm();
+                    form.Show();
+                }
             }
         }
 
@@ -1207,5 +1256,30 @@ namespace GardenAndOgorodShop
         {
             disactive_user_time = 0;
         }
+
+        
+    }
+    public delegate void MouseMovedEvent();
+    public class GlobalMouseHandler : IMessageFilter
+    {
+        private const int WM_MOUSEMOVE = 0x0200;
+
+        public event MouseMovedEvent TheMouseMoved;
+
+        #region IMessageFilter Members
+
+        public bool PreFilterMessage(ref Message m)
+        {
+            if (m.Msg == WM_MOUSEMOVE)
+            {
+                if (TheMouseMoved != null)
+                {
+                    TheMouseMoved();
+                }
+            }
+            return false;
+        }
+
+        #endregion
     }
 }
