@@ -11,6 +11,7 @@ using System.Data;
 using System.Security.Cryptography;
 using System.Configuration;
 using System.Reflection;
+using MySqlX.XDevAPI.Relational;
 
 namespace GardenAndOgorodShop
 {
@@ -267,7 +268,7 @@ namespace GardenAndOgorodShop
             System.Data.DataTable products = new System.Data.DataTable();
             try
             {
-                string query = $"SELECT products.products_name, products_orders.product_amount, products.price FROM garden_and_ogorod_shop.products_orders INNER JOIN products ON products_orders.products_id = products.products_id WHERE orders_id  = '{UserConfiguration.Current_order_id}';";
+                string query = $"SELECT products.products_name, products_orders.product_amount, products.price, products.seasonal_discount FROM garden_and_ogorod_shop.products_orders INNER JOIN products ON products_orders.products_id = products.products_id WHERE orders_id  = '{UserConfiguration.Current_order_id}';";
                 MySqlConnection con = new MySqlConnection(connect_string);
                 await con.OpenAsync();
                 MySqlCommand cmd = new MySqlCommand(query, con);
@@ -1190,6 +1191,53 @@ namespace GardenAndOgorodShop
             {
                 MessageBox.Show("Ошибка получения is_available (db):\n" + e.Message);
                 return -1;
+            }
+        }
+        public static int isExistClient_returnPoints(int clients_id)
+        {
+            try
+            {
+                MySqlConnection con = new MySqlConnection(connect_string);
+                con.Open();
+
+                string query = $"SELECT loyalty_points FROM garden_and_ogorod_shop.clients WHERE clients_id = {clients_id};";
+
+                MySqlCommand cmd = new MySqlCommand(query, con);
+
+                MySqlDataReader reader = cmd.ExecuteReader();
+                reader.Read();
+                int points = reader.GetInt32(0);
+                reader.Close();
+                con.Close();
+                if (points >= 0)
+                {
+                    return points;
+                }
+                return -1;
+            }
+            catch
+            {
+                return -1;
+            }
+        }
+        public static bool UpdateBonus(int clients_id, int points)
+        {
+            try
+            {
+                MySqlConnection con = new MySqlConnection(connect_string);
+                con.Open();
+
+                string query = $"UPDATE `garden_and_ogorod_shop`.`clients` SET `loyalty_points` = '{points}' WHERE (`clients_id` = '{clients_id}');";
+
+                MySqlCommand cmd = new MySqlCommand(query, con);
+
+                cmd.ExecuteNonQuery();
+                con.Close();
+                return true;
+            }
+            catch
+            {
+                return false;
             }
         }
     }

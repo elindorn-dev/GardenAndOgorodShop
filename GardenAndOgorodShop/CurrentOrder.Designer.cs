@@ -36,6 +36,10 @@ namespace GardenAndOgorodShop
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CurrentOrder));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.labelExistClient = new System.Windows.Forms.Label();
+            this.panelCheckExistClient = new System.Windows.Forms.Panel();
+            this.textBoxClient = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.buttonWarning = new System.Windows.Forms.Button();
             this.buttonMinus = new System.Windows.Forms.Button();
             this.buttonAddProduct = new System.Windows.Forms.Button();
@@ -54,13 +58,24 @@ namespace GardenAndOgorodShop
             this.TitleHeader = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PriceHeader = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.labelPoints = new System.Windows.Forms.Label();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProducts)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.numericUpDown1);
+            this.panel1.Controls.Add(this.checkBox1);
+            this.panel1.Controls.Add(this.labelPoints);
+            this.panel1.Controls.Add(this.labelExistClient);
+            this.panel1.Controls.Add(this.panelCheckExistClient);
+            this.panel1.Controls.Add(this.textBoxClient);
+            this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.buttonWarning);
             this.panel1.Controls.Add(this.buttonMinus);
             this.panel1.Controls.Add(this.buttonAddProduct);
@@ -76,8 +91,52 @@ namespace GardenAndOgorodShop
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(9, 6);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(845, 248);
+            this.panel1.Size = new System.Drawing.Size(845, 304);
             this.panel1.TabIndex = 4;
+            // 
+            // labelExistClient
+            // 
+            this.labelExistClient.AutoSize = true;
+            this.labelExistClient.BackColor = System.Drawing.Color.White;
+            this.labelExistClient.ForeColor = System.Drawing.Color.Red;
+            this.labelExistClient.Location = new System.Drawing.Point(108, 280);
+            this.labelExistClient.Name = "labelExistClient";
+            this.labelExistClient.Size = new System.Drawing.Size(164, 13);
+            this.labelExistClient.TabIndex = 36;
+            this.labelExistClient.Text = "*такого клиента нет в системе";
+            this.labelExistClient.Visible = false;
+            // 
+            // panelCheckExistClient
+            // 
+            this.panelCheckExistClient.BackColor = System.Drawing.Color.Red;
+            this.panelCheckExistClient.Location = new System.Drawing.Point(260, 244);
+            this.panelCheckExistClient.Name = "panelCheckExistClient";
+            this.panelCheckExistClient.Size = new System.Drawing.Size(5, 33);
+            this.panelCheckExistClient.TabIndex = 35;
+            this.panelCheckExistClient.Visible = false;
+            // 
+            // textBoxClient
+            // 
+            this.textBoxClient.BackColor = System.Drawing.Color.White;
+            this.textBoxClient.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxClient.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxClient.Location = new System.Drawing.Point(111, 244);
+            this.textBoxClient.MaxLength = 8;
+            this.textBoxClient.Name = "textBoxClient";
+            this.textBoxClient.Size = new System.Drawing.Size(154, 33);
+            this.textBoxClient.TabIndex = 34;
+            this.textBoxClient.TextChanged += new System.EventHandler(this.textBoxClient_TextChanged);
+            this.textBoxClient.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxClient_KeyPress);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label5.Location = new System.Drawing.Point(28, 247);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(77, 25);
+            this.label5.TabIndex = 33;
+            this.label5.Text = "Клиент:";
             // 
             // buttonWarning
             // 
@@ -165,9 +224,9 @@ namespace GardenAndOgorodShop
             this.labelTotalCost.ForeColor = System.Drawing.Color.Red;
             this.labelTotalCost.Location = new System.Drawing.Point(179, 189);
             this.labelTotalCost.Name = "labelTotalCost";
-            this.labelTotalCost.Size = new System.Drawing.Size(42, 32);
+            this.labelTotalCost.Size = new System.Drawing.Size(63, 32);
             this.labelTotalCost.TabIndex = 26;
-            this.labelTotalCost.Text = "00";
+            this.labelTotalCost.Text = "0.00";
             // 
             // label4
             // 
@@ -246,7 +305,7 @@ namespace GardenAndOgorodShop
             this.TitleHeader,
             this.PriceHeader,
             this.Amount});
-            this.dataGridViewProducts.Location = new System.Drawing.Point(9, 260);
+            this.dataGridViewProducts.Location = new System.Drawing.Point(9, 316);
             this.dataGridViewProducts.MultiSelect = false;
             this.dataGridViewProducts.Name = "dataGridViewProducts";
             this.dataGridViewProducts.ReadOnly = true;
@@ -262,7 +321,7 @@ namespace GardenAndOgorodShop
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.dataGridViewProducts.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridViewProducts.RowTemplate.Height = 150;
-            this.dataGridViewProducts.Size = new System.Drawing.Size(844, 388);
+            this.dataGridViewProducts.Size = new System.Drawing.Size(844, 332);
             this.dataGridViewProducts.TabIndex = 3;
             // 
             // ImageHeader
@@ -303,6 +362,40 @@ namespace GardenAndOgorodShop
             this.Amount.ReadOnly = true;
             this.Amount.Width = 200;
             // 
+            // labelPoints
+            // 
+            this.labelPoints.AutoSize = true;
+            this.labelPoints.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelPoints.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.labelPoints.Location = new System.Drawing.Point(271, 244);
+            this.labelPoints.Name = "labelPoints";
+            this.labelPoints.Size = new System.Drawing.Size(28, 32);
+            this.labelPoints.TabIndex = 37;
+            this.labelPoints.Text = "0";
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.checkBox1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.checkBox1.Location = new System.Drawing.Point(383, 246);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(158, 29);
+            this.checkBox1.TabIndex = 38;
+            this.checkBox1.Text = "списать баллы";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.Visible = false;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.numericUpDown1.Location = new System.Drawing.Point(547, 243);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(120, 33);
+            this.numericUpDown1.TabIndex = 40;
+            this.numericUpDown1.Visible = false;
+            this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
+            // 
             // CurrentOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -322,6 +415,7 @@ namespace GardenAndOgorodShop
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProducts)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -347,5 +441,12 @@ namespace GardenAndOgorodShop
         private System.Windows.Forms.Button buttonMinus;
         private System.Windows.Forms.Button buttonAddProduct;
         private System.Windows.Forms.Button buttonWarning;
+        private System.Windows.Forms.TextBox textBoxClient;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label labelExistClient;
+        private System.Windows.Forms.Panel panelCheckExistClient;
+        private System.Windows.Forms.Label labelPoints;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
     }
 }
