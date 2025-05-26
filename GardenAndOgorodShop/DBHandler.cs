@@ -24,6 +24,41 @@ namespace GardenAndOgorodShop
         public static string connect_string = $"host={host};uid={username};pwd={pwd};database={database}";
         public static string connect_string_recovery = $"host={host};uid={username};pwd={pwd}";
 
+
+        public static List<string> GetEnumValues()
+        {
+            List<string> enumValues = new List<string>();
+
+            using (var connection = new MySqlConnection(connect_string))
+            {
+                connection.Open();
+
+                string sql = $"SELECT COLUMN_TYPE FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'products' AND COLUMN_NAME = 'unit_size' AND TABLE_SCHEMA = DATABASE();";
+
+                using (var command = new MySqlCommand(sql, connection))
+                {
+                    using (var reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            string columnType = reader.GetString(0);
+                            if (columnType.StartsWith("enum(") && columnType.EndsWith(")"))
+                            {
+                                string valuesString = columnType.Substring(5, columnType.Length - 6); 
+                                string[] values = valuesString.Split(new string[] { "','" }, StringSplitOptions.None); 
+                                foreach (string value in values)
+                                {
+                                    enumValues.Add(value.Replace("'", ""));
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            return enumValues;
+        }
+
         public static bool Backup(string filePath)
         {
             if (!Directory.Exists("DBCopies"))
@@ -585,7 +620,7 @@ namespace GardenAndOgorodShop
         /// <param name="supplier"></param>
         /// <param name="discount"></param>
         /// <returns></returns>
-        public static bool InsertProduct(string title, string descript, decimal price, int category, int brand, int is_avaible, Image image, int supplier, decimal discount)
+        public static bool InsertProduct(string title, string descript, decimal price, int category, int brand, int is_avaible, Image image, int supplier, decimal discount, string unit)
         {
             try
             {
@@ -599,9 +634,9 @@ namespace GardenAndOgorodShop
                 }
 
                 string query = "INSERT INTO `garden_and_ogorod_shop`.`products` " +
-                               "(`products_name`, `descript`, `price`, `categories_id`, `brands_id`, `is_available`, `image`, `suppliers_id`, `seasonal_discount`) " +
+                               "(`products_name`, `descript`, `price`, `categories_id`, `brands_id`, `is_available`, `image`, `suppliers_id`, `seasonal_discount`, `unit_size`) " +
                                "VALUES " +
-                               "(@title, @descript, @price, @category, @brand, @is_available, @image, @supplier, @discount)";
+                               "(@title, @descript, @price, @category, @brand, @is_available, @image, @supplier, @discount, @unit)";
 
                 using (MySqlCommand cmd = new MySqlCommand(query, con))
                 {
@@ -617,6 +652,7 @@ namespace GardenAndOgorodShop
                     supplier = supplier == 0 ? 1 : supplier;
                     cmd.Parameters.AddWithValue("@supplier", supplier);
                     cmd.Parameters.AddWithValue("@discount", discount);
+                    cmd.Parameters.AddWithValue("@unit", unit);
 
 
                     cmd.ExecuteNonQuery();
@@ -836,7 +872,7 @@ namespace GardenAndOgorodShop
         /// <param name="discount"></param>
         /// <param name="id"></param>
         /// <returns></returns>
-        public static bool EditProduct(string title, string descript, double price, int category, int brand, int is_avaible, byte[] blobData, int supplier, double discount, int id)
+        public static bool EditProduct(string title, string descript, double price, int category, int brand, int is_avaible, byte[] blobData, int supplier, double discount, string unit, int id)
         {
             try
             {
@@ -851,7 +887,8 @@ namespace GardenAndOgorodShop
                     "`is_available` = @is_available, " +
                     "`image` = @image, " +
                     "`suppliers_id` = @supplier, " +
-                    "`seasonal_discount` = @discount " +
+                    "`seasonal_discount` = @discount, " +
+                    "`unit_size` = @unit " +
                     $"WHERE (`products_id` = '{id}');";
 
                 using (MySqlCommand cmd = new MySqlCommand(query, con))
@@ -868,6 +905,7 @@ namespace GardenAndOgorodShop
                     supplier = supplier == 0 ? 1 : supplier;
                     cmd.Parameters.AddWithValue("@supplier", supplier);
                     cmd.Parameters.AddWithValue("@discount", discount);
+                    cmd.Parameters.AddWithValue("@unit", unit);
 
 
                     cmd.ExecuteNonQuery();

@@ -267,6 +267,7 @@ namespace GardenAndOgorodShop
             LoadComboBoxSource(comboBoxCategories, "categories", "category_name", "categories_id");
             LoadComboBoxSource(comboBoxSuppliers, "suppliers", "supplier_name", "suppliers_id");
             //LoadComboBoxSource(comboBoxEmployeeUser, "employees", "last_name", "employees_id");
+            comboBoxUnitSize.DataSource = DBHandler.GetEnumValues();
             LoadComboBoxSourceEmployee();
             if (this.selected_mode == "edit")
             {
@@ -603,7 +604,8 @@ namespace GardenAndOgorodShop
                             Convert.ToInt32(textBoxProductIsAvaible.Text),
                             pictureBoxProduct.BackgroundImage,
                             (int)comboBoxSuppliers.SelectedValue,
-                            Convert.ToDecimal(textBoxProductSeasonalDiscount.Text)
+                            Convert.ToDecimal(textBoxProductSeasonalDiscount.Text),
+                            comboBoxUnitSize.Text
                     ) ? SuccessAddRecordResult("Товар", "product") : new string[] { "Товар НЕ добавлен!", "Провал" };
                         MessageBox.Show(result[0], result[1], MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
@@ -625,6 +627,7 @@ namespace GardenAndOgorodShop
                             blobData_product,
                             (int)comboBoxSuppliers.SelectedValue,
                             discount,
+                            comboBoxUnitSize.Text,
                             id_record
                     ) ? new string[] { "Товар изменен.", "Успех" } : new string[] { "Товар НЕ был изменен!", "Провал" };
                         MessageBox.Show(result[0], result[1], MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -1061,6 +1064,11 @@ namespace GardenAndOgorodShop
         {
             char c = e.KeyChar;
             e.Handled = (c == ' ');
+        }
+
+        private void buttonWriteoff_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
