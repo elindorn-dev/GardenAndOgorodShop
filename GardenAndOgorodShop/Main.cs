@@ -1283,7 +1283,7 @@ namespace GardenAndOgorodShop
 
         private void buttonDeleteClient_Click(object sender, EventArgs e)
         {
-            int index_row = dataGridViewCategories.SelectedCells[0].RowIndex;
+            int index_row = dataGridViewClients.SelectedCells[0].RowIndex;
             DataRow selected_row = DBHandler.LoadDataSync("clients").Rows[index_row];
             int _id = Convert.ToInt32(selected_row[0]);
             DialogResult dr = MessageBox.Show($"Вы уверены что хотите удалить клиента '{selected_row[1]}'?",
@@ -1300,7 +1300,7 @@ namespace GardenAndOgorodShop
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information
                     );
-                    dataGridViewCategories.Rows.Clear();
+                    dataGridViewClients.Rows.Clear();
                     LoadCategoriesDataGridView();
                 }
                 else
