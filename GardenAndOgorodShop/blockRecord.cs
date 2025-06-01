@@ -34,6 +34,11 @@ namespace GardenAndOgorodShop
                 }
             }
         }
+        public Color BackgColor
+        {
+            get { return this.BackColor; }
+            set { this.BackColor = value; }
+        }
 
         public string Description
         {

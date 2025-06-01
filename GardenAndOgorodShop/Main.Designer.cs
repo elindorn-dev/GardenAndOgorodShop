@@ -68,6 +68,7 @@
             this.button5 = new System.Windows.Forms.Button();
             this.buttonCurrentOrder = new System.Windows.Forms.Button();
             this.ViewProductPage = new System.Windows.Forms.TabPage();
+            this.panelWaiting = new System.Windows.Forms.Panel();
             this.panelResult = new System.Windows.Forms.Panel();
             this.labelReadyOrNot = new System.Windows.Forms.Label();
             this.pictureBoxReadyOrNot = new System.Windows.Forms.PictureBox();
@@ -156,25 +157,28 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.ViewClientsPage = new System.Windows.Forms.TabPage();
+            this.panel11 = new System.Windows.Forms.Panel();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
             this.panel10 = new System.Windows.Forms.Panel();
             this.buttonDeleteClient = new System.Windows.Forms.Button();
             this.buttonAddClient = new System.Windows.Forms.Button();
             this.buttonEditClient = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
             this.dataGridViewClients = new System.Windows.Forms.DataGridView();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panel11 = new System.Windows.Forms.Panel();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.label24 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panelNavigation.SuspendLayout();
             this.panelEmployeeData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUser)).BeginInit();
             this.ViewProductPage.SuspendLayout();
+            this.panelWaiting.SuspendLayout();
             this.panelResult.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxReadyOrNot)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -201,9 +205,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.ViewClientsPage.SuspendLayout();
+            this.panel11.SuspendLayout();
             this.panel10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClients)).BeginInit();
-            this.panel11.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -608,6 +612,7 @@
             // ViewProductPage
             // 
             this.ViewProductPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(186)))), ((int)(((byte)(93)))));
+            this.ViewProductPage.Controls.Add(this.panelWaiting);
             this.ViewProductPage.Controls.Add(this.panelResult);
             this.ViewProductPage.Controls.Add(this.flowLayoutPanel1);
             this.ViewProductPage.Controls.Add(this.panel1);
@@ -618,6 +623,16 @@
             this.ViewProductPage.Size = new System.Drawing.Size(884, 682);
             this.ViewProductPage.TabIndex = 1;
             this.ViewProductPage.Click += new System.EventHandler(this.ViewProductPage_Click);
+            // 
+            // panelWaiting
+            // 
+            this.panelWaiting.BackColor = System.Drawing.Color.White;
+            this.panelWaiting.Controls.Add(this.label24);
+            this.panelWaiting.Controls.Add(this.progressBar1);
+            this.panelWaiting.Location = new System.Drawing.Point(13, 181);
+            this.panelWaiting.Name = "panelWaiting";
+            this.panelWaiting.Size = new System.Drawing.Size(850, 470);
+            this.panelWaiting.TabIndex = 0;
             // 
             // panelResult
             // 
@@ -1656,6 +1671,50 @@
             this.ViewClientsPage.TabIndex = 9;
             this.ViewClientsPage.Text = "ViewClientsPage";
             // 
+            // panel11
+            // 
+            this.panel11.BackColor = System.Drawing.Color.White;
+            this.panel11.Controls.Add(this.label23);
+            this.panel11.Controls.Add(this.label22);
+            this.panel11.Controls.Add(this.label21);
+            this.panel11.Location = new System.Drawing.Point(13, 109);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(849, 39);
+            this.panel11.TabIndex = 13;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(120)))), ((int)(((byte)(56)))));
+            this.label23.Location = new System.Drawing.Point(743, 1);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(103, 37);
+            this.label23.TabIndex = 23;
+            this.label23.Text = "Баллы";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(120)))), ((int)(((byte)(56)))));
+            this.label22.Location = new System.Drawing.Point(296, 0);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(225, 37);
+            this.label22.TabIndex = 22;
+            this.label22.Text = "Дата рождения";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(120)))), ((int)(((byte)(56)))));
+            this.label21.Location = new System.Drawing.Point(5, 1);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(81, 37);
+            this.label21.TabIndex = 21;
+            this.label21.Text = "ФИО";
+            // 
             // panel10
             // 
             this.panel10.BackColor = System.Drawing.Color.White;
@@ -1742,11 +1801,6 @@
             this.dataGridViewClients.Size = new System.Drawing.Size(849, 516);
             this.dataGridViewClients.TabIndex = 11;
             // 
-            // timer1
-            // 
-            this.timer1.Interval = 1000;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
             // dataGridViewTextBoxColumn7
             // 
             this.dataGridViewTextBoxColumn7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -1768,49 +1822,28 @@
             this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
             this.dataGridViewTextBoxColumn9.ReadOnly = true;
             // 
-            // panel11
+            // timer1
             // 
-            this.panel11.BackColor = System.Drawing.Color.White;
-            this.panel11.Controls.Add(this.label23);
-            this.panel11.Controls.Add(this.label22);
-            this.panel11.Controls.Add(this.label21);
-            this.panel11.Location = new System.Drawing.Point(13, 109);
-            this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(849, 39);
-            this.panel11.TabIndex = 13;
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // label21
+            // progressBar1
             // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(120)))), ((int)(((byte)(56)))));
-            this.label21.Location = new System.Drawing.Point(5, 1);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(81, 37);
-            this.label21.TabIndex = 21;
-            this.label21.Text = "ФИО";
+            this.progressBar1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(120)))), ((int)(((byte)(56)))));
+            this.progressBar1.Location = new System.Drawing.Point(352, 203);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(274, 30);
+            this.progressBar1.TabIndex = 0;
             // 
-            // label22
+            // label24
             // 
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(120)))), ((int)(((byte)(56)))));
-            this.label22.Location = new System.Drawing.Point(296, 0);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(225, 37);
-            this.label22.TabIndex = 22;
-            this.label22.Text = "Дата рождения";
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(120)))), ((int)(((byte)(56)))));
-            this.label23.Location = new System.Drawing.Point(743, 1);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(103, 37);
-            this.label23.TabIndex = 23;
-            this.label23.Text = "Баллы";
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label24.Location = new System.Drawing.Point(245, 203);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(98, 25);
+            this.label24.TabIndex = 1;
+            this.label24.Text = "Загрузка...";
             // 
             // Main
             // 
@@ -1838,6 +1871,8 @@
             this.panelEmployeeData.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUser)).EndInit();
             this.ViewProductPage.ResumeLayout(false);
+            this.panelWaiting.ResumeLayout(false);
+            this.panelWaiting.PerformLayout();
             this.panelResult.ResumeLayout(false);
             this.panelResult.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxReadyOrNot)).EndInit();
@@ -1873,11 +1908,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ViewClientsPage.ResumeLayout(false);
+            this.panel11.ResumeLayout(false);
+            this.panel11.PerformLayout();
             this.panel10.ResumeLayout(false);
             this.panel10.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClients)).EndInit();
-            this.panel11.ResumeLayout(false);
-            this.panel11.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -2016,5 +2051,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+        private System.Windows.Forms.Panel panelWaiting;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.ProgressBar progressBar1;
     }
 }

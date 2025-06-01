@@ -212,6 +212,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\active_filter_icon.png" />
+    <None Include="Resources\waiting.gif" />
     <None Include="Resources\refresh.png" />
     <None Include="Resources\shoom.png" />
     <None Include="Resources\show_2.png" />
