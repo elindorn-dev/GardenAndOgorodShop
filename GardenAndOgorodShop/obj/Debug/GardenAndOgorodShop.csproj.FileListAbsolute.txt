@@ -76,3 +76,4 @@ C:\Users\Dmitry\Desktop\Диплом\res\GardenAndOgorodShop\GardenAndOgorodShop
 C:\Users\Dmitry\Desktop\Диплом\res\GardenAndOgorodShop\GardenAndOgorodShop\bin\Debug\System.Numerics.Vectors.xml
 C:\Users\Dmitry\Desktop\Диплом\res\GardenAndOgorodShop\GardenAndOgorodShop\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\Dmitry\Desktop\Диплом\res\GardenAndOgorodShop\GardenAndOgorodShop\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\Dmitry\Desktop\Диплом\res\GardenAndOgorodShop\GardenAndOgorodShop\obj\Debug\GardenAndOgorodShop.ChangeProduct.resources

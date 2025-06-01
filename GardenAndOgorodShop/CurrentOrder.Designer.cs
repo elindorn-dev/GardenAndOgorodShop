@@ -54,35 +54,35 @@ namespace GardenAndOgorodShop
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridViewProducts = new System.Windows.Forms.DataGridView();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.comboBoxPayMethod = new System.Windows.Forms.ComboBox();
-            this.textBoxOrderNotes = new System.Windows.Forms.TextBox();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.panel6 = new System.Windows.Forms.Panel();
             this.ImageHeader = new System.Windows.Forms.DataGridViewImageColumn();
             this.TitleHeader = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PriceHeader = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.textBoxOrderNotes = new System.Windows.Forms.TextBox();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.comboBoxPayMethod = new System.Windows.Forms.ComboBox();
+            this.panel2 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProducts)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.panel4.SuspendLayout();
-            this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
+            this.panel5.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // numericUpDown1
             // 
             this.numericUpDown1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.numericUpDown1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.numericUpDown1.Location = new System.Drawing.Point(708, 7);
+            this.numericUpDown1.Location = new System.Drawing.Point(758, 7);
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(120, 33);
             this.numericUpDown1.TabIndex = 40;
@@ -94,7 +94,7 @@ namespace GardenAndOgorodShop
             this.checkBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.checkBox1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.checkBox1.Location = new System.Drawing.Point(544, 10);
+            this.checkBox1.Location = new System.Drawing.Point(594, 10);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(158, 29);
             this.checkBox1.TabIndex = 38;
@@ -118,8 +118,9 @@ namespace GardenAndOgorodShop
             // 
             this.labelExistClient.AutoSize = true;
             this.labelExistClient.BackColor = System.Drawing.Color.White;
+            this.labelExistClient.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelExistClient.ForeColor = System.Drawing.Color.Red;
-            this.labelExistClient.Location = new System.Drawing.Point(681, 747);
+            this.labelExistClient.Location = new System.Drawing.Point(76, 40);
             this.labelExistClient.Name = "labelExistClient";
             this.labelExistClient.Size = new System.Drawing.Size(164, 13);
             this.labelExistClient.TabIndex = 36;
@@ -177,7 +178,7 @@ namespace GardenAndOgorodShop
             this.buttonMinus.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.buttonMinus.FlatAppearance.BorderSize = 0;
             this.buttonMinus.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonMinus.Location = new System.Drawing.Point(93, 6);
+            this.buttonMinus.Location = new System.Drawing.Point(108, 6);
             this.buttonMinus.Name = "buttonMinus";
             this.buttonMinus.Size = new System.Drawing.Size(40, 40);
             this.buttonMinus.TabIndex = 31;
@@ -191,7 +192,7 @@ namespace GardenAndOgorodShop
             this.buttonAddProduct.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.buttonAddProduct.FlatAppearance.BorderSize = 0;
             this.buttonAddProduct.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonAddProduct.Location = new System.Drawing.Point(139, 6);
+            this.buttonAddProduct.Location = new System.Drawing.Point(154, 6);
             this.buttonAddProduct.Name = "buttonAddProduct";
             this.buttonAddProduct.Size = new System.Drawing.Size(40, 40);
             this.buttonAddProduct.TabIndex = 30;
@@ -205,7 +206,7 @@ namespace GardenAndOgorodShop
             this.buttonDeleteProduct.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.buttonDeleteProduct.FlatAppearance.BorderSize = 0;
             this.buttonDeleteProduct.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonDeleteProduct.Location = new System.Drawing.Point(185, 6);
+            this.buttonDeleteProduct.Location = new System.Drawing.Point(200, 6);
             this.buttonDeleteProduct.Name = "buttonDeleteProduct";
             this.buttonDeleteProduct.Size = new System.Drawing.Size(40, 40);
             this.buttonDeleteProduct.TabIndex = 29;
@@ -252,7 +253,7 @@ namespace GardenAndOgorodShop
             this.buttonDoneOrder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(186)))), ((int)(((byte)(93)))));
             this.buttonDoneOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonDoneOrder.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonDoneOrder.Location = new System.Drawing.Point(896, 3);
+            this.buttonDoneOrder.Location = new System.Drawing.Point(961, 3);
             this.buttonDoneOrder.Name = "buttonDoneOrder";
             this.buttonDoneOrder.Size = new System.Drawing.Size(175, 38);
             this.buttonDoneOrder.TabIndex = 24;
@@ -309,7 +310,7 @@ namespace GardenAndOgorodShop
             this.Amount});
             this.tableLayoutPanel1.SetColumnSpan(this.dataGridViewProducts, 2);
             this.dataGridViewProducts.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewProducts.Location = new System.Drawing.Point(3, 303);
+            this.dataGridViewProducts.Location = new System.Drawing.Point(3, 336);
             this.dataGridViewProducts.MultiSelect = false;
             this.dataGridViewProducts.Name = "dataGridViewProducts";
             this.dataGridViewProducts.ReadOnly = true;
@@ -325,131 +326,8 @@ namespace GardenAndOgorodShop
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.dataGridViewProducts.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridViewProducts.RowTemplate.Height = 150;
-            this.dataGridViewProducts.Size = new System.Drawing.Size(1068, 303);
+            this.dataGridViewProducts.Size = new System.Drawing.Size(1133, 344);
             this.dataGridViewProducts.TabIndex = 3;
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 78.3054F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21.6946F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Controls.Add(this.panel6, 1, 4);
-            this.tableLayoutPanel1.Controls.Add(this.dataGridViewProducts, 0, 5);
-            this.tableLayoutPanel1.Controls.Add(this.panel5, 0, 4);
-            this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.panel4, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.panel3, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.buttonDoneOrder, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.panel2, 0, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 6;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.34483F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.71757F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.44992F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.045977F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.702791F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.73891F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1074, 609);
-            this.tableLayoutPanel1.TabIndex = 41;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.labelTotalCost);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 201);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(835, 43);
-            this.panel1.TabIndex = 42;
-            // 
-            // comboBoxPayMethod
-            // 
-            this.comboBoxPayMethod.BackColor = System.Drawing.Color.White;
-            this.comboBoxPayMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxPayMethod.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.comboBoxPayMethod.FormattingEnabled = true;
-            this.comboBoxPayMethod.Items.AddRange(new object[] {
-            "Наличными",
-            "Безналичными"});
-            this.comboBoxPayMethod.Location = new System.Drawing.Point(160, 7);
-            this.comboBoxPayMethod.Name = "comboBoxPayMethod";
-            this.comboBoxPayMethod.Size = new System.Drawing.Size(219, 29);
-            this.comboBoxPayMethod.TabIndex = 27;
-            this.comboBoxPayMethod.SelectedIndexChanged += new System.EventHandler(this.comboBoxPayMethod_SelectedIndexChanged);
-            // 
-            // textBoxOrderNotes
-            // 
-            this.textBoxOrderNotes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxOrderNotes.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxOrderNotes.Location = new System.Drawing.Point(103, 9);
-            this.textBoxOrderNotes.MaxLength = 1000;
-            this.textBoxOrderNotes.Multiline = true;
-            this.textBoxOrderNotes.Name = "textBoxOrderNotes";
-            this.textBoxOrderNotes.Size = new System.Drawing.Size(956, 70);
-            this.textBoxOrderNotes.TabIndex = 6;
-            this.textBoxOrderNotes.Text = "Оплата прошла успешно";
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.buttonBack);
-            this.panel2.Controls.Add(this.label1);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(3, 3);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(835, 57);
-            this.panel2.TabIndex = 43;
-            // 
-            // panel3
-            // 
-            this.tableLayoutPanel1.SetColumnSpan(this.panel3, 2);
-            this.panel3.Controls.Add(this.comboBoxPayMethod);
-            this.panel3.Controls.Add(this.buttonWarning);
-            this.panel3.Controls.Add(this.label2);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(3, 66);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1068, 41);
-            this.panel3.TabIndex = 43;
-            // 
-            // panel4
-            // 
-            this.tableLayoutPanel1.SetColumnSpan(this.panel4, 2);
-            this.panel4.Controls.Add(this.label3);
-            this.panel4.Controls.Add(this.textBoxOrderNotes);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(3, 113);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1068, 82);
-            this.panel4.TabIndex = 43;
-            // 
-            // panel5
-            // 
-            this.panel5.Controls.Add(this.textBoxClient);
-            this.panel5.Controls.Add(this.panelCheckExistClient);
-            this.panel5.Controls.Add(this.numericUpDown1);
-            this.panel5.Controls.Add(this.label5);
-            this.panel5.Controls.Add(this.checkBox1);
-            this.panel5.Controls.Add(this.labelPoints);
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(3, 250);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(835, 47);
-            this.panel5.TabIndex = 42;
-            // 
-            // panel6
-            // 
-            this.panel6.Controls.Add(this.buttonMinus);
-            this.panel6.Controls.Add(this.buttonDeleteProduct);
-            this.panel6.Controls.Add(this.buttonAddProduct);
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel6.Location = new System.Drawing.Point(844, 250);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(227, 47);
-            this.panel6.TabIndex = 42;
             // 
             // ImageHeader
             // 
@@ -490,14 +368,137 @@ namespace GardenAndOgorodShop
             this.Amount.Name = "Amount";
             this.Amount.ReadOnly = true;
             // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 78.3054F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21.6946F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Controls.Add(this.panel6, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.dataGridViewProducts, 0, 5);
+            this.tableLayoutPanel1.Controls.Add(this.panel5, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.panel4, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.panel3, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.buttonDoneOrder, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.panel2, 0, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 6;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.34483F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.71757F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.44992F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.045977F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.702791F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.73891F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1139, 683);
+            this.tableLayoutPanel1.TabIndex = 41;
+            // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.buttonMinus);
+            this.panel6.Controls.Add(this.buttonDeleteProduct);
+            this.panel6.Controls.Add(this.buttonAddProduct);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel6.Location = new System.Drawing.Point(894, 277);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(242, 53);
+            this.panel6.TabIndex = 42;
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.textBoxClient);
+            this.panel5.Controls.Add(this.labelExistClient);
+            this.panel5.Controls.Add(this.panelCheckExistClient);
+            this.panel5.Controls.Add(this.numericUpDown1);
+            this.panel5.Controls.Add(this.label5);
+            this.panel5.Controls.Add(this.checkBox1);
+            this.panel5.Controls.Add(this.labelPoints);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel5.Location = new System.Drawing.Point(3, 277);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(885, 53);
+            this.panel5.TabIndex = 42;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.labelTotalCost);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(3, 223);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(885, 48);
+            this.panel1.TabIndex = 42;
+            // 
+            // panel4
+            // 
+            this.tableLayoutPanel1.SetColumnSpan(this.panel4, 2);
+            this.panel4.Controls.Add(this.label3);
+            this.panel4.Controls.Add(this.textBoxOrderNotes);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(3, 125);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(1133, 92);
+            this.panel4.TabIndex = 43;
+            // 
+            // textBoxOrderNotes
+            // 
+            this.textBoxOrderNotes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxOrderNotes.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxOrderNotes.Location = new System.Drawing.Point(103, 9);
+            this.textBoxOrderNotes.MaxLength = 1000;
+            this.textBoxOrderNotes.Multiline = true;
+            this.textBoxOrderNotes.Name = "textBoxOrderNotes";
+            this.textBoxOrderNotes.Size = new System.Drawing.Size(1021, 70);
+            this.textBoxOrderNotes.TabIndex = 6;
+            this.textBoxOrderNotes.Text = "Оплата прошла успешно";
+            // 
+            // panel3
+            // 
+            this.tableLayoutPanel1.SetColumnSpan(this.panel3, 2);
+            this.panel3.Controls.Add(this.comboBoxPayMethod);
+            this.panel3.Controls.Add(this.buttonWarning);
+            this.panel3.Controls.Add(this.label2);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(3, 73);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1133, 46);
+            this.panel3.TabIndex = 43;
+            // 
+            // comboBoxPayMethod
+            // 
+            this.comboBoxPayMethod.BackColor = System.Drawing.Color.White;
+            this.comboBoxPayMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxPayMethod.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.comboBoxPayMethod.FormattingEnabled = true;
+            this.comboBoxPayMethod.Items.AddRange(new object[] {
+            "Наличными",
+            "Безналичными"});
+            this.comboBoxPayMethod.Location = new System.Drawing.Point(160, 7);
+            this.comboBoxPayMethod.Name = "comboBoxPayMethod";
+            this.comboBoxPayMethod.Size = new System.Drawing.Size(219, 29);
+            this.comboBoxPayMethod.TabIndex = 27;
+            this.comboBoxPayMethod.SelectedIndexChanged += new System.EventHandler(this.comboBoxPayMethod_SelectedIndexChanged);
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.buttonBack);
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(3, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(885, 64);
+            this.panel2.TabIndex = 43;
+            // 
             // CurrentOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1074, 609);
+            this.ClientSize = new System.Drawing.Size(1139, 683);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Controls.Add(this.labelExistClient);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(775, 637);
             this.Name = "CurrentOrder";
@@ -508,19 +509,18 @@ namespace GardenAndOgorodShop
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProducts)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
+            this.panel6.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
-            this.panel6.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 

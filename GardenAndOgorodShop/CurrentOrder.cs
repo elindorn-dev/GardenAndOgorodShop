@@ -176,7 +176,7 @@ namespace GardenAndOgorodShop
         private async void buttonAddProduct_Click(object sender, EventArgs e)
         {
             await PlusMinusAmountProduct_inOrder("+", "-");
-            numericUpDown1.Value = 0;
+            numericUpDown1.Value = 1;
             labelTotalCost.Text = $"{save_cost}";
             numericUpDown1.Maximum = Convert.ToInt32(save_cost) - 1;
         }
@@ -184,7 +184,7 @@ namespace GardenAndOgorodShop
         private async void buttonMinus_Click(object sender, EventArgs e)
         {
             await PlusMinusAmountProduct_inOrder("-", "+");
-            numericUpDown1.Value = 0;
+            numericUpDown1.Value = 1;
             labelTotalCost.Text = $"{save_cost}";
             numericUpDown1.Maximum = Convert.ToInt32(save_cost) - 1;
         }
@@ -196,6 +196,10 @@ namespace GardenAndOgorodShop
             //    int points = Convert.ToInt32(labelPoints.Text) - Convert.ToInt32(numericUpDown1.Value);
             //    DBHandler.UpdateBonus(Convert.ToInt32(textBoxClient.Text), points);
             //}
+            if (checkBox1.Checked)
+            {
+                _points = Convert.ToInt32(numericUpDown1.Value);
+            }
             if (comboBoxPayMethod.Text != "") {
                 try
                 {
@@ -208,7 +212,8 @@ namespace GardenAndOgorodShop
                             $" `payment_method` = '{comboBoxPayMethod.Text}'," +
                             $" `total_cost` = '{labelTotalCost.Text.Replace(',', '.')}'," +
                             $" `tax_amount` = '{Convert.ToString(Convert.ToDouble(labelTotalCost.Text) / 13.0).Replace(',', '.')}'," +
-                            $" `notes` = '{textBoxOrderNotes.Text}' " +
+                            $" `notes` = '{textBoxOrderNotes.Text}'," +
+                            $" `clients_id` = '{textBoxClient.Text}' " +
                             $"WHERE (`orders_id` = '{UserConfiguration.Current_order_id}');");
                         dataGridViewProducts.Rows.Clear();
                         MessageBox.Show(
@@ -218,21 +223,22 @@ namespace GardenAndOgorodShop
                            MessageBoxIcon.Information);
                         
                         buttonWarning.Visible = true;
-
+                        int points = 0;
                         if (numericUpDown1.Value > 0 && checkBox1.Checked)
                         {
-                            int points = Convert.ToInt32(labelPoints.Text) - Convert.ToInt32(numericUpDown1.Value);
+                            points = Convert.ToInt32(labelPoints.Text) - Convert.ToInt32(numericUpDown1.Value);
                             DBHandler.UpdateBonus(Convert.ToInt32(textBoxClient.Text), points);
                         }
+                        
+                        //
+                        await PaymentAgreement.createExcelAgreement(_points);
+                        //
+                        UserConfiguration.Current_order_id = 0;
+                        comboBoxPayMethod.SelectedIndex = -1;
                         textBoxClient.Text = "";
                         labelPoints.Text = "0";
                         buttonDoneOrder.Enabled = false;
                         labelTotalCost.Text = "0.0";
-                        comboBoxPayMethod.SelectedIndex = -1;
-                        //
-                        await PaymentAgreement.createExcelAgreement();
-                        //
-                        UserConfiguration.Current_order_id = 0;
                         comboBoxPayMethod.SelectedIndex = -1;
                     }
                     else
@@ -324,7 +330,8 @@ namespace GardenAndOgorodShop
             }
 
             checkBox1.Checked = false;
-            numericUpDown1.Value = 0;
+            numericUpDown1.Value = 1;
+            
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -332,6 +339,14 @@ namespace GardenAndOgorodShop
             if (checkBox1.Checked)
             {
                 numericUpDown1.Visible = true;
+                double cost = Convert.ToDouble(labelTotalCost.Text);
+                labelTotalCost.Text = $"{cost - Convert.ToDouble(numericUpDown1.Value)}";
+                
+            }
+            else
+            {
+                numericUpDown1.Visible = false;
+                labelTotalCost.Text = $"{save_cost}";
             }
         }
         private double save_cost;
@@ -350,7 +365,10 @@ namespace GardenAndOgorodShop
             }
             else
             {
-                labelTotalCost.Text = $"{cost - Convert.ToDouble(numericUpDown1.Value)}";
+                if (numericUpDown1.Visible)
+                {
+                    labelTotalCost.Text = $"{cost - Convert.ToDouble(numericUpDown1.Value)}";
+                }
             }
         }
 

@@ -42,6 +42,7 @@
             this.buttonEdit = new System.Windows.Forms.Button();
             this.buttonDelete = new System.Windows.Forms.Button();
             this.buttonAddProductToBacket = new System.Windows.Forms.Button();
+            this.buttonChanged = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProduct)).BeginInit();
             this.SuspendLayout();
             // 
@@ -176,11 +177,25 @@
             this.buttonAddProductToBacket.Visible = false;
             this.buttonAddProductToBacket.Click += new System.EventHandler(this.buttonAddProductToBacket_Click);
             // 
+            // buttonChanged
+            // 
+            this.buttonChanged.BackgroundImage = global::GardenAndOgorodShop.Properties.Resources.edit_record;
+            this.buttonChanged.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonChanged.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonChanged.Location = new System.Drawing.Point(498, 114);
+            this.buttonChanged.Name = "buttonChanged";
+            this.buttonChanged.Size = new System.Drawing.Size(40, 40);
+            this.buttonChanged.TabIndex = 13;
+            this.buttonChanged.UseVisualStyleBackColor = true;
+            this.buttonChanged.Visible = false;
+            this.buttonChanged.Click += new System.EventHandler(this.buttonChanged_Click);
+            // 
             // blockRecord
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Controls.Add(this.buttonChanged);
             this.Controls.Add(this.buttonAddProductToBacket);
             this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.buttonEdit);
@@ -217,5 +232,6 @@
         private System.Windows.Forms.Button buttonEdit;
         private System.Windows.Forms.Button buttonDelete;
         private System.Windows.Forms.Button buttonAddProductToBacket;
+        private System.Windows.Forms.Button buttonChanged;
     }
 }

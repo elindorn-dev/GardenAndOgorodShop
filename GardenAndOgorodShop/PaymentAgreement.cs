@@ -14,7 +14,7 @@ namespace GardenAndOgorodShop
 
     public static class PaymentAgreement
     {
-        public static async Task createExcelAgreement()
+        public static async Task createExcelAgreement(int points)
         {
             Excel.Application xlApp = null;
             Workbook xlWorkbook = null;
@@ -50,8 +50,15 @@ namespace GardenAndOgorodShop
                         }
                     }
                     double nds = summ * 0.13;
-                    xlWorksheet.Range[$"A{counter_row}"].Value2 = $"ИТОГ";
+                    xlWorksheet.Range[$"A{counter_row}"].Value2 = $"СУММА";
                     xlWorksheet.Range[$"B{counter_row}"].Value2 = $"{summ}";
+                    if (points != 0)
+                    {
+                        xlWorksheet.Range[$"A{counter_row+=2}"].Value2 = $"БАЛЛЫ";
+                        xlWorksheet.Range[$"B{counter_row}"].Value2 = $"{points}";
+                    }
+                    xlWorksheet.Range[$"A{counter_row+=2}"].Value2 = $"ИТОГ";
+                    xlWorksheet.Range[$"B{counter_row}"].Value2 = $"{summ-Convert.ToInt32(points)}";
                     xlWorksheet.Range[$"A{counter_row+=2}"].Value2 = $"НДС";
                     xlWorksheet.Range[$"B{counter_row}"].Value2 = $"{Math.Round(nds, 2)}";
                     if (!Directory.Exists("PaymentAgreements"))

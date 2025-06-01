@@ -105,6 +105,7 @@ namespace GardenAndOgorodShop
                     blockRecords[itemsCount].ProductDeleted += Product_ProductDeleted;
                     blockRecords[itemsCount].FormClose += Form_FormClose;
                     blockRecords[itemsCount].ProductAddToBacket += Product_ProductAddToBacket;
+                    blockRecords[itemsCount].CloseForm += Form_FormClose;
                     flowLayoutPanel1.Controls.Add(blockRecords[itemsCount]);
                     FlowLayoutPanel_ControlAdded(flowLayoutPanel1, new ControlEventArgs(blockRecords[itemsCount]));
                     itemsCount++;

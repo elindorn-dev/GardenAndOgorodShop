@@ -1160,7 +1160,7 @@ namespace GardenAndOgorodShop
             {
                 MySqlConnection con = new MySqlConnection(connect_string);
                 await con.OpenAsync();
-                MySqlCommand cmd = new MySqlCommand($"SELECT orders.*, last_name, first_name, fathers_name FROM garden_and_ogorod_shop.orders INNER JOIN employees ON orders.employees_id = employees.employees_id WHERE order_date BETWEEN '{date_from}' AND '{date_to}';", con);
+                MySqlCommand cmd = new MySqlCommand($"SELECT orders.*, last_name, first_name, fathers_name FROM garden_and_ogorod_shop.orders INNER JOIN employees ON orders.employees_id = employees.employees_id WHERE order_date BETWEEN '{date_from}' AND '{date_to}' AND order_status = \"Успешно\";", con);
                 cmd.ExecuteNonQuery();
 
                 MySqlDataAdapter da = new MySqlDataAdapter(cmd);
@@ -1276,6 +1276,28 @@ namespace GardenAndOgorodShop
             catch
             {
                 return false;
+            }
+        }
+        public static string GetEmployee_FIO()
+        {
+            try
+            {
+                MySqlConnection con = new MySqlConnection(connect_string);
+                con.Open();
+
+                string query = $"SELECT CONCAT(last_name, ' ', LEFT(first_name, 1), '. ', LEFT(fathers_name, 1), '.') AS full_name_initials FROM garden_and_ogorod_shop.employees WHERE employees_id = {UserConfiguration.UserID};";
+
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                var reader = cmd.ExecuteReader();
+                reader.Read();
+                string fio = reader.GetString(0);
+                reader.Close();
+                con.Close();
+                return fio;
+            }
+            catch
+            {
+                return "Иванов.ИИ";
             }
         }
     }

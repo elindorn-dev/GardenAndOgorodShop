@@ -32,6 +32,8 @@ namespace GardenAndOgorodShop
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HandleRecordForm));
             this.tabControlRecords = new System.Windows.Forms.TabControl();
             this.tabPageProduct = new System.Windows.Forms.TabPage();
+            this.comboBoxUnitSize = new System.Windows.Forms.ComboBox();
+            this.label61 = new System.Windows.Forms.Label();
             this.label52 = new System.Windows.Forms.Label();
             this.label51 = new System.Windows.Forms.Label();
             this.label44 = new System.Windows.Forms.Label();
@@ -183,8 +185,6 @@ namespace GardenAndOgorodShop
             this.pictureBoxUser = new System.Windows.Forms.PictureBox();
             this.buttonMenu = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.comboBoxUnitSize = new System.Windows.Forms.ComboBox();
-            this.label61 = new System.Windows.Forms.Label();
             this.tabControlRecords.SuspendLayout();
             this.tabPageProduct.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProduct)).BeginInit();
@@ -259,6 +259,28 @@ namespace GardenAndOgorodShop
             this.tabPageProduct.Size = new System.Drawing.Size(740, 475);
             this.tabPageProduct.TabIndex = 0;
             this.tabPageProduct.Text = "tabPageProduct";
+            // 
+            // comboBoxUnitSize
+            // 
+            this.comboBoxUnitSize.BackColor = System.Drawing.SystemColors.Window;
+            this.comboBoxUnitSize.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxUnitSize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBoxUnitSize.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.comboBoxUnitSize.FormattingEnabled = true;
+            this.comboBoxUnitSize.Location = new System.Drawing.Point(173, 418);
+            this.comboBoxUnitSize.Name = "comboBoxUnitSize";
+            this.comboBoxUnitSize.Size = new System.Drawing.Size(102, 33);
+            this.comboBoxUnitSize.TabIndex = 35;
+            // 
+            // label61
+            // 
+            this.label61.AutoSize = true;
+            this.label61.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label61.Location = new System.Drawing.Point(29, 421);
+            this.label61.Name = "label61";
+            this.label61.Size = new System.Drawing.Size(140, 25);
+            this.label61.TabIndex = 34;
+            this.label61.Text = "Ед. измерения:";
             // 
             // label52
             // 
@@ -1952,28 +1974,6 @@ namespace GardenAndOgorodShop
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // comboBoxUnitSize
-            // 
-            this.comboBoxUnitSize.BackColor = System.Drawing.SystemColors.Window;
-            this.comboBoxUnitSize.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxUnitSize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBoxUnitSize.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.comboBoxUnitSize.FormattingEnabled = true;
-            this.comboBoxUnitSize.Location = new System.Drawing.Point(173, 418);
-            this.comboBoxUnitSize.Name = "comboBoxUnitSize";
-            this.comboBoxUnitSize.Size = new System.Drawing.Size(102, 33);
-            this.comboBoxUnitSize.TabIndex = 35;
-            // 
-            // label61
-            // 
-            this.label61.AutoSize = true;
-            this.label61.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label61.Location = new System.Drawing.Point(29, 421);
-            this.label61.Name = "label61";
-            this.label61.Size = new System.Drawing.Size(140, 25);
-            this.label61.TabIndex = 34;
-            this.label61.Text = "Ед. измерения:";
             // 
             // HandleRecordForm
             // 
