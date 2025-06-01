@@ -353,5 +353,10 @@ namespace GardenAndOgorodShop
                 labelTotalCost.Text = $"{cost - Convert.ToDouble(numericUpDown1.Value)}";
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show($"Ширина: {this.Width}\nВысота:{this.Height}");
+        }
     }
 }

@@ -266,7 +266,7 @@ namespace GardenAndOgorodShop
             {
                 try
                 {
-                    using (MySqlConnection conn = new MySqlConnection(connect_string))
+                    using (MySqlConnection conn = new MySqlConnection(connect_string_recovery))
                     {
                         using (MySqlCommand cmd = new MySqlCommand())
                         {

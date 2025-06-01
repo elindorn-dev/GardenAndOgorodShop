@@ -1268,22 +1268,27 @@ namespace GardenAndOgorodShop
         private int disactive_user_time = 0;
         private void timer1_Tick(object sender, EventArgs e)
         {            
-            disactive_user_time++;
+            if (this.Visible)
+            {
+                disactive_user_time++;
+            }
             if (disactive_user_time == 30)
             {
                 DBHandler.returnProduct();
-                this.Hide();
-                if (!this.Visible)
-                {
-                    AuthForm form = new AuthForm();
-                    form.Show();
-                }
-                else
-                {
-                    this.Visible = false;
-                    AuthForm form = new AuthForm();
-                    form.Show();
-                }
+                Application.Restart();
+                Environment.Exit(0);
+                //this.Hide();
+                //if (!this.Visible)
+                //{
+                //    AuthForm form = new AuthForm();
+                //    form.Show();
+                //}
+                //else
+                //{
+                //    this.Visible = false;
+                //    AuthForm form = new AuthForm();
+                //    form.Show();
+                //}
             }
         }
 
