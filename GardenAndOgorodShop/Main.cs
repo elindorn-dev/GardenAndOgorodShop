@@ -444,6 +444,7 @@ namespace GardenAndOgorodShop
             buttonToBrandForm.Visible = true;
             buttonToSupplierForm.Visible = true;
             buttonToStockForm.Visible = true;
+            buttonToCategoryForm.Visible = true;
         }
         private void Loop(Control.ControlCollection controls)
         {

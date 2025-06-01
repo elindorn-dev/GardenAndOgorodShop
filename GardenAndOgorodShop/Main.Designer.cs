@@ -39,7 +39,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.customSlider1 = new GardenAndOgorodShop.CustomSlider();
             this.buttonAddProduct = new System.Windows.Forms.Button();
             this.textBoxSearchProduct = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -69,6 +68,8 @@
             this.buttonCurrentOrder = new System.Windows.Forms.Button();
             this.ViewProductPage = new System.Windows.Forms.TabPage();
             this.panelWaiting = new System.Windows.Forms.Panel();
+            this.label24 = new System.Windows.Forms.Label();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.panelResult = new System.Windows.Forms.Panel();
             this.labelReadyOrNot = new System.Windows.Forms.Label();
             this.pictureBoxReadyOrNot = new System.Windows.Forms.PictureBox();
@@ -171,8 +172,7 @@
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.label24 = new System.Windows.Forms.Label();
+            this.customSlider1 = new GardenAndOgorodShop.CustomSlider();
             this.panel1.SuspendLayout();
             this.panelNavigation.SuspendLayout();
             this.panelEmployeeData.SuspendLayout();
@@ -240,16 +240,6 @@
             this.panel1.Size = new System.Drawing.Size(855, 172);
             this.panel1.TabIndex = 2;
             this.panel1.Click += new System.EventHandler(this.panel1_Click);
-            // 
-            // customSlider1
-            // 
-            this.customSlider1.Count = 1;
-            this.customSlider1.CountPages = 0;
-            this.customSlider1.CurrentPage = 1;
-            this.customSlider1.Location = new System.Drawing.Point(674, 3);
-            this.customSlider1.Name = "customSlider1";
-            this.customSlider1.Size = new System.Drawing.Size(178, 69);
-            this.customSlider1.TabIndex = 18;
             // 
             // buttonAddProduct
             // 
@@ -502,7 +492,7 @@
             this.buttonToSupplierForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(186)))), ((int)(((byte)(93)))));
             this.buttonToSupplierForm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonToSupplierForm.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonToSupplierForm.Location = new System.Drawing.Point(13, 225);
+            this.buttonToSupplierForm.Location = new System.Drawing.Point(13, 327);
             this.buttonToSupplierForm.Name = "buttonToSupplierForm";
             this.buttonToSupplierForm.Size = new System.Drawing.Size(175, 40);
             this.buttonToSupplierForm.TabIndex = 15;
@@ -633,6 +623,24 @@
             this.panelWaiting.Name = "panelWaiting";
             this.panelWaiting.Size = new System.Drawing.Size(850, 470);
             this.panelWaiting.TabIndex = 0;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label24.Location = new System.Drawing.Point(245, 203);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(98, 25);
+            this.label24.TabIndex = 1;
+            this.label24.Text = "Загрузка...";
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(120)))), ((int)(((byte)(56)))));
+            this.progressBar1.Location = new System.Drawing.Point(352, 203);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(274, 30);
+            this.progressBar1.TabIndex = 0;
             // 
             // panelResult
             // 
@@ -1827,23 +1835,15 @@
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // progressBar1
+            // customSlider1
             // 
-            this.progressBar1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(120)))), ((int)(((byte)(56)))));
-            this.progressBar1.Location = new System.Drawing.Point(352, 203);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(274, 30);
-            this.progressBar1.TabIndex = 0;
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label24.Location = new System.Drawing.Point(245, 203);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(98, 25);
-            this.label24.TabIndex = 1;
-            this.label24.Text = "Загрузка...";
+            this.customSlider1.Count = 1;
+            this.customSlider1.CountPages = 0;
+            this.customSlider1.CurrentPage = 1;
+            this.customSlider1.Location = new System.Drawing.Point(674, 3);
+            this.customSlider1.Name = "customSlider1";
+            this.customSlider1.Size = new System.Drawing.Size(178, 69);
+            this.customSlider1.TabIndex = 18;
             // 
             // Main
             // 
