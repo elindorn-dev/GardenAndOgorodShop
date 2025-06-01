@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Office.Interop.Excel;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,7 +14,7 @@ namespace GardenAndOgorodShop
 {
     public partial class CurrentOrder : Form
     {
-        DataTable products_table;
+        System.Data.DataTable products_table;
         public CurrentOrder()
         {
             InitializeComponent();
@@ -56,7 +57,8 @@ namespace GardenAndOgorodShop
         {
             products_table = await DBHandler.LoadData($"products_orders INNER JOIN products ON products_orders.products_id = products.products_id WHERE orders_id = {UserConfiguration.Current_order_id};");
             dataGridViewProducts.Rows.Clear();
-            labelTotalCost.Text = $"{LoadProductDataGridView()}";
+            save_cost = LoadProductDataGridView();
+            labelTotalCost.Text = $"{save_cost}";
         } 
         private async void CurrentOrder_Load(object sender, EventArgs e)
         {
@@ -116,7 +118,7 @@ namespace GardenAndOgorodShop
                     {
                         DBHandler.randomSQLCommand($"UPDATE `garden_and_ogorod_shop`.`products` SET `is_available` = `is_available` {edit_product} 1 WHERE (`products_id` = '{product_id}');");
                     }
-                    double cost = Convert.ToDouble(labelTotalCost.Text);
+                    double cost = Convert.ToDouble(save_cost);
                     double cost_ = Convert.ToDouble(selected_row[6]);
                     if (new_amount == 1)
                     {
@@ -162,6 +164,7 @@ namespace GardenAndOgorodShop
                             buttonAddProduct.Enabled = true;
                         }
                     }
+                    save_cost = cost;
                     labelTotalCost.Text = Convert.ToString(cost);
                 }
             }
@@ -173,15 +176,30 @@ namespace GardenAndOgorodShop
         private async void buttonAddProduct_Click(object sender, EventArgs e)
         {
             await PlusMinusAmountProduct_inOrder("+", "-");
+            numericUpDown1.Value = 1;
+            labelTotalCost.Text = $"{save_cost}";
+            numericUpDown1.Maximum = Convert.ToInt32(save_cost) - 1;
         }
 
         private async void buttonMinus_Click(object sender, EventArgs e)
         {
             await PlusMinusAmountProduct_inOrder("-", "+");
+            numericUpDown1.Value = 1;
+            labelTotalCost.Text = $"{save_cost}";
+            numericUpDown1.Maximum = Convert.ToInt32(save_cost) - 1;
         }
-
+        private int _points = 0;
         private async void buttonDoneOrder_Click(object sender, EventArgs e)
         {
+            //if (numericUpDown1.Value > 0 && checkBox1.Checked)
+            //{
+            //    int points = Convert.ToInt32(labelPoints.Text) - Convert.ToInt32(numericUpDown1.Value);
+            //    DBHandler.UpdateBonus(Convert.ToInt32(textBoxClient.Text), points);
+            //}
+            if (checkBox1.Checked)
+            {
+                _points = Convert.ToInt32(numericUpDown1.Value);
+            }
             if (comboBoxPayMethod.Text != "") {
                 try
                 {
@@ -194,7 +212,8 @@ namespace GardenAndOgorodShop
                             $" `payment_method` = '{comboBoxPayMethod.Text}'," +
                             $" `total_cost` = '{labelTotalCost.Text.Replace(',', '.')}'," +
                             $" `tax_amount` = '{Convert.ToString(Convert.ToDouble(labelTotalCost.Text) / 13.0).Replace(',', '.')}'," +
-                            $" `notes` = '{textBoxOrderNotes.Text}' " +
+                            $" `notes` = '{textBoxOrderNotes.Text}'," +
+                            $" `clients_id` = '{textBoxClient.Text}' " +
                             $"WHERE (`orders_id` = '{UserConfiguration.Current_order_id}');");
                         dataGridViewProducts.Rows.Clear();
                         MessageBox.Show(
@@ -202,14 +221,24 @@ namespace GardenAndOgorodShop
                            "Статус продажи",
                            MessageBoxButtons.OK,
                            MessageBoxIcon.Information);
-                        buttonDoneOrder.Enabled = false;
-                        labelTotalCost.Text = "0.0";
-                        comboBoxPayMethod.Text = "";
+                        
                         buttonWarning.Visible = true;
+                        int points = 0;
+                        if (numericUpDown1.Value > 0 && checkBox1.Checked)
+                        {
+                            points = Convert.ToInt32(labelPoints.Text) - Convert.ToInt32(numericUpDown1.Value);
+                            DBHandler.UpdateBonus(Convert.ToInt32(textBoxClient.Text), points);
+                        }
+                        
                         //
-                        await PaymentAgreement.createExcelAgreement();
+                        await PaymentAgreement.createExcelAgreement(_points);
                         //
                         UserConfiguration.Current_order_id = 0;
+                        comboBoxPayMethod.SelectedIndex = -1;
+                        textBoxClient.Text = "";
+                        labelPoints.Text = "0";
+                        buttonDoneOrder.Enabled = false;
+                        labelTotalCost.Text = "0.0";
                         comboBoxPayMethod.SelectedIndex = -1;
                     }
                     else
@@ -235,6 +264,117 @@ namespace GardenAndOgorodShop
         private void comboBoxPayMethod_SelectedIndexChanged(object sender, EventArgs e)
         {
             buttonWarning.Visible = comboBoxPayMethod.Text != "" ? false : true;
+        }
+
+        private void textBoxClient_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char c = e.KeyChar;
+            e.Handled = !(char.IsDigit(c)) && !char.IsControl(c);
+        }
+
+        private void textBoxClient_TextChanged(object sender, EventArgs e)
+        {
+            if (textBoxClient.Text != "")
+            {
+                int clients_id = Convert.ToInt32(textBoxClient.Text);
+                int points = DBHandler.isExistClient_returnPoints(clients_id);
+                if (points == -1)
+                {
+                    buttonDoneOrder.Enabled = false;
+                    labelExistClient.Visible = true;
+                    panelCheckExistClient.Visible = true;
+
+                    labelPoints.Text = $"0";
+                    checkBox1.Visible = false;
+                }
+                else
+                {
+                    buttonDoneOrder.Enabled = true;
+                    labelExistClient.Visible = false;
+                    panelCheckExistClient.Visible = false;
+
+                    labelPoints.Text = $"{points}";
+                    if (points == 0)
+                    {
+                        checkBox1.Visible = false;
+                        numericUpDown1.Visible = false;
+                    }
+                    else
+                    {
+                        checkBox1.Visible = true;
+                        if (dataGridViewProducts.Rows.Count <= 0)
+                        {
+                            checkBox1.Enabled = false;
+                        }
+                        else
+                        {
+                            checkBox1.Enabled = true;
+                        }
+                        if (save_cost < Convert.ToDouble(points))
+                        {
+                            numericUpDown1.Maximum = Convert.ToInt32(save_cost) -1;
+                        }
+                        else
+                        {
+                            numericUpDown1.Maximum = points;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                checkBox1.Checked = false;
+                checkBox1.Visible = false;
+                numericUpDown1.Visible = false;
+                numericUpDown1.Value = 0;
+            }
+
+            checkBox1.Checked = false;
+            numericUpDown1.Value = 1;
+            
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked)
+            {
+                numericUpDown1.Visible = true;
+                double cost = Convert.ToDouble(labelTotalCost.Text);
+                labelTotalCost.Text = $"{cost - Convert.ToDouble(numericUpDown1.Value)}";
+                
+            }
+            else
+            {
+                numericUpDown1.Visible = false;
+                labelTotalCost.Text = $"{save_cost}";
+            }
+        }
+        private double save_cost;
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+            labelTotalCost.Text = $"{save_cost}";
+            if (numericUpDown1.Value > numericUpDown1.Maximum)
+            {
+                numericUpDown1.Value = numericUpDown1.Maximum;
+            }
+            double cost = Convert.ToDouble(labelTotalCost.Text);
+            double cost_ = cost - Convert.ToDouble(numericUpDown1.Value);
+            if (cost_ < 1) 
+            {
+                labelTotalCost.Text = $"1";
+            }
+            else
+            {
+                if (numericUpDown1.Visible)
+                {
+                    labelTotalCost.Text = $"{cost - Convert.ToDouble(numericUpDown1.Value)}";
+                }
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show($"Ширина: {this.Width}\nВысота:{this.Height}");
         }
     }
 }

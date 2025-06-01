@@ -233,5 +233,77 @@ namespace GardenAndOgorodShop
                 if (xlApp != null) Marshal.ReleaseComObject(xlApp);
             }
         }
+        static public async Task ReportWroteProduct(string product_name, int amount, string desc)
+        {
+            Excel.Application xlApp = null;
+            Workbook xlWorkbook = null;
+            Worksheet xlWorksheet = null;
+
+            try
+            {
+                System.Data.DataTable products = await DBHandler.LoadData("products");
+                await Task.Run(() => // Выполняем в отдельном потоке
+                {
+                    xlApp = new Excel.Application();
+                    xlWorkbook = xlApp.Workbooks.Open($"{Directory.GetCurrentDirectory()}\\templatesAgreements\\templateWritedProduct.xlsx");
+                    xlWorksheet = (Excel.Worksheet)xlWorkbook.Sheets[1];
+
+                    string FIO_employee = DBHandler.GetEmployee_FIO();
+
+                    DateTime now = DateTime.Now;
+                    string dateTimeString = now.ToString("F");
+                    xlWorksheet.Range[$"A1"].Value2 = $"Списание товара от {dateTimeString}";
+                    xlWorksheet.Range[$"B6"].Value2 = $"{FIO_employee}";
+                    xlWorksheet.Range[$"B8"].Value2 = $"{product_name}";
+                    xlWorksheet.Range[$"B9"].Value2 = $"{amount}";
+                    xlWorksheet.Range[$"B11"].Value2 = $"{desc}";
+
+                    if (!Directory.Exists("WritesProduct"))
+                    {
+                        try
+                        {
+                            Directory.CreateDirectory("WritesProduct");
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show($"Ошибка при создании папки '{"WritesProduct"}': {ex.Message}", "Создание папки", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    string path_name = $"WritesProduct\\Списание товара от {DateTime.Now.ToString("dd.MM.yyyy h.mm.ss")}.xlsx";
+                    xlWorkbook.SaveAs($"{Directory.GetCurrentDirectory()}\\{path_name}");
+                    xlWorkbook.Close();
+                    xlApp.Quit();
+                    MessageBox.Show($"Excel-отчёт создан, проверьте его по пути {path_name}");
+                    string filePath = $"{Directory.GetCurrentDirectory()}\\{path_name}";
+
+                    xlApp = new Excel.Application();
+                    xlWorkbook = xlApp.Workbooks.Open(filePath);
+                    xlWorksheet = (Worksheet)xlWorkbook.Sheets[1];
+
+                    // Настраиваем параметры страницы (необязательно, но может помочь)
+                    xlWorksheet.PageSetup.Orientation = XlPageOrientation.xlPortrait;
+                    xlWorksheet.PageSetup.Zoom = false;
+                    xlWorksheet.PageSetup.FitToPagesWide = 1;
+                    xlWorksheet.PageSetup.FitToPagesTall = 1;
+
+                    // Отображаем предварительный просмотр
+                    xlApp.Visible = true; // Сначала делаем Excel видимым
+                    xlWorksheet.PrintPreview(true);  // Затем открываем просмотр
+
+                });
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при заполнении шаблона Excel: {ex.Message}");
+            }
+            finally
+            {
+                // Освобождаем COM-объекты (ОЧЕНЬ ВАЖНО!)
+                if (xlWorksheet != null) Marshal.ReleaseComObject(xlWorksheet);
+                if (xlWorkbook != null) Marshal.ReleaseComObject(xlWorkbook);
+                if (xlApp != null) Marshal.ReleaseComObject(xlApp);
+            }
+        }
     }
 }

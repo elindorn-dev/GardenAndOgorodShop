@@ -14,7 +14,7 @@ namespace GardenAndOgorodShop
 
     public static class PaymentAgreement
     {
-        public static async Task createExcelAgreement()
+        public static async Task createExcelAgreement(int points)
         {
             Excel.Application xlApp = null;
             Workbook xlWorkbook = null;
@@ -38,19 +38,29 @@ namespace GardenAndOgorodShop
                     {
                         foreach (System.Data.DataRow product in products_order.Rows)
                         {
-                            xlWorksheet.Range[$"A{counter_row}"].Value2 = $"{product[0]}";
-                            xlWorksheet.Range[$"B{counter_row}"].Value2 = $"{product[1]} x {product[2]}";
+                            string title = $"{product[0]}";
+                            string amount = $"{product[1]}";
+                            string price = $"{Convert.ToDouble(product[2]) - Convert.ToDouble(product[2]) * (Convert.ToDouble(product[3]) / 100)}";
+                            xlWorksheet.Range[$"A{counter_row}"].Value2 = title;
+                            xlWorksheet.Range[$"B{counter_row}"].Value2 = $"{amount} x {price}";
                             counter_row++;
-                            summ += Convert.ToDouble(product[1]) * Convert.ToDouble(product[2]);
-                            xlWorksheet.Range[$"B{counter_row}"].Value2 = $"{Convert.ToDouble(product[1]) * Convert.ToDouble(product[2])}";
+                            summ += Convert.ToDouble(product[1]) * Convert.ToDouble(price);
+                            xlWorksheet.Range[$"B{counter_row}"].Value2 = $"{summ}";
                             counter_row++;
                         }
                     }
                     double nds = summ * 0.13;
-                    xlWorksheet.Range[$"A{counter_row}"].Value2 = $"ИТОГ";
+                    xlWorksheet.Range[$"A{counter_row}"].Value2 = $"СУММА";
                     xlWorksheet.Range[$"B{counter_row}"].Value2 = $"{summ}";
+                    if (points != 0)
+                    {
+                        xlWorksheet.Range[$"A{counter_row+=2}"].Value2 = $"БАЛЛЫ";
+                        xlWorksheet.Range[$"B{counter_row}"].Value2 = $"{points}";
+                    }
+                    xlWorksheet.Range[$"A{counter_row+=2}"].Value2 = $"ИТОГ";
+                    xlWorksheet.Range[$"B{counter_row}"].Value2 = $"{summ-Convert.ToInt32(points)}";
                     xlWorksheet.Range[$"A{counter_row+=2}"].Value2 = $"НДС";
-                    xlWorksheet.Range[$"B{counter_row+=2}"].Value2 = $"{Math.Round(nds, 2)}";
+                    xlWorksheet.Range[$"B{counter_row}"].Value2 = $"{Math.Round(nds, 2)}";
                     if (!Directory.Exists("PaymentAgreements"))
                     {
                         try

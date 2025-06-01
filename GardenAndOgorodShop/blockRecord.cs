@@ -34,6 +34,11 @@ namespace GardenAndOgorodShop
                 }
             }
         }
+        public Color BackgColor
+        {
+            get { return this.BackColor; }
+            set { this.BackColor = value; }
+        }
 
         public string Description
         {
@@ -142,6 +147,7 @@ namespace GardenAndOgorodShop
             {
                 buttonEdit.Visible = value;
                 buttonDelete.Visible = value;
+                buttonChanged.Visible = value;
                 buttonAddProductToBacket.Visible = !value;
             }
         }
@@ -297,6 +303,13 @@ namespace GardenAndOgorodShop
                 MessageBox.Show($"Ошибка\n{err}");
                 return false;
             }
+        }
+        public event EventHandler CloseForm;
+        private void buttonChanged_Click(object sender, EventArgs e)
+        {
+            CloseForm?.Invoke(this, EventArgs.Empty);
+            ChangeProduct form = new ChangeProduct(IDrecord);
+            form.Show();
         }
         //private async void resultAdd_inOrder(int product_id)
         //{

@@ -206,6 +206,32 @@ namespace GardenAndOgorodShop
                 button13.Text = "Изменить";
             }
         }
+        private void loadEditData_client()
+        {
+            DataTable table = DBHandler.LoadDataSync($"clients WHERE clients_id = {id_record};");
+            DataRow row = table.Rows[0];
+            if (row != null)
+            {
+                try
+                {
+                    dateTimePickerClientBirth.Value = DateTime.Parse($"{row[3]}");
+                    string[] fio = $"{row[1]}".Split(' ');
+                    textBoxSurnameClient.Text = $"{fio[0]}";
+                    textBoxClientFirstname.Text = $"{fio[1]}";
+                    textBoxClientFathersname.Text = $"{fio[2]}";
+                    textBoxClientPoints.Text = $"{row[2]}";
+                    textBoxClientEmail.Text = $"{row[4]}";
+                    maskedTextBoxClientPhone.Text = $"{row[5]}";
+                }
+                catch (Exception er)
+                {
+                    MessageBox.Show("Ошибка загрузки данных о клиенте", "Заполнение", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    this.Close();
+                }
+
+                button13.Text = "Изменить";
+            }
+        }
         private void loadEditData()
         {
             switch (tabControlRecords.SelectedIndex)
@@ -217,6 +243,7 @@ namespace GardenAndOgorodShop
                 case 4: loadEditData_brand(); break;
                 case 5: loadEditData_supplier(); break;
                 case 6: loadEditData_order(); break;
+                case 7: loadEditData_client(); break;
                 default: MessageBox.Show("Не найдена нужная таблица\n(selected index -> table)"); Main form = new Main(); form.Show(); this.Hide(); break;
             }
         }
@@ -240,6 +267,7 @@ namespace GardenAndOgorodShop
             LoadComboBoxSource(comboBoxCategories, "categories", "category_name", "categories_id");
             LoadComboBoxSource(comboBoxSuppliers, "suppliers", "supplier_name", "suppliers_id");
             //LoadComboBoxSource(comboBoxEmployeeUser, "employees", "last_name", "employees_id");
+            comboBoxUnitSize.DataSource = DBHandler.GetEnumValues();
             LoadComboBoxSourceEmployee();
             if (this.selected_mode == "edit")
             {
@@ -255,40 +283,45 @@ namespace GardenAndOgorodShop
                     MessageBox.Show($"Ошибка при загрузке сотрудника: " + ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 loadEditData();
-                if (UserConfiguration.UserRole == "seller")
-                {
-                    foreach (Control control in tabControlRecords.SelectedTab.Controls)
-                    {
-                        if (control is Button)
-                        {
-                            control.Visible = false;
-                        }
-                        else if (control is Label)
-                        {
-                            control.Enabled = true;
-                        }
-                        else if (control is TextBox textBox)
-                        {
-                            textBox.ReadOnly = true;
-                        }
-                        else if (control is MaskedTextBox maskedTextBox)
-                        {
-                            maskedTextBox.ReadOnly = true;
-                        }
-                        else if (control is NumericUpDown numericUpDown)
-                        {
-                            numericUpDown.ReadOnly = true;
-                        }
-                        else
-                        {
-                            control.Enabled = false;
-                        }
-                    }
-                }
+                //if (UserConfiguration.UserRole == "seller" && selected_page != 7 && selected_page != 6)
+                //{
+                //    foreach (Control control in tabControlRecords.SelectedTab.Controls)
+                //    {
+                //        if (control is Button)
+                //        {
+                //            control.Visible = false;
+                //        }
+                //        else if (control is Label)
+                //        {
+                //            control.Enabled = true;
+                //        }
+                //        else if (control is TextBox textBox)
+                //        {
+                //            textBox.ReadOnly = true;
+                //        }
+                //        else if (control is MaskedTextBox maskedTextBox)
+                //        {
+                //            maskedTextBox.ReadOnly = true;
+                //        }
+                //        else if (control is NumericUpDown numericUpDown)
+                //        {
+                //            numericUpDown.ReadOnly = true;
+                //        }
+                //        else
+                //        {
+                //            control.Enabled = false;
+                //        }
+                //    }
+                //}
             }
             else
             {
                 comboBoxEmployeeUser.SelectedIndex = -1;
+                if (selected_page == 7)
+                {
+                    label55.Visible = false;
+                    textBoxClientPoints.Visible = false;
+                }
             }
             
         }
@@ -524,6 +557,16 @@ namespace GardenAndOgorodShop
             textBoxSupINN.Text = "";
             textBoxSupDesc.Text = "";
         }
+        private void ClearFieldsOnForm_client()
+        {
+            textBoxSurnameClient.Text = "";
+            textBoxClientFirstname.Text = "";
+            textBoxClientFathersname.Text = "";
+            textBoxClientEmail.Text = "";
+            textBoxClientPoints.Text = "";
+            maskedTextBoxClientPhone.Text = "";
+            dateTimePickerClientBirth.Value = new DateTime(2000, 1, 1);
+        }
         private string[] SuccessAddRecordResult(string elem, string form)
         {
             switch (form)
@@ -534,6 +577,7 @@ namespace GardenAndOgorodShop
                 case "user": ClearFieldsOnForm_user(); break;
                 case "brand": ClearFieldsOnForm_brand(); break;
                 case "supplier": ClearFieldsOnForm_supplier(); break;
+                case "client": ClearFieldsOnForm_client(); break;
                 default:;break;
             }
             return new string[] { $"{elem} добавлен.", "Успех" };
@@ -560,7 +604,8 @@ namespace GardenAndOgorodShop
                             Convert.ToInt32(textBoxProductIsAvaible.Text),
                             pictureBoxProduct.BackgroundImage,
                             (int)comboBoxSuppliers.SelectedValue,
-                            Convert.ToDecimal(textBoxProductSeasonalDiscount.Text)
+                            Convert.ToDecimal(textBoxProductSeasonalDiscount.Text),
+                            comboBoxUnitSize.Text
                     ) ? SuccessAddRecordResult("Товар", "product") : new string[] { "Товар НЕ добавлен!", "Провал" };
                         MessageBox.Show(result[0], result[1], MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
@@ -582,6 +627,7 @@ namespace GardenAndOgorodShop
                             blobData_product,
                             (int)comboBoxSuppliers.SelectedValue,
                             discount,
+                            comboBoxUnitSize.Text,
                             id_record
                     ) ? new string[] { "Товар изменен.", "Успех" } : new string[] { "Товар НЕ был изменен!", "Провал" };
                         MessageBox.Show(result[0], result[1], MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -927,6 +973,102 @@ namespace GardenAndOgorodShop
             Main form = new Main();
             form.Show();
             this.Hide();
+        }
+
+        private void textBoxSurnameClient_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char c = e.KeyChar;
+            e.Handled = !((c >= 'А' && c <= 'я') || (c >= 'а' && c <= 'я')) && !char.IsControl(e.KeyChar);
+        }
+
+        private void textBoxLastName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char c = e.KeyChar;
+            e.Handled = !((c >= 'А' && c <= 'я') || (c >= 'а' && c <= 'я')) && !char.IsControl(e.KeyChar);
+        }
+
+        private void textBoxFirstName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char c = e.KeyChar;
+            e.Handled = !((c >= 'А' && c <= 'я') || (c >= 'а' && c <= 'я')) && !char.IsControl(e.KeyChar);
+        }
+
+        private void textBoxFathersName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char c = e.KeyChar;
+            e.Handled = !((c >= 'А' && c <= 'я') || (c >= 'а' && c <= 'я')) && !char.IsControl(e.KeyChar);
+        }
+
+        private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char c = e.KeyChar;
+            e.Handled = !((c >= 'А' && c <= 'я') || (c >= 'а' && c <= 'я')) && !char.IsControl(e.KeyChar);
+        }
+
+        private void textBox3_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char c = e.KeyChar;
+            e.Handled = !((c >= 'А' && c <= 'я') || (c >= 'а' && c <= 'я')) && !char.IsControl(e.KeyChar);
+        }
+
+        private void textBoxClientPoints_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char c = e.KeyChar;
+            e.Handled = !(char.IsDigit(c)) && !char.IsControl(c);
+        }
+
+        private void button4_Click_1(object sender, EventArgs e)
+        {
+            ClearFieldsOnForm_client();
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            if (ValidateTabPage(tabControlRecords.SelectedTab))
+            {
+                string elem_table = "Клиент";
+                if (selected_mode == "add")
+                {
+                    string[] result = DBHandler.InsertClient(
+                        textBoxSurnameClient.Text + " " + textBoxClientFirstname.Text + " " + textBoxClientFathersname.Text,
+                        textBoxClientEmail.Text,
+                        maskedTextBoxClientPhone.Text,
+                        dateTimePickerClientBirth.Value.ToString("yyyy-MM-dd")
+                )
+                ? SuccessAddRecordResult(elem_table, "client") : new string[] { $"{elem_table} НЕ добавлен!", "Провал" };
+                    MessageBox.Show(result[0], result[1], MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    string[] result = DBHandler.EditClient(
+                        textBoxSurnameClient.Text + " " + textBoxClientFirstname.Text + " " + textBoxClientFathersname.Text,
+                        textBoxClientEmail.Text,
+                        maskedTextBoxClientPhone.Text,
+                        dateTimePickerClientBirth.Value.ToString("yyyy-MM-dd"),
+                        Convert.ToInt32(textBoxClientPoints.Text),
+                        id_record
+                 )
+                ? new string[] { $"{elem_table} изменен.", "Успех" } : new string[] { $"{elem_table} НЕ был изменен!", "Провал" };
+                    MessageBox.Show(result[0], result[1], MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
+
+        private void textBoxClientEmail_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char c = e.KeyChar;
+            e.Handled = ((c >= 'А' && c <= 'я') || (c >= 'а' && c <= 'я'));
+        }
+
+        private void maskedTextBoxClientPhone_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char c = e.KeyChar;
+            e.Handled = (c == ' ');
+        }
+
+        private void buttonWriteoff_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

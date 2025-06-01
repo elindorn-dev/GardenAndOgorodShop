@@ -11,6 +11,7 @@ using System.Data;
 using System.Security.Cryptography;
 using System.Configuration;
 using System.Reflection;
+using MySqlX.XDevAPI.Relational;
 
 namespace GardenAndOgorodShop
 {
@@ -22,6 +23,41 @@ namespace GardenAndOgorodShop
         public static string database = ConfigurationManager.AppSettings["db"];
         public static string connect_string = $"host={host};uid={username};pwd={pwd};database={database}";
         public static string connect_string_recovery = $"host={host};uid={username};pwd={pwd}";
+
+
+        public static List<string> GetEnumValues()
+        {
+            List<string> enumValues = new List<string>();
+
+            using (var connection = new MySqlConnection(connect_string))
+            {
+                connection.Open();
+
+                string sql = $"SELECT COLUMN_TYPE FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'products' AND COLUMN_NAME = 'unit_size' AND TABLE_SCHEMA = DATABASE();";
+
+                using (var command = new MySqlCommand(sql, connection))
+                {
+                    using (var reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            string columnType = reader.GetString(0);
+                            if (columnType.StartsWith("enum(") && columnType.EndsWith(")"))
+                            {
+                                string valuesString = columnType.Substring(5, columnType.Length - 6); 
+                                string[] values = valuesString.Split(new string[] { "','" }, StringSplitOptions.None); 
+                                foreach (string value in values)
+                                {
+                                    enumValues.Add(value.Replace("'", ""));
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            return enumValues;
+        }
 
         public static bool Backup(string filePath)
         {
@@ -230,7 +266,7 @@ namespace GardenAndOgorodShop
             {
                 try
                 {
-                    using (MySqlConnection conn = new MySqlConnection(connect_string))
+                    using (MySqlConnection conn = new MySqlConnection(connect_string_recovery))
                     {
                         using (MySqlCommand cmd = new MySqlCommand())
                         {
@@ -267,7 +303,7 @@ namespace GardenAndOgorodShop
             System.Data.DataTable products = new System.Data.DataTable();
             try
             {
-                string query = $"SELECT products.products_name, products_orders.product_amount, products.price FROM garden_and_ogorod_shop.products_orders INNER JOIN products ON products_orders.products_id = products.products_id WHERE orders_id  = '{UserConfiguration.Current_order_id}';";
+                string query = $"SELECT products.products_name, products_orders.product_amount, products.price, products.seasonal_discount FROM garden_and_ogorod_shop.products_orders INNER JOIN products ON products_orders.products_id = products.products_id WHERE orders_id  = '{UserConfiguration.Current_order_id}';";
                 MySqlConnection con = new MySqlConnection(connect_string);
                 await con.OpenAsync();
                 MySqlCommand cmd = new MySqlCommand(query, con);
@@ -584,7 +620,7 @@ namespace GardenAndOgorodShop
         /// <param name="supplier"></param>
         /// <param name="discount"></param>
         /// <returns></returns>
-        public static bool InsertProduct(string title, string descript, decimal price, int category, int brand, int is_avaible, Image image, int supplier, decimal discount)
+        public static bool InsertProduct(string title, string descript, decimal price, int category, int brand, int is_avaible, Image image, int supplier, decimal discount, string unit)
         {
             try
             {
@@ -598,9 +634,9 @@ namespace GardenAndOgorodShop
                 }
 
                 string query = "INSERT INTO `garden_and_ogorod_shop`.`products` " +
-                               "(`products_name`, `descript`, `price`, `categories_id`, `brands_id`, `is_available`, `image`, `suppliers_id`, `seasonal_discount`) " +
+                               "(`products_name`, `descript`, `price`, `categories_id`, `brands_id`, `is_available`, `image`, `suppliers_id`, `seasonal_discount`, `unit_size`) " +
                                "VALUES " +
-                               "(@title, @descript, @price, @category, @brand, @is_available, @image, @supplier, @discount)";
+                               "(@title, @descript, @price, @category, @brand, @is_available, @image, @supplier, @discount, @unit)";
 
                 using (MySqlCommand cmd = new MySqlCommand(query, con))
                 {
@@ -616,6 +652,7 @@ namespace GardenAndOgorodShop
                     supplier = supplier == 0 ? 1 : supplier;
                     cmd.Parameters.AddWithValue("@supplier", supplier);
                     cmd.Parameters.AddWithValue("@discount", discount);
+                    cmd.Parameters.AddWithValue("@unit", unit);
 
 
                     cmd.ExecuteNonQuery();
@@ -791,6 +828,34 @@ namespace GardenAndOgorodShop
                 return false;
             }
         }
+        public static bool InsertClient(string fio, string email, string phone, string bithday)
+        {
+            try
+            {
+                MySqlConnection con = new MySqlConnection(connect_string);
+                con.Open();
+
+                string query = "INSERT INTO `garden_and_ogorod_shop`.`clients` (`full_name`, `birth_date`, `email`, `phone_number`) VALUES (@fio, @birth, @email, @phone);";
+
+                using (MySqlCommand cmd = new MySqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@fio", fio);
+                    cmd.Parameters.AddWithValue("@email", email);
+                    cmd.Parameters.AddWithValue("@phone", phone);
+                    cmd.Parameters.AddWithValue("@birth", bithday);
+
+                    cmd.ExecuteNonQuery();
+                }
+
+                con.Close();
+                return true;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Ошибка добавления клиента (db):\n" + e.Message);
+                return false;
+            }
+        }
         #endregion
         #region Edit records
         /// <summary>
@@ -807,7 +872,7 @@ namespace GardenAndOgorodShop
         /// <param name="discount"></param>
         /// <param name="id"></param>
         /// <returns></returns>
-        public static bool EditProduct(string title, string descript, double price, int category, int brand, int is_avaible, byte[] blobData, int supplier, double discount, int id)
+        public static bool EditProduct(string title, string descript, double price, int category, int brand, int is_avaible, byte[] blobData, int supplier, double discount, string unit, int id)
         {
             try
             {
@@ -822,7 +887,8 @@ namespace GardenAndOgorodShop
                     "`is_available` = @is_available, " +
                     "`image` = @image, " +
                     "`suppliers_id` = @supplier, " +
-                    "`seasonal_discount` = @discount " +
+                    "`seasonal_discount` = @discount, " +
+                    "`unit_size` = @unit " +
                     $"WHERE (`products_id` = '{id}');";
 
                 using (MySqlCommand cmd = new MySqlCommand(query, con))
@@ -839,6 +905,7 @@ namespace GardenAndOgorodShop
                     supplier = supplier == 0 ? 1 : supplier;
                     cmd.Parameters.AddWithValue("@supplier", supplier);
                     cmd.Parameters.AddWithValue("@discount", discount);
+                    cmd.Parameters.AddWithValue("@unit", unit);
 
 
                     cmd.ExecuteNonQuery();
@@ -1055,6 +1122,36 @@ namespace GardenAndOgorodShop
                 return false;
             }
         }
+        public static bool EditClient(string fio, string email, string phone, string bithday, int points, int id)
+        {
+            try
+            {
+                MySqlConnection con = new MySqlConnection(connect_string);
+                con.Open();
+
+                string query = "UPDATE `garden_and_ogorod_shop`.`clients` SET `full_name` = @fio, `loyalty_points` = @points, `birth_date` = @birth, `email` = @email, `phone_number` = @phone WHERE (`clients_id` = @id);";
+
+                using (MySqlCommand cmd = new MySqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@fio", fio);
+                    cmd.Parameters.AddWithValue("@email", email);
+                    cmd.Parameters.AddWithValue("@phone", phone);
+                    cmd.Parameters.AddWithValue("@birth", bithday);
+                    cmd.Parameters.AddWithValue("@points", points);
+                    cmd.Parameters.AddWithValue("@id", id);
+
+                    cmd.ExecuteNonQuery();
+                }
+
+                con.Close();
+                return true;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Ошибка изменения клиента (db):\n" + e.Message);
+                return false;
+            }
+        }
         #endregion
         public static async Task<System.Data.DataTable> LoadDataReportOrders(string date_from, string date_to)
         {
@@ -1063,7 +1160,7 @@ namespace GardenAndOgorodShop
             {
                 MySqlConnection con = new MySqlConnection(connect_string);
                 await con.OpenAsync();
-                MySqlCommand cmd = new MySqlCommand($"SELECT orders.*, last_name, first_name, fathers_name FROM garden_and_ogorod_shop.orders INNER JOIN employees ON orders.employees_id = employees.employees_id WHERE order_date BETWEEN '{date_from}' AND '{date_to}';", con);
+                MySqlCommand cmd = new MySqlCommand($"SELECT orders.*, last_name, first_name, fathers_name FROM garden_and_ogorod_shop.orders INNER JOIN employees ON orders.employees_id = employees.employees_id WHERE order_date BETWEEN '{date_from}' AND '{date_to}' AND order_status = \"Успешно\";", con);
                 cmd.ExecuteNonQuery();
 
                 MySqlDataAdapter da = new MySqlDataAdapter(cmd);
@@ -1132,6 +1229,75 @@ namespace GardenAndOgorodShop
             {
                 MessageBox.Show("Ошибка получения is_available (db):\n" + e.Message);
                 return -1;
+            }
+        }
+        public static int isExistClient_returnPoints(int clients_id)
+        {
+            try
+            {
+                MySqlConnection con = new MySqlConnection(connect_string);
+                con.Open();
+
+                string query = $"SELECT loyalty_points FROM garden_and_ogorod_shop.clients WHERE clients_id = {clients_id};";
+
+                MySqlCommand cmd = new MySqlCommand(query, con);
+
+                MySqlDataReader reader = cmd.ExecuteReader();
+                reader.Read();
+                int points = reader.GetInt32(0);
+                reader.Close();
+                con.Close();
+                if (points >= 0)
+                {
+                    return points;
+                }
+                return -1;
+            }
+            catch
+            {
+                return -1;
+            }
+        }
+        public static bool UpdateBonus(int clients_id, int points)
+        {
+            try
+            {
+                MySqlConnection con = new MySqlConnection(connect_string);
+                con.Open();
+
+                string query = $"UPDATE `garden_and_ogorod_shop`.`clients` SET `loyalty_points` = '{points}' WHERE (`clients_id` = '{clients_id}');";
+
+                MySqlCommand cmd = new MySqlCommand(query, con);
+
+                cmd.ExecuteNonQuery();
+                con.Close();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        public static string GetEmployee_FIO()
+        {
+            try
+            {
+                MySqlConnection con = new MySqlConnection(connect_string);
+                con.Open();
+
+                string query = $"SELECT CONCAT(last_name, ' ', LEFT(first_name, 1), '. ', LEFT(fathers_name, 1), '.') AS full_name_initials FROM garden_and_ogorod_shop.employees WHERE employees_id = {UserConfiguration.UserID};";
+
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                var reader = cmd.ExecuteReader();
+                reader.Read();
+                string fio = reader.GetString(0);
+                reader.Close();
+                con.Close();
+                return fio;
+            }
+            catch
+            {
+                return "Иванов.ИИ";
             }
         }
     }

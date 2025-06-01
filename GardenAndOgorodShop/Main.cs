@@ -87,6 +87,10 @@ namespace GardenAndOgorodShop
                     blockRecords[itemsCount].Header = record["products_name"].ToString();
                     blockRecords[itemsCount].Description = record["descript"].ToString();
                     blockRecords[itemsCount].Amount = (int)record["is_available"];
+                    if ((int)record["is_available"] <= 0)
+                    {
+                        blockRecords[itemsCount].BackgColor = Color.Pink;
+                    }
                     blockRecords[itemsCount].Discount = Convert.ToInt32(record["seasonal_discount"]);
                     blockRecords[itemsCount].DefaultPrice = Convert.ToInt32(record["price"]);
                     if (record["image"] != DBNull.Value)
@@ -101,6 +105,7 @@ namespace GardenAndOgorodShop
                     blockRecords[itemsCount].ProductDeleted += Product_ProductDeleted;
                     blockRecords[itemsCount].FormClose += Form_FormClose;
                     blockRecords[itemsCount].ProductAddToBacket += Product_ProductAddToBacket;
+                    blockRecords[itemsCount].CloseForm += Form_FormClose;
                     flowLayoutPanel1.Controls.Add(blockRecords[itemsCount]);
                     FlowLayoutPanel_ControlAdded(flowLayoutPanel1, new ControlEventArgs(blockRecords[itemsCount]));
                     itemsCount++;
@@ -345,10 +350,11 @@ namespace GardenAndOgorodShop
                 {
                     string[] fio = $"{row[1]}".Split(' ');
                     clientsName = $"{fio[0]} {fio[1].Substring(0, 1)}. {fio[2].Substring(0, 1)}.";
-                    clientsBithday = $"{row[4]}";
+                    DateTime clientsBithdayDateTime = DateTime.Parse(row[3].ToString());
+                    clientsBithday = clientsBithdayDateTime.ToString("dd.MM.yyyy");
                     clientsPoints = $"{row[2]}";
                 }
-                catch
+                catch (Exception err)
                 {
                     clientsName = "none";
                     clientsBithday = "none";
@@ -421,6 +427,7 @@ namespace GardenAndOgorodShop
         }
         private void ShowForCommonUser()
         {
+            
             buttonCurrentOrder.Visible = true;
             buttonToOrderForm.Visible = true;
             buttonToProductForm.Visible = true;
@@ -456,18 +463,29 @@ namespace GardenAndOgorodShop
         private async void FormViewProduct_Load(object sender, EventArgs e)
         {
             tabControl1.SelectedIndex = UserConfiguration.UserRole == "admin" ? 2 : 0;
+            buttonAddProduct.Visible = !(UserConfiguration.UserRole == "seller");
+
             //Loop(this.Controls);
-            if(Convert.ToBoolean(ConfigurationManager.AppSettings["sleep"]))
+            if (Convert.ToBoolean(ConfigurationManager.AppSettings["sleep"]))
             {
                 timer1.Start();
             }
+
             //MessageBox.Show($"{UserConfiguration.UserRole}");
             dateTimePickerFrom.MaxDate = DateTime.Now;
             dateTimePickerTo.MaxDate = DateTime.Now;
 
 
             getCategories();
-            products_table = await DBHandler.LoadData("products WHERE is_available > 0");
+            
+            if (UserConfiguration.UserRole == "tovaroved")
+            {
+                products_table = await DBHandler.LoadData("products");
+            }
+            else
+            {
+                products_table = await DBHandler.LoadData("products WHERE is_available > 0");
+            }
             employees_table = await DBHandler.LoadData("employees;");
             //employees_table = await DBHandler.LoadData("employees INNER JOIN users ON employees.employees_id = users.employees_id");
 
@@ -476,6 +494,7 @@ namespace GardenAndOgorodShop
             {
                 comboBoxCategories.Items.Add(pair.Value);
             }
+            progressBar1.Value += 10;
             #region EmployeeDataLoad
             try
             {
@@ -488,17 +507,27 @@ namespace GardenAndOgorodShop
                 MessageBox.Show("Ошибка загрузки пользователя");
             }
             #endregion
+            progressBar1.Value += 10;
             LoadCategoriesDataGridView();
+            progressBar1.Value += 10;
             LoadEmployeesDataGridView();
+            progressBar1.Value += 10;
             LoadUsersDataGridView();
+            progressBar1.Value += 10;
             LoadOrdersDataGridView("orders ORDER BY order_date ASC");
+            progressBar1.Value += 10;
             LoadBrandsDataGridView();
+            progressBar1.Value += 10;
             LoadSuppliersDataGridView();
+            progressBar1.Value += 10;
             LoadClientsDataGridView();
-            if(!DBHandler.Backup(""))
+            progressBar1.Value += 10;
+            if (!DBHandler.Backup(""))
             {
                 MessageBox.Show("Ошибка резервного копирования при старте программы. Позовите администратора.", "Резервное копирование бд", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            progressBar1.Value += 10;
+            panelWaiting.Visible = false;
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -690,7 +719,15 @@ namespace GardenAndOgorodShop
         {
             EnabledUsingHandleProducts(false);
             // определяем метод
-            method_product = $"products WHERE {method_filter_product} AND (products_name LIKE '%{method_search_product}%') AND is_available > 0 ORDER BY {method_sort_product}";
+            if (UserConfiguration.UserRole == "tovaroved")
+            {
+                method_product = $"products WHERE {method_filter_product} AND (products_name LIKE '%{method_search_product}%') ORDER BY {method_sort_product}";
+            }
+            else
+            {
+                method_product = $"products WHERE {method_filter_product} AND (products_name LIKE '%{method_search_product}%') AND is_available > 0 ORDER BY {method_sort_product}";
+            }
+            
             // Загружаем новые данные таблицы
             products_table = await DBHandler.LoadData(method_product);
             LoadProducts(start_page_count, end_page_count);
@@ -760,6 +797,10 @@ namespace GardenAndOgorodShop
         {
             try
             {
+                start_page_count = 0;
+                end_page_count = 20;
+                LoadProducts(start_page_count, end_page_count);
+                customSlider1.CurrentPage = 1;
                 // определяем выбрана ли категория
                 if (comboBoxCategories.SelectedIndex != 0)
                 {
@@ -1228,22 +1269,27 @@ namespace GardenAndOgorodShop
         private int disactive_user_time = 0;
         private void timer1_Tick(object sender, EventArgs e)
         {            
-            disactive_user_time++;
+            if (this.Visible)
+            {
+                disactive_user_time++;
+            }
             if (disactive_user_time == 30)
             {
                 DBHandler.returnProduct();
-                this.Hide();
-                if (!this.Visible)
-                {
-                    AuthForm form = new AuthForm();
-                    form.Show();
-                }
-                else
-                {
-                    this.Visible = false;
-                    AuthForm form = new AuthForm();
-                    form.Show();
-                }
+                Application.Restart();
+                Environment.Exit(0);
+                //this.Hide();
+                //if (!this.Visible)
+                //{
+                //    AuthForm form = new AuthForm();
+                //    form.Show();
+                //}
+                //else
+                //{
+                //    this.Visible = false;
+                //    AuthForm form = new AuthForm();
+                //    form.Show();
+                //}
             }
         }
 
@@ -1257,7 +1303,55 @@ namespace GardenAndOgorodShop
             disactive_user_time = 0;
         }
 
-        
+        private void buttonAddClient_Click(object sender, EventArgs e)
+        {
+            HandleRecordForm form = new HandleRecordForm(7, "add", 0);
+            form.Show();
+            this.Hide();
+        }
+
+        private void buttonEditClient_Click(object sender, EventArgs e)
+        {
+            int index_row = dataGridViewClients.SelectedCells[0].RowIndex;
+            DataRow selected_row = DBHandler.LoadDataSync("clients").Rows[index_row];
+            int _id = Convert.ToInt32(selected_row[0]);
+            HandleRecordForm form = new HandleRecordForm(7, "edit", _id);
+            form.Show();
+            this.Hide();
+        }
+
+        private void buttonDeleteClient_Click(object sender, EventArgs e)
+        {
+            int index_row = dataGridViewClients.SelectedCells[0].RowIndex;
+            DataRow selected_row = DBHandler.LoadDataSync("clients").Rows[index_row];
+            int _id = Convert.ToInt32(selected_row[0]);
+            DialogResult dr = MessageBox.Show($"Вы уверены что хотите удалить клиента '{selected_row[1]}'?",
+                "Подтверждение",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+                );
+            if (dr == DialogResult.Yes)
+            {
+                if (DBHandler.DeleteHandler("clients", "clients_id", _id))
+                {
+                    MessageBox.Show($"Клиент удалён",
+                    "Результат",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information
+                    );
+                    dataGridViewClients.Rows.Clear();
+                    LoadCategoriesDataGridView();
+                }
+                else
+                {
+                    MessageBox.Show($"Клиент не был удалён!",
+                    "Результат",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                    );
+                }
+            }
+        }
     }
     public delegate void MouseMovedEvent();
     public class GlobalMouseHandler : IMessageFilter
