@@ -1300,5 +1300,25 @@ namespace GardenAndOgorodShop
                 return "Иванов.ИИ";
             }
         }
+        public static bool UpdateAmountProduct(int id_product, int amount)
+        {
+            try
+            {
+                MySqlConnection con = new MySqlConnection(connect_string);
+                con.Open();
+
+                string query = $"UPDATE `garden_and_ogorod_shop`.`products` SET `is_available` = '{amount}' WHERE (`products_id` = '{id_product}');";
+
+                MySqlCommand cmd = new MySqlCommand(query, con);
+
+                cmd.ExecuteNonQuery();
+                con.Close();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }

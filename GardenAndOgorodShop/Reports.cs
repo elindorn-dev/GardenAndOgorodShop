@@ -305,5 +305,80 @@ namespace GardenAndOgorodShop
                 if (xlApp != null) Marshal.ReleaseComObject(xlApp);
             }
         }
+        static public async Task ReportInvoiceProduct(string product_name, int amount, string supplier, double price)
+        {
+            Excel.Application xlApp = null;
+            Workbook xlWorkbook = null;
+            Worksheet xlWorksheet = null;
+
+            try
+            {
+                System.Data.DataTable products = await DBHandler.LoadData("products");
+                await Task.Run(() => // Выполняем в отдельном потоке
+                {
+                    xlApp = new Excel.Application();
+                    xlWorkbook = xlApp.Workbooks.Open($"{Directory.GetCurrentDirectory()}\\templatesAgreements\\templateInvoiceProduct.xlsx");
+                    xlWorksheet = (Excel.Worksheet)xlWorkbook.Sheets[1];
+
+                    string FIO_employee = DBHandler.GetEmployee_FIO();
+
+                    DateTime now = DateTime.Now;
+                    string dateTimeString = now.ToString("yyyyMMddHHmmss");
+                    xlWorksheet.Range[$"A1"].Value2 = $"Накладная №{dateTimeString}";
+                    xlWorksheet.Range[$"B3"].Value2 = $"{supplier}";
+                    xlWorksheet.Range[$"A8"].Value2 = $"{amount}";
+                    xlWorksheet.Range[$"B8"].Value2 = $"{product_name}";
+                    xlWorksheet.Range[$"C8"].Value2 = $"{price}";
+                    xlWorksheet.Range[$"C9"].Value2 = $"{price*amount}";
+                    xlWorksheet.Range[$"B12"].Value2 = $"{FIO_employee}";
+                    xlWorksheet.Range[$"B13"].Value2 = $"{now.ToString("F")}";
+
+                    if (!Directory.Exists("InvoicesProduct"))
+                    {
+                        try
+                        {
+                            Directory.CreateDirectory("InvoicesProduct");
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show($"Ошибка при создании папки '{"InvoicesProduct"}': {ex.Message}", "Создание папки", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    string path_name = $"InvoicesProduct\\Накладная от {DateTime.Now.ToString("dd.MM.yyyy h.mm.ss")}.xlsx";
+                    xlWorkbook.SaveAs($"{Directory.GetCurrentDirectory()}\\{path_name}");
+                    xlWorkbook.Close();
+                    xlApp.Quit();
+                    MessageBox.Show($"Excel-отчёт создан, проверьте его по пути {path_name}");
+                    string filePath = $"{Directory.GetCurrentDirectory()}\\{path_name}";
+
+                    xlApp = new Excel.Application();
+                    xlWorkbook = xlApp.Workbooks.Open(filePath);
+                    xlWorksheet = (Worksheet)xlWorkbook.Sheets[1];
+
+                    // Настраиваем параметры страницы (необязательно, но может помочь)
+                    xlWorksheet.PageSetup.Orientation = XlPageOrientation.xlPortrait;
+                    xlWorksheet.PageSetup.Zoom = false;
+                    xlWorksheet.PageSetup.FitToPagesWide = 1;
+                    xlWorksheet.PageSetup.FitToPagesTall = 1;
+
+                    // Отображаем предварительный просмотр
+                    xlApp.Visible = true; // Сначала делаем Excel видимым
+                    xlWorksheet.PrintPreview(true);  // Затем открываем просмотр
+
+                });
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при заполнении шаблона Excel: {ex.Message}");
+            }
+            finally
+            {
+                // Освобождаем COM-объекты (ОЧЕНЬ ВАЖНО!)
+                if (xlWorksheet != null) Marshal.ReleaseComObject(xlWorksheet);
+                if (xlWorkbook != null) Marshal.ReleaseComObject(xlWorkbook);
+                if (xlApp != null) Marshal.ReleaseComObject(xlApp);
+            }
+        }
     }
 }

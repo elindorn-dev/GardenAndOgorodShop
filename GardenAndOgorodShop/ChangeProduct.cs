@@ -26,7 +26,12 @@ namespace GardenAndOgorodShop
         private int is_avaible = 0;
         private int supplier_id = 0;
         private string supplier = "";
+        private double price = 0;
         private void ChangeProduct_Load(object sender, EventArgs e)
+        {
+            LoadProduct();
+        }
+        private void LoadProduct()
         {
             DataTable product_dt = DBHandler.LoadDataSync($"products INNER JOIN suppliers ON suppliers.suppliers_id = products.suppliers_id WHERE products_id = {id}");
             DataRow product = product_dt.Rows[0];
@@ -37,9 +42,9 @@ namespace GardenAndOgorodShop
             supplier = product["supplier_name"].ToString();
             supplier_id = Convert.ToInt32(product["suppliers_id"]);
             numericUpDown1.Maximum = is_avaible;
+            price = Convert.ToDouble(product["price"]) / 2;
 
             comboBoxChange.SelectedIndex = 0;
-            
         }
 
         private void comboBoxChange_SelectedIndexChanged(object sender, EventArgs e)
@@ -50,6 +55,7 @@ namespace GardenAndOgorodShop
                 label3.Text = "Поставщик:";
                 buttonWrite.Text = "Создать накладную";
                 numericUpDown1.Maximum = 10000;
+                this.Height = 290;
             }
             else
             {
@@ -57,6 +63,7 @@ namespace GardenAndOgorodShop
                 label3.Text = "Доступно:";
                 numericUpDown1.Maximum = is_avaible;
                 buttonWrite.Text = "Списать товар";
+                this.Height = 420;
             }
         }
 
@@ -72,10 +79,14 @@ namespace GardenAndOgorodShop
             {
                 case 0:
                     await Reports.ReportWroteProduct(labelName.Text, Convert.ToInt32(numericUpDown1.Value), textBoxPr.Text);
-                    ;break;
+                    DBHandler.UpdateAmountProduct(id, is_avaible- Convert.ToInt32(numericUpDown1.Value));
+                    LoadProduct();
+                    ; break;
                 case 1:
-                    
-                    ;break;
+                    await Reports.ReportInvoiceProduct(labelName.Text, Convert.ToInt32(numericUpDown1.Value), labelHandle.Text, price);
+                    DBHandler.UpdateAmountProduct(id, is_avaible + Convert.ToInt32(numericUpDown1.Value));
+                    LoadProduct();
+                    ; break;
             }
         }
     }

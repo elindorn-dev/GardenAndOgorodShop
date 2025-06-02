@@ -79,11 +79,11 @@
             // labelName
             // 
             this.labelName.AutoSize = true;
-            this.labelName.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(120)))), ((int)(((byte)(56)))));
+            this.labelName.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelName.ForeColor = System.Drawing.Color.Black;
             this.labelName.Location = new System.Drawing.Point(12, 69);
             this.labelName.Name = "labelName";
-            this.labelName.Size = new System.Drawing.Size(308, 40);
+            this.labelName.Size = new System.Drawing.Size(290, 37);
             this.labelName.TabIndex = 35;
             this.labelName.Text = "*Название продукта";
             // 
@@ -142,7 +142,7 @@
             // 
             this.numericUpDown1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.numericUpDown1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.numericUpDown1.Location = new System.Drawing.Point(95, 180);
+            this.numericUpDown1.Location = new System.Drawing.Point(91, 180);
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(120, 33);
             this.numericUpDown1.TabIndex = 41;
@@ -166,13 +166,14 @@
             this.textBoxPr.Name = "textBoxPr";
             this.textBoxPr.Size = new System.Drawing.Size(420, 105);
             this.textBoxPr.TabIndex = 43;
+            this.textBoxPr.Text = "Товар испорчен.\r\nИстек срок годности.";
             // 
             // ChangeProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(547, 384);
+            this.ClientSize = new System.Drawing.Size(543, 378);
             this.Controls.Add(this.textBoxPr);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.numericUpDown1);
