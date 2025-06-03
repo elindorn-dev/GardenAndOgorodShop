@@ -12,6 +12,7 @@ using System.Security.Cryptography;
 using System.Configuration;
 using System.Reflection;
 using MySqlX.XDevAPI.Relational;
+using MySqlX.XDevAPI.Common;
 
 namespace GardenAndOgorodShop
 {
@@ -620,8 +621,9 @@ namespace GardenAndOgorodShop
         /// <param name="supplier"></param>
         /// <param name="discount"></param>
         /// <returns></returns>
-        public static bool InsertProduct(string title, string descript, decimal price, int category, int brand, int is_avaible, Image image, int supplier, decimal discount, string unit)
+        public static int InsertProduct(string title, string descript, decimal price, int category, int brand, int is_avaible, Image image, int supplier, decimal discount, string unit)
         {
+            int id_product = 0;
             try
             {
                 MySqlConnection con = new MySqlConnection(connect_string);
@@ -636,7 +638,7 @@ namespace GardenAndOgorodShop
                 string query = "INSERT INTO `garden_and_ogorod_shop`.`products` " +
                                "(`products_name`, `descript`, `price`, `categories_id`, `brands_id`, `is_available`, `image`, `suppliers_id`, `seasonal_discount`, `unit_size`) " +
                                "VALUES " +
-                               "(@title, @descript, @price, @category, @brand, @is_available, @image, @supplier, @discount, @unit)";
+                               "(@title, @descript, @price, @category, @brand, @is_available, @image, @supplier, @discount, @unit);SELECT LAST_INSERT_ID();";
 
                 using (MySqlCommand cmd = new MySqlCommand(query, con))
                 {
@@ -654,17 +656,19 @@ namespace GardenAndOgorodShop
                     cmd.Parameters.AddWithValue("@discount", discount);
                     cmd.Parameters.AddWithValue("@unit", unit);
 
-
-                    cmd.ExecuteNonQuery();
+                    var reader = cmd.ExecuteReader();
+                    reader.Read();
+                    id_product = reader.GetInt32(0);
+                    reader.Close();
                 }
 
                 con.Close();
-                return true;
+                return id_product;
             }
             catch (Exception e)
             {
                 MessageBox.Show("Ошибка добавления продукта (db):\n"+e.Message);
-                return false;
+                return 0;
             }
         }
         /// <summary>
@@ -1298,6 +1302,31 @@ namespace GardenAndOgorodShop
             catch
             {
                 return "Иванов.ИИ";
+            }
+        }
+        public static string[] GetSupplier_data(int id_supplier)
+        {
+            try
+            {
+                MySqlConnection con = new MySqlConnection(connect_string);
+                con.Open();
+
+                string query = $"SELECT * FROM garden_and_ogorod_shop.suppliers WHERE suppliers_id = {id_supplier};";
+
+                MySqlCommand cmd = new MySqlCommand(query, con);
+                var reader = cmd.ExecuteReader();
+                reader.Read();
+                string supplier_name = reader.GetString("supplier_name");
+                string supplier_inn = reader.GetString("registration_number_inn");
+                string supplier_director = reader.GetString("director");
+                reader.Close();
+                con.Close();
+                string[] result = { supplier_name, supplier_inn, supplier_director };
+                return result;
+            }
+            catch
+            {
+                return null;
             }
         }
         public static bool UpdateAmountProduct(int id_product, int amount)
