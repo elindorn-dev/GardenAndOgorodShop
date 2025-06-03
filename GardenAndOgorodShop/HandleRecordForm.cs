@@ -595,18 +595,35 @@ namespace GardenAndOgorodShop
                 {
                     if (selected_mode == "add")
                     {
-                        string[] result = DBHandler.InsertProduct(
-                            textBoxProductName.Text,
-                            textBoxProductDesc.Text,
-                            Convert.ToDecimal(textBoxProductCost.Text),
-                            (int)comboBoxCategories.SelectedValue,
-                            (int)comboBoxBrands.SelectedValue,
-                            Convert.ToInt32(textBoxProductIsAvaible.Text),
-                            pictureBoxProduct.BackgroundImage,
-                            (int)comboBoxSuppliers.SelectedValue,
-                            Convert.ToDecimal(textBoxProductSeasonalDiscount.Text),
-                            comboBoxUnitSize.Text
-                    ) ? SuccessAddRecordResult("Товар", "product") : new string[] { "Товар НЕ добавлен!", "Провал" };
+                        string[] result;
+                        int id_product = DBHandler.InsertProduct(
+                        textBoxProductName.Text,
+                        textBoxProductDesc.Text,
+                        Convert.ToDecimal(textBoxProductCost.Text),
+                        (int)comboBoxCategories.SelectedValue,
+                        (int)comboBoxBrands.SelectedValue,
+                        Convert.ToInt32(textBoxProductIsAvaible.Text),
+                        pictureBoxProduct.BackgroundImage,
+                        (int)comboBoxSuppliers.SelectedValue,
+                        Convert.ToDecimal(textBoxProductSeasonalDiscount.Text),
+                        comboBoxUnitSize.Text);
+                        if (id_product != 0) 
+                        {
+                            string[] supplier_data = DBHandler.GetSupplier_data((int)comboBoxSuppliers.SelectedValue);
+                            if (supplier_data != null)
+                            {
+                                Contract.ContractWithSupplier(textBoxProductName.Text, supplier_data[0], Convert.ToInt32(textBoxProductIsAvaible.Text), id_product, supplier_data[2], Convert.ToDecimal(textBoxProductCost.Text).ToString(), supplier_data[1]);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Договор не был создан. Ошибка загрузки данных о поставщике", "Создание договора", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                            result = SuccessAddRecordResult("Товар", "product");
+                        }
+                        else
+                        {
+                            result = new string[] { "Товар НЕ добавлен!", "Провал" };
+                        }
                         MessageBox.Show(result[0], result[1], MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
