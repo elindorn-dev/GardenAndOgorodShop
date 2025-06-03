@@ -229,7 +229,11 @@ namespace GardenAndOgorodShop
                             points = Convert.ToInt32(labelPoints.Text) - Convert.ToInt32(numericUpDown1.Value);
                             DBHandler.UpdateBonus(Convert.ToInt32(textBoxClient.Text), points);
                         }
-                        
+                        if (!checkBox1.Checked && !labelExistClient.Visible && textBoxClient.Text != "")
+                        {
+                            points = Convert.ToInt32(labelPoints.Text) + Convert.ToInt32(Convert.ToDouble(labelTotalCost.Text)/10);
+                            DBHandler.UpdateBonus(Convert.ToInt32(textBoxClient.Text), points);
+                        }
                         //
                         await PaymentAgreement.createExcelAgreement(_points);
                         //
@@ -310,7 +314,7 @@ namespace GardenAndOgorodShop
                         {
                             checkBox1.Enabled = true;
                         }
-                        if (save_cost < Convert.ToDouble(points))
+                        if (save_cost < Convert.ToDouble(points) && save_cost > 0)
                         {
                             numericUpDown1.Maximum = Convert.ToInt32(save_cost) -1;
                         }
@@ -330,7 +334,7 @@ namespace GardenAndOgorodShop
             }
 
             checkBox1.Checked = false;
-            numericUpDown1.Value = 1;
+            numericUpDown1.Value = 0;
             
         }
 
