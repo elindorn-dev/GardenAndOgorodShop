@@ -59,7 +59,6 @@ C:\Users\Dmitry\Desktop\Диплом\res\GardenAndOgorodShop\GardenAndOgorodShop
 C:\Users\Dmitry\Desktop\Диплом\res\GardenAndOgorodShop\GardenAndOgorodShop\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\Users\Dmitry\Desktop\Диплом\res\GardenAndOgorodShop\GardenAndOgorodShop\obj\Debug\GardenAndOgorodShop.csproj.AssemblyReference.cache
 C:\Users\Dmitry\Desktop\Диплом\res\GardenAndOgorodShop\GardenAndOgorodShop\obj\Debug\GardenAndOgorodShop.csproj.SuggestedBindingRedirects.cache
-C:\Users\Dmitry\Desktop\Диплом\res\GardenAndOgorodShop\GardenAndOgorodShop\obj\Debug\Interop.Microsoft.Office.Core.dll
 C:\Users\Dmitry\Desktop\Диплом\res\GardenAndOgorodShop\GardenAndOgorodShop\obj\Debug\Interop.Microsoft.Office.Interop.Excel.dll
 C:\Users\Dmitry\Desktop\Диплом\res\GardenAndOgorodShop\GardenAndOgorodShop\obj\Debug\Interop.VBIDE.dll
 C:\Users\Dmitry\Desktop\Диплом\res\GardenAndOgorodShop\GardenAndOgorodShop\obj\Debug\GardenAndOgorodShop.csproj.ResolveComReference.cache

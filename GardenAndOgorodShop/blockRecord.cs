@@ -233,7 +233,7 @@ namespace GardenAndOgorodShop
             //resultAdd_inOrder(productToDelete.IDrecord, productToDelete);
             ProductAddToBacket?.Invoke(this, EventArgs.Empty);
         }
-        private async void resultAdd_inOrder(int product_id)
+        private void resultAdd_inOrder(int product_id)
         {
             try
             {

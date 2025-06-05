@@ -46,10 +46,38 @@ namespace GardenAndOgorodShop
             //Loop(this.Controls);
             flowLayoutPanel1.ControlAdded += FlowLayoutPanel_ControlAdded;
 
-            products_table = DBHandler.LoadDataSync("products WHERE is_available > 0");
+            if (UserConfiguration.UserRole == "tovaroved")
+            {
+                products_table = DBHandler.LoadDataSync("products");
+            }
+            else
+            {
+                products_table = DBHandler.LoadDataSync("products WHERE is_available > 0");
+            }
+            if (customSlider2.CountPages == customSlider2.CurrentPage)
+            {
+                customSlider2.CountRecords = products_table.Rows.Count % 20;
+            }
+            else
+            {
+                customSlider2.CountRecords = 20;
+            }
             CalculatePagesCount();
             LoadProducts(start_page_count, end_page_count);
-            customSlider1.RefreshProducts += Products_RefreshProducts;
+            customSlider2.RefreshProducts += Products_RefreshProducts;
+            customSlider2.changedPage += Products_changedPage;
+        }
+        private void Products_changedPage(object sender, EventArgs e)
+        {
+            if (customSlider2.CountPages == customSlider2.CurrentPage)
+            {
+                customSlider2.CountRecords = products_table.Rows.Count % 20;
+            }
+            else
+            {
+                customSlider2.CountRecords = 20;
+            }
+
         }
         void gmh_TheMouseMoved()
         {
@@ -61,18 +89,19 @@ namespace GardenAndOgorodShop
             {
                 if (products_table.Rows.Count % 20 != 0)
                 {
-                    customSlider1.CountPages = products_table.Rows.Count / 20 + 1;
+                    customSlider2.CountPages = products_table.Rows.Count / 20 + 1;
                     lastPageCount = products_table.Rows.Count % 20;
                 }
                 else
                 {
-                    customSlider1.CountPages = products_table.Rows.Count / 20;
+                    customSlider2.CountPages = products_table.Rows.Count / 20;
                     lastPageCount = 0;
                 }
             }
         }
         private void LoadProducts(int start, int end)
         {
+            flowLayoutPanel1.Visible = false;
             flowLayoutPanel1.Controls.Clear();
             List<blockRecord> blockRecords = new List<blockRecord>();
             int itemsCount = 0;
@@ -110,11 +139,12 @@ namespace GardenAndOgorodShop
                     FlowLayoutPanel_ControlAdded(flowLayoutPanel1, new ControlEventArgs(blockRecords[itemsCount]));
                     itemsCount++;
                 }
-                catch(Exception e)
+                catch(Exception)
                 {
                     ;
                 }
             }
+            flowLayoutPanel1.Visible = true;
         }
         private void Form_FormClose(object sender, EventArgs e)
         {
@@ -134,6 +164,7 @@ namespace GardenAndOgorodShop
                 flowLayoutPanel1.Controls.Remove(productToDelete);
                 productToDelete.Dispose();
             }
+            customSlider2.CountRecords -= 1;
         }
         #region Добавление товара в корзину
         private void Product_ProductAddToBacket(object sender, EventArgs e)
@@ -149,13 +180,13 @@ namespace GardenAndOgorodShop
         #endregion
         private void Products_RefreshProducts(object sender, EventArgs e)
         {
-            if (customSlider1.CurrentPage == customSlider1.CountPages && lastPageCount != 0)
+            if (customSlider2.CurrentPage == customSlider2.CountPages && lastPageCount != 0)
             {
                 start_page_count = products_table.Rows.Count - lastPageCount;
                 end_page_count = products_table.Rows.Count;
                 LoadProducts(start_page_count, end_page_count);
             }
-            else if (customSlider1.CurrentPage == 1)
+            else if (customSlider2.CurrentPage == 1)
             {
                 start_page_count = 0;
                 end_page_count = 20;
@@ -163,9 +194,17 @@ namespace GardenAndOgorodShop
             }
             else
             {
-                start_page_count = customSlider1.CurrentPage * 20 - 20;
-                end_page_count = customSlider1.CurrentPage * 20;
+                start_page_count = customSlider2.CurrentPage * 20 - 20;
+                end_page_count = customSlider2.CurrentPage * 20;
                 LoadProducts(start_page_count, end_page_count);
+            }
+            if (customSlider2.CountPages == customSlider2.CurrentPage)
+            {
+                customSlider2.CountRecords = products_table.Rows.Count % 20;
+            }
+            else
+            {
+                customSlider2.CountRecords = 20;
             }
         }
         #region Handle panel menu
@@ -354,7 +393,7 @@ namespace GardenAndOgorodShop
                     clientsBithday = clientsBithdayDateTime.ToString("dd.MM.yyyy");
                     clientsPoints = $"{row[2]}";
                 }
-                catch (Exception err)
+                catch (Exception)
                 {
                     clientsName = "none";
                     clientsBithday = "none";
@@ -365,6 +404,7 @@ namespace GardenAndOgorodShop
         }
         private async void LoadEmployeesDataGridView()
         {
+            employees_table = await DBHandler.LoadData("employees;");
             //employees_table = await DBHandler.LoadData("employees INNER JOIN users ON employees.users_id = users.users_id");
             foreach (DataRow row in employees_table.Rows)
             {
@@ -487,7 +527,7 @@ namespace GardenAndOgorodShop
             {
                 products_table = await DBHandler.LoadData("products WHERE is_available > 0");
             }
-            employees_table = await DBHandler.LoadData("employees;");
+            
             //employees_table = await DBHandler.LoadData("employees INNER JOIN users ON employees.employees_id = users.employees_id");
 
             comboBoxCategories.Items.Add("без фильтрации");
@@ -503,7 +543,7 @@ namespace GardenAndOgorodShop
                 labelEmployeeName.Text = employeeData.lastName + " " + employeeData.firstName.Substring(0, 1) + "." + employeeData.fathersName.Substring(0, 1) + ".";
                 pictureBoxUser.BackgroundImage = employeeData.photo;
             }
-            catch (Exception err)
+            catch
             {
                 MessageBox.Show("Ошибка загрузки пользователя");
             }
@@ -734,6 +774,14 @@ namespace GardenAndOgorodShop
             LoadProducts(start_page_count, end_page_count);
             CalculatePagesCount();
             EnabledUsingHandleProducts(true);
+            if (customSlider2.CountPages == customSlider2.CurrentPage)
+            {
+                customSlider2.CountRecords = products_table.Rows.Count % 20;
+            }
+            else
+            {
+                customSlider2.CountRecords = 20;
+            }
         }
         private async Task reloadEmployeeData()
         {
@@ -796,12 +844,20 @@ namespace GardenAndOgorodShop
 
         private async void comboBoxCategories_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (comboBoxCategories.SelectedIndex != 0)
+            {
+                customSlider2.Visible = false;
+            }
+            else
+            {
+                customSlider2.Visible = true;
+            }
             try
             {
                 start_page_count = 0;
                 end_page_count = 20;
-                LoadProducts(start_page_count, end_page_count);
-                customSlider1.CurrentPage = 1;
+                //LoadProducts(start_page_count, end_page_count);
+                customSlider2.CurrentPage = 1;
                 // определяем выбрана ли категория
                 if (comboBoxCategories.SelectedIndex != 0)
                 {
@@ -826,9 +882,20 @@ namespace GardenAndOgorodShop
         {
             try
             {
-                method_search_product = textBoxSearchProduct.Text;
-                await reloadProductData();
-                textBoxSearchProduct.Focus();
+                if (textBoxSearchProduct.Text != "")
+                {
+                    customSlider2.Visible = false;
+                    method_search_product = textBoxSearchProduct.Text;
+                    await reloadProductData();
+                    textBoxSearchProduct.Focus();
+                }
+                else
+                {
+                    customSlider2.Visible = true;
+                    method_search_product = textBoxSearchProduct.Text;
+                    await reloadProductData();
+                    textBoxSearchProduct.Focus();
+                }
             }
             catch (Exception err)
             {

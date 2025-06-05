@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Google.Protobuf.WellKnownTypes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -25,6 +26,16 @@ namespace GardenAndOgorodShop
                 pages_count = value;
                 labelCounter.Text = pages_count.ToString();
                 textBoxCounter.MaxLength = pages_count.ToString().Length;
+            }
+        }
+        private int count_records;
+        public int CountRecords
+        {
+            get { return count_records; }
+            set
+            {
+                count_records = Convert.ToInt32(value);
+                labelRecordsCurrent.Text = count_records.ToString();
             }
         }
         public int Count
@@ -72,7 +83,7 @@ namespace GardenAndOgorodShop
         {
             textBoxCounter.Text = current_page.ToString();
         }
-
+        public event EventHandler changedPage;
         private void buttonUp_Click(object sender, EventArgs e)
         {
             if (Convert.ToInt32(textBoxCounter.Text) != CountPages)
@@ -80,6 +91,7 @@ namespace GardenAndOgorodShop
                 current_page++;
                 textBoxCounter.Text = current_page.ToString();
             }
+            changedPage?.Invoke(this, EventArgs.Empty);
         }
 
         private void buttonDown_Click(object sender, EventArgs e)
@@ -89,6 +101,7 @@ namespace GardenAndOgorodShop
                 current_page--;
                 textBoxCounter.Text = current_page.ToString();
             }
+            changedPage?.Invoke(this, EventArgs.Empty);
         }
     }
 }

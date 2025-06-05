@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
@@ -197,7 +198,7 @@ namespace GardenAndOgorodShop
                     textBoxTotalCost.Text = $"{row[5]}";
                     textBoxOrderDesc.Text = $"{row[7]}";
                 }
-                catch (Exception er)
+                catch (Exception)
                 {
                     MessageBox.Show("Ошибка загрузки данных о продаже", "Заполнение", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     this.Close();
@@ -223,7 +224,7 @@ namespace GardenAndOgorodShop
                     textBoxClientEmail.Text = $"{row[4]}";
                     maskedTextBoxClientPhone.Text = $"{row[5]}";
                 }
-                catch (Exception er)
+                catch (Exception)
                 {
                     MessageBox.Show("Ошибка загрузки данных о клиенте", "Заполнение", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     this.Close();
@@ -257,7 +258,7 @@ namespace GardenAndOgorodShop
                 labelEmployeeName.Text = employeeData.lastName + " " + employeeData.firstName.Substring(0, 1) + "." + employeeData.fathersName.Substring(0, 1) + ".";
                 pictureBoxUser.BackgroundImage = employeeData.photo;
             }
-            catch (Exception err)
+            catch (Exception)
             {
                 MessageBox.Show("Ошибка загрузки пользователя");
             }
@@ -1086,6 +1087,51 @@ namespace GardenAndOgorodShop
         private void buttonWriteoff_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void textBoxLastName_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void textBoxFirstName_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void textBoxFathersName_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void textBoxLastName_Leave(object sender, EventArgs e)
+        {
+            if (textBoxLastName.Text.Length > 0)
+            {
+                TextInfo textInfo = CultureInfo.CurrentCulture.TextInfo;
+                string result = textInfo.ToTitleCase(textBoxLastName.Text);
+                textBoxLastName.Text = result;
+            }
+        }
+
+        private void textBoxFirstName_Leave(object sender, EventArgs e)
+        {
+            if (textBoxFirstName.Text.Length > 0)
+            {
+                TextInfo textInfo = CultureInfo.CurrentCulture.TextInfo;
+                string result = textInfo.ToTitleCase(textBoxFirstName.Text);
+                textBoxFirstName.Text = result;
+            }
+        }
+
+        private void textBoxFathersName_Leave(object sender, EventArgs e)
+        {
+            if (textBoxFathersName.Text.Length > 0)
+            {
+                TextInfo textInfo = CultureInfo.CurrentCulture.TextInfo;
+                string result = textInfo.ToTitleCase(textBoxFathersName.Text);
+                textBoxFathersName.Text = result;
+            }
         }
     }
 }
