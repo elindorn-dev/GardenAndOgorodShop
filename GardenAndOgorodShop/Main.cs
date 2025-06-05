@@ -415,7 +415,7 @@ namespace GardenAndOgorodShop
                 try
                 {
                     employeeName = $"{row[2]}" + " " + $"{row[1]}".Substring(0, 1) + "." + $"{row[3]}".Substring(0, 1) + ".";
-                    employeePhone = $"{row[6]}";
+                    employeePhone = $"{row[6]}".Substring(0, $"{row[6]}".Length - 3)+"***";
                     employeePosition = $"{row[9]}";
                     if (row[13] != DBNull.Value)
                     {

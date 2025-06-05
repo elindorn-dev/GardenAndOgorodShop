@@ -398,12 +398,20 @@ namespace GardenAndOgorodShop
             // Устанавливаем фильтр файлов (только JPG и PNG)
             openFileDialog.Filter = "Изображения (*.jpg;*.jpeg;*.png)|*.jpg;*.jpeg;*.png";
             openFileDialog.Title = "Выберите изображение";
-
+            int MaxImageSizeInBytes = 3 * 1024 * 1024;
+            
             // Если пользователь выбрал файл и нажал "OK"
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 try
                 {
+                    FileInfo fileInfo = new FileInfo(openFileDialog.FileName);
+                    if (fileInfo.Length > MaxImageSizeInBytes)
+                    {
+                        MessageBox.Show($"Размер изображения превышает допустимый предел ({MaxImageSizeInBytes / (1024 * 1024)} MB).  Выберите изображение меньшего размера.",
+                                        "Ограничение", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                     pictureBox.BackgroundImage = Image.FromFile(openFileDialog.FileName);
                 }
                 catch (Exception ex)
