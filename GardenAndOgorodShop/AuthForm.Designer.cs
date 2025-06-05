@@ -34,10 +34,6 @@
             this.panelCaptcha = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
             this.panelShoom = new System.Windows.Forms.Panel();
-            this.newLabel4 = new GardenAndOgorodShop.newLabel();
-            this.newLabel3 = new GardenAndOgorodShop.newLabel();
-            this.newLabel2 = new GardenAndOgorodShop.newLabel();
-            this.newLabel1 = new GardenAndOgorodShop.newLabel();
             this.button1 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.textBoxCaptcha = new System.Windows.Forms.TextBox();
@@ -56,6 +52,10 @@
             this.buttonExitApp = new System.Windows.Forms.Button();
             this.buttonMenu = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.newLabel4 = new GardenAndOgorodShop.newLabel();
+            this.newLabel3 = new GardenAndOgorodShop.newLabel();
+            this.newLabel2 = new GardenAndOgorodShop.newLabel();
+            this.newLabel1 = new GardenAndOgorodShop.newLabel();
             this.panelAuth.SuspendLayout();
             this.panelCaptcha.SuspendLayout();
             this.panelShoom.SuspendLayout();
@@ -123,62 +123,6 @@
             this.panelShoom.Name = "panelShoom";
             this.panelShoom.Size = new System.Drawing.Size(350, 63);
             this.panelShoom.TabIndex = 16;
-            // 
-            // newLabel4
-            // 
-            this.newLabel4.AutoSize = true;
-            this.newLabel4.BackColor = System.Drawing.Color.Transparent;
-            this.newLabel4.Font = new System.Drawing.Font("Impact", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.newLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.newLabel4.Location = new System.Drawing.Point(260, -33);
-            this.newLabel4.Name = "newLabel4";
-            this.newLabel4.NewText = null;
-            this.newLabel4.RotateAngle = 0;
-            this.newLabel4.Size = new System.Drawing.Size(35, 39);
-            this.newLabel4.TabIndex = 25;
-            this.newLabel4.Text = "n";
-            // 
-            // newLabel3
-            // 
-            this.newLabel3.AutoSize = true;
-            this.newLabel3.BackColor = System.Drawing.Color.Transparent;
-            this.newLabel3.Font = new System.Drawing.Font("Impact", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.newLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.newLabel3.Location = new System.Drawing.Point(172, -33);
-            this.newLabel3.Name = "newLabel3";
-            this.newLabel3.NewText = null;
-            this.newLabel3.RotateAngle = 0;
-            this.newLabel3.Size = new System.Drawing.Size(35, 39);
-            this.newLabel3.TabIndex = 24;
-            this.newLabel3.Text = "n";
-            // 
-            // newLabel2
-            // 
-            this.newLabel2.AutoSize = true;
-            this.newLabel2.BackColor = System.Drawing.Color.Transparent;
-            this.newLabel2.Font = new System.Drawing.Font("Impact", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.newLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.newLabel2.Location = new System.Drawing.Point(80, -33);
-            this.newLabel2.Name = "newLabel2";
-            this.newLabel2.NewText = null;
-            this.newLabel2.RotateAngle = 0;
-            this.newLabel2.Size = new System.Drawing.Size(35, 39);
-            this.newLabel2.TabIndex = 22;
-            this.newLabel2.Text = "n";
-            // 
-            // newLabel1
-            // 
-            this.newLabel1.AutoSize = true;
-            this.newLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.newLabel1.Font = new System.Drawing.Font("Impact", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.newLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.newLabel1.Location = new System.Drawing.Point(-5, -33);
-            this.newLabel1.Name = "newLabel1";
-            this.newLabel1.NewText = null;
-            this.newLabel1.RotateAngle = 0;
-            this.newLabel1.Size = new System.Drawing.Size(35, 39);
-            this.newLabel1.TabIndex = 20;
-            this.newLabel1.Text = "n";
             // 
             // button1
             // 
@@ -405,6 +349,62 @@
             // 
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // newLabel4
+            // 
+            this.newLabel4.AutoSize = true;
+            this.newLabel4.BackColor = System.Drawing.Color.Transparent;
+            this.newLabel4.Font = new System.Drawing.Font("Impact", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.newLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.newLabel4.Location = new System.Drawing.Point(260, -33);
+            this.newLabel4.Name = "newLabel4";
+            this.newLabel4.NewText = null;
+            this.newLabel4.RotateAngle = 0;
+            this.newLabel4.Size = new System.Drawing.Size(35, 39);
+            this.newLabel4.TabIndex = 25;
+            this.newLabel4.Text = "n";
+            // 
+            // newLabel3
+            // 
+            this.newLabel3.AutoSize = true;
+            this.newLabel3.BackColor = System.Drawing.Color.Transparent;
+            this.newLabel3.Font = new System.Drawing.Font("Impact", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.newLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.newLabel3.Location = new System.Drawing.Point(172, -33);
+            this.newLabel3.Name = "newLabel3";
+            this.newLabel3.NewText = null;
+            this.newLabel3.RotateAngle = 0;
+            this.newLabel3.Size = new System.Drawing.Size(35, 39);
+            this.newLabel3.TabIndex = 24;
+            this.newLabel3.Text = "n";
+            // 
+            // newLabel2
+            // 
+            this.newLabel2.AutoSize = true;
+            this.newLabel2.BackColor = System.Drawing.Color.Transparent;
+            this.newLabel2.Font = new System.Drawing.Font("Impact", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.newLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.newLabel2.Location = new System.Drawing.Point(80, -33);
+            this.newLabel2.Name = "newLabel2";
+            this.newLabel2.NewText = null;
+            this.newLabel2.RotateAngle = 0;
+            this.newLabel2.Size = new System.Drawing.Size(35, 39);
+            this.newLabel2.TabIndex = 22;
+            this.newLabel2.Text = "n";
+            // 
+            // newLabel1
+            // 
+            this.newLabel1.AutoSize = true;
+            this.newLabel1.BackColor = System.Drawing.Color.Transparent;
+            this.newLabel1.Font = new System.Drawing.Font("Impact", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.newLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.newLabel1.Location = new System.Drawing.Point(-5, -33);
+            this.newLabel1.Name = "newLabel1";
+            this.newLabel1.NewText = null;
+            this.newLabel1.RotateAngle = 0;
+            this.newLabel1.Size = new System.Drawing.Size(35, 39);
+            this.newLabel1.TabIndex = 20;
+            this.newLabel1.Text = "n";
             // 
             // AuthForm
             // 

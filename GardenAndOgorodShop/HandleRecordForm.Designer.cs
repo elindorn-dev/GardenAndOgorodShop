@@ -827,7 +827,9 @@ namespace GardenAndOgorodShop
             this.textBoxFathersName.Name = "textBoxFathersName";
             this.textBoxFathersName.Size = new System.Drawing.Size(321, 33);
             this.textBoxFathersName.TabIndex = 75;
+            this.textBoxFathersName.TextChanged += new System.EventHandler(this.textBoxFathersName_TextChanged);
             this.textBoxFathersName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxFathersName_KeyPress);
+            this.textBoxFathersName.Leave += new System.EventHandler(this.textBoxFathersName_Leave);
             // 
             // label12
             // 
@@ -847,7 +849,9 @@ namespace GardenAndOgorodShop
             this.textBoxFirstName.Name = "textBoxFirstName";
             this.textBoxFirstName.Size = new System.Drawing.Size(321, 33);
             this.textBoxFirstName.TabIndex = 73;
+            this.textBoxFirstName.TextChanged += new System.EventHandler(this.textBoxFirstName_TextChanged);
             this.textBoxFirstName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxFirstName_KeyPress);
+            this.textBoxFirstName.Leave += new System.EventHandler(this.textBoxFirstName_Leave);
             // 
             // pictureBoxEmployee
             // 
@@ -918,7 +922,9 @@ namespace GardenAndOgorodShop
             this.textBoxLastName.Name = "textBoxLastName";
             this.textBoxLastName.Size = new System.Drawing.Size(321, 33);
             this.textBoxLastName.TabIndex = 56;
+            this.textBoxLastName.TextChanged += new System.EventHandler(this.textBoxLastName_TextChanged);
             this.textBoxLastName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxLastName_KeyPress);
+            this.textBoxLastName.Leave += new System.EventHandler(this.textBoxLastName_Leave);
             // 
             // buttonAddEditEmployee
             // 
@@ -1346,7 +1352,7 @@ namespace GardenAndOgorodShop
             this.textBoxSupINN.Location = new System.Drawing.Point(141, 266);
             this.textBoxSupINN.MaxLength = 20;
             this.textBoxSupINN.Name = "textBoxSupINN";
-            this.textBoxSupINN.Size = new System.Drawing.Size(297, 33);
+            this.textBoxSupINN.Size = new System.Drawing.Size(567, 33);
             this.textBoxSupINN.TabIndex = 141;
             this.textBoxSupINN.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox22_KeyPress);
             // 
@@ -1366,7 +1372,7 @@ namespace GardenAndOgorodShop
             this.textBoxSupAddress.Location = new System.Drawing.Point(141, 217);
             this.textBoxSupAddress.MaxLength = 250;
             this.textBoxSupAddress.Name = "textBoxSupAddress";
-            this.textBoxSupAddress.Size = new System.Drawing.Size(297, 33);
+            this.textBoxSupAddress.Size = new System.Drawing.Size(567, 33);
             this.textBoxSupAddress.TabIndex = 139;
             // 
             // maskedTextBoxSupPhone
@@ -1404,7 +1410,7 @@ namespace GardenAndOgorodShop
             this.textBoxSupEmail.Location = new System.Drawing.Point(117, 130);
             this.textBoxSupEmail.MaxLength = 250;
             this.textBoxSupEmail.Name = "textBoxSupEmail";
-            this.textBoxSupEmail.Size = new System.Drawing.Size(321, 33);
+            this.textBoxSupEmail.Size = new System.Drawing.Size(591, 33);
             this.textBoxSupEmail.TabIndex = 135;
             // 
             // label39
@@ -1424,7 +1430,7 @@ namespace GardenAndOgorodShop
             this.textBoxSupDesc.MaxLength = 1000;
             this.textBoxSupDesc.Multiline = true;
             this.textBoxSupDesc.Name = "textBoxSupDesc";
-            this.textBoxSupDesc.Size = new System.Drawing.Size(320, 71);
+            this.textBoxSupDesc.Size = new System.Drawing.Size(590, 71);
             this.textBoxSupDesc.TabIndex = 133;
             // 
             // label40
@@ -1443,7 +1449,7 @@ namespace GardenAndOgorodShop
             this.textBoxSupName.Location = new System.Drawing.Point(117, 91);
             this.textBoxSupName.MaxLength = 49;
             this.textBoxSupName.Name = "textBoxSupName";
-            this.textBoxSupName.Size = new System.Drawing.Size(321, 33);
+            this.textBoxSupName.Size = new System.Drawing.Size(591, 33);
             this.textBoxSupName.TabIndex = 131;
             // 
             // button11

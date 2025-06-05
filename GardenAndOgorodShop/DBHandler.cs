@@ -91,7 +91,7 @@ namespace GardenAndOgorodShop
                 }
                 return true;
             }
-            catch (MySqlException err)
+            catch
             {
                 return false;
             }
@@ -106,11 +106,7 @@ namespace GardenAndOgorodShop
                 var temp = mySQLCon.State.ToString();
                 return mySQLCon.State == ConnectionState.Open && temp == "Open" ? true : false;
             }
-            catch(MySqlException err)
-            {
-                return false;
-            }
-            catch (Exception err)
+            catch
             {
                 return false;
             }
@@ -124,11 +120,7 @@ namespace GardenAndOgorodShop
                 var temp = mySQLCon.State.ToString();
                 return mySQLCon.State == ConnectionState.Open && temp == "Open" ? true : false;
             }
-            catch (MySqlException err)
-            {
-                return false;
-            }
-            catch (Exception err)
+            catch
             {
                 return false;
             }
@@ -174,7 +166,7 @@ namespace GardenAndOgorodShop
                     }
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 ;
             }
@@ -216,7 +208,7 @@ namespace GardenAndOgorodShop
                     MySqlCommand cmd = new MySqlCommand(query, connect);
                     cmd.ExecuteNonQuery();
                 }
-                catch (Exception err)
+                catch
                 {
                     bad_count++;
                 }
@@ -251,7 +243,7 @@ namespace GardenAndOgorodShop
                 }
                 return true;
             }
-            catch (Exception err)
+            catch
             {
                 return false;
             }
@@ -282,7 +274,7 @@ namespace GardenAndOgorodShop
                     }
                     return true;
                 }
-                catch (Exception err)
+                catch
                 {
                     return false;
                 }
@@ -445,7 +437,7 @@ namespace GardenAndOgorodShop
                 connect.Close();
                 return true;
             }
-            catch (NullReferenceException err)
+            catch (NullReferenceException)
             {
                 MessageBox.Show(
                     $"Проверьте вводимый логин и пароль",
@@ -454,7 +446,7 @@ namespace GardenAndOgorodShop
                     MessageBoxIcon.Warning);
                 return false;
             }
-            catch (Exception err)
+            catch (Exception)
             {
                 MessageBox.Show(
                     $"Проверьте вводимый логин и пароль",
@@ -483,12 +475,12 @@ namespace GardenAndOgorodShop
                 connect.Close();
                 return false;
             }
-            catch (NullReferenceException err)
+            catch (NullReferenceException)
             {
                 
                 return false;
             }
-            catch (Exception err)
+            catch (Exception)
             {
                 
                 return false;
@@ -538,7 +530,7 @@ namespace GardenAndOgorodShop
                 }
                 return (firstName, lastName, fathersName, photo); 
             }
-            catch (Exception err)
+            catch (Exception)
             {
                 return (firstName, lastName, fathersName, photo);  
             }

@@ -39,6 +39,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.customSlider2 = new GardenAndOgorodShop.CustomSlider();
             this.buttonAddProduct = new System.Windows.Forms.Button();
             this.textBoxSearchProduct = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -172,7 +173,6 @@
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.customSlider1 = new GardenAndOgorodShop.CustomSlider();
             this.panel1.SuspendLayout();
             this.panelNavigation.SuspendLayout();
             this.panelEmployeeData.SuspendLayout();
@@ -224,7 +224,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.customSlider1);
+            this.panel1.Controls.Add(this.customSlider2);
             this.panel1.Controls.Add(this.buttonAddProduct);
             this.panel1.Controls.Add(this.textBoxSearchProduct);
             this.panel1.Controls.Add(this.label3);
@@ -237,9 +237,20 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(11, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(855, 172);
+            this.panel1.Size = new System.Drawing.Size(855, 216);
             this.panel1.TabIndex = 2;
             this.panel1.Click += new System.EventHandler(this.panel1_Click);
+            // 
+            // customSlider2
+            // 
+            this.customSlider2.Count = 1;
+            this.customSlider2.CountPages = 0;
+            this.customSlider2.CountRecords = 0;
+            this.customSlider2.CurrentPage = 1;
+            this.customSlider2.Location = new System.Drawing.Point(569, 1);
+            this.customSlider2.Name = "customSlider2";
+            this.customSlider2.Size = new System.Drawing.Size(286, 110);
+            this.customSlider2.TabIndex = 18;
             // 
             // buttonAddProduct
             // 
@@ -247,7 +258,7 @@
             this.buttonAddProduct.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.buttonAddProduct.FlatAppearance.BorderSize = 0;
             this.buttonAddProduct.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonAddProduct.Location = new System.Drawing.Point(802, 126);
+            this.buttonAddProduct.Location = new System.Drawing.Point(812, 172);
             this.buttonAddProduct.Name = "buttonAddProduct";
             this.buttonAddProduct.Size = new System.Drawing.Size(40, 40);
             this.buttonAddProduct.TabIndex = 17;
@@ -282,7 +293,7 @@
             this.buttonSortProductByPrice.FlatAppearance.BorderSize = 0;
             this.buttonSortProductByPrice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSortProductByPrice.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonSortProductByPrice.Location = new System.Drawing.Point(167, 129);
+            this.buttonSortProductByPrice.Location = new System.Drawing.Point(177, 175);
             this.buttonSortProductByPrice.Name = "buttonSortProductByPrice";
             this.buttonSortProductByPrice.Size = new System.Drawing.Size(93, 40);
             this.buttonSortProductByPrice.TabIndex = 11;
@@ -296,7 +307,7 @@
             this.buttonSortProductByName.FlatAppearance.BorderSize = 0;
             this.buttonSortProductByName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSortProductByName.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonSortProductByName.Location = new System.Drawing.Point(269, 129);
+            this.buttonSortProductByName.Location = new System.Drawing.Point(279, 175);
             this.buttonSortProductByName.Name = "buttonSortProductByName";
             this.buttonSortProductByName.Size = new System.Drawing.Size(183, 40);
             this.buttonSortProductByName.TabIndex = 10;
@@ -309,7 +320,7 @@
             this.comboBoxCategories.BackColor = System.Drawing.SystemColors.Window;
             this.comboBoxCategories.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.comboBoxCategories.FormattingEnabled = true;
-            this.comboBoxCategories.Location = new System.Drawing.Point(458, 137);
+            this.comboBoxCategories.Location = new System.Drawing.Point(468, 183);
             this.comboBoxCategories.Name = "comboBoxCategories";
             this.comboBoxCategories.Size = new System.Drawing.Size(192, 29);
             this.comboBoxCategories.TabIndex = 9;
@@ -320,7 +331,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.Location = new System.Drawing.Point(465, 137);
+            this.label5.Location = new System.Drawing.Point(475, 183);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(122, 25);
             this.label5.TabIndex = 8;
@@ -332,7 +343,7 @@
             this.buttonFilterProduct.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.buttonFilterProduct.FlatAppearance.BorderSize = 0;
             this.buttonFilterProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonFilterProduct.Location = new System.Drawing.Point(588, 129);
+            this.buttonFilterProduct.Location = new System.Drawing.Point(598, 175);
             this.buttonFilterProduct.Name = "buttonFilterProduct";
             this.buttonFilterProduct.Size = new System.Drawing.Size(40, 40);
             this.buttonFilterProduct.TabIndex = 5;
@@ -343,7 +354,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(5, 137);
+            this.label2.Location = new System.Drawing.Point(15, 183);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(156, 25);
             this.label2.TabIndex = 2;
@@ -603,9 +614,9 @@
             // 
             this.ViewProductPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(186)))), ((int)(((byte)(93)))));
             this.ViewProductPage.Controls.Add(this.panelWaiting);
+            this.ViewProductPage.Controls.Add(this.panel1);
             this.ViewProductPage.Controls.Add(this.panelResult);
             this.ViewProductPage.Controls.Add(this.flowLayoutPanel1);
-            this.ViewProductPage.Controls.Add(this.panel1);
             this.ViewProductPage.Font = new System.Drawing.Font("Microsoft Sans Serif", 1.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.ViewProductPage.Location = new System.Drawing.Point(4, 5);
             this.ViewProductPage.Name = "ViewProductPage";
@@ -619,16 +630,16 @@
             this.panelWaiting.BackColor = System.Drawing.Color.White;
             this.panelWaiting.Controls.Add(this.label24);
             this.panelWaiting.Controls.Add(this.progressBar1);
-            this.panelWaiting.Location = new System.Drawing.Point(13, 181);
+            this.panelWaiting.Location = new System.Drawing.Point(4, 0);
             this.panelWaiting.Name = "panelWaiting";
-            this.panelWaiting.Size = new System.Drawing.Size(850, 470);
+            this.panelWaiting.Size = new System.Drawing.Size(874, 651);
             this.panelWaiting.TabIndex = 0;
             // 
             // label24
             // 
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label24.Location = new System.Drawing.Point(245, 203);
+            this.label24.Location = new System.Drawing.Point(255, 279);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(98, 25);
             this.label24.TabIndex = 1;
@@ -637,7 +648,7 @@
             // progressBar1
             // 
             this.progressBar1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(120)))), ((int)(((byte)(56)))));
-            this.progressBar1.Location = new System.Drawing.Point(352, 203);
+            this.progressBar1.Location = new System.Drawing.Point(362, 279);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(274, 30);
             this.progressBar1.TabIndex = 0;
@@ -680,9 +691,9 @@
             this.flowLayoutPanel1.AutoScroll = true;
             this.flowLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.flowLayoutPanel1.BackColor = System.Drawing.Color.White;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(23, 181);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(23, 234);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(830, 483);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(830, 430);
             this.flowLayoutPanel1.TabIndex = 6;
             // 
             // tabControl1
@@ -1835,16 +1846,6 @@
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // customSlider1
-            // 
-            this.customSlider1.Count = 1;
-            this.customSlider1.CountPages = 0;
-            this.customSlider1.CurrentPage = 1;
-            this.customSlider1.Location = new System.Drawing.Point(674, 3);
-            this.customSlider1.Name = "customSlider1";
-            this.customSlider1.Size = new System.Drawing.Size(178, 69);
-            this.customSlider1.TabIndex = 18;
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2034,7 +2035,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button buttonAddProduct;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private CustomSlider customSlider1;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button buttonToClientForm;
         private System.Windows.Forms.TabPage ViewClientsPage;
@@ -2054,5 +2054,6 @@
         private System.Windows.Forms.Panel panelWaiting;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.ProgressBar progressBar1;
+        private CustomSlider customSlider2;
     }
 }
