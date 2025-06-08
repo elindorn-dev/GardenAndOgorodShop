@@ -29,7 +29,7 @@ namespace GardenAndOgorodShop
         Dictionary<int, string> categories_strings = new Dictionary<int, string>();
 
         private DataTable products_table;
-        private DataTable employees_table;
+        private DataTable employees_table = DBHandler.LoadDataSync("employees");
 
         private int lastPageCount = 0;
 
@@ -404,7 +404,7 @@ namespace GardenAndOgorodShop
         }
         private async void LoadEmployeesDataGridView()
         {
-            employees_table = await DBHandler.LoadData("employees;");
+            //employees_table = await DBHandler.LoadData("employees;");
             //employees_table = await DBHandler.LoadData("employees INNER JOIN users ON employees.users_id = users.users_id");
             foreach (DataRow row in employees_table.Rows)
             {
