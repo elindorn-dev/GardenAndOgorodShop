@@ -11,6 +11,7 @@ using System.Configuration;
 using System.Reflection;
 using System.Security.Cryptography;
 using System.IO;
+using MySql.Data.MySqlClient;
 
 namespace GardenAndOgorodShop
 {
@@ -78,15 +79,6 @@ namespace GardenAndOgorodShop
         {
             if (comboBoxTables.SelectedIndex != -1)
             {
-                string query_brands= "INSERT INTO `garden_and_ogorod_shop`.`brands` (`brands_id`, `brand_name`, `descript`, `email`, `phone_number`, `legal_address`) VALUES (";
-                string query_categories= "INSERT INTO `garden_and_ogorod_shop`.`categories` (`categories_id`, `category_name`, `descript`) VALUES (";
-                string query_employees= "INSERT INTO `garden_and_ogorod_shop`.`employees` (`employees_id`, `first_name`, `last_name`, `fathers_name`, `birth_day`, `gender`, `phone_number`, `email`, `address`, `position`, `hire_date`, `salary`, `notes`, `photo`) VALUES (";
-                string query_orders= "INSERT INTO `garden_and_ogorod_shop`.`orders` (`orders_id`, `employees_id`, `order_date`, `order_status`, `payment_method`, `total_cost`, `tax_amount`, `notes`) VALUES (";
-                string query_products= "INSERT INTO `garden_and_ogorod_shop`.`products` (`products_id`, `products_name`, `descript`, `price`, `categories_id`, `brands_id`, `is_available`, `image`, `suppliers_id`, `seasonal_discount`) VALUES (";
-                string query_products_orders= "INSERT INTO `garden_and_ogorod_shop`.`products_orders` (`orders_id`, `products_id`, `product_amount`) VALUES (";
-                string query_roles= "INSERT INTO `garden_and_ogorod_shop`.`roles` (`role_id`, `role_name`, `descript`) VALUES (";
-                string query_suppliers= "INSERT INTO `garden_and_ogorod_shop`.`suppliers` (`suppliers_id`, `supplier_name`, `descript`, `email`, `phone_number`, `legal_address`, `registration_number_inn`) VALUES (";
-                string query_users= "INSERT INTO `garden_and_ogorod_shop`.`users` (`users_id`, `username`, `password_hash`, `employees_id`, `role_id`, `last_login_date`, `notes`) VALUES (";
 
                 string path = "";
                 OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -97,26 +89,9 @@ namespace GardenAndOgorodShop
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     path = openFileDialog.FileName;
+                    int[] result = DBHandler.ImportFromCsv(path, comboBoxTables.Text);
+                    MessageBox.Show($"Успешно: {result[0]}\nПровал: {result[1]}", "Результат импорта", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-
-                string query = "";
-                int count_properties = 0;
-
-                switch (comboBoxTables.Text)
-                {
-                    case "brands": query = query_brands; count_properties = 6; break;
-                    case "categories": query = query_categories; count_properties = 3; break;
-                    case "employees": query = query_employees; count_properties = 14; break;
-                    case "orders": query = query_orders; count_properties = 8; break;
-                    case "products": query = query_products; count_properties = 10; break;
-                    case "products_orders": query = query_products_orders; count_properties = 3; break;
-                    case "roles": query = query_roles; count_properties = 3; break;
-                    case "suppliers": query = query_suppliers; count_properties = 7; break;
-                    case "users": query = query_users; count_properties = 7; break;
-                }
-
-                int[] inserts = DBHandler.ImportCsv(comboBoxTables.Text, query, path, count_properties);
-                MessageBox.Show($"Успешно: {inserts[0]- inserts[1]}\nПровал: {inserts[1]}");
             }
         }
         static string ComputeSha256Hash(string rawData)
@@ -276,6 +251,36 @@ namespace GardenAndOgorodShop
             else
             {
                 MessageBox.Show("БД не была восстановлена", "Восстановление", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void buttonExport_Click(object sender, EventArgs e)
+        {
+            if (comboBoxTables.SelectedIndex != -1)
+            {
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+
+                saveFileDialog.Filter = "CSV files (*.csv)|*.csv|All files (*.*)|*.*";
+                saveFileDialog.FilterIndex = 1;
+                saveFileDialog.RestoreDirectory = true;
+                saveFileDialog.DefaultExt = "csv";
+
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        string filePath = saveFileDialog.FileName;
+                        DBHandler.ExportToCsv(comboBoxTables.Text, filePath);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Ошибка при сохранении файла: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Сохранение отменено пользователем.");
+                }
             }
         }
     }

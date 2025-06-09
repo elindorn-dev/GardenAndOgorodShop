@@ -10,9 +10,8 @@ using System.Drawing;
 using System.Data;
 using System.Security.Cryptography;
 using System.Configuration;
-using System.Reflection;
-using MySqlX.XDevAPI.Relational;
-using MySqlX.XDevAPI.Common;
+using System.Globalization;
+using Microsoft.Office.Interop.Word;
 
 namespace GardenAndOgorodShop
 {
@@ -172,53 +171,223 @@ namespace GardenAndOgorodShop
             }
             return arr;
         }
-        public static int[] ImportCsv(string table, string query, string path, int count_properties)
+        //public static int[] ImportCsv(string table, string query, string path, int count_properties)
+        //{
+        //    MySqlConnection connect = new MySqlConnection(connect_string);
+        //    connect.Open();
+        //    StreamReader f = new StreamReader(path);
+        //    if (!f.EndOfStream)
+        //    {
+        //        string s = f.ReadLine();
+        //        string[] arr = MakeArray(count_properties, s);
+        //    }
+        //    int bad_count = 0;
+        //    int main_count = 0;
+        //    while (!f.EndOfStream)
+        //    {
+        //        string s = f.ReadLine();
+
+        //        string[] arr = MakeArray(count_properties, s);
+
+        //        string query_custom = query;
+        //        for (int i = 0; i < arr.Length - 1; i++)
+        //        {
+        //            if (arr[i] == "...")
+        //            {
+        //                query += "NULL, ";
+        //            }
+        //            else
+        //            {
+        //                query += "'" + arr[i].Replace("'", "") + "', ";
+        //            }
+        //        }
+        //        query += "'" + arr[arr.Length - 1] + "');";
+        //        try
+        //        {
+        //            MySqlCommand cmd = new MySqlCommand(query, connect);
+        //            cmd.ExecuteNonQuery();
+        //        }
+        //        catch
+        //        {
+        //            bad_count++;
+        //        }
+        //        query = query_custom;
+        //        main_count++;
+        //    }
+        //    f.Close();
+        //    connect.Close();
+        //    int[] output = { main_count, bad_count };
+        //    return output;
+        //}
+        public static int[] ImportFromCsv(string filePath, string tableName)
         {
-            MySqlConnection connect = new MySqlConnection(connect_string);
-            connect.Open();
-            StreamReader f = new StreamReader(path);
-            if (!f.EndOfStream)
-            {
-                string s = f.ReadLine();
-                string[] arr = MakeArray(count_properties, s);
-            }
+            
             int bad_count = 0;
-            int main_count = 0;
-            while (!f.EndOfStream)
+            int normal_count = 0;
+            try
             {
-                string s = f.ReadLine();
+                using (MySqlConnection connection = new MySqlConnection(connect_string))
+                {
+                    connection.Open();
 
-                string[] arr = MakeArray(count_properties, s);
+                    using (StreamReader reader = new StreamReader(filePath))
+                    {
+                        string headerLine = reader.ReadLine();
+                        string[] headers = headerLine.Split(',');
 
-                string query_custom = query;
-                for (int i = 0; i < arr.Length - 1; i++)
-                {
-                    if (arr[i] == "...")
-                    {
-                        query += "NULL, ";
+                        while (reader.Peek() >= 0)
+                        {
+                            try
+                            {
+                                string line = reader.ReadLine();
+                                string[] values = line.Split(',');
+
+                                string insertQuery = $"INSERT INTO {tableName} ({string.Join(",", headers)}) VALUES ('";
+                                for (int i = 0; i < values.Length; i++)
+                                {
+                                    string value = values[i].Replace("'", "''");
+
+                                    if (headers[i] == "order_date" || headers[i] == "birth_day")
+                                    {
+                                        if (string.IsNullOrEmpty(value))
+                                        {
+                                            insertQuery += "NULL";
+                                        }
+                                        else
+                                        {
+                                            DateTime orderDate;
+                                            if (DateTime.TryParseExact(value, "dd.MM.yyyy HH:mm:ss", CultureInfo.InvariantCulture, DateTimeStyles.None, out orderDate))
+                                            {
+                                                string formattedOrderDate = orderDate.ToString("yyyy-MM-dd HH:mm:ss");
+                                                insertQuery += $"{formattedOrderDate}";
+                                            }
+                                            else
+                                            {
+                                                insertQuery += "NULL";
+                                            }
+                                        }
+                                    }
+                                    else
+                                    {
+                                        insertQuery += value;
+                                    }
+
+                                    if (i < values.Length - 1)
+                                    {
+                                        insertQuery += "', '";
+                                    }
+                                    else
+                                    {
+                                        insertQuery += "')";
+                                    }
+                                }
+                                insertQuery = insertQuery.Replace(", '',", ", NULL,");
+                                insertQuery = insertQuery.Replace(", '')", ", NULL)");
+                                using (MySqlCommand command = new MySqlCommand(insertQuery, connection))
+                                {
+                                    command.ExecuteNonQuery();
+                                }
+                                normal_count++;
+                            }
+                            catch (Exception)
+                            {
+                                bad_count++;
+                            }
+                        }
                     }
-                    else
-                    {
-                        query += "'" + arr[i].Replace("'", "") + "', ";
-                    }
+
+                    MessageBox.Show($"Данные из файла {filePath} успешно импортированы в таблицу {tableName}.  Успешно: {normal_count}, Ошибок: {bad_count}", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                query += "'" + arr[arr.Length - 1] + "');";
-                try
-                {
-                    MySqlCommand cmd = new MySqlCommand(query, connect);
-                    cmd.ExecuteNonQuery();
-                }
-                catch
-                {
-                    bad_count++;
-                }
-                query = query_custom;
-                main_count++;
             }
-            f.Close();
-            connect.Close();
-            int[] output = { main_count, bad_count };
-            return output;
+            catch (Exception err)
+            {
+                MessageBox.Show($"Ошибка при импорте данных: {err.Message}");
+            }
+
+            //MessageBox.Show($"Данные из файла {filePath} успешно импортированы в таблицу {tableName}");
+            int[] result = { normal_count, bad_count };
+            return result;
+        }
+        public static void ExportToCsv(string tableName, string filePath)
+        {
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(connect_string))
+                {
+                    connection.Open();
+
+                    string query = $"SELECT * FROM {tableName}";
+                    using (MySqlCommand command = new MySqlCommand(query, connection))
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        using (StreamWriter writer = new StreamWriter(filePath, false, Encoding.UTF8))
+                        {
+                            for (int i = 0; i < reader.FieldCount; i++)
+                            {
+                                writer.Write(reader.GetName(i));
+                                if (i < reader.FieldCount - 1)
+                                {
+                                    writer.Write(",");
+                                }
+                            }
+                            writer.WriteLine();
+
+                            while (reader.Read())
+                            {
+                                for (int i = 0; i < reader.FieldCount; i++)
+                                {
+                                    object value = reader[i];
+
+                                    if (value is byte[])
+                                    {
+                                        byte[] blobData = (byte[])value;
+                                        string base64String = Convert.ToBase64String(blobData);
+
+                                        base64String = "\"" + base64String.Replace("\"", "\"\"") + "\"";
+
+                                        writer.Write(base64String);
+                                    }
+                                    else
+                                    {
+                                        if (value is string)
+                                        {
+                                            string stringValue = (string)value;
+                                            stringValue = stringValue.Replace("\"", "\"\"");
+                                            if (stringValue.Contains(","))
+                                            {
+                                                stringValue = "\"" + stringValue + "\"";
+                                            }
+                                            writer.Write(stringValue);
+                                        }
+                                        else if (value is decimal)
+                                        {
+                                            string stringValue = value.ToString();
+                                            
+                                            writer.Write(stringValue.Replace(',', '.'));
+                                        }
+                                        else
+                                        {
+                                            writer.Write(value.ToString());
+                                        }
+                                    }
+
+                                    if (i < reader.FieldCount - 1)
+                                    {
+                                        writer.Write(",");
+                                    }
+                                }
+                                writer.WriteLine();
+                            }
+                        }
+                    }
+
+                    MessageBox.Show($"Данные из таблицы {tableName} успешно экспортированы в файл {filePath}");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при экспорте данных: {ex.Message}");
+            }
         }
         public static bool RecoveryDB()
         {
@@ -589,7 +758,7 @@ namespace GardenAndOgorodShop
 
                 MySqlDataAdapter da = new MySqlDataAdapter(cmd);
 
-                await Task.Run(() => da.Fill(dt));
+                await System.Threading.Tasks.Task.Run(() => da.Fill(dt));
                 con.Close();
             }
             catch (Exception e)
@@ -1161,7 +1330,7 @@ namespace GardenAndOgorodShop
 
                 MySqlDataAdapter da = new MySqlDataAdapter(cmd);
 
-                await Task.Run(() => da.Fill(dt));
+                await System.Threading.Tasks.Task.Run(() => da.Fill(dt));
                 con.Close();
             }
             catch (Exception e)

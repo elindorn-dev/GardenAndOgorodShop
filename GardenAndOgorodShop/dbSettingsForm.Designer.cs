@@ -57,6 +57,7 @@ namespace GardenAndOgorodShop
             this.buttonAuth = new System.Windows.Forms.Button();
             this.buttonHandleBackup = new System.Windows.Forms.Button();
             this.buttonRestoreBackup = new System.Windows.Forms.Button();
+            this.buttonExport = new System.Windows.Forms.Button();
             this.panelBlock.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -395,13 +396,29 @@ namespace GardenAndOgorodShop
             this.buttonRestoreBackup.UseVisualStyleBackColor = false;
             this.buttonRestoreBackup.Click += new System.EventHandler(this.buttonRestoreBackup_Click);
             // 
+            // buttonExport
+            // 
+            this.buttonExport.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(120)))), ((int)(((byte)(56)))));
+            this.buttonExport.FlatAppearance.BorderSize = 2;
+            this.buttonExport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonExport.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonExport.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(120)))), ((int)(((byte)(56)))));
+            this.buttonExport.Location = new System.Drawing.Point(649, 293);
+            this.buttonExport.Name = "buttonExport";
+            this.buttonExport.Size = new System.Drawing.Size(256, 50);
+            this.buttonExport.TabIndex = 36;
+            this.buttonExport.Text = "Экспорт данных";
+            this.buttonExport.UseVisualStyleBackColor = false;
+            this.buttonExport.Click += new System.EventHandler(this.buttonExport_Click);
+            // 
             // dbSettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(527, 408);
+            this.ClientSize = new System.Drawing.Size(504, 408);
+            this.Controls.Add(this.buttonExport);
             this.Controls.Add(this.panelBlock);
             this.Controls.Add(this.buttonRestoreBackup);
             this.Controls.Add(this.buttonHandleBackup);
@@ -470,5 +487,6 @@ namespace GardenAndOgorodShop
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button buttonHandleBackup;
         private System.Windows.Forms.Button buttonRestoreBackup;
+        private System.Windows.Forms.Button buttonExport;
     }
 }
