@@ -66,6 +66,7 @@ namespace GardenAndOgorodShop
             LoadProducts(start_page_count, end_page_count);
             customSlider2.RefreshProducts += Products_RefreshProducts;
             customSlider2.changedPage += Products_changedPage;
+            customSlider2.AmountRecords = products_table.Rows.Count;
         }
         private void Products_changedPage(object sender, EventArgs e)
         {
@@ -286,6 +287,10 @@ namespace GardenAndOgorodShop
             DataTable table = await DBHandler.LoadData("users");
             foreach (DataRow row in table.Rows)
             {
+                if (Convert.ToInt32(row[0]) == UserConfiguration.UserID)
+                {
+                    continue;
+                }
                 string loginUser = "none";
                 string roleUser = "none";
                 string lastLoginUser = "none";
@@ -525,6 +530,8 @@ namespace GardenAndOgorodShop
             }
             else
             {
+                labelProductLost.Visible = false;
+                panelProductLost.Visible = false;
                 products_table = await DBHandler.LoadData("products WHERE is_available > 0");
             }
             
@@ -882,6 +889,9 @@ namespace GardenAndOgorodShop
         {
             try
             {
+                customSlider2.CurrentPage = 1;
+                start_page_count = 0;
+                end_page_count = 20;
                 if (textBoxSearchProduct.Text != "")
                 {
                     customSlider2.Visible = false;
@@ -1419,6 +1429,12 @@ namespace GardenAndOgorodShop
                     );
                 }
             }
+        }
+
+        private void textBoxSearchEmployee_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char c = e.KeyChar;
+            e.Handled = !((c >= 'А' && c <= 'я') || (c >= 'а' && c <= 'я')) && !char.IsControl(e.KeyChar);
         }
     }
     public delegate void MouseMovedEvent();

@@ -38,6 +38,16 @@ namespace GardenAndOgorodShop
                 labelRecordsCurrent.Text = count_records.ToString();
             }
         }
+        private int amount_records;
+        public int AmountRecords
+        {
+            get { return amount_records; }
+            set
+            {
+                amount_records = Convert.ToInt32(value);
+                labelAmountRecords.Text = amount_records.ToString();
+            }
+        }
         public int Count
         {
             get { return int.Parse(textBoxCounter.Text); }
@@ -62,7 +72,11 @@ namespace GardenAndOgorodShop
         public int CurrentPage
         {
             get { return current_page; }
-            set { current_page = value; }
+            set 
+            { 
+                current_page = value;
+                textBoxCounter.Text = current_page.ToString();
+            }
         }
         public event EventHandler RefreshProducts;
         private void textBoxCounter_TextChanged(object sender, EventArgs e)

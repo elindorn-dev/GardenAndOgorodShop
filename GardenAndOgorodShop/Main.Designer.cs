@@ -39,6 +39,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panelProductLost = new System.Windows.Forms.Panel();
+            this.labelProductLost = new System.Windows.Forms.Label();
             this.customSlider2 = new GardenAndOgorodShop.CustomSlider();
             this.buttonAddProduct = new System.Windows.Forms.Button();
             this.textBoxSearchProduct = new System.Windows.Forms.TextBox();
@@ -224,6 +226,8 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.panelProductLost);
+            this.panel1.Controls.Add(this.labelProductLost);
             this.panel1.Controls.Add(this.customSlider2);
             this.panel1.Controls.Add(this.buttonAddProduct);
             this.panel1.Controls.Add(this.textBoxSearchProduct);
@@ -241,8 +245,28 @@
             this.panel1.TabIndex = 2;
             this.panel1.Click += new System.EventHandler(this.panel1_Click);
             // 
+            // panelProductLost
+            // 
+            this.panelProductLost.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.panelProductLost.Location = new System.Drawing.Point(492, 123);
+            this.panelProductLost.Name = "panelProductLost";
+            this.panelProductLost.Size = new System.Drawing.Size(163, 25);
+            this.panelProductLost.TabIndex = 20;
+            // 
+            // labelProductLost
+            // 
+            this.labelProductLost.AutoSize = true;
+            this.labelProductLost.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelProductLost.ForeColor = System.Drawing.Color.Red;
+            this.labelProductLost.Location = new System.Drawing.Point(661, 122);
+            this.labelProductLost.Name = "labelProductLost";
+            this.labelProductLost.Size = new System.Drawing.Size(169, 25);
+            this.labelProductLost.TabIndex = 19;
+            this.labelProductLost.Text = "Товар закончился";
+            // 
             // customSlider2
             // 
+            this.customSlider2.AmountRecords = 0;
             this.customSlider2.Count = 1;
             this.customSlider2.CountPages = 0;
             this.customSlider2.CountRecords = 0;
@@ -630,16 +654,16 @@
             this.panelWaiting.BackColor = System.Drawing.Color.White;
             this.panelWaiting.Controls.Add(this.label24);
             this.panelWaiting.Controls.Add(this.progressBar1);
-            this.panelWaiting.Location = new System.Drawing.Point(4, 0);
+            this.panelWaiting.Location = new System.Drawing.Point(11, 3);
             this.panelWaiting.Name = "panelWaiting";
-            this.panelWaiting.Size = new System.Drawing.Size(874, 651);
+            this.panelWaiting.Size = new System.Drawing.Size(855, 754);
             this.panelWaiting.TabIndex = 0;
             // 
             // label24
             // 
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label24.Location = new System.Drawing.Point(255, 279);
+            this.label24.Location = new System.Drawing.Point(236, 270);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(98, 25);
             this.label24.TabIndex = 1;
@@ -648,7 +672,7 @@
             // progressBar1
             // 
             this.progressBar1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(120)))), ((int)(((byte)(56)))));
-            this.progressBar1.Location = new System.Drawing.Point(362, 279);
+            this.progressBar1.Location = new System.Drawing.Point(343, 270);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(274, 30);
             this.progressBar1.TabIndex = 0;
@@ -904,6 +928,7 @@
             this.textBoxSearchEmployee.Size = new System.Drawing.Size(372, 29);
             this.textBoxSearchEmployee.TabIndex = 15;
             this.textBoxSearchEmployee.TextChanged += new System.EventHandler(this.textBoxSearchEmployee_TextChanged);
+            this.textBoxSearchEmployee.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxSearchEmployee_KeyPress);
             // 
             // label4
             // 
@@ -936,7 +961,8 @@
             this.comboBoxRoles.Items.AddRange(new object[] {
             "без фильтрации",
             "Администратор",
-            "Продавец"});
+            "Продавец",
+            "Товаровед"});
             this.comboBoxRoles.Location = new System.Drawing.Point(461, 133);
             this.comboBoxRoles.Name = "comboBoxRoles";
             this.comboBoxRoles.Size = new System.Drawing.Size(192, 29);
@@ -2055,5 +2081,7 @@
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.ProgressBar progressBar1;
         private CustomSlider customSlider2;
+        private System.Windows.Forms.Panel panelProductLost;
+        private System.Windows.Forms.Label labelProductLost;
     }
 }
