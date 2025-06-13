@@ -35,6 +35,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.labelRecordsCurrent = new System.Windows.Forms.Label();
+            this.labelAmountRecords = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // buttonUp
@@ -114,15 +116,37 @@
             // 
             this.labelRecordsCurrent.AutoSize = true;
             this.labelRecordsCurrent.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelRecordsCurrent.Location = new System.Drawing.Point(208, 73);
+            this.labelRecordsCurrent.Location = new System.Drawing.Point(202, 73);
             this.labelRecordsCurrent.Name = "labelRecordsCurrent";
             this.labelRecordsCurrent.Size = new System.Drawing.Size(32, 25);
             this.labelRecordsCurrent.TabIndex = 5;
             this.labelRecordsCurrent.Text = "19";
             // 
+            // labelAmountRecords
+            // 
+            this.labelAmountRecords.AutoSize = true;
+            this.labelAmountRecords.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelAmountRecords.Location = new System.Drawing.Point(240, 73);
+            this.labelAmountRecords.Name = "labelAmountRecords";
+            this.labelAmountRecords.Size = new System.Drawing.Size(32, 25);
+            this.labelAmountRecords.TabIndex = 7;
+            this.labelAmountRecords.Text = "50";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label4.Location = new System.Drawing.Point(228, 73);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(19, 25);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "/";
+            // 
             // CustomSlider
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.labelAmountRecords);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.labelRecordsCurrent);
             this.Controls.Add(this.label1);
@@ -146,5 +170,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label labelRecordsCurrent;
+        private System.Windows.Forms.Label labelAmountRecords;
+        private System.Windows.Forms.Label label4;
     }
 }
