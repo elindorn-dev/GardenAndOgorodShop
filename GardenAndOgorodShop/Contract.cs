@@ -46,7 +46,7 @@ namespace GardenAndOgorodShop
                 FindAndReplace(wordApp, "[productPrice]", $"{product_price}");
                 FindAndReplace(wordApp, "[supplierINN]", $"{supplier_inn}");
 
-                wordDoc.SaveAs2($"{Directory.GetCurrentDirectory()}\\{outputFilePath}");
+                wordDoc.SaveAs($"{Directory.GetCurrentDirectory()}\\{outputFilePath}");
 
                 wordApp.Visible = true; 
                 wordDoc = wordApp.Documents.Open($"{Directory.GetCurrentDirectory()}\\{outputFilePath}"); 

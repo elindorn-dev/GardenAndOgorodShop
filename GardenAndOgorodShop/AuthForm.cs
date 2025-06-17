@@ -266,8 +266,7 @@ namespace GardenAndOgorodShop
         private void buttonSettingsDB_Click(object sender, EventArgs e)
         {
             dbSettingsForm form = new dbSettingsForm();
-            form.Show();
-            this.Hide();
+            form.ShowDialog();
         }
         private void EnabledCaptchaItems(bool enabled)
         {
