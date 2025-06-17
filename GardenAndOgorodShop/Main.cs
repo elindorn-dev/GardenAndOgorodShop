@@ -482,6 +482,7 @@ namespace GardenAndOgorodShop
         {
             buttonToUserForm.Visible = true;
             buttonToEmployeeForm.Visible = true;
+            buttonToStockForm.Visible = true;
         }
         private void ShowForTovaroved()
         {
@@ -1436,6 +1437,7 @@ namespace GardenAndOgorodShop
             char c = e.KeyChar;
             e.Handled = !((c >= 'А' && c <= 'я') || (c >= 'а' && c <= 'я')) && !char.IsControl(e.KeyChar);
         }
+
     }
     public delegate void MouseMovedEvent();
     public class GlobalMouseHandler : IMessageFilter
