@@ -483,7 +483,6 @@ namespace GardenAndOgorodShop
             buttonToUserForm.Visible = true;
             buttonToEmployeeForm.Visible = true;
             buttonToStockForm.Visible = true;
-            buttonSettingsDB.Visible = true;
         }
         private void ShowForTovaroved()
         {

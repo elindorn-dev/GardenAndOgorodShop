@@ -604,36 +604,43 @@ namespace GardenAndOgorodShop
                 {
                     if (selected_mode == "add")
                     {
-                        string[] result;
-                        int id_product = DBHandler.InsertProduct(
-                        textBoxProductName.Text,
-                        textBoxProductDesc.Text,
-                        Convert.ToDecimal(textBoxProductCost.Text),
-                        (int)comboBoxCategories.SelectedValue,
-                        (int)comboBoxBrands.SelectedValue,
-                        Convert.ToInt32(textBoxProductIsAvaible.Text),
-                        pictureBoxProduct.BackgroundImage,
-                        (int)comboBoxSuppliers.SelectedValue,
-                        Convert.ToDecimal(textBoxProductSeasonalDiscount.Text),
-                        comboBoxUnitSize.Text);
-                        if (id_product != 0) 
+                        if (!DBHandler.CheckUnic(textBoxProductName.Text, "products", "products_name"))
                         {
-                            string[] supplier_data = DBHandler.GetSupplier_data((int)comboBoxSuppliers.SelectedValue);
-                            if (supplier_data != null)
+                            string[] result;
+                            int id_product = DBHandler.InsertProduct(
+                            textBoxProductName.Text,
+                            textBoxProductDesc.Text,
+                            Convert.ToDecimal(textBoxProductCost.Text),
+                            (int)comboBoxCategories.SelectedValue,
+                            (int)comboBoxBrands.SelectedValue,
+                            Convert.ToInt32(textBoxProductIsAvaible.Text),
+                            pictureBoxProduct.BackgroundImage,
+                            (int)comboBoxSuppliers.SelectedValue,
+                            Convert.ToDecimal(textBoxProductSeasonalDiscount.Text),
+                            comboBoxUnitSize.Text);
+                            if (id_product != 0)
                             {
-                                Contract.ContractWithSupplier(textBoxProductName.Text, supplier_data[0], Convert.ToInt32(textBoxProductIsAvaible.Text), id_product, supplier_data[2], Convert.ToDecimal(textBoxProductCost.Text).ToString(), supplier_data[1]);
+                                string[] supplier_data = DBHandler.GetSupplier_data((int)comboBoxSuppliers.SelectedValue);
+                                if (supplier_data != null)
+                                {
+                                    Contract.ContractWithSupplier(textBoxProductName.Text, supplier_data[0], Convert.ToInt32(textBoxProductIsAvaible.Text), id_product, supplier_data[2], Convert.ToDecimal(textBoxProductCost.Text).ToString(), supplier_data[1]);
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Договор не был создан. Ошибка загрузки данных о поставщике", "Создание договора", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
+                                result = SuccessAddRecordResult("Товар", "product");
                             }
                             else
                             {
-                                MessageBox.Show("Договор не был создан. Ошибка загрузки данных о поставщике", "Создание договора", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                result = new string[] { "Товар НЕ добавлен!", "Провал" };
                             }
-                            result = SuccessAddRecordResult("Товар", "product");
+                            MessageBox.Show(result[0], result[1], MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         else
                         {
-                            result = new string[] { "Товар НЕ добавлен!", "Провал" };
+                            MessageBox.Show("Такой продукт уже существует", "Проверка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
-                        MessageBox.Show(result[0], result[1], MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
@@ -660,9 +667,9 @@ namespace GardenAndOgorodShop
                     }
                 }
             }
-            catch (Exception err)
+            catch (Exception)
             {
-                MessageBox.Show("Ошибка обработки продукта (form):\n" + err.Message);
+                //MessageBox.Show("Ошибка обработки продукта (form):\n" + err.Message);
             }
         }
         /// <summary>
@@ -677,12 +684,19 @@ namespace GardenAndOgorodShop
                 string elem_table = "Категория";
                 if (selected_mode == "add")
                 {
-                    string[] result = DBHandler.InsertCategory(
+                    if (!DBHandler.CheckUnic(textBoxCategoryTitle.Text, "categories", "category_name"))
+                    {
+                        string[] result = DBHandler.InsertCategory(
                         textBoxCategoryTitle.Text,
                         textBoxCategoryDesc.Text
-                )
-                ? SuccessAddRecordResult(elem_table, "category") : new string[] { $"{elem_table} НЕ добавлена!", "Провал" };
-                    MessageBox.Show(result[0], result[1], MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        )
+                        ? SuccessAddRecordResult(elem_table, "category") : new string[] { $"{elem_table} НЕ добавлена!", "Провал" };
+                        MessageBox.Show(result[0], result[1], MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Такая категория уже существует", "Проверка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
                 }
                 else
                 {
@@ -704,7 +718,9 @@ namespace GardenAndOgorodShop
                 string elem_table = "Сотрудник";
                 if (selected_mode == "add")
                 {
-                    string[] result = DBHandler.InsertEmployee(
+                    if (!DBHandler.CheckUnic(maskedTextBoxEmployeePhone.Text, "employees", "phone_number"))
+                    {
+                        string[] result = DBHandler.InsertEmployee(
                         textBoxLastName.Text,
                         textBoxFirstName.Text,
                         textBoxFathersName.Text,
@@ -719,7 +735,12 @@ namespace GardenAndOgorodShop
                         pictureBoxEmployee.BackgroundImage
                 )
                 ? SuccessAddRecordResult(elem_table, "employee") : new string[] { $"{elem_table} НЕ добавлен!", "Провал" };
-                    MessageBox.Show(result[0], result[1], MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show(result[0], result[1], MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Такой номер телефона сотрудника уже существует", "Проверка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
                 }
                 else
                 {
@@ -767,15 +788,22 @@ namespace GardenAndOgorodShop
                 string elem_table = "Пользователь";
                 if (selected_mode == "add")
                 {
-                    string[] result = DBHandler.InsertUser(
+                    if (!DBHandler.CheckUnic(textBoxLogin.Text, "users", "username"))
+                    {
+                        string[] result = DBHandler.InsertUser(
                         textBoxLogin.Text,
                         ComputeSha256Hash(textBoxPwd.Text),
                         Convert.ToInt32(comboBoxEmployeeUser.SelectedValue),
-                        comboBoxRole.SelectedIndex+1,
+                        comboBoxRole.SelectedIndex + 1,
                         textBoxUserDesc.Text
                 )
                 ? SuccessAddRecordResult(elem_table, "user") : new string[] { $"{elem_table} НЕ добавлен!", "Провал" };
-                    MessageBox.Show(result[0], result[1], MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show(result[0], result[1], MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Такой логин пользователя уже существует", "Проверка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
                 }
                 else
                 {
@@ -800,15 +828,22 @@ namespace GardenAndOgorodShop
                 string elem_table = "Производитель";
                 if (selected_mode == "add")
                 {
-                    string[] result = DBHandler.InsertBrand(
+                    if (!DBHandler.CheckUnic(textBoxManName.Text, "brands", "brand_name"))
+                    {
+                        string[] result = DBHandler.InsertBrand(
                         textBoxManName.Text,
                         textBoxManEmail.Text,
                         maskedTextBoxManPhone.Text,
                         textBoxManAddress.Text,
                         textBoxManDesc.Text
-                )
-                ? SuccessAddRecordResult(elem_table, "brand") : new string[] { $"{elem_table} НЕ добавлен!", "Провал" };
-                    MessageBox.Show(result[0], result[1], MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        )
+                        ? SuccessAddRecordResult(elem_table, "brand") : new string[] { $"{elem_table} НЕ добавлен!", "Провал" };
+                        MessageBox.Show(result[0], result[1], MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Такой производитель уже существует", "Проверка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
                 }
                 else
                 {
@@ -833,7 +868,9 @@ namespace GardenAndOgorodShop
                 string elem_table = "Поставщик";
                 if (selected_mode == "add")
                 {
-                    string[] result = DBHandler.InsertSup(
+                    if (!DBHandler.CheckUnic(textBoxSupName.Text, "suppliers", "supplier_name"))
+                    {
+                        string[] result = DBHandler.InsertSup(
                         textBoxSupName.Text,
                         textBoxSupEmail.Text,
                         maskedTextBoxSupPhone.Text,
@@ -842,7 +879,13 @@ namespace GardenAndOgorodShop
                         textBoxSupDesc.Text
                 )
                 ? SuccessAddRecordResult(elem_table, "supplier") : new string[] { $"{elem_table} НЕ добавлен!", "Провал" };
-                    MessageBox.Show(result[0], result[1], MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show(result[0], result[1], MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Такой поставщик уже существует", "Проверка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    
                 }
                 else
                 {

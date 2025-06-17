@@ -58,7 +58,23 @@ namespace GardenAndOgorodShop
 
             return enumValues;
         }
-
+        public static bool CheckUnic(string value, string table, string basic)
+        {
+            try
+            {
+                MySqlConnection connect = new MySqlConnection(connect_string);
+                connect.Open();
+                string query = $@"SELECT 1 FROM {table} WHERE {basic} = '{value}';";
+                MySqlCommand command_sql = new MySqlCommand(query, connect);
+                int exist = Convert.ToInt32(command_sql.ExecuteScalar());
+                connect.Close();
+                return exist == 1 ? true : false;
+            }
+            catch
+            {
+                return true;
+            }
+        }
         public static bool Backup(string filePath)
         {
             if (!Directory.Exists("DBCopies"))
