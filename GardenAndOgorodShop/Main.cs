@@ -283,7 +283,7 @@ namespace GardenAndOgorodShop
         private async void LoadUsersDataGridView()
         {
             dataGridViewUsers.Rows.Clear();
-            string[] roles = { "Администратор", "Продавец" };
+            string[] roles = { "Администратор", "Продавец", "Товаровед" };
             DataTable table = await DBHandler.LoadData("users");
             foreach (DataRow row in table.Rows)
             {
